@@ -30,7 +30,7 @@ public class UndirectedGraph
         }
     }
 
-    public void addNewVertex(int n)
+    public void addNewNode(int n)
     {
         num_of_new_nodes = node + n;
         LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
@@ -50,6 +50,33 @@ public class UndirectedGraph
 
     }
 
+    public void removeEdge(int source,int dest)
+    {
+        if(source == dest)
+        {
+            GraphRepresentList[source].remove(Integer.valueOf(dest));
+        }
+        else
+        {
+            GraphRepresentList[dest].remove(Integer.valueOf(source));
+            GraphRepresentList[source].remove(Integer.valueOf(dest));
+        }
+
+        System.out.println("\nAfter removing the edge between " + source + " & " + dest +" the undirected graph would be:");
+        representGraph();
+    }
+
+    public void removeNode(int node_num)
+    {
+        GraphRepresentList[node_num].clear();
+        for (int i=0;i<node;i++)
+        {
+            GraphRepresentList[i].remove(Integer.valueOf(node_num));
+        }
+        System.out.println("After removing vertex "+ node_num + ", the undirected graph becomes:");
+        representGraph();
+
+    }
     public void convertToDirected(int source, int dest)
     {
         System.out.println("\nAfter making the edge between " + source + " & " + dest +" as directed, the graph would be:");
