@@ -34,4 +34,28 @@ public class CompleteGraph {
             addEdge(i, newVertexIndex);
         }
     }
+    public void removeVertex(int deleteIndex)
+    {
+
+        AdjacencyMatrix.get(deleteIndex).clear();
+
+        for (int i=0; i<vertices; i++)
+        {
+            AdjacencyMatrix.get(i).remove(deleteIndex);
+        }
+
+
+    }
+    public void GraphRepresentation()
+    {
+        for (List<Integer> list : AdjacencyMatrix) {
+            Collections.sort(list);
+        }
+        System.out.println("Adjacency Matrix for complete graph:");
+        for (int i = 0; i < AdjacencyMatrix.size(); i++)
+        {
+            System.out.println(AdjacencyMatrix.get(i));
+        }
+
+    }
 }
