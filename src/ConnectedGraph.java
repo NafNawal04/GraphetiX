@@ -3,7 +3,7 @@ import java.util.*;
 public class ConnectedGraph {
     int vertices;
 
-    int num_of_new_nodes;
+
 
 
 
@@ -31,13 +31,14 @@ public class ConnectedGraph {
         {
                 adjacencyList[i].remove(Integer.valueOf(deleteIndex));
         }
-
+        System.out.println(" after removing vertex "+ deleteIndex + " the connected graph becomes:");
+        GraphRepresentation();
 
 
     }
     public void removeEdge(int source,int destination)
     {
-       //need to implement some conditions to check whether it becomes disconnected or not
+        //need to implement some conditions to check whether it becomes disconnected or not
         //multiedge or not?
         adjacencyList[source].remove(Integer.valueOf(destination));
         adjacencyList[destination].remove(Integer.valueOf(source));
@@ -45,10 +46,10 @@ public class ConnectedGraph {
     public void addVertex(int AddToIndex)
     {
         int newVertexIndex = vertices;
-        num_of_new_nodes =  vertices + 1;
+        int num_of_new_nodes =  vertices + 1;
         LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
 
-        for (int i = 0; i < vertices; i++)
+        for(int i = 0; i < vertices; i++)
         {
             newGraphRepresentList[i] = adjacencyList[i];
         }

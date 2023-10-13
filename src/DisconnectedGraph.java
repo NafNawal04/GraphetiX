@@ -2,7 +2,7 @@ import java.util.*;
 
 public class DisconnectedGraph {
     int vertices;
-    int AddToIndex;
+
     int num_of_new_vertices;
 
     public LinkedList<Integer> adjacencyList [];
@@ -33,17 +33,21 @@ public class DisconnectedGraph {
        {
            adjacencyList[i].remove(Integer.valueOf(deleteIndex));
        }
-
+       System.out.println(" after removing vertex "+ deleteIndex + " the disconnected graph becomes:");
+       GraphRepresentation();
 
    }
     public void removeEdge(int source,int destination)
     {
         adjacencyList[source].remove(Integer.valueOf(destination));
         adjacencyList[destination].remove(Integer.valueOf(source));
+
+        System.out.println("The edge is deleted");
     }
     public void addEdge(int source, int dest)
     {
         //need to implement some conditions to check whether it becomes connected or not
+        //multiple edge?
         adjacencyList[source].add(dest);
         adjacencyList[dest].add(source);
     }

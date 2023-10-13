@@ -2,15 +2,18 @@ import java.util.*;
 
 public class CompleteGraph {
 
-    public ArrayList<ArrayList<Integer>> AdjacencyMatrix;
+    public LinkedList<Integer> AdjacencyMatrix [];
+    //public ArrayList<ArrayList<Integer>> AdjacencyMatrix;
     int vertices;
 
     public CompleteGraph(int vertices)
     {
-        AdjacencyMatrix = new ArrayList<>(vertices);
+        this.vertices = vertices;
+        AdjacencyMatrix = new LinkedList[vertices];
 
-        for (int i = 0; i < vertices; i++) {
-            AdjacencyMatrix.add(new ArrayList<>());
+        for (int i = 0; i < vertices ; i++)
+        {
+            AdjacencyMatrix [i] = new LinkedList<>();
         }
 
         for (int i = 0; i < vertices; i++) {
@@ -20,41 +23,56 @@ public class CompleteGraph {
         }
 
     }
-    public void addEdge( int s, int d) {
-        AdjacencyMatrix.get(s).add(d);
-        AdjacencyMatrix.get(d).add(s);
+    public void addEdge( int source, int dest) {
+        AdjacencyMatrix[source].add(dest);
+        AdjacencyMatrix[dest].add(source);
     }
     public void addVertex()
     {
 
-        int newVertexIndex = AdjacencyMatrix.size();
-        AdjacencyMatrix.add(new ArrayList<>());
+        int newVertexIndex = vertices;
+        int num_of_new_nodes =  vertices + 1;
+        LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
 
-        for (int i = 0; i < newVertexIndex; i++) {
-            addEdge(i, newVertexIndex);
+        for(int i = 0; i < vertices; i++)
+        {
+            newGraphRepresentList[i] = AdjacencyMatrix[i];
         }
+
+        for (int i = vertices; i < num_of_new_nodes; i++)
+        {
+            newGraphRepresentList[i] = new LinkedList<>();
+        }
+
+        vertices = num_of_new_nodes;
+        AdjacencyMatrix = newGraphRepresentList;
     }
     public void removeVertex(int deleteIndex)
     {
 
-        AdjacencyMatrix.get(deleteIndex).clear();
 
-        for (int i=0; i<vertices; i++)
+        AdjacencyMatrix[deleteIndex].clear();
+
+        for (int i=0;i<vertices;i++)
         {
-            AdjacencyMatrix.get(i).remove(deleteIndex);
+            AdjacencyMatrix[i].remove(Integer.valueOf(deleteIndex));
         }
-
+        System.out.println(" after removing vertex "+ deleteIndex + " the connected graph becomes:");
+        GraphRepresentation();
 
     }
     public void GraphRepresentation()
     {
-        for (List<Integer> list : AdjacencyMatrix) {
+        for (LinkedList<Integer> list : AdjacencyMatrix)
+        {
             Collections.sort(list);
         }
-        System.out.println("Adjacency Matrix for complete graph:");
-        for (int i = 0; i < AdjacencyMatrix.size(); i++)
+
+        System.out.println("Adjacency Matrix for connected graph:");
+        for (int i = 0; i < AdjacencyMatrix.length; i++)
         {
-            System.out.println(AdjacencyMatrix.get(i));
+
+            System.out.println("Vertex " + i + " is connected to: " + AdjacencyMatrix[i]);
         }
 
     }
