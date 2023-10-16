@@ -19,11 +19,12 @@ public class Main
 //        c1.addEdge(4,2);
 
         c1.removeVertex(2);
-        // after deleting vertex 2,it still exists in the list,though empty.
+
         c1.addVertex(2);
         c1.addVertex(2);
 
-        c1.removeEdge(2,4);
+        c1.addEdge(2,4);
+        c1.addEdge(3,0);
 
 
         c1.GraphRepresentation();

@@ -3,7 +3,7 @@ import java.util.*;
 public class CompleteGraph {
 
     public LinkedList<Integer> AdjacencyMatrix [];
-    //public ArrayList<ArrayList<Integer>> AdjacencyMatrix;
+
     int vertices;
 
     public CompleteGraph(int vertices)
@@ -18,15 +18,13 @@ public class CompleteGraph {
 
         for (int i = 0; i < vertices; i++) {
             for (int j = i + 1; j < vertices; j++) {
-                addEdge(i, j);
+                AdjacencyMatrix[i].add(j);
+                AdjacencyMatrix[j].add(i);
             }
         }
 
     }
-    public void addEdge( int source, int dest) {
-        AdjacencyMatrix[source].add(dest);
-        AdjacencyMatrix[dest].add(source);
-    }
+
     public void addVertex()
     {
 
@@ -46,6 +44,15 @@ public class CompleteGraph {
 
         vertices = num_of_new_nodes;
         AdjacencyMatrix = newGraphRepresentList;
+
+        for (int i = 0; i < newVertexIndex ; i++) {
+
+            if(!AdjacencyMatrix[i].isEmpty() ) {
+                AdjacencyMatrix[i].add(newVertexIndex);
+                AdjacencyMatrix[newVertexIndex].add(i);
+            }
+        }
+
     }
     public void removeVertex(int deleteIndex)
     {
@@ -68,7 +75,7 @@ public class CompleteGraph {
             Collections.sort(list);
         }
 
-        System.out.println("Adjacency Matrix for connected graph:");
+        System.out.println("Adjacency Matrix for complete graph:");
         for (int i = 0; i < AdjacencyMatrix.length; i++)
         {
 

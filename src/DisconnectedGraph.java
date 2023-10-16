@@ -3,7 +3,7 @@ import java.util.*;
 public class DisconnectedGraph {
     int vertices;
 
-    int num_of_new_vertices;
+
 
     public LinkedList<Integer> adjacencyList [];
     public DisconnectedGraph(int vertices)
@@ -16,27 +16,27 @@ public class DisconnectedGraph {
             adjacencyList[i] = new LinkedList<>();
         }
     }
-   /* public void addVertex() {
-        int newVertexIndex = vertices;
-        vertices++;
+    /* public void addVertex() {
+         int newVertexIndex = vertices;
+         vertices++;
 
-        LinkedList<Integer> newVertexList = new LinkedList<>();
-        adjacencyList[newVertexIndex] = newVertexList;
+         LinkedList<Integer> newVertexList = new LinkedList<>();
+         adjacencyList[newVertexIndex] = newVertexList;
 
-    }*/
-   public void removeVertex(int deleteIndex)
-   {
+     }*/
+    public void removeVertex(int deleteIndex)
+    {
 
-       adjacencyList[deleteIndex].clear();
+        adjacencyList[deleteIndex].clear();
 
-       for (int i=0;i<vertices;i++)
-       {
-           adjacencyList[i].remove(Integer.valueOf(deleteIndex));
-       }
-       System.out.println(" after removing vertex "+ deleteIndex + " the disconnected graph becomes:");
-       GraphRepresentation();
+        for (int i=0;i<vertices;i++)
+        {
+            adjacencyList[i].remove(Integer.valueOf(deleteIndex));
+        }
+        System.out.println(" after removing vertex "+ deleteIndex + " the disconnected graph becomes:");
+        GraphRepresentation();
 
-   }
+    }
     public void removeEdge(int source,int destination)
     {
         adjacencyList[source].remove(Integer.valueOf(destination));
@@ -54,7 +54,7 @@ public class DisconnectedGraph {
 
     public void addVertex() {
 
-        num_of_new_vertices =  vertices + 1;
+        int num_of_new_vertices =  vertices + 1;
         LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_vertices];
 
         for (int i = 0; i < vertices; i++)

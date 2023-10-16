@@ -1,10 +1,8 @@
+import javax.swing.*;
 import java.util.*;
 
 public class ConnectedGraph {
     int vertices;
-
-
-
 
 
     public LinkedList<Integer> adjacencyList [];
@@ -18,7 +16,8 @@ public class ConnectedGraph {
             adjacencyList[i] = new LinkedList<>();
         }
         for (int i = 0; i < vertices-1 ; i++) {
-            addEdge(i, i + 1);
+            adjacencyList[i].add(i+1);
+            adjacencyList[i+1].add(i);
         }
 
     }
@@ -29,7 +28,7 @@ public class ConnectedGraph {
 
         for (int i=0;i<vertices;i++)
         {
-                adjacencyList[i].remove(Integer.valueOf(deleteIndex));
+            adjacencyList[i].remove(Integer.valueOf(deleteIndex));
         }
         System.out.println(" after removing vertex "+ deleteIndex + " the connected graph becomes:");
         GraphRepresentation();
@@ -45,30 +44,40 @@ public class ConnectedGraph {
     }
     public void addVertex(int AddToIndex)
     {
-        int newVertexIndex = vertices;
-        int num_of_new_nodes =  vertices + 1;
-        LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
-
-        for(int i = 0; i < vertices; i++)
-        {
-            newGraphRepresentList[i] = adjacencyList[i];
+        if(adjacencyList[AddToIndex].isEmpty() ) {
+            System.out.println("vertex doesn't exist");
         }
+        else {
+            int newVertexIndex = vertices;
+            int num_of_new_nodes =  vertices + 1;
+            LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
 
-        for (int i = vertices; i < num_of_new_nodes; i++)
-        {
-            newGraphRepresentList[i] = new LinkedList<>();
+            for(int i = 0; i < vertices; i++)
+            {
+                newGraphRepresentList[i] = adjacencyList[i];
+            }
+
+            for (int i = vertices; i < num_of_new_nodes; i++)
+            {
+                newGraphRepresentList[i] = new LinkedList<>();
+            }
+
+            vertices = num_of_new_nodes;
+            adjacencyList = newGraphRepresentList;
+
+
+            addEdge(newVertexIndex,AddToIndex );
         }
-
-        vertices = num_of_new_nodes;
-        adjacencyList = newGraphRepresentList;
-
-        addEdge(newVertexIndex,AddToIndex );
     }
     public void addEdge(int source, int dest)
     {
-
-        adjacencyList[source].add(dest);
-        adjacencyList[dest].add(source);
+        if(adjacencyList[source].isEmpty() ) {
+            System.out.println("vertex doesn't exist");
+        }
+        else {
+            adjacencyList[source].add(dest);
+            adjacencyList[dest].add(source);
+        }
     }
 
 
