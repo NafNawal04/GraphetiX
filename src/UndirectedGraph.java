@@ -71,7 +71,11 @@ public class UndirectedGraph
         GraphRepresentList[node_num].clear();
         for (int i=0;i<node;i++)
         {
-            GraphRepresentList[i].remove(Integer.valueOf(node_num));
+            while(GraphRepresentList[i].contains(node_num))
+            {
+                GraphRepresentList[i].remove(Integer.valueOf(node_num));
+            }
+
         }
         System.out.println("After removing vertex "+ node_num + ", the undirected graph becomes:");
         representGraph();
