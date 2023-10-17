@@ -3,7 +3,7 @@ import java.util.*;
 
 public class ConnectedGraph {
     int vertices;
-
+    LinkedList<Integer> deletedIndex = new LinkedList<>();
 
     public LinkedList<Integer> adjacencyList [];
     public ConnectedGraph(int vertices)
@@ -23,6 +23,7 @@ public class ConnectedGraph {
     }
     public void removeVertex(int deleteIndex)
     {
+        deletedIndex.add(deleteIndex);
 
         adjacencyList[deleteIndex].clear();
 
@@ -44,7 +45,7 @@ public class ConnectedGraph {
     }
     public void addVertex(int AddToIndex)
     {
-        if(adjacencyList[AddToIndex].isEmpty() ) {
+        if(deletedIndex.contains( AddToIndex) ) {
             System.out.println("vertex doesn't exist");
         }
         else {
@@ -71,7 +72,7 @@ public class ConnectedGraph {
     }
     public void addEdge(int source, int dest)
     {
-        if(adjacencyList[source].isEmpty() ) {
+        if(deletedIndex.contains( source) ) {
             System.out.println("vertex doesn't exist");
         }
         else {

@@ -2,7 +2,7 @@ import java.util.*;
 
 public class DisconnectedGraph {
     int vertices;
-
+    LinkedList<Integer> deletedIndex = new LinkedList<>();
 
 
     public LinkedList<Integer> adjacencyList [];
@@ -16,17 +16,10 @@ public class DisconnectedGraph {
             adjacencyList[i] = new LinkedList<>();
         }
     }
-    /* public void addVertex() {
-         int newVertexIndex = vertices;
-         vertices++;
 
-         LinkedList<Integer> newVertexList = new LinkedList<>();
-         adjacencyList[newVertexIndex] = newVertexList;
-
-     }*/
     public void removeVertex(int deleteIndex)
     {
-
+        deletedIndex.add(deleteIndex);
         adjacencyList[deleteIndex].clear();
 
         for (int i=0;i<vertices;i++)
@@ -48,8 +41,13 @@ public class DisconnectedGraph {
     {
         //need to implement some conditions to check whether it becomes connected or not
         //multiple edge?
-        adjacencyList[source].add(dest);
-        adjacencyList[dest].add(source);
+        if(deletedIndex.contains( source) ) {
+            System.out.println("vertex doesn't exist");
+        }
+        else {
+            adjacencyList[source].add(dest);
+            adjacencyList[dest].add(source);
+        }
     }
 
     public void addVertex() {
