@@ -1,19 +1,20 @@
-import java.util.*;
+import libraryFunctions.*;
 
 public class DisconnectedGraph {
     int vertices;
-    LinkedList<Integer> deletedIndex = new LinkedList<>();
+    Glist<Integer> deletedIndex = new Glist<>();
 
 
-    public LinkedList<Integer>[] adjacencyList ;
+
+    Glist<Integer> adjacencyList [];
     public DisconnectedGraph(int vertices)
     {
         this.vertices = vertices;
-        adjacencyList = new LinkedList[vertices];
+        adjacencyList = new Glist[vertices];
 
         for (int i = 0; i < vertices ; i++)
         {
-            adjacencyList[i] = new LinkedList<>();
+            adjacencyList [i] = new Glist<>();
         }
     }
 
@@ -24,7 +25,7 @@ public class DisconnectedGraph {
 
         for (int i=0;i<vertices;i++)
         {
-            adjacencyList[i].remove(Integer.valueOf(deleteIndex));
+            adjacencyList[i].removeValue(deleteIndex);
         }
         System.out.println(" after removing vertex "+ deleteIndex + " the disconnected graph becomes:");
         GraphRepresentation();
@@ -32,8 +33,8 @@ public class DisconnectedGraph {
     }
     public void removeEdge(int source,int destination)
     {
-        adjacencyList[source].remove(Integer.valueOf(destination));
-        adjacencyList[destination].remove(Integer.valueOf(source));
+        adjacencyList[source].removeValue(destination);
+        adjacencyList[destination].removeValue(source);
 
         System.out.println("The edge is deleted");
     }
@@ -53,7 +54,7 @@ public class DisconnectedGraph {
     public void addVertex() {
 
         int num_of_new_vertices =  vertices + 1;
-        LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_vertices];
+        Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_vertices];
 
         for (int i = 0; i < vertices; i++)
         {
@@ -62,7 +63,7 @@ public class DisconnectedGraph {
 
         for (int i = vertices; i < num_of_new_vertices; i++)
         {
-            newGraphRepresentList[i] = new LinkedList<>();
+            newGraphRepresentList[i] = new Glist<>();
         }
 
         vertices = num_of_new_vertices;
@@ -73,9 +74,9 @@ public class DisconnectedGraph {
 
     public void GraphRepresentation()
     {
-        for (LinkedList<Integer> list : adjacencyList)
+        for (int i=0;i<adjacencyList.length;i++)
         {
-            Collections.sort(list);
+            adjacencyList[i].sort();
         }
 
         System.out.println("Adjacency Matrix for Disconnected graph:");
