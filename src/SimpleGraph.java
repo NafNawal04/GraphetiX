@@ -48,20 +48,19 @@ public class SimpleGraph
     public void addNewNode(int n)
     {
         num_of_new_nodes = node + n;
-        LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes]; //copy korlam arek list a notun vertex size shoho
-
+        LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
         for (int i = 0; i < node; i++)
         {
             newGraphRepresentList[i] = GraphRepresentList[i];
         }
 
-        for (int i = node; i < num_of_new_nodes; i++) //notun vertex er jonno array create
+        for (int i = node; i < num_of_new_nodes; i++)
         {
             newGraphRepresentList[i] = new LinkedList<>();
         }
 
         node = num_of_new_nodes;
-        GraphRepresentList = newGraphRepresentList; //naming convension er jonno
+        GraphRepresentList = newGraphRepresentList;
 
     }
 
