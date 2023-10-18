@@ -42,4 +42,14 @@ public class Glist<E> {
         return false;
 
     }
+    public int length()
+    {
+        int size=0;
+        Node current = head;
+        while (current.next != null) {
+            size++;
+        }
+        return size;
+
+    }
 }
