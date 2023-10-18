@@ -1,19 +1,22 @@
-import java.util.*;
+import libraryFunctions.Glist;
+
+
 
 public class CompleteGraph {
 
-    public LinkedList<Integer> AdjacencyMatrix [];
+    public Glist<Integer> AdjacencyMatrix [];
+    Glist<Integer> deletedIndex = new Glist<>();
 
     int vertices;
 
     public CompleteGraph(int vertices)
     {
         this.vertices = vertices;
-        AdjacencyMatrix = new LinkedList[vertices];
+        AdjacencyMatrix = new Glist[vertices];
 
         for (int i = 0; i < vertices ; i++)
         {
-            AdjacencyMatrix [i] = new LinkedList<>();
+            AdjacencyMatrix [i] = new Glist<>();
         }
 
         for (int i = 0; i < vertices; i++) {
@@ -30,16 +33,14 @@ public class CompleteGraph {
 
         int newVertexIndex = vertices;
         int num_of_new_nodes =  vertices + 1;
-        LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
-
+        Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
         for(int i = 0; i < vertices; i++)
         {
             newGraphRepresentList[i] = AdjacencyMatrix[i];
         }
-
         for (int i = vertices; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentList[i] = new LinkedList<>();
+            newGraphRepresentList[i] = new Glist<>();
         }
 
         vertices = num_of_new_nodes;
@@ -54,15 +55,19 @@ public class CompleteGraph {
         }
 
     }
+
+
+
+
     public void removeVertex(int deleteIndex)
     {
-
+        deletedIndex.add(deleteIndex);
 
         AdjacencyMatrix[deleteIndex].clear();
 
         for (int i=0;i<vertices;i++)
         {
-            AdjacencyMatrix[i].remove(Integer.valueOf(deleteIndex));
+            AdjacencyMatrix[i].removeValue(deleteIndex);
         }
         System.out.println(" after removing vertex "+ deleteIndex + " the connected graph becomes:");
         GraphRepresentation();
@@ -70,9 +75,9 @@ public class CompleteGraph {
     }
     public void GraphRepresentation()
     {
-        for (LinkedList<Integer> list : AdjacencyMatrix)
+        for (int i=0;i<AdjacencyMatrix.length;i++)
         {
-            Collections.sort(list);
+            AdjacencyMatrix[i].sort();
         }
 
         System.out.println("Adjacency Matrix for complete graph:");
