@@ -5,7 +5,7 @@ public class ConnectedGraph {
     int vertices;
     LinkedList<Integer> deletedIndex = new LinkedList<>();
 
-    public LinkedList<Integer> adjacencyList [];
+    public LinkedList<Integer>[] adjacencyList;
     public ConnectedGraph(int vertices)
     {
         this.vertices = vertices;

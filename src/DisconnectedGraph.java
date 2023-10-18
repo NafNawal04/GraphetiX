@@ -5,7 +5,7 @@ public class DisconnectedGraph {
     LinkedList<Integer> deletedIndex = new LinkedList<>();
 
 
-    public LinkedList<Integer> adjacencyList [];
+    public LinkedList<Integer>[] adjacencyList ;
     public DisconnectedGraph(int vertices)
     {
         this.vertices = vertices;
