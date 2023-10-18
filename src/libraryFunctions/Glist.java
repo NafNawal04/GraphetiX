@@ -7,4 +7,19 @@ public class Glist<E> {
         head = null;
 
     }
+    public boolean add(E value) {
+
+        Node<E> current = head;
+        while (current.next!=null) {
+
+            current = current.next;
+        }
+
+        Node newNode = new Node(value);
+
+        current.next= newNode;
+        return true;
+
+
+    }
 }
