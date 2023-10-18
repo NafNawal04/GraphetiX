@@ -2,8 +2,7 @@ import java.util.*;
 
 public class CompleteGraph {
 
-    public LinkedList<Integer>[] AdjacencyMatrix;
-    LinkedList<Integer> deletedIndex = new LinkedList<>();
+    public LinkedList<Integer> AdjacencyMatrix [];
 
     int vertices;
 
@@ -47,8 +46,8 @@ public class CompleteGraph {
         AdjacencyMatrix = newGraphRepresentList;
 
         for (int i = 0; i < newVertexIndex ; i++) {
-            if(!deletedIndex.contains(i))
-          {
+
+            if(!AdjacencyMatrix[i].isEmpty() ) {
                 AdjacencyMatrix[i].add(newVertexIndex);
                 AdjacencyMatrix[newVertexIndex].add(i);
             }
@@ -57,7 +56,7 @@ public class CompleteGraph {
     }
     public void removeVertex(int deleteIndex)
     {
-        deletedIndex.add(deleteIndex);
+
 
         AdjacencyMatrix[deleteIndex].clear();
 
