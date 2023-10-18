@@ -22,4 +22,24 @@ public class Glist<E> {
 
 
     }
+    public boolean contains(E value)
+    {
+        if (head == null) {
+            return false;
+        }
+
+        if (head.data==value) {
+            return true;
+        }
+
+        Node current = head;
+        while (current.next != null) {
+            if (current.next.data==value) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
 }
