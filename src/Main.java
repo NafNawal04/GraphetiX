@@ -20,7 +20,7 @@ public class Main
 
 
         System.out.println("\n");
-        System.out.println("\n");
+
 
 
         DirectedGraph d1 =new DirectedGraph(5);

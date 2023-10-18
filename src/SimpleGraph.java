@@ -3,7 +3,6 @@ public class SimpleGraph
 {
     int node;
     int num_of_new_nodes;
-
     public LinkedList<Integer>[] GraphRepresentList ;
 
     public SimpleGraph(int node)

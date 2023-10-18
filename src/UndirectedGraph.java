@@ -61,7 +61,6 @@ public class UndirectedGraph
             GraphRepresentList[dest].remove(Integer.valueOf(source));
             GraphRepresentList[source].remove(Integer.valueOf(dest));
         }
-
         System.out.println("\nAfter removing the edge between " + source + " & " + dest +" the undirected graph would be:");
         representGraph();
     }

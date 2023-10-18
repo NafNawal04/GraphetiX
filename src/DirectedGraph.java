@@ -87,7 +87,6 @@ public class DirectedGraph
         {
             System.out.println("Vertex " + i + " is connected to: " + GraphRepresentList[i]);
         }
-
     }
 
 
