@@ -1,19 +1,19 @@
-import javax.swing.*;
-import java.util.*;
+
+import libraryFunctions.Glist;
 
 public class ConnectedGraph {
     int vertices;
-    LinkedList<Integer> deletedIndex = new LinkedList<>();
+    Glist<Integer> deletedIndex = new Glist<>();
 
-    public LinkedList<Integer>[] adjacencyList;
+    public Glist<Integer> adjacencyList [];
     public ConnectedGraph(int vertices)
     {
         this.vertices = vertices;
-        adjacencyList = new LinkedList[vertices];
+        adjacencyList = new Glist[vertices];
 
         for (int i = 0; i < vertices ; i++)
         {
-            adjacencyList[i] = new LinkedList<>();
+            adjacencyList[i] = new Glist<>();
         }
         for (int i = 0; i < vertices-1 ; i++) {
             adjacencyList[i].add(i+1);
@@ -29,7 +29,7 @@ public class ConnectedGraph {
 
         for (int i=0;i<vertices;i++)
         {
-            adjacencyList[i].remove(Integer.valueOf(deleteIndex));
+            adjacencyList[i].removeValue(deleteIndex);
         }
         System.out.println(" after removing vertex "+ deleteIndex + " the connected graph becomes:");
         GraphRepresentation();
@@ -40,8 +40,8 @@ public class ConnectedGraph {
     {
         //need to implement some conditions to check whether it becomes disconnected or not
         //multiedge or not?
-        adjacencyList[source].remove(Integer.valueOf(destination));
-        adjacencyList[destination].remove(Integer.valueOf(source));
+        adjacencyList[source].removeValue(destination);
+        adjacencyList[destination].removeValue(source);
     }
     public void addVertex(int AddToIndex)
     {
@@ -51,7 +51,7 @@ public class ConnectedGraph {
         else {
             int newVertexIndex = vertices;
             int num_of_new_nodes =  vertices + 1;
-            LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
+            Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
 
             for(int i = 0; i < vertices; i++)
             {
@@ -60,7 +60,7 @@ public class ConnectedGraph {
 
             for (int i = vertices; i < num_of_new_nodes; i++)
             {
-                newGraphRepresentList[i] = new LinkedList<>();
+                newGraphRepresentList[i] = new Glist<>();
             }
 
             vertices = num_of_new_nodes;
@@ -84,9 +84,9 @@ public class ConnectedGraph {
 
     public void GraphRepresentation()
     {
-        for (LinkedList<Integer> list : adjacencyList)
+        for (int i=0;i<adjacencyList.length;i++)
         {
-            Collections.sort(list);
+            adjacencyList[i].sort();
         }
 
         System.out.println("Adjacency Matrix for connected graph:");
