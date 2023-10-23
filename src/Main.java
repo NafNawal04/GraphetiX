@@ -4,16 +4,16 @@ public class Main {
         System.out.println("\n");
 
         SimpleGraph s1 =new SimpleGraph(5);
-        s1.addEdgeToNode(0,1);
-        s1.addEdgeToNode(1,1); //should show error
-        s1.addEdgeToNode(0,4);
-        s1.addEdgeToNode(1,2);
-        s1.addEdgeToNode(3,1);
-        s1.addEdgeToNode(2,1); //should show error
-        s1.addEdgeToNode(4,2);
+        s1.addEdge(0,1);
+        s1.addEdge(1,1); //should show error
+        s1.addEdge(0,4);
+        s1.addEdge(1,2);
+        s1.addEdge(3,1);
+        s1.addEdge(2,1); //should show error
+        s1.addEdge(4,2);
         s1.addNewNode(2); //two new nodes should be added to the list
         System.out.println("List Representation for Simple graph:");
-        s1.representGraph(); // rearranges the values in ascending order and then visualizes the graph by showing the vertices one vertex is connected to in a linked list
+        s1.GraphRepresentation(); // rearranges the values in ascending order and then visualizes the graph by showing the vertices one vertex is connected to in a linked list
         s1.removeNode(2);
 
 
@@ -23,16 +23,16 @@ public class Main {
 
 
         DirectedGraph d1 =new DirectedGraph(5);
-        d1.addEdgeToNode(1,1);
-        d1.addEdgeToNode(0,4);
-        d1.addEdgeToNode(0,1);
-        d1.addEdgeToNode(1,2);
-        d1.addEdgeToNode(3,1);
-        d1.addEdgeToNode(2,3);
+        d1.addEdge(1,1);
+        d1.addEdge(0,4);
+        d1.addEdge(0,1);
+        d1.addEdge(1,2);
+        d1.addEdge(3,1);
+        d1.addEdge(2,3);
         d1.addNewNode(1);
-        d1.addEdgeToNode(4,2);
+        d1.addEdge(4,2);
         System.out.println("List Representation for Directed graph:");
-        d1.representGraph();
+        d1.GraphRepresentation();
         d1.inDegree(1);
         d1.outDegree(1);
         d1.removeNode(3);
@@ -45,15 +45,15 @@ public class Main {
 
 
         UndirectedGraph u1 = new UndirectedGraph(5);
-        u1.addEdgeToNode(0,4);
-        u1.addEdgeToNode(1,2);
-        u1.addEdgeToNode(3,4);
-        u1.addEdgeToNode(2,4);
-        u1.addEdgeToNode(4,2);
-        u1.addEdgeToNode(0,0);
+        u1.addEdge(0,4);
+        u1.addEdge(1,2);
+        u1.addEdge(3,4);
+        u1.addEdge(2,4);
+        u1.addEdge(4,2);
+        u1.addEdge(0,0);
         u1.addNewNode(0);
         System.out.println("List Representation for Undirected graph:");
-        u1.representGraph();
+        u1.GraphRepresentation();
         u1.convertToDirected(1,2);
         u1.removeEdge(0,4);
         u1.removeNode(4);
@@ -63,8 +63,8 @@ public class Main {
 
         CompleteGraph completeGraph = new CompleteGraph(5);
 
-        completeGraph.removeVertex(1);
-        completeGraph.removeVertex(2);
+        completeGraph.removeNode(1);
+        completeGraph.removeNode(2);
         completeGraph.addVertex();
 
         completeGraph.GraphRepresentation();
@@ -74,10 +74,10 @@ public class Main {
         ConnectedGraph c1=new ConnectedGraph(5);
 
 
-        c1.removeVertex(2);
+        c1.removeNode(2);
 
-        c1.addVertex(2);
-        c1.addVertex(2);
+        c1.addNewNode(2);
+        c1.addNewNode(2);
 
         c1.addEdge(2,4);
         c1.addEdge(3,0);
@@ -97,7 +97,7 @@ public class Main {
         DisconnectedGraph1.addVertex();
 
         DisconnectedGraph1.GraphRepresentation();
-        DisconnectedGraph1.removeVertex(3);
+        DisconnectedGraph1.removeNode(3);
         DisconnectedGraph1.addVertex();
         DisconnectedGraph1.addEdge(6,5);
         DisconnectedGraph1.addEdge(3,5);
@@ -108,17 +108,17 @@ public class Main {
         DisconnectedGraph1.GraphRepresentation();
         WeightedGraph graph = new WeightedGraph(6);
 
-        graph.addEdge(0, 1, 4);
-        graph.addEdge(0, 2, 3);
-        graph.addEdge(1, 3, 2);
-        graph.addEdge(1, 2, 5);
-        graph.addEdge(2, 3, 7);
-        graph.addEdge(3, 4, 2);
-        graph.addEdge(4, 0, 4);
-        graph.addEdge(4, 1, 4);
-        graph.addEdge(4, 5, 6);
+        graph.addWeightedEdge(0, 1, 4);
+        graph.addWeightedEdge(0, 2, 3);
+        graph.addWeightedEdge(1, 3, 2);
+        graph.addWeightedEdge(1, 2, 5);
+        graph.addWeightedEdge(2, 3, 7);
+        graph.addWeightedEdge(3, 4, 2);
+        graph.addWeightedEdge(4, 0, 4);
+        graph.addWeightedEdge(4, 1, 4);
+        graph.addWeightedEdge(4, 5, 6);
 
-        graph.printGraph();
+        graph.GraphRepresentation();
         System.out.println("\n");
 
 
@@ -133,7 +133,7 @@ public class Main {
 
         if (g1.isCyclic()) {
             System.out.println("The graph contains a cycle.");
-            g1.printGraph();
+            g1.GraphRepresentation();
             System.out.println("\n");
 
         } else {
@@ -157,11 +157,11 @@ public class Main {
 //        System.out.println("Original Graph:");
 //        g2.printGraph();
 
-        if (g2.isAcyclic()) {
+        if (g2.isCyclic()) {
             System.out.println("The graph is acyclic.");
             g2.convertToCyclic();
             System.out.println("Converted to Cyclic Graph:");
-            g2.printGraph();
+            g2.GraphRepresentation();
         } else {
             System.out.println("The graph is already cyclic.");
         }

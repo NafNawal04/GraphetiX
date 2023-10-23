@@ -2,7 +2,7 @@ import libraryFunctions.Glist;
 
 
 
-public class CompleteGraph {
+public class CompleteGraph implements IAddVertex,IRemoveNode,IRepresentGraph {
 
     public Glist<Integer> AdjacencyMatrix [];
     Glist<Integer> deletedIndex = new Glist<>();
@@ -59,7 +59,7 @@ public class CompleteGraph {
 
 
 
-    public void removeVertex(int deleteIndex)
+    public void removeNode(int deleteIndex)
     {
         deletedIndex.add(deleteIndex);
 

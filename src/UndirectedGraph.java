@@ -1,5 +1,5 @@
 import java.util.*;
-public class UndirectedGraph
+public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge
 {
     int node;
     int num_of_new_nodes;
@@ -17,7 +17,7 @@ public class UndirectedGraph
             i++;
         }
     }
-    public void addEdgeToNode(int source, int dest)
+    public void addEdge(int source, int dest)
     {
         if(source == dest)
         {
@@ -62,7 +62,7 @@ public class UndirectedGraph
             GraphRepresentList[source].remove(Integer.valueOf(dest));
         }
         System.out.println("\nAfter removing the edge between " + source + " & " + dest +" the undirected graph would be:");
-        representGraph();
+        GraphRepresentation();
     }
 
     public void removeNode(int node_num)
@@ -77,18 +77,18 @@ public class UndirectedGraph
 
         }
         System.out.println("After removing vertex "+ node_num + ", the undirected graph becomes:");
-        representGraph();
+        GraphRepresentation();
 
     }
     public void convertToDirected(int source, int dest)
     {
         System.out.println("\nAfter making the edge between " + source + " & " + dest +" as directed, the graph would be:");
         GraphRepresentList[dest].remove(Integer.valueOf(source));
-        representGraph();
+        GraphRepresentation();
 
     }
 
-    public void representGraph()
+    public void GraphRepresentation()
     {
 
         for (LinkedList<Integer> list : GraphRepresentList)

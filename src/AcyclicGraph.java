@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class AcyclicGraph {
+public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
     public  int node;
     public  List<List<Integer>> adjacencyList;
 
@@ -19,7 +19,7 @@ public class AcyclicGraph {
 
 
 
-    public boolean isAcyclic() {
+    public boolean isCyclic() {
         boolean[] visited = new boolean[node];
         boolean[] stack = new boolean[node];
 
@@ -32,7 +32,7 @@ public class AcyclicGraph {
         return true; // If no cycle is found, the graph is acyclic
     }
 
-    private boolean isCyclicUtil(int node, boolean[] visited, boolean[] stack) {
+    public boolean isCyclicUtil(int node, boolean[] visited, boolean[] stack) {
         visited[node] = true;
         stack[node] = true;
 
@@ -51,7 +51,7 @@ public class AcyclicGraph {
     }
 
     public void convertToCyclic() {
-        if (!isAcyclic()) {
+        if (!isCyclic()) {
             System.out.println("The graph is already cyclic.");
             return;
         }
@@ -68,7 +68,7 @@ public class AcyclicGraph {
         }
     }
 
-    public void printGraph() {
+    public void GraphRepresentation(){
         for (int i = 0; i < node; i++) {
             System.out.println("Vertex " + i + " is connected to: " + adjacencyList.get(i));
         }

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class CyclicGraph {
+public class CyclicGraph implements IRepresentGraph,ICyclic,IAddEdge{
     public  int node;
     public List<List<Integer>> adjacencyList;
 
@@ -29,7 +29,7 @@ public class CyclicGraph {
         return false;
     }
 
-    private boolean isCyclicUtil(int node, boolean[] visited, boolean[] stack) {
+    public boolean isCyclicUtil(int node, boolean[] visited, boolean[] stack) {
         visited[node] = true;
         stack[node] = true;
 
@@ -47,11 +47,12 @@ public class CyclicGraph {
         stack[node] = false; // Remove the vertex from the current path
         return false;
     }
-    public void printGraph() {
+    public void GraphRepresentation() {
         for (int i = 0; i < node; i++) {
             System.out.println("Vertex " + i + " is connected to: " + adjacencyList.get(i));
         }
     }
+
 
 
 }

@@ -1,7 +1,7 @@
 
 import libraryFunctions.Glist;
 
-public class ConnectedGraph {
+public class ConnectedGraph implements IRemoveNode,IAddEdge,IGraph,IRepresentGraph{
     int vertices;
     Glist<Integer> deletedIndex = new Glist<>();
 
@@ -21,7 +21,7 @@ public class ConnectedGraph {
         }
 
     }
-    public void removeVertex(int deleteIndex)
+    public void removeNode(int deleteIndex)
     {
         deletedIndex.add(deleteIndex);
 
@@ -43,7 +43,7 @@ public class ConnectedGraph {
         adjacencyList[source].removeValue(destination);
         adjacencyList[destination].removeValue(source);
     }
-    public void addVertex(int AddToIndex)
+    public void addNewNode(int AddToIndex)
     {
         if(deletedIndex.contains( AddToIndex) ) {
             System.out.println("vertex doesn't exist");

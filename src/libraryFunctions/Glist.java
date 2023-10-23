@@ -79,6 +79,8 @@ public class Glist <E> {
 
         return false;
     }
+
+
     public boolean contains(E value)
     {
         if (head == null) {

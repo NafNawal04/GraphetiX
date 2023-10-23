@@ -1,6 +1,6 @@
 import libraryFunctions.*;
 
-public class DisconnectedGraph {
+public class DisconnectedGraph implements IRemoveNode,IAddEdge,IAddVertex,IRepresentGraph{
     int vertices;
     Glist<Integer> deletedIndex = new Glist<>();
 
@@ -18,7 +18,7 @@ public class DisconnectedGraph {
         }
     }
 
-    public void removeVertex(int deleteIndex)
+    public void removeNode(int deleteIndex)
     {
         deletedIndex.add(deleteIndex);
         adjacencyList[deleteIndex].clear();

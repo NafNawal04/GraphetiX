@@ -1,6 +1,5 @@
 import java.util.*;
-public class DirectedGraph
-{
+public class DirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge{
     int node;
     int num_of_new_nodes;
     public LinkedList<Integer>[] GraphRepresentList;
@@ -17,7 +16,7 @@ public class DirectedGraph
             i++;
         }
     }
-    public void addEdgeToNode(int source, int dest)
+    public void addEdge(int source, int dest)
     {
 
         GraphRepresentList[source].add(dest);
@@ -52,7 +51,7 @@ public class DirectedGraph
             GraphRepresentList[i].remove(Integer.valueOf(node_num));
         }
         System.out.println("After removing vertex "+ node_num + ", the directed graph becomes:");
-        representGraph();
+        GraphRepresentation();
 
     }
 
@@ -76,7 +75,7 @@ public class DirectedGraph
         System.out.println("The number of out degree of " + source+ " is: " + num);
     }
 
-    public void representGraph()
+    public void GraphRepresentation()
     {
 
         for (LinkedList<Integer> list : GraphRepresentList)

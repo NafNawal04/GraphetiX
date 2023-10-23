@@ -1,5 +1,5 @@
 import java.util.*;
-public class SimpleGraph
+public class SimpleGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge
 {
     int node;
     int num_of_new_nodes;
@@ -18,7 +18,7 @@ public class SimpleGraph
             i++;
         }
     }
-    public void addEdgeToNode(int source, int dest)
+    public void addEdge(int source, int dest)
     {
 
 
@@ -71,10 +71,10 @@ public class SimpleGraph
             GraphRepresentList[i].remove(Integer.valueOf(node_num));
         }
         System.out.println("After removing vertex "+ node_num + ", the undirected graph becomes:");
-        representGraph();
+        GraphRepresentation();
 
     }
-    public void representGraph()
+    public void GraphRepresentation()
     {
 
         for (LinkedList<Integer> list : GraphRepresentList)
