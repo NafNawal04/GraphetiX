@@ -25,11 +25,11 @@ public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
 
         for (int i = 0; i < node; i++) {
             if (!visited[i] && isCyclicUtil(i, visited, stack)) {
-                return false; // If a cycle is found, the graph is not acyclic
+                return false;
             }
         }
 
-        return true; // If no cycle is found, the graph is acyclic
+        return true;
     }
 
     public boolean isCyclicUtil(int node, boolean[] visited, boolean[] stack) {
@@ -39,14 +39,14 @@ public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
         for (int neighbor : adjacencyList.get(node)) {
             if (!visited[neighbor]) {
                 if (isCyclicUtil(neighbor, visited, stack)) {
-                    return true; // If a cycle is found in the subtree, return true
+                    return true;
                 }
             } else if (stack[neighbor]) {
-                return true; // If the neighbor is in the stack, a cycle is found
+                return true;
             }
         }
 
-        stack[node] = false; // Remove the node from the current path
+        stack[node] = false;
         return false;
     }
 
@@ -56,7 +56,6 @@ public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
             return;
         }
 
-        // Find two nodes without an edge between them and add an edge to make it cyclic
         for (int i = 0; i < node; i++) {
             for (int j = i + 1; j < node; j++) {
                 if (!adjacencyList.get(i).contains(j) && !adjacencyList.get(j).contains(i)) {

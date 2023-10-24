@@ -79,6 +79,30 @@ public class Glist <E> {
 
         return false;
     }
+    public boolean remove(int index) {
+        if (head == null || index < 0) {
+            return false;
+        }
+
+        if (index == 0) {
+            head = head.next;
+            return true;
+        }
+
+        Node<E> current = head;
+        int currentIndex = 0;
+        while (current.next != null && currentIndex < index - 1) {
+            current = current.next;
+            currentIndex++;
+        }
+
+        if (current.next == null || current.next.next == null) {
+            return false;
+        }
+
+        current.next = current.next.next;
+        return true;
+    }
 
 
     public boolean contains(E value)
