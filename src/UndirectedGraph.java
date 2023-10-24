@@ -83,7 +83,7 @@ public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddE
     public void convertToDirected(int source, int dest)
     {
         System.out.println("\nAfter making the edge between " + source + " & " + dest +" as directed, the graph would be:");
-        GraphRepresentList[dest].remove(source);
+        GraphRepresentList[dest].removeValue(source);
         GraphRepresentation();
 
     }
