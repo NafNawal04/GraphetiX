@@ -1,18 +1,20 @@
-import java.util.*;
-public class DirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge{
+
+import libraryFunctions.Glist;
+public class DirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge
+{
     int node;
     int num_of_new_nodes;
-    public LinkedList<Integer>[] GraphRepresentList;
+    public Glist<Integer>[] GraphRepresentList;
 
     public DirectedGraph(int node)
     {
         this.node = node;
-        GraphRepresentList = new LinkedList[node];
+        GraphRepresentList = new Glist[node];
 
         int i=0;
         while(i<node)
         {
-            GraphRepresentList[i] = new LinkedList<>();
+            GraphRepresentList[i] = new Glist<>();
             i++;
         }
     }
@@ -26,7 +28,7 @@ public class DirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdg
     public void addNewNode(int n)
     {
         num_of_new_nodes = node + n;
-        LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
+        Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
 
         for (int i = 0; i < node; i++)
         {
@@ -35,7 +37,7 @@ public class DirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdg
 
         for (int i = node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentList[i] = new LinkedList<>();
+            newGraphRepresentList[i] = new Glist<>();
         }
 
         node = num_of_new_nodes;
@@ -48,7 +50,7 @@ public class DirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdg
         GraphRepresentList[node_num].clear();
         for (int i=0;i<node;i++)
         {
-            GraphRepresentList[i].remove(Integer.valueOf(node_num));
+            GraphRepresentList[i].removeValue((node_num));
         }
         System.out.println("After removing vertex "+ node_num + ", the directed graph becomes:");
         GraphRepresentation();
@@ -58,7 +60,7 @@ public class DirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdg
     public void inDegree(int dest)
     {
         int count =0;
-        for (LinkedList<Integer> source :GraphRepresentList)
+        for (Glist<Integer> source :GraphRepresentList)
         {
             if(source.contains(dest))
             {
@@ -71,16 +73,17 @@ public class DirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdg
 
     public void outDegree(int source)
     {
-        int num = GraphRepresentList[source].size();
+
+        int num = GraphRepresentList[source].Length();
         System.out.println("The number of out degree of " + source+ " is: " + num);
     }
 
     public void GraphRepresentation()
     {
 
-        for (LinkedList<Integer> list : GraphRepresentList)
+        for (int i=0;i<node;i++)
         {
-            Collections.sort(list);
+            GraphRepresentList[i].sort();
         }
         for (int i = 0; i < GraphRepresentList.length; i++)
         {
