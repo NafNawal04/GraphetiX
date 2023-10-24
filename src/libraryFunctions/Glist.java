@@ -130,6 +130,7 @@ public class Glist <E> {
         int size=0;
         Node current = head;
         while (current.next != null) {
+            current=current.next;
             size++;
         }
         return size;
