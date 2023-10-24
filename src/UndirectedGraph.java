@@ -1,19 +1,19 @@
-import java.util.*;
+import libraryFunctions.Glist;
 public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge
 {
     int node;
     int num_of_new_nodes;
-    public LinkedList<Integer>[] GraphRepresentList;
+    public Glist<Integer>[] GraphRepresentList;
 
     public UndirectedGraph(int node)
     {
         this.node = node;
-        GraphRepresentList = new LinkedList[node];
+        GraphRepresentList = new Glist[node];
 
         int i=0;
         while(i<node)
         {
-            GraphRepresentList[i] = new LinkedList<>();
+            GraphRepresentList[i] = new Glist<>();
             i++;
         }
     }
@@ -33,7 +33,7 @@ public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddE
     public void addNewNode(int n)
     {
         num_of_new_nodes = node + n;
-        LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
+        Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
 
         for (int i = 0; i < node; i++)
         {
@@ -42,7 +42,7 @@ public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddE
 
         for (int i = node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentList[i] = new LinkedList<>();
+            newGraphRepresentList[i] = new Glist<>();
         }
 
         node = num_of_new_nodes;
@@ -54,12 +54,12 @@ public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddE
     {
         if(source == dest)
         {
-            GraphRepresentList[source].remove(Integer.valueOf(dest));
+            GraphRepresentList[source].removeValue(dest);
         }
         else
         {
-            GraphRepresentList[dest].remove(Integer.valueOf(source));
-            GraphRepresentList[source].remove(Integer.valueOf(dest));
+            GraphRepresentList[dest].removeValue(source);
+            GraphRepresentList[source].removeValue(dest);
         }
         System.out.println("\nAfter removing the edge between " + source + " & " + dest +" the undirected graph would be:");
         GraphRepresentation();
@@ -72,7 +72,7 @@ public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddE
         {
             while(GraphRepresentList[i].contains(node_num))
             {
-                GraphRepresentList[i].remove(Integer.valueOf(node_num));
+                GraphRepresentList[i].removeValue(node_num);
             }
 
         }
@@ -83,7 +83,7 @@ public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddE
     public void convertToDirected(int source, int dest)
     {
         System.out.println("\nAfter making the edge between " + source + " & " + dest +" as directed, the graph would be:");
-        GraphRepresentList[dest].remove(Integer.valueOf(source));
+        GraphRepresentList[dest].remove(source);
         GraphRepresentation();
 
     }
@@ -91,11 +91,11 @@ public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddE
     public void GraphRepresentation()
     {
 
-        for (LinkedList<Integer> list : GraphRepresentList)
+        for (int i=0;i<node;i++)
         {
-            Collections.sort(list);
+            GraphRepresentList[i].sort();
         }
-        for (int i = 0; i < GraphRepresentList.length; i++)
+        for (int i = 0; i <  GraphRepresentList.length; i++)
         {
             System.out.println("Vertex " + i + " is connected to: " + GraphRepresentList[i]);
         }
