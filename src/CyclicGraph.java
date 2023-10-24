@@ -39,12 +39,12 @@ public class CyclicGraph implements IRepresentGraph,ICyclic,IAddEdge{
                     return true;
                 }
             } else if (stack[neighbor]) {
-                // If the neighbor is visited ,and it is in the stack, it's part of a cycle
+
                 return true;
             }
         }
 
-        stack[node] = false; // Remove the vertex from the current path
+        stack[node] = false;
         return false;
     }
     public void GraphRepresentation() {

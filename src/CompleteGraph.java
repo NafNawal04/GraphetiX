@@ -69,7 +69,7 @@ public class CompleteGraph implements IAddVertex,IRemoveNode,IRepresentGraph {
         {
             AdjacencyMatrix[i].removeValue(deleteIndex);
         }
-        System.out.println(" after removing vertex "+ deleteIndex + " the connected graph becomes:");
+        System.out.println(" after removing vertex "+ deleteIndex + " the complete graph becomes:");
         GraphRepresentation();
 
     }

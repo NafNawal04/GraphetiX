@@ -70,7 +70,7 @@ public class SimpleGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge
         {
             GraphRepresentList[i].remove(Integer.valueOf(node_num));
         }
-        System.out.println("After removing vertex "+ node_num + ", the undirected graph becomes:");
+        System.out.println("After removing vertex "+ node_num + ", the simple graph becomes:");
         GraphRepresentation();
 
     }

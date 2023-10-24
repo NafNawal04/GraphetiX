@@ -72,15 +72,17 @@ public class Main {
 
 
         ConnectedGraph c1=new ConnectedGraph(5);
-
+        c1.GraphRepresentation();
 
         c1.removeNode(2);
 
         c1.addNewNode(2);
         c1.addNewNode(2);
-
+        c1.addNewNode(3);
+        c1.GraphRepresentation();
         c1.addEdge(2,4);
         c1.addEdge(3,0);
+        c1.removeEdge(2,4);
 
 
         c1.GraphRepresentation();
