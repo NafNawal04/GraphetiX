@@ -3,18 +3,18 @@ import java.util.*;
 
 public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
     public  int node;
-    public  List<List<Integer>> adjacencyList;
+    public LinkedList<Integer>[] adjacencyList ;
 
     public AcyclicGraph(int node) {
         this.node = node;
-        adjacencyList = new ArrayList<>(node);
+        adjacencyList = new LinkedList[node];
         for (int i = 0; i < node; i++) {
-            adjacencyList.add(new ArrayList<>());
+            adjacencyList[i] = new LinkedList<>();
         }
     }
 
     public void addEdge(int source, int destination) {
-        adjacencyList.get(source).add(destination);
+        adjacencyList[source].add(destination);
     }
 
 
@@ -36,7 +36,7 @@ public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
         visited[node] = true;
         stack[node] = true;
 
-        for (int neighbor : adjacencyList.get(node)) {
+        for (int neighbor : adjacencyList[node]) {
             if (!visited[neighbor]) {
                 if (isCyclicUtil(neighbor, visited, stack)) {
                     return true;
@@ -58,7 +58,7 @@ public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
 
         for (int i = 0; i < node; i++) {
             for (int j = i + 1; j < node; j++) {
-                if (!adjacencyList.get(i).contains(j) && !adjacencyList.get(j).contains(i)) {
+                if (!adjacencyList[i].contains(j) && !adjacencyList[j].contains(i)) {
                     System.out.println("Adding edge between " + i + " and " + j + " to make the graph cyclic.");
                     addEdge(i, j);
                     return;
@@ -69,7 +69,7 @@ public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
 
     public void GraphRepresentation(){
         for (int i = 0; i < node; i++) {
-            System.out.println("Vertex " + i + " is connected to: " + adjacencyList.get(i));
+            System.out.println("Vertex " + i + " is connected to: " + adjacencyList[i]);
         }
     }
 
