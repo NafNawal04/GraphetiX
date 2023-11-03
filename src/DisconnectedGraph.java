@@ -1,89 +1,84 @@
 import libraryFunctions.*;
 
-public class DisconnectedGraph implements IRemoveNode,IAddEdge,IAddVertex,IRepresentGraph{
-    int vertices;
+public class DisconnectedGraph
+{
+    int node;
+    int num_of_new_nodes;
     Glist<Integer> deletedIndex = new Glist<>();
-
-
-
-    Glist<Integer> adjacencyList [];
-    public DisconnectedGraph(int vertices)
+    Glist<Integer> GraphRepresentationList[];
+    public DisconnectedGraph(int node)
     {
-        this.vertices = vertices;
-        adjacencyList = new Glist[vertices];
+        this.node= node;
+        GraphRepresentationList = new Glist[node];
 
-        for (int i = 0; i < vertices ; i++)
+        for (int i = 0; i < node; i++)
         {
-            adjacencyList [i] = new Glist<>();
+            GraphRepresentationList [i] = new Glist<>();
         }
     }
 
-    public void removeNode(int deleteIndex)
-    {
-        deletedIndex.add(deleteIndex);
-        adjacencyList[deleteIndex].clear();
 
-        for (int i=0;i<vertices;i++)
+
+    public void addNode(int node_num)
+    {
+
+        num_of_new_nodes =  node+ node_num;
+        Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
+
+        for (int i = 0; i < node; i++)
         {
-            adjacencyList[i].removeValue(deleteIndex);
-        }
-        System.out.println(" after removing vertex "+ deleteIndex + " the disconnected graph becomes:");
-        GraphRepresentation();
-
-    }
-    public void removeEdge(int source,int destination)
-    {
-        adjacencyList[source].removeValue(destination);
-        adjacencyList[destination].removeValue(source);
-
-        System.out.println("The edge is deleted");
-    }
-    public void addEdge(int source, int dest)
-    {
-        //need to implement some conditions to check whether it becomes connected or not
-        //multiple edge?
-        if(deletedIndex.contains( source) ) {
-            System.out.println("vertex doesn't exist");
-        }
-        else {
-            adjacencyList[source].add(dest);
-            adjacencyList[dest].add(source);
-        }
-    }
-
-    public void addVertex() {
-
-        int num_of_new_vertices =  vertices + 1;
-        Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_vertices];
-
-        for (int i = 0; i < vertices; i++)
-        {
-            newGraphRepresentList[i] = adjacencyList[i];
+            newGraphRepresentList[i] = GraphRepresentationList[i];
         }
 
-        for (int i = vertices; i < num_of_new_vertices; i++)
+        for (int i =node; i < num_of_new_nodes; i++)
         {
             newGraphRepresentList[i] = new Glist<>();
         }
 
-        vertices = num_of_new_vertices;
-        adjacencyList = newGraphRepresentList;
+        node = num_of_new_nodes;
+        GraphRepresentationList = newGraphRepresentList;
 
 
     }
+    public void removeNode(int node_num)
+    {
+        deletedIndex.add(node_num);
+        GraphRepresentationList[node_num].clear();
+
+        for (int i=0;i<node;i++)
+        {
+            GraphRepresentationList[i].removeValue(node_num);
+        }
+        System.out.println("After removing vertex "+ node_num + " the disconnected graph becomes:");
+        GraphRepresentation();
+
+    }
+   
+    public void addEdge(int source, int dest)
+    {
+        if(deletedIndex.contains(source))
+        {
+            System.out.println("vertex "+ source+ " doesn't exist. So no edge can be added");
+        }
+        else {
+            GraphRepresentationList[source].add(dest);
+            GraphRepresentationList[dest].add(source);
+        }
+    }
+
+    public void removeEdge(int source,int destination)
+    {
+        GraphRepresentationList[source].removeValue(destination);
+        GraphRepresentationList[destination].removeValue(source);
+
+    }
+    
 
     public void GraphRepresentation()
     {
-        for (int i=0;i<adjacencyList.length;i++)
+        for (int i = 0; i < GraphRepresentationList.length; i++)
         {
-            adjacencyList[i].sort();
-        }
-
-        System.out.println("Adjacency Matrix for Disconnected graph:");
-        for (int i = 0; i < adjacencyList.length; i++)
-        {
-
-            System.out.println("Vertex " + i + " is connected to: " + adjacencyList[i]);
+            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
         }
 
     }

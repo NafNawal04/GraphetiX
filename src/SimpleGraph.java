@@ -1,5 +1,6 @@
 import java.util.*;
-public class SimpleGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge
+
+public class SimpleGraph
 {
     int node;
     int num_of_new_nodes;
@@ -43,10 +44,17 @@ public class SimpleGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge
 
 
     }
-
-    public void addNewNode(int n)
+    public void removeEdge(int source,int dest)
     {
-        num_of_new_nodes = node + n;
+        GraphRepresentList[source].remove(Integer.valueOf(dest));
+        GraphRepresentList[dest].remove(Integer.valueOf(source));
+        System.out.println("\nAfter removing the edge between " + source + " & " + dest +" the simple graph would be:");
+        GraphRepresentation();
+    }
+
+    public void addNode(int node_num)
+    {
+        num_of_new_nodes = node + node_num;
         LinkedList<Integer>[] newGraphRepresentList = new LinkedList[num_of_new_nodes];
         for (int i = 0; i < node; i++)
         {
@@ -77,13 +85,16 @@ public class SimpleGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge
     public void GraphRepresentation()
     {
 
-        for (LinkedList<Integer> list : GraphRepresentList)
-        {
-            Collections.sort(list);
-        }
         for (int i = 0; i < GraphRepresentList.length; i++)
         {
-            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentList[i]);
+            if(!GraphRepresentList[i].isEmpty())
+            {
+                System.out.println("Vertex " + i + " is connected to: " + GraphRepresentList[i]);
+            }
+            else
+            {
+                System.out.println("Vertex " + i + " is connected to: Empty List");
+            }
         }
 
     }

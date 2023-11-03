@@ -1,5 +1,5 @@
 import libraryFunctions.Glist;
-public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddEdge
+public class UndirectedGraph
 {
     int node;
     int num_of_new_nodes;
@@ -30,9 +30,9 @@ public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddE
         }
     }
 
-    public void addNewNode(int n)
+    public void addNode(int node_num)
     {
-        num_of_new_nodes = node + n;
+        num_of_new_nodes = node + node_num;
         Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
 
         for (int i = 0; i < node; i++)
@@ -90,11 +90,6 @@ public class UndirectedGraph implements IRepresentGraph,IGraph,IRemoveNode,IAddE
 
     public void GraphRepresentation()
     {
-
-        for (int i=0;i<node;i++)
-        {
-            GraphRepresentList[i].sort();
-        }
         for (int i = 0; i <  GraphRepresentList.length; i++)
         {
             System.out.println("Vertex " + i + " is connected to: " + GraphRepresentList[i]);

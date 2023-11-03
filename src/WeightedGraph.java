@@ -1,5 +1,6 @@
 import java.util.LinkedList;
-public class WeightedGraph implements IRepresentGraph {
+public class WeightedGraph
+{
     public  int node;
     public LinkedList<int[]>[] adjacencyList;
 

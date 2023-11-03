@@ -1,7 +1,8 @@
 import java.util.*;
 
 
-public class CyclicGraph implements IRepresentGraph,ICyclic,IAddEdge{
+public class CyclicGraph
+{
     public  int node;
     public LinkedList<Integer>[] adjacencyList ;
 

@@ -1,25 +1,30 @@
 
 import java.util.*;
 
-public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
+public class AcyclicGraph
+{
     public  int node;
     public LinkedList<Integer>[] adjacencyList ;
 
-    public AcyclicGraph(int node) {
+    public AcyclicGraph(int node)
+    {
         this.node = node;
         adjacencyList = new LinkedList[node];
-        for (int i = 0; i < node; i++) {
+        for (int i = 0; i < node; i++)
+        {
             adjacencyList[i] = new LinkedList<>();
         }
     }
 
-    public void addEdge(int source, int destination) {
+    public void addEdge(int source, int destination)
+    {
         adjacencyList[source].add(destination);
     }
 
 
 
-    public boolean isCyclic() {
+    public boolean isCyclic()
+    {
         boolean[] visited = new boolean[node];
         boolean[] stack = new boolean[node];
 
@@ -32,16 +37,22 @@ public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
         return true;
     }
 
-    public boolean isCyclicUtil(int node, boolean[] visited, boolean[] stack) {
+    public boolean isCyclicUtil(int node, boolean[] visited, boolean[] stack)
+    {
         visited[node] = true;
         stack[node] = true;
 
-        for (int neighbor : adjacencyList[node]) {
-            if (!visited[neighbor]) {
-                if (isCyclicUtil(neighbor, visited, stack)) {
+        for (int neighbor : adjacencyList[node])
+        {
+            if (!visited[neighbor])
+            {
+                if (isCyclicUtil(neighbor, visited, stack))
+                {
                     return true;
                 }
-            } else if (stack[neighbor]) {
+            }
+            else if (stack[neighbor])
+            {
                 return true;
             }
         }
@@ -50,15 +61,20 @@ public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
         return false;
     }
 
-    public void convertToCyclic() {
-        if (!isCyclic()) {
+    public void convertToCyclic()
+    {
+        if (!isCyclic())
+        {
             System.out.println("The graph is already cyclic.");
             return;
         }
 
-        for (int i = 0; i < node; i++) {
-            for (int j = i + 1; j < node; j++) {
-                if (!adjacencyList[i].contains(j) && !adjacencyList[j].contains(i)) {
+        for (int i = 0; i < node; i++)
+        {
+            for (int j = i + 1; j < node; j++)
+            {
+                if (!adjacencyList[i].contains(j) && !adjacencyList[j].contains(i))
+                {
                     System.out.println("Adding edge between " + i + " and " + j + " to make the graph cyclic.");
                     addEdge(i, j);
                     return;
@@ -67,8 +83,10 @@ public class AcyclicGraph implements IRepresentGraph,ICyclic,IAddEdge {
         }
     }
 
-    public void GraphRepresentation(){
-        for (int i = 0; i < node; i++) {
+    public void GraphRepresentation()
+    {
+        for (int i = 0; i < node; i++)
+        {
             System.out.println("Vertex " + i + " is connected to: " + adjacencyList[i]);
         }
     }

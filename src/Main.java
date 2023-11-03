@@ -11,10 +11,11 @@ public class Main {
         s1.addEdge(3,1);
         s1.addEdge(2,1); //should show error
         s1.addEdge(4,2);
-        s1.addNewNode(2); //two new nodes should be added to the list
+        s1.addNode(2); //two new nodes should be added to the list
         System.out.println("List Representation for Simple graph:");
         s1.GraphRepresentation(); // rearranges the values in ascending order and then visualizes the graph by showing the vertices one vertex is connected to in a linked list
         s1.removeNode(2);
+        s1.removeEdge(4,0);
 
 
 
@@ -29,13 +30,14 @@ public class Main {
         d1.addEdge(1,2);
         d1.addEdge(3,1);
         d1.addEdge(2,3);
-        d1.addNewNode(1);
+        d1.addNode(1);
         d1.addEdge(4,2);
         System.out.println("List Representation for Directed graph:");
         d1.GraphRepresentation();
         d1.inDegree(1);
-        d1.outDegree(1);
+        d1.outDegree(4);
         d1.removeNode(3);
+        d1.removeEdge(4,2);
 
 
 
@@ -51,7 +53,7 @@ public class Main {
         u1.addEdge(2,4);
         u1.addEdge(4,2);
         u1.addEdge(0,0);
-        u1.addNewNode(0);
+        u1.addNode(0);
         System.out.println("List Representation for Undirected graph:");
         u1.GraphRepresentation();
         u1.convertToDirected(1,2);
@@ -62,52 +64,61 @@ public class Main {
 
 
         CompleteGraph completeGraph = new CompleteGraph(5);
+        System.out.println("List Representation for Complete graph:");
+        completeGraph.GraphRepresentation();
 
         completeGraph.removeNode(1);
         completeGraph.removeNode(2);
-        completeGraph.addVertex();
 
+        completeGraph.addNode(3);
+        System.out.println("List Representation for Complete graph after adding node:");
         completeGraph.GraphRepresentation();
 
 
 
-        ConnectedGraph c1=new ConnectedGraph(5);
+        ConnectedGraph c1 = new ConnectedGraph(5);
+        System.out.println("List representation for connected graph:");
         c1.GraphRepresentation();
 
         c1.removeNode(2);
-
-        c1.addNewNode(2);
-        c1.addNewNode(2);
-        c1.addNewNode(3);
+        c1.addNode(2);
+        System.out.println("After adding and removing nodes, List representation for connected graph:");
         c1.GraphRepresentation();
         c1.addEdge(2,4);
         c1.addEdge(3,0);
         c1.removeEdge(2,4);
-
-
+        System.out.println("After adding and removing edges, List representation for connected graph:");
         c1.GraphRepresentation();
 
 
-        DisconnectedGraph DisconnectedGraph1 =new DisconnectedGraph(4);
-        DisconnectedGraph1.addEdge(0,1);
-        DisconnectedGraph1.addEdge(0,3);
-        DisconnectedGraph1.addEdge(2,3);
-        DisconnectedGraph1.addEdge(1,3);
 
-        DisconnectedGraph1.addVertex();
-        DisconnectedGraph1.addEdge(1,4);
-        DisconnectedGraph1.addVertex();
+        DisconnectedGraph dc1 =new DisconnectedGraph(4);
+        dc1.addEdge(0,1);
+        dc1.addEdge(0,3);
+        dc1.addEdge(2,3);
+        dc1.addEdge(1,3);
 
-        DisconnectedGraph1.GraphRepresentation();
-        DisconnectedGraph1.removeNode(3);
-        DisconnectedGraph1.addVertex();
-        DisconnectedGraph1.addEdge(6,5);
-        DisconnectedGraph1.addEdge(3,5);
-        DisconnectedGraph1.addEdge(3,6);
-        DisconnectedGraph1.addEdge(6,4);
+        dc1.addNode(1);
+        dc1.addEdge(1,4);
+        dc1.addNode(1);
 
+        System.out.println("List Representation for Disconnected graph:");
+        dc1.GraphRepresentation();
+        dc1.removeNode(3);
+        dc1.addNode(1);
+        dc1.addEdge(6,5);
+        dc1.addEdge(3,5);
+        dc1.addEdge(3,6);
+        dc1.addEdge(6,4);
 
-        DisconnectedGraph1.GraphRepresentation();
+        System.out.println("List Representation for Disconnected graph:");
+        dc1.GraphRepresentation();
+        
+        
+        
+        
+        
+        
         WeightedGraph graph = new WeightedGraph(6);
 
         graph.addWeightedEdge(0, 1, 4);
@@ -163,10 +174,10 @@ public class Main {
         } else {
             System.out.println("The graph is already cyclic.");
         }
-//
+
     }
-//
-//
+
+
 }
 
 

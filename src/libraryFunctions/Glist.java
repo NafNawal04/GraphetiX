@@ -3,9 +3,6 @@ package libraryFunctions;
 public class Glist <E> {
     Node<E> head;
 
-    int[] valuearray= new int[1000];
-
-
 
     public String toString() {
         if (head == null) {
@@ -50,12 +47,9 @@ public class Glist <E> {
 
         return true;
     }
-    public  boolean isEmpty()
+    public boolean isEmpty()
     {
-        if(head==null)
-            return true;
-        else
-            return false;
+        return head == null;
     }
 
     public boolean removeValue(E value) {
@@ -68,7 +62,7 @@ public class Glist <E> {
             return true;
         }
 
-        Node current = head;
+        Node<E> current = head;
         while (current.next != null) {
             if (current.next.data==value) {
                 current.next = current.next.next;
@@ -115,7 +109,7 @@ public class Glist <E> {
             return true;
         }
 
-        Node current = head;
+        Node<E> current = head;
         while (current.next != null) {
             if (current.next.data==value) {
                 return true;
@@ -125,43 +119,17 @@ public class Glist <E> {
         return false;
 
     }
-    public int Length()
+    public int length()
     {
         int size=0;
         Node current = head;
-        while (current.next != null) {
+        while (current.next != null)
+        {
             current=current.next;
             size++;
         }
         return size;
 
-    }
-    public void sort() {
-
-        if (valuearray == null) {
-            System.out.println("Glist is Empty");
-        }
-
-
-        Node current = head;
-        int n = 0;
-        while (current != null) {
-            valuearray[n] = (int) current.data;
-            current = current.next;
-            n++;
-        }
-        int temp ;
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (valuearray[i] > valuearray[j]) {
-                    temp = valuearray[i];
-                    valuearray[i] = valuearray[j];
-                    valuearray[j] = temp;
-                }
-            }
-
-
-        }
     }
 
 

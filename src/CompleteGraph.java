@@ -1,56 +1,86 @@
 import libraryFunctions.Glist;
+public class CompleteGraph
+{
+    public Glist<Integer> GraphRepresentationList[];
 
+    int node;
+    int num_of_new_nodes;
 
-
-public class CompleteGraph implements IAddVertex,IRemoveNode,IRepresentGraph {
-
-    public Glist<Integer> AdjacencyMatrix [];
-    Glist<Integer> deletedIndex = new Glist<>();
-
-    int vertices;
-
-    public CompleteGraph(int vertices)
+    public CompleteGraph(int node)
     {
-        this.vertices = vertices;
-        AdjacencyMatrix = new Glist[vertices];
+        this.node = node;
+        GraphRepresentationList = new Glist[node];
 
-        for (int i = 0; i < vertices ; i++)
+        for (int i = 0; i < node; i++)
         {
-            AdjacencyMatrix [i] = new Glist<>();
+            GraphRepresentationList [i] = new Glist<>();
         }
-
-        for (int i = 0; i < vertices; i++) {
-            for (int j = i + 1; j < vertices; j++) {
-                AdjacencyMatrix[i].add(j);
-                AdjacencyMatrix[j].add(i);
+        for (int i = 0; i < node; i++)
+        {
+            for (int j = i + 1; j < node; j++)
+            {
+                GraphRepresentationList[i].add(j);
+                GraphRepresentationList[j].add(i);
             }
         }
 
     }
 
-    public void addVertex()
+    public void addEdge(int source,int dest)
     {
 
-        int newVertexIndex = vertices;
-        int num_of_new_nodes =  vertices + 1;
+    }
+    public void removeEdge(int source,int dest)
+    {
+
+    }
+
+    public void addNode(int node_num)
+    {
+        int dummy = node;
+        num_of_new_nodes =  node + node_num;
         Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
-        for(int i = 0; i < vertices; i++)
+        for(int i = 0; i < node; i++)
         {
-            newGraphRepresentList[i] = AdjacencyMatrix[i];
+            newGraphRepresentList[i] = GraphRepresentationList[i];
         }
-        for (int i = vertices; i < num_of_new_nodes; i++)
+        for (int i = node; i < num_of_new_nodes; i++)
         {
             newGraphRepresentList[i] = new Glist<>();
         }
 
-        vertices = num_of_new_nodes;
-        AdjacencyMatrix = newGraphRepresentList;
+        node = num_of_new_nodes;
+        GraphRepresentationList = newGraphRepresentList;
 
-        for (int i = 0; i < newVertexIndex ; i++) {
+        for (int i = 0; i < node; i++)
+        {
+            if(i<dummy)
+            {
+                if (!GraphRepresentationList[i].isEmpty())
+                {
+                    for(int j=dummy;j<node;j++)
+                    {
+                        GraphRepresentationList[i].add(j);
+                    }
 
-            if(!AdjacencyMatrix[i].isEmpty() ) {
-                AdjacencyMatrix[i].add(newVertexIndex);
-                AdjacencyMatrix[newVertexIndex].add(i);
+                }
+            }
+            else
+            {
+                for(int k=0;k<dummy;k++)
+                {
+                    if (!GraphRepresentationList[k].isEmpty())
+                    {
+                            GraphRepresentationList[i].add(k);
+                    }
+                }
+                for(int l=dummy;l<node;l++)
+                {
+                    if(i!=l)
+                    {
+                        GraphRepresentationList[i].add(l);
+                    }
+                }
             }
         }
 
@@ -59,32 +89,24 @@ public class CompleteGraph implements IAddVertex,IRemoveNode,IRepresentGraph {
 
 
 
-    public void removeNode(int deleteIndex)
+    public void removeNode(int node_num)
     {
-        deletedIndex.add(deleteIndex);
 
-        AdjacencyMatrix[deleteIndex].clear();
+        GraphRepresentationList[node_num].clear();
 
-        for (int i=0;i<vertices;i++)
+        for (int i=0;i<node;i++)
         {
-            AdjacencyMatrix[i].removeValue(deleteIndex);
+            GraphRepresentationList[i].removeValue(node_num);
         }
-        System.out.println(" after removing vertex "+ deleteIndex + " the complete graph becomes:");
+        System.out.println(" after removing vertex "+ node_num + " the complete graph becomes:");
         GraphRepresentation();
 
     }
     public void GraphRepresentation()
     {
-        for (int i=0;i<AdjacencyMatrix.length;i++)
+        for (int i = 0; i < GraphRepresentationList.length; i++)
         {
-            AdjacencyMatrix[i].sort();
-        }
-
-        System.out.println("Adjacency Matrix for complete graph:");
-        for (int i = 0; i < AdjacencyMatrix.length; i++)
-        {
-
-            System.out.println("Vertex " + i + " is connected to: " + AdjacencyMatrix[i]);
+            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
         }
 
     }
