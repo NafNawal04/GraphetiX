@@ -1,10 +1,10 @@
 import libraryFunctions.Glist;
 public class CompleteGraph
 {
-    public Glist<Integer> GraphRepresentationList[];
 
     int node;
     int num_of_new_nodes;
+    public Glist<Integer> GraphRepresentationList[];
 
     public CompleteGraph(int node)
     {
