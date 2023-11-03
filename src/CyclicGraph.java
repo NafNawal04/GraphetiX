@@ -6,7 +6,8 @@ public class CyclicGraph
     public  int node;
     public LinkedList<Integer>[] adjacencyList ;
 
-    public CyclicGraph(int node) {
+    public CyclicGraph(int node)
+    {
         this.node = node;
         adjacencyList = new LinkedList[node];
         for (int i = 0; i < node; i++) {
@@ -14,7 +15,8 @@ public class CyclicGraph
         }
     }
 
-    public void addEdge(int source, int destination) {
+    public void addEdge(int source, int destination)
+    {
         adjacencyList[source].add(destination);
     }
 

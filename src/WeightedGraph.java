@@ -4,7 +4,8 @@ public class WeightedGraph
     public  int node;
     public LinkedList<int[]>[] adjacencyList;
 
-    public WeightedGraph(int node) {
+    public WeightedGraph(int node)
+    {
         this.node = node;
         adjacencyList = new LinkedList[node];
         for (int i = 0; i < node; i++) {
@@ -12,7 +13,8 @@ public class WeightedGraph
         }
     }
 
-    public void addWeightedEdge(int source, int destination, int weight) {
+    public void addWeightedEdge(int source, int destination, int weight)
+    {
         int[] edge = {destination, weight};
         int[] edge2 ={source,weight};
         adjacencyList[source].addFirst(edge);
