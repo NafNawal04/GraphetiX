@@ -2,14 +2,14 @@ import java.util.*;
 
 public class SimpleGraph
 {
-    int node;
+    public int node;
     int num_of_new_nodes;
     public LinkedList<Integer>[] GraphRepresentList ;
 
     public SimpleGraph(int node)
     {
 
-        this.node = node;
+        this.node=node;
         GraphRepresentList = new LinkedList[node];
 
         int i=0;

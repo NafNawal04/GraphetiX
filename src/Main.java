@@ -3,7 +3,7 @@ public class Main {
 
         System.out.println("\n");
 
-        SimpleGraph s1 =new SimpleGraph(5);
+        SimpleGraph s1 = new SimpleGraph(5);
         s1.addEdge(0,1);
         s1.addEdge(1,1); //should show error
         s1.addEdge(0,4);
