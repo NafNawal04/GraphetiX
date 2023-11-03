@@ -1,5 +1,5 @@
 import libraryFunctions.Glist;
-public class DirectedGraph
+public class DirectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
@@ -17,6 +17,7 @@ public class DirectedGraph
             i++;
         }
     }
+    @Override
     public void addEdge(int source, int dest)
     {
 
@@ -24,6 +25,7 @@ public class DirectedGraph
 
     }
 
+    @Override
     public void removeEdge(int source, int dest)
     {
         GraphRepresentList[source].removeValue(dest);
@@ -32,7 +34,7 @@ public class DirectedGraph
     }
 
 
-
+    @Override
     public void addNode(int node_num)
     {
         num_of_new_nodes = node + node_num;
@@ -52,7 +54,7 @@ public class DirectedGraph
         GraphRepresentList = newGraphRepresentList;
 
     }
-
+    @Override
     public void removeNode(int node_num)
     {
         GraphRepresentList[node_num].clear();
@@ -86,7 +88,7 @@ public class DirectedGraph
         int num = GraphRepresentList[source].length() + 1;
         System.out.println("The number of out degree of " + source+ " is: " + num);
     }
-
+    @Override
     public void GraphRepresentation()
     {
         for (int i = 0; i < GraphRepresentList.length; i++)

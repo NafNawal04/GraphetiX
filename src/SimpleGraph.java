@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class SimpleGraph
+public class SimpleGraph implements IGraph
 {
     public int node;
     int num_of_new_nodes;
@@ -19,6 +19,7 @@ public class SimpleGraph
             i++;
         }
     }
+    @Override
     public void addEdge(int source, int dest)
     {
 
@@ -44,6 +45,7 @@ public class SimpleGraph
 
 
     }
+    @Override
     public void removeEdge(int source,int dest)
     {
         GraphRepresentList[source].remove(Integer.valueOf(dest));
@@ -52,6 +54,7 @@ public class SimpleGraph
         GraphRepresentation();
     }
 
+    @Override
     public void addNode(int node_num)
     {
         num_of_new_nodes = node + node_num;
@@ -71,6 +74,7 @@ public class SimpleGraph
 
     }
 
+    @Override
     public void removeNode(int node_num)
     {
         GraphRepresentList[node_num].clear();
@@ -82,6 +86,8 @@ public class SimpleGraph
         GraphRepresentation();
 
     }
+
+    @Override
     public void GraphRepresentation()
     {
 

@@ -1,5 +1,5 @@
 import libraryFunctions.Glist;
-public class UndirectedGraph
+public class UndirectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
@@ -17,6 +17,7 @@ public class UndirectedGraph
             i++;
         }
     }
+    @Override
     public void addEdge(int source, int dest)
     {
         if(source == dest)
@@ -29,7 +30,7 @@ public class UndirectedGraph
             GraphRepresentList[dest].add(source);
         }
     }
-
+    @Override
     public void addNode(int node_num)
     {
         num_of_new_nodes = node + node_num;
@@ -49,7 +50,7 @@ public class UndirectedGraph
         GraphRepresentList = newGraphRepresentList;
 
     }
-
+    @Override
     public void removeEdge(int source,int dest)
     {
         if(source == dest)
@@ -64,7 +65,7 @@ public class UndirectedGraph
         System.out.println("\nAfter removing the edge between " + source + " & " + dest +" the undirected graph would be:");
         GraphRepresentation();
     }
-
+    @Override
     public void removeNode(int node_num)
     {
         GraphRepresentList[node_num].clear();
@@ -87,7 +88,7 @@ public class UndirectedGraph
         GraphRepresentation();
 
     }
-
+    @Override
     public void GraphRepresentation()
     {
         for (int i = 0; i <  GraphRepresentList.length; i++)

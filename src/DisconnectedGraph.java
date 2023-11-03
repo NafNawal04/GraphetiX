@@ -1,6 +1,6 @@
 import libraryFunctions.*;
 
-public class DisconnectedGraph
+public class DisconnectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
@@ -18,7 +18,7 @@ public class DisconnectedGraph
     }
 
 
-
+    @Override
     public void addNode(int node_num)
     {
 
@@ -40,6 +40,7 @@ public class DisconnectedGraph
 
 
     }
+    @Override
     public void removeNode(int node_num)
     {
         deletedIndex.add(node_num);
@@ -53,7 +54,7 @@ public class DisconnectedGraph
         GraphRepresentation();
 
     }
-   
+    @Override
     public void addEdge(int source, int dest)
     {
         if(deletedIndex.contains(source))
@@ -65,15 +66,15 @@ public class DisconnectedGraph
             GraphRepresentationList[dest].add(source);
         }
     }
-
+    @Override
     public void removeEdge(int source,int destination)
     {
         GraphRepresentationList[source].removeValue(destination);
         GraphRepresentationList[destination].removeValue(source);
 
     }
-    
 
+    @Override
     public void GraphRepresentation()
     {
         for (int i = 0; i < GraphRepresentationList.length; i++)

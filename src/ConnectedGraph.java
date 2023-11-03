@@ -1,7 +1,7 @@
 
 import libraryFunctions.Glist;
 
-public class ConnectedGraph
+public class ConnectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
@@ -24,6 +24,8 @@ public class ConnectedGraph
         }
 
     }
+
+    @Override
     public void addEdge(int source, int dest)
     {
         if(deletedIndex.contains(source))
@@ -36,11 +38,14 @@ public class ConnectedGraph
             GraphRepresentationList[dest].add(source);
         }
     }
+    @Override
     public void removeEdge(int source,int destination)
     {
         GraphRepresentationList[source].removeValue(destination);
         GraphRepresentationList[destination].removeValue(source);
     }
+
+    @Override
     public void addNode(int node_num)
     {
             int dummy = node;
@@ -68,7 +73,7 @@ public class ConnectedGraph
 
 
     }
-
+    @Override
     public void removeNode(int node_num)
     {
         deletedIndex.add(node_num);
@@ -86,7 +91,7 @@ public class ConnectedGraph
 
 
     }
-
+    @Override
     public void GraphRepresentation()
     {
         for (int i = 0; i < GraphRepresentationList.length; i++)

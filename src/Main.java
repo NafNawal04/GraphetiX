@@ -3,7 +3,7 @@ public class Main {
 
         System.out.println("\n");
 
-        SimpleGraph s1 = new SimpleGraph(5);
+        IGraph s1 = new SimpleGraph(5);
         s1.addEdge(0,1);
         s1.addEdge(1,1); //should show error
         s1.addEdge(0,4);
@@ -23,7 +23,7 @@ public class Main {
         System.out.println("\n");
 
 
-        DirectedGraph d1 =new DirectedGraph(5);
+        IGraph d1 =new DirectedGraph(5);
         d1.addEdge(1,1);
         d1.addEdge(0,4);
         d1.addEdge(0,1);
@@ -34,8 +34,8 @@ public class Main {
         d1.addEdge(4,2);
         System.out.println("List Representation for Directed graph:");
         d1.GraphRepresentation();
-        d1.inDegree(1);
-        d1.outDegree(4);
+        ((DirectedGraph)d1).inDegree(1);
+        ((DirectedGraph)d1).outDegree(1);
         d1.removeNode(3);
         d1.removeEdge(4,2);
 
@@ -46,7 +46,7 @@ public class Main {
 
 
 
-        UndirectedGraph u1 = new UndirectedGraph(5);
+        IGraph u1 = new UndirectedGraph(5);
         u1.addEdge(0,4);
         u1.addEdge(1,2);
         u1.addEdge(3,4);
@@ -56,14 +56,14 @@ public class Main {
         u1.addNode(0);
         System.out.println("List Representation for Undirected graph:");
         u1.GraphRepresentation();
-        u1.convertToDirected(1,2);
+        ((UndirectedGraph)u1).convertToDirected(1,2);
         u1.removeEdge(0,4);
         u1.removeNode(4);
 
 
 
 
-        CompleteGraph completeGraph = new CompleteGraph(5);
+        IGraph completeGraph = new CompleteGraph(5);
         System.out.println("List Representation for Complete graph:");
         completeGraph.GraphRepresentation();
 
@@ -76,7 +76,7 @@ public class Main {
 
 
 
-        ConnectedGraph c1 = new ConnectedGraph(5);
+        IGraph c1 = new ConnectedGraph(5);
         System.out.println("List representation for connected graph:");
         c1.GraphRepresentation();
 
@@ -92,7 +92,7 @@ public class Main {
 
 
 
-        DisconnectedGraph dc1 =new DisconnectedGraph(4);
+        IGraph dc1 =new DisconnectedGraph(4);
         dc1.addEdge(0,1);
         dc1.addEdge(0,3);
         dc1.addEdge(2,3);

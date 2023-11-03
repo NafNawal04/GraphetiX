@@ -1,5 +1,5 @@
 import libraryFunctions.Glist;
-public class CompleteGraph
+public class CompleteGraph implements IGraph
 {
 
     int node;
@@ -26,6 +26,7 @@ public class CompleteGraph
 
     }
 
+    @Override
     public void addEdge(int source,int dest)
     {
 
@@ -34,7 +35,7 @@ public class CompleteGraph
     {
 
     }
-
+    @Override
     public void addNode(int node_num)
     {
         int dummy = node;
@@ -88,7 +89,7 @@ public class CompleteGraph
 
 
 
-
+    @Override
     public void removeNode(int node_num)
     {
 
@@ -102,6 +103,8 @@ public class CompleteGraph
         GraphRepresentation();
 
     }
+
+    @Override
     public void GraphRepresentation()
     {
         for (int i = 0; i < GraphRepresentationList.length; i++)
