@@ -114,6 +114,7 @@ public class Glist <E> {
             if (current.next.data==value) {
                 return true;
             }
+            current = current.next;
         }
 
         return false;
