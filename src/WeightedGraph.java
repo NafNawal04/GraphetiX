@@ -1,15 +1,17 @@
-import java.util.LinkedList;
+import libraryFunctions.Glist;
+
+
 public class WeightedGraph
 {
     public  int node;
-    public LinkedList<int[]>[] adjacencyList;
+    public Glist<int[]>[] adjacencyList;
 
     public WeightedGraph(int node)
     {
         this.node = node;
-        adjacencyList = new LinkedList[node];
+        adjacencyList = new Glist[node];
         for (int i = 0; i < node; i++) {
-            adjacencyList[i] = new LinkedList<>();
+            adjacencyList[i] = new Glist<>();
         }
     }
 
@@ -24,12 +26,13 @@ public class WeightedGraph
     public void GraphRepresentation() {
         for (int i = 0; i < node; i++) {
             System.out.print("Vertex " + i + " is connected to: ");
-            for (int[] edge : adjacencyList[i]) {
+            for (int j = 0; j < adjacencyList[i].length(); j++) {
+                int[] edge = adjacencyList[i].get(j);
                 System.out.print("(" + edge[0] + ", Weight: " + edge[1] + ") ");
-
             }
             System.out.println();
         }
+
 
     }
 

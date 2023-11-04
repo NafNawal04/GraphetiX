@@ -85,7 +85,7 @@ public class DirectedGraph implements IGraph
     public void outDegree(int source)
     {
 
-        int num = GraphRepresentList[source].length() + 1;
+        int num = GraphRepresentList[source].length() ;
         System.out.println("The number of out degree of " + source+ " is: " + num);
     }
     @Override
