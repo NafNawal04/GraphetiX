@@ -120,18 +120,50 @@ public class Glist <E> {
         return false;
 
     }
-    public int length()
-    {
-        int size=0;
-        Node current = head;
-        while (current.next != null)
-        {
-            current=current.next;
+
+    public int length() {
+        int size = 0;
+        Node<E> current = head;
+
+        while (current != null) {
+            current = current.next;
             size++;
         }
-        return size;
 
+        return size;
     }
+
+    public boolean addFirst(E value)
+    {
+        Node<E> newNode = new Node<>(value);
+
+        if (head == null) {
+
+            head = newNode;
+        } else {
+
+            newNode.next=head;
+            head=newNode;
+        }
+
+        return true;
+    }
+    public E get(int index) {
+        if (index < 0 || index >= length()) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+
+        int currentIndex = 0;
+        Node<E> current = head;
+
+        while (currentIndex < index) {
+            current = current.next;
+            currentIndex++;
+        }
+
+        return current.data;
+    }
+
 
 
 
