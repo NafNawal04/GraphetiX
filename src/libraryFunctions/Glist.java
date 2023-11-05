@@ -1,11 +1,14 @@
 package libraryFunctions;
 
-public class Glist <E> {
+public class Glist <E>
+{
     Node<E> head;
+    Node<E> tail;
 
-
-    public String toString() {
-        if (head == null) {
+    public String toString()
+    {
+        if (head == null)
+        {
             return "Empty List";
         }
 
@@ -166,7 +169,59 @@ public class Glist <E> {
 
 
 
+    public boolean addQueue(E value)
+    {
+        Node<E> newNode = new Node<>(value);
 
+        if (head == null)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            tail.next = newNode;
+            tail = newNode;
+        }
+
+        return true;
+    }
+
+    public E pollQueue()
+    {
+        if (head == null)
+        {
+            return null;
+        }
+
+        E frontValue = head.data;
+        head = head.next;
+
+        if (head == null)
+        {
+            tail = null;
+        }
+
+        return frontValue;
+    }
+
+
+
+
+    public void forEach(ElementConsumer<E> consumer)
+    {
+        Node<E> current = head;
+        while (current != null) {
+            consumer.accept(current.data);
+            current = current.next;
+        }
+    }
+
+    @FunctionalInterface
+    public interface ElementConsumer<E>
+    {
+        void accept(E element);
+    }
 
 
 }
