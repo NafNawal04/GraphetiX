@@ -1,25 +1,26 @@
 
-import java.util.*;
+import libraryFunctions.*;
+
+
 
 public class AcyclicGraph
 {
     public  int node;
-    public LinkedList<Integer>[] GraphRepresentationList ;
+    public Glist<Integer>[] adjacencyList ;
 
     public AcyclicGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new LinkedList[node];
+        adjacencyList = new Glist[node];
         for (int i = 0; i < node; i++)
         {
-            GraphRepresentationList[i] = new LinkedList<>();
+            adjacencyList[i] = new Glist<>();
         }
     }
 
-    public void addEdge(int source, int dest)
+    public void addEdge(int source, int destination)
     {
-        GraphRepresentationList[source].add(dest);
-        GraphRepresentationList[dest].add(source);
+        adjacencyList[source].add(destination);
     }
 
 
@@ -29,10 +30,8 @@ public class AcyclicGraph
         boolean[] visited = new boolean[node];
         boolean[] stack = new boolean[node];
 
-        for (int i = 0; i < node; i++)
-        {
-            if (!visited[i] && isCyclicUtil(i, visited, stack))
-            {
+        for (int i = 0; i < node; i++) {
+            if (!visited[i] && isCyclicUtil(i, visited, stack)) {
                 return false;
             }
         }
@@ -45,8 +44,8 @@ public class AcyclicGraph
         visited[node] = true;
         stack[node] = true;
 
-        for (int neighbor : GraphRepresentationList[node])
-        {
+        for (int j = 0; j < adjacencyList[node].length(); j++) {
+            int neighbor = adjacencyList[node].get(j);
             if (!visited[neighbor])
             {
                 if (isCyclicUtil(neighbor, visited, stack))
@@ -59,6 +58,9 @@ public class AcyclicGraph
                 return true;
             }
         }
+
+
+
 
         stack[node] = false;
         return false;
@@ -76,7 +78,7 @@ public class AcyclicGraph
         {
             for (int j = i + 1; j < node; j++)
             {
-                if (!GraphRepresentationList[i].contains(j) && !GraphRepresentationList[j].contains(i))
+                if (!adjacencyList[i].contains(j) && !adjacencyList[j].contains(i))
                 {
                     System.out.println("Adding edge between " + i + " and " + j + " to make the graph cyclic.");
                     addEdge(i, j);
@@ -90,7 +92,7 @@ public class AcyclicGraph
     {
         for (int i = 0; i < node; i++)
         {
-            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
+            System.out.println("Vertex " + i + " is connected to: " + adjacencyList[i]);
         }
     }
 
