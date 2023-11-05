@@ -116,12 +116,12 @@ public class Main {
 
         System.out.println("List Representation for Disconnected graph:");
         dc1.GraphRepresentation();
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         WeightedGraph graph = new WeightedGraph(6);
 
         graph.addWeightedEdge(0, 1, 4);
@@ -134,7 +134,20 @@ public class Main {
         graph.addWeightedEdge(4, 1, 4);
         graph.addWeightedEdge(4, 5, 6);
 
+        System.out.println("List Representation for Weighted graph:");
+        graph.GraphRepresentation();
+        System.out.println("\n");
 
+        graph.addNode(2);
+        System.out.println("After adding node, List Representation for Weighted graph:");
+        graph.GraphRepresentation();
+        System.out.println("\n");
+
+        graph.removeNode(2);
+        System.out.println("\n");
+
+        graph.removeWeightedEdge(4,5,6);
+        System.out.println("After removing weighted edge, List Representation for Weighted graph:");
         graph.GraphRepresentation();
         System.out.println("\n");
 
