@@ -1,17 +1,17 @@
-import java.util.*;
+import libraryFunctions.*;
 
 
 public class CyclicGraph
 {
     public  int node;
-    public LinkedList<Integer>[] adjacencyList ;
+    public Glist<Integer>[] adjacencyList ;
 
     public CyclicGraph(int node)
     {
         this.node = node;
-        adjacencyList = new LinkedList[node];
+        adjacencyList = new Glist[node];
         for (int i = 0; i < node; i++) {
-            adjacencyList[i] = new LinkedList<>();
+            adjacencyList[i] = new Glist<>();
         }
     }
 
@@ -37,16 +37,17 @@ public class CyclicGraph
         visited[node] = true;
         stack[node] = true;
 
-        for (int neighbor : adjacencyList[node]) {
+        for (int j = 0; j < adjacencyList[node].length(); j++) {
+            int neighbor = adjacencyList[node].get(j);
             if (!visited[neighbor]) {
                 if (isCyclicUtil(neighbor, visited, stack)) {
                     return true;
                 }
             } else if (stack[neighbor]) {
-
                 return true;
             }
         }
+
 
         stack[node] = false;
         return false;
