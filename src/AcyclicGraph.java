@@ -4,21 +4,22 @@ import java.util.*;
 public class AcyclicGraph
 {
     public  int node;
-    public LinkedList<Integer>[] adjacencyList ;
+    public LinkedList<Integer>[] GraphRepresentationList ;
 
     public AcyclicGraph(int node)
     {
         this.node = node;
-        adjacencyList = new LinkedList[node];
+        GraphRepresentationList = new LinkedList[node];
         for (int i = 0; i < node; i++)
         {
-            adjacencyList[i] = new LinkedList<>();
+            GraphRepresentationList[i] = new LinkedList<>();
         }
     }
 
-    public void addEdge(int source, int destination)
+    public void addEdge(int source, int dest)
     {
-        adjacencyList[source].add(destination);
+        GraphRepresentationList[source].add(dest);
+        GraphRepresentationList[dest].add(source);
     }
 
 
@@ -28,8 +29,10 @@ public class AcyclicGraph
         boolean[] visited = new boolean[node];
         boolean[] stack = new boolean[node];
 
-        for (int i = 0; i < node; i++) {
-            if (!visited[i] && isCyclicUtil(i, visited, stack)) {
+        for (int i = 0; i < node; i++)
+        {
+            if (!visited[i] && isCyclicUtil(i, visited, stack))
+            {
                 return false;
             }
         }
@@ -42,7 +45,7 @@ public class AcyclicGraph
         visited[node] = true;
         stack[node] = true;
 
-        for (int neighbor : adjacencyList[node])
+        for (int neighbor : GraphRepresentationList[node])
         {
             if (!visited[neighbor])
             {
@@ -73,7 +76,7 @@ public class AcyclicGraph
         {
             for (int j = i + 1; j < node; j++)
             {
-                if (!adjacencyList[i].contains(j) && !adjacencyList[j].contains(i))
+                if (!GraphRepresentationList[i].contains(j) && !GraphRepresentationList[j].contains(i))
                 {
                     System.out.println("Adding edge between " + i + " and " + j + " to make the graph cyclic.");
                     addEdge(i, j);
@@ -87,7 +90,7 @@ public class AcyclicGraph
     {
         for (int i = 0; i < node; i++)
         {
-            System.out.println("Vertex " + i + " is connected to: " + adjacencyList[i]);
+            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
         }
     }
 

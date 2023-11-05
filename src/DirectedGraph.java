@@ -68,6 +68,7 @@ public class DirectedGraph implements IGraph
     }
 
 
+
     public void inDegree(int dest)
     {
         int count =0;
@@ -81,6 +82,7 @@ public class DirectedGraph implements IGraph
         System.out.println("The number of in degree of " +dest+ " is: " + count);
 
     }
+
 
     public void outDegree(int source)
     {

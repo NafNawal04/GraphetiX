@@ -3,19 +3,19 @@ public class Main {
 
         System.out.println("\n");
 
-        IGraph s1 = new SimpleGraph(5);
-        s1.addEdge(0,1);
-        s1.addEdge(1,1); //should show error
-        s1.addEdge(0,4);
-        s1.addEdge(1,2);
-        s1.addEdge(3,1);
-        s1.addEdge(2,1); //should show error
-        s1.addEdge(4,2);
-        s1.addNode(2); //two new nodes should be added to the list
+        Graph s1 = new Graph("SimpleGraph",5);
+        s1.getSimple().addEdge(0,1);
+        s1.getSimple().addEdge(1,1); //should show error
+        s1.getSimple().addEdge(0,4);
+        s1.getSimple().addEdge(1,2);
+        s1.getSimple().addEdge(3,1);
+        s1.getSimple().addEdge(2,1); //should show error
+        s1.getSimple().addEdge(4,2);
+        s1.getSimple().addNode(2); //two new nodes should be added to the list
         System.out.println("List Representation for Simple graph:");
-        s1.GraphRepresentation(); // rearranges the values in ascending order and then visualizes the graph by showing the vertices one vertex is connected to in a linked list
-        s1.removeNode(2);
-        s1.removeEdge(4,0);
+        s1.getSimple().GraphRepresentation(); // rearranges the values in ascending order and then visualizes the graph by showing the vertices one vertex is connected to in a linked list
+        s1.getSimple().removeNode(2);
+        s1.getSimple().removeEdge(4,0);
 
 
 
@@ -23,7 +23,7 @@ public class Main {
         System.out.println("\n");
 
 
-        IGraph d1 =new DirectedGraph(5);
+        DirectedGraph d1 =new DirectedGraph(5);
         d1.addEdge(1,1);
         d1.addEdge(0,4);
         d1.addEdge(0,1);
@@ -34,8 +34,8 @@ public class Main {
         d1.addEdge(4,2);
         System.out.println("List Representation for Directed graph:");
         d1.GraphRepresentation();
-        ((DirectedGraph)d1).inDegree(1);
-        ((DirectedGraph)d1).outDegree(1);
+        d1.inDegree(1);
+        d1.outDegree(1);
         d1.removeNode(3);
         d1.removeEdge(4,2);
 
@@ -46,7 +46,7 @@ public class Main {
 
 
 
-        IGraph u1 = new UndirectedGraph(5);
+        UndirectedGraph u1 = new UndirectedGraph(5);
         u1.addEdge(0,4);
         u1.addEdge(1,2);
         u1.addEdge(3,4);
@@ -56,14 +56,14 @@ public class Main {
         u1.addNode(0);
         System.out.println("List Representation for Undirected graph:");
         u1.GraphRepresentation();
-        ((UndirectedGraph)u1).convertToDirected(1,2);
+        u1.convertToDirected(1,2);
         u1.removeEdge(0,4);
         u1.removeNode(4);
 
 
 
 
-        IGraph completeGraph = new CompleteGraph(5);
+        CompleteGraph completeGraph = new CompleteGraph(5);
         System.out.println("List Representation for Complete graph:");
         completeGraph.GraphRepresentation();
 
@@ -76,7 +76,10 @@ public class Main {
 
 
 
-        IGraph c1 = new ConnectedGraph(5);
+
+
+
+        ConnectedGraph c1 = new ConnectedGraph(5);
         System.out.println("List representation for connected graph:");
         c1.GraphRepresentation();
 
@@ -92,7 +95,7 @@ public class Main {
 
 
 
-        IGraph dc1 =new DisconnectedGraph(4);
+        DisconnectedGraph dc1 =new DisconnectedGraph(4);
         dc1.addEdge(0,1);
         dc1.addEdge(0,3);
         dc1.addEdge(2,3);
