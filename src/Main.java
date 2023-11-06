@@ -95,12 +95,15 @@ public class Main {
                 System.out.print("How many nodes do you want to start your Acyclic Graph with? ");
                 node = scanner.nextInt();
                 s1 = new Graph("Acyclic Graph",node);
+                OperationAcyclic(scanner,s1);
 
                 break;
             case 9:
                 System.out.print("How many nodes do you want to start your Cyclic Graph with? ");
                 node = scanner.nextInt();
                 s1 = new Graph("Cyclic Graph",node);
+                OperationCyclic(scanner,s1);
+
                 break;
             default:
                 System.out.println("Invalid graph type choice. Please try again.");
@@ -469,8 +472,6 @@ public class Main {
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
-            int source;
-            int dest;
             int start_node;
             int node_num;
             switch (task)
@@ -520,7 +521,6 @@ public class Main {
 
             int source;
             int dest;
-            int start_node;
             int node_num;
             int weight;
 
@@ -558,6 +558,139 @@ public class Main {
                     s1.getWeighted().GraphRepresentation();
                     break;
                 case 6:
+                    return;
+                default:
+                    System.out.println("Invalid operation choice. Please try again.");
+            }
+        }
+    }
+
+
+
+    public static void OperationAcyclic(Scanner scanner,Graph s1)
+    {
+
+        while (true)
+        {
+            System.out.println("Which operation do you want to perform?");
+            System.out.println("1. Add edge between two nodes");
+            System.out.println("2. Add any number of nodes to the graph");
+            System.out.println("3. Remove edge between two nodes");
+            System.out.println("4. Remove a specific node from the graph");
+            System.out.println("5. Convert the Acyclic graph into Cyclic");
+            System.out.println("6. Show the Graph in Adjacency List");
+            System.out.println("7. Find the Breadth-First Traversal of a node");
+            System.out.println("8. Exit");
+            System.out.print("Press the number for the desired operation: ");
+            int task = scanner.nextInt();
+
+            int source;
+            int dest;
+            int start_node;
+            int node_num;
+            switch (task)
+            {
+                case 1:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+                    System.out.print("Enter the destination node: ");
+                    dest = scanner.nextInt();
+                    s1.getAcyclic().addEdge(source,dest);
+                    break;
+                case 2:
+                    System.out.print("Enter the number of nodes to be added: ");
+                    node_num = scanner.nextInt();
+                    s1.getAcyclic().addNode(node_num);
+                    break;
+                case 3:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+                    System.out.print("Enter the destination node: ");
+                    dest = scanner.nextInt();
+                    s1.getAcyclic().removeEdge(source,dest);
+                    break;
+                case 4:
+                    System.out.print("Enter the node number to be removed: ");
+                    node_num = scanner.nextInt();
+                    s1.getAcyclic().removeNode(node_num);
+                    break;
+                case 5:
+                    s1.getAcyclic().convertToCyclic();
+                    break;
+                case 6:
+                    s1.getAcyclic().GraphRepresentation();
+                    break;
+                case 7:
+                    System.out.print("Enter the start node of the Breadth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
+                    s1.getAcyclic().bfs(start_node);
+                    break;
+                case 8:
+                    return;
+                default:
+                    System.out.println("Invalid operation choice. Please try again.");
+            }
+        }
+    }
+
+
+    public static void OperationCyclic(Scanner scanner,Graph s1)
+    {
+
+        while (true)
+        {
+            System.out.println("Which operation do you want to perform?");
+            System.out.println("1. Add edge between two nodes");
+            System.out.println("2. Add any number of nodes to the graph");
+            System.out.println("3. Remove edge between two nodes");
+            System.out.println("4. Remove a specific node from the graph");
+            System.out.println("5. Show the Graph in Adjacency List");
+            System.out.println("6. Find the Breadth-First Traversal of a node");
+            System.out.println("7. Exit");
+            System.out.print("Press the number for the desired operation: ");
+            int task = scanner.nextInt();
+
+            int source;
+            int dest;
+            int start_node;
+            int node_num;
+            switch (task)
+            {
+                case 1:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+                    System.out.print("Enter the destination node: ");
+                    dest = scanner.nextInt();
+                    s1.getCyclic().addEdge(source,dest);
+                    break;
+                case 2:
+                    System.out.print("Enter the number of nodes to be added: ");
+                    node_num = scanner.nextInt();
+                    s1.getCyclic().addNode(node_num);
+                    break;
+                case 3:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+                    System.out.print("Enter the destination node: ");
+                    dest = scanner.nextInt();
+                    s1.getCyclic().removeEdge(source,dest);
+                    break;
+                case 4:
+                    System.out.print("Enter the node number to be removed: ");
+                    node_num = scanner.nextInt();
+                    s1.getCyclic().removeNode(node_num);
+                    break;
+                case 5:
+                    s1.getCyclic().GraphRepresentation();
+                    break;
+                case 6:
+                    System.out.print("Enter the start node of the Breadth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
+                    s1.getCyclic().bfs(start_node);
+                    break;
+                case 7:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
