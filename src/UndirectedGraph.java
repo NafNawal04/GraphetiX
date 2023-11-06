@@ -29,6 +29,7 @@ public class UndirectedGraph implements IGraph
             GraphRepresentationList[source].add(dest);
             GraphRepresentationList[dest].add(source);
         }
+        System.out.println("Added an edge between " + source + " & " + dest);
     }
     @Override
     public void addNode(int node_num)
@@ -48,7 +49,7 @@ public class UndirectedGraph implements IGraph
 
         node = num_of_new_nodes;
         GraphRepresentationList = newGraphRepresentationList;
-
+        System.out.println("Added "+ node_num+ " number of nodes in the Undirected Graph.");
     }
     @Override
     public void removeEdge(int source,int dest)
@@ -62,8 +63,7 @@ public class UndirectedGraph implements IGraph
             GraphRepresentationList[dest].removeValue(source);
             GraphRepresentationList[source].removeValue(dest);
         }
-        System.out.println("\nAfter removing the edge between " + source + " & " + dest +" the undirected graph would be:");
-        GraphRepresentation();
+        System.out.println("Removed the edge between " + source + " & " + dest);
     }
     @Override
     public void removeNode(int node_num)
@@ -77,26 +77,53 @@ public class UndirectedGraph implements IGraph
             }
 
         }
-        System.out.println("After removing vertex "+ node_num + ", the undirected graph becomes:");
-        GraphRepresentation();
+        System.out.println("Removed the node "+ node_num + " from the simple graph.");
 
     }
     public void convertToDirected(int source, int dest)
     {
-        System.out.println("\nAfter making the edge between " + source + " & " + dest +" as directed, the graph would be:");
-        GraphRepresentationList[dest].removeValue(source);
-        GraphRepresentation();
+         GraphRepresentationList[dest].removeValue(source);
+        System.out.println("Made the edge between " + source + " & " + dest +" as directed. ");
+
 
     }
     @Override
     public void GraphRepresentation()
     {
+        System.out.println("List Representation for Undirected graph:");
         for (int i = 0; i <  GraphRepresentationList.length; i++)
         {
             System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
         }
 
     }
+
+    void bfs(int start_node)
+    {
+        boolean[] visited = new boolean[node];
+
+        Glist<Integer> queue = new Glist<>();
+
+        visited[start_node] = true;
+        queue.addQueue(start_node);
+
+        while (!queue.isEmpty())
+        {
+            start_node = queue.pollQueue();
+            System.out.print(start_node + " ");
+
+            Glist<Integer> neighbors = GraphRepresentationList[start_node];
+            neighbors.forEach(n -> {
+                if (!visited[n])
+                {
+                    visited[n] = true;
+                    queue.add(n);
+                }
+            });
+
+        }
+    }
+
 
 
 }

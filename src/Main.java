@@ -62,7 +62,7 @@ public class Main {
                 System.out.print("How many nodes do you want to start your Undirected Graph with? ");
                 node = scanner.nextInt();
                 s1 = new Graph("Undirected Graph",node);
-
+                OperationUndirected(scanner,s1);
                 break;
             case 4:
                 System.out.print("How many nodes do you want to start your Connected Graph with? ");
@@ -239,6 +239,79 @@ public class Main {
                     s1.getDirected().outDegree(source);
                     break;
                 case 9:
+                    return;
+                default:
+                    System.out.println("Invalid operation choice. Please try again.");
+            }
+        }
+    }
+
+
+
+    public static void OperationUndirected(Scanner scanner,Graph s1)
+    {
+
+        while (true)
+        {
+            System.out.println("Which operation do you want to perform?");
+            System.out.println("1. Add edge between two nodes");
+            System.out.println("2. Add any number of nodes to the graph");
+            System.out.println("3. Remove edge between two nodes");
+            System.out.println("4. Remove a specific node from the graph");
+            System.out.println("5. Find the Breadth-First Traversal of a node");
+            System.out.println("6. Show the Graph in Adjacency List");
+            System.out.println("7. Convert an edge from undirected to directed");
+            System.out.println("8. Exit");
+            System.out.print("Press the number for the desired operation: ");
+            int task = scanner.nextInt();
+
+            int source;
+            int dest;
+            int start_node;
+            int node_num;
+            switch (task)
+            {
+                case 1:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+                    System.out.print("Enter the destination node: ");
+                    dest = scanner.nextInt();
+                    s1.getUndirected().addEdge(source,dest);
+                    break;
+                case 2:
+                    System.out.print("Enter the number of nodes to be added: ");
+                    node_num = scanner.nextInt();
+                    s1.getUndirected().addNode(node_num);
+                    break;
+                case 3:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+                    System.out.print("Enter the destination node: ");
+                    dest = scanner.nextInt();
+                    s1.getUndirected().removeEdge(source,dest);
+                    break;
+                case 4:
+                    System.out.print("Enter the node number to be removed: ");
+                    node_num = scanner.nextInt();
+                    s1.getUndirected().removeNode(node_num);
+                    break;
+                case 5:
+                    System.out.print("Enter the start node of the Breadth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
+                    s1.getUndirected().bfs(start_node);
+                    break;
+                case 6:
+                    s1.getUndirected().GraphRepresentation();
+                    break;
+                case 7:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+                    System.out.print("Enter the destination node: ");
+                    dest = scanner.nextInt();
+                    s1.getUndirected().convertToDirected(source,dest);
+                    break;
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
