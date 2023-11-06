@@ -86,7 +86,7 @@ public class SimpleGraph implements IGraph
             GraphRepresentationList[i].removeValue(node_num);
         }
         System.out.println("Removed the node "+ node_num + " from the simple graph.");
-        GraphRepresentation();
+
 
     }
 

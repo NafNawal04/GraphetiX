@@ -22,6 +22,7 @@ public class DirectedGraph implements IGraph
     {
 
         GraphRepresentationList[source].add(dest);
+        System.out.println("Added an edge between " + source + " & " + dest);
 
     }
 
@@ -29,8 +30,7 @@ public class DirectedGraph implements IGraph
     public void removeEdge(int source, int dest)
     {
         GraphRepresentationList[source].removeValue(dest);
-        System.out.println("After removing edge "+ source + " to " +dest +", the directed graph becomes:");
-        GraphRepresentation();
+        System.out.println("Removed the edge between " + source + " & " + dest);
     }
 
 
@@ -53,6 +53,7 @@ public class DirectedGraph implements IGraph
         node = num_of_new_nodes;
         GraphRepresentationList = newGraphRepresentationList;
 
+        System.out.println("Added "+ node_num+ " number of nodes in the Directed Graph.");
     }
     @Override
     public void removeNode(int node_num)
@@ -62,8 +63,7 @@ public class DirectedGraph implements IGraph
         {
             GraphRepresentationList[i].removeValue((node_num));
         }
-        System.out.println("After removing vertex "+ node_num + ", the directed graph becomes:");
-        GraphRepresentation();
+        System.out.println("Removed the node "+ node_num + " from the simple graph.");
 
     }
 
@@ -93,12 +93,39 @@ public class DirectedGraph implements IGraph
     @Override
     public void GraphRepresentation()
     {
+        System.out.println("List Representation for directed graph:");
         for (int i = 0; i < GraphRepresentationList.length; i++)
         {
             System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
         }
     }
 
+
+    void bfs(int start_node)
+    {
+        boolean[] visited = new boolean[node];
+
+        Glist<Integer> queue = new Glist<>();
+
+        visited[start_node] = true;
+        queue.addQueue(start_node);
+
+        while (!queue.isEmpty())
+        {
+            start_node = queue.pollQueue();
+            System.out.print(start_node + " ");
+
+            Glist<Integer> neighbors = GraphRepresentationList[start_node];
+            neighbors.forEach(n -> {
+                if (!visited[n])
+                {
+                    visited[n] = true;
+                    queue.add(n);
+                }
+            });
+
+        }
+    }
 
 }
 
