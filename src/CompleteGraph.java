@@ -85,6 +85,8 @@ public class CompleteGraph implements IGraph
             }
         }
 
+
+        System.out.println("Added "+ node_num+ " number of nodes in the Complete Graph.");
     }
 
 
@@ -99,18 +101,44 @@ public class CompleteGraph implements IGraph
         {
             GraphRepresentationList[i].removeValue(node_num);
         }
-        System.out.println(" after removing vertex "+ node_num + " the complete graph becomes:");
-        GraphRepresentation();
+        System.out.println("Removed the node "+ node_num + " from the complete graph.");
 
     }
 
     @Override
     public void GraphRepresentation()
     {
+        System.out.println("List Representation for Complete graph:");
         for (int i = 0; i < GraphRepresentationList.length; i++)
         {
             System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
         }
 
+    }
+
+    void bfs(int start_node)
+    {
+        boolean[] visited = new boolean[node];
+
+        Glist<Integer> queue = new Glist<>();
+
+        visited[start_node] = true;
+        queue.addQueue(start_node);
+
+        while (!queue.isEmpty())
+        {
+            start_node = queue.pollQueue();
+            System.out.print(start_node + " ");
+
+            Glist<Integer> neighbors = GraphRepresentationList[start_node];
+            neighbors.forEach(n -> {
+                if (!visited[n])
+                {
+                    visited[n] = true;
+                    queue.add(n);
+                }
+            });
+
+        }
     }
 }

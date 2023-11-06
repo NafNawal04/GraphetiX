@@ -81,6 +81,7 @@ public class Main {
                 System.out.print("How many nodes do you want to start your Complete Graph with? ");
                 node = scanner.nextInt();
                 s1 = new Graph("Complete Graph",node);
+                OperationComplete(scanner,s1);
 
                 break;
             case 7:
@@ -443,6 +444,56 @@ public class Main {
                     s1.getDisconnected().GraphRepresentation();
                     break;
                 case 7:
+                    return;
+                default:
+                    System.out.println("Invalid operation choice. Please try again.");
+            }
+        }
+    }
+
+
+
+
+    public static void OperationComplete(Scanner scanner,Graph s1)
+    {
+
+        while (true)
+        {
+            System.out.println("Which operation do you want to perform?");
+            System.out.println("1. Add any number of nodes to the graph");
+            System.out.println("2. Remove a specific node from the graph");
+            System.out.println("3. Find the Breadth-First Traversal of a node");
+            System.out.println("4. Show the Graph in Adjacency List");
+            System.out.println("5. Exit");
+            System.out.print("Press the number for the desired operation: ");
+            int task = scanner.nextInt();
+
+            int source;
+            int dest;
+            int start_node;
+            int node_num;
+            switch (task)
+            {
+                case 1:
+                    System.out.print("Enter the number of nodes to be added: ");
+                    node_num = scanner.nextInt();
+                    s1.getComplete().addNode(node_num);
+                    break;
+                case 2:
+                    System.out.print("Enter the node number to be removed: ");
+                    node_num = scanner.nextInt();
+                    s1.getComplete().removeNode(node_num);
+                    break;
+                case 3:
+                    System.out.print("Enter the start node of the Breadth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
+                    s1.getComplete().bfs(start_node);
+                    break;
+                case 4:
+                    s1.getComplete().GraphRepresentation();
+                    break;
+                case 5:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
