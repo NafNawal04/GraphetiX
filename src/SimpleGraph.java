@@ -39,9 +39,9 @@ public class SimpleGraph implements IGraph
 
             else
             {
-
                 GraphRepresentationList[source].add(dest);
                 GraphRepresentationList[dest].add(source);
+                System.out.println("Added an edge between " + source + " & " + dest);
             }
         }
 
@@ -52,8 +52,8 @@ public class SimpleGraph implements IGraph
     {
         GraphRepresentationList[source].removeValue(dest);
         GraphRepresentationList[dest].removeValue(source);
-        System.out.println("\nAfter removing the edge between " + source + " & " + dest +" the simple graph would be:");
-        GraphRepresentation();
+        System.out.println("Removed the edge between " + source + " & " + dest);
+
     }
 
     @Override
@@ -74,6 +74,7 @@ public class SimpleGraph implements IGraph
         node = num_of_new_nodes;
         GraphRepresentationList = newGraphRepresentationList;
 
+        System.out.println("Added "+ node_num+ " number of nodes in the Simple Graph.");
     }
 
     @Override
@@ -84,7 +85,7 @@ public class SimpleGraph implements IGraph
         {
             GraphRepresentationList[i].removeValue(node_num);
         }
-        System.out.println("After removing vertex "+ node_num + ", the simple graph becomes:");
+        System.out.println("Removed the node "+ node_num + " from the simple graph.");
         GraphRepresentation();
 
     }
@@ -93,6 +94,7 @@ public class SimpleGraph implements IGraph
     public void GraphRepresentation()
     {
 
+        System.out.println("List Representation for Simple graph:");
         for (int i = 0; i < GraphRepresentationList.length; i++)
         {
             if(!GraphRepresentationList[i].isEmpty())
