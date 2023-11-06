@@ -88,6 +88,7 @@ public class Main {
                 System.out.print("How many nodes do you want to start your Weighted Graph with? ");
                 node = scanner.nextInt();
                 s1 = new Graph("Weighted Graph",node);
+                OperationWeighted(scanner,s1);
 
                 break;
             case 8:
@@ -494,6 +495,69 @@ public class Main {
                     s1.getComplete().GraphRepresentation();
                     break;
                 case 5:
+                    return;
+                default:
+                    System.out.println("Invalid operation choice. Please try again.");
+            }
+        }
+    }
+
+
+    public static void OperationWeighted(Scanner scanner,Graph s1)
+    {
+
+        while (true)
+        {
+            System.out.println("Which operation do you want to perform?");
+            System.out.println("1. Add a weighted edge between two nodes");
+            System.out.println("2. Add any number of nodes to the graph");
+            System.out.println("3. Remove a specific node from the graph");
+            System.out.println("4. Remove a weighted edge between two nodes");
+            System.out.println("5. Show the Graph in Adjacency List");
+            System.out.println("6. Exit");
+            System.out.print("Press the number for the desired operation: ");
+            int task = scanner.nextInt();
+
+            int source;
+            int dest;
+            int start_node;
+            int node_num;
+            int weight;
+
+            switch (task)
+            {
+                case 1:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+                    System.out.print("Enter the destination node: ");
+                    dest = scanner.nextInt();
+                    System.out.print("Enter the weight: ");
+                    weight = scanner.nextInt();
+                    s1.getWeighted().addWeightedEdge(source,dest,weight);
+                    break;
+                case 2:
+                    System.out.print("Enter the number of nodes to be added: ");
+                    node_num = scanner.nextInt();
+                    s1.getWeighted().addNode(node_num);
+                    break;
+                case 3:
+                    System.out.print("Enter the node number to be removed: ");
+                    node_num = scanner.nextInt();
+                    s1.getWeighted().removeNode(node_num);
+                    break;
+                case 4:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+                    System.out.print("Enter the destination node: ");
+                    dest = scanner.nextInt();
+                    System.out.print("Enter the weight: ");
+                    weight = scanner.nextInt();
+                    s1.getWeighted().removeWeightedEdge(source,dest,weight);
+                    break;
+                case 5:
+                    s1.getWeighted().GraphRepresentation();
+                    break;
+                case 6:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");

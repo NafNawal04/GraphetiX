@@ -14,12 +14,13 @@ public class WeightedGraph implements IGraph
         }
     }
 
-    public void addWeightedEdge(int source, int destination, int weight)
+    public void addWeightedEdge(int source, int dest, int weight)
     {
-        int[] edge = {destination, weight};
+        int[] edge = {dest, weight};
         int[] edge2 ={source,weight};
         GraphRepresentationList[source].addFirst(edge);
-        GraphRepresentationList[destination].addFirst(edge2);
+        GraphRepresentationList[dest].addFirst(edge2);
+        System.out.println("Added a weighted edge between " + source + " & " + dest+" having weight: "+weight);
     }
 
     public void removeWeightedEdge(int source, int dest, int weight)
@@ -40,6 +41,8 @@ public class WeightedGraph implements IGraph
                 GraphRepresentationList[dest].removeValue(edge);
             }
         }
+
+        System.out.println("Removed a weighted edge between " + source + " & " + dest+" having weight: "+weight);
 
     }
 
@@ -72,7 +75,7 @@ public class WeightedGraph implements IGraph
 
         node = num_of_new_nodes;
         GraphRepresentationList = newGraphRepresentList;
-
+        System.out.println("Added "+ node_num+ " number of nodes in the Weighted Graph.");
     }
 
     @Override
@@ -92,14 +95,14 @@ public class WeightedGraph implements IGraph
 
             }
         }
-        System.out.println("After removing vertex "+ node_num + " the weighted graph becomes:");
-        GraphRepresentation();
+        System.out.println("Removed the node "+ node_num + " from the weighted graph.");
 
     }
 
     @Override
     public void GraphRepresentation()
     {
+        System.out.println("List Representation for Weighted graph:");
         for (int i = 0; i < node; i++)
         {
             System.out.print("Vertex " + i + " is connected to: ");
