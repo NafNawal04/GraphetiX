@@ -16,21 +16,13 @@ public class Main {
         s1.getSimple().GraphRepresentation(); // rearranges the values in ascending order and then visualizes the graph by showing the vertices one vertex is connected to in a linked list
         s1.getSimple().removeNode(2);
         s1.getSimple().removeEdge(4, 0);
-
-
-        System.out.println("\n");
-        System.out.println("\n");
-
-
-        SimpleGraph bfse =new SimpleGraph(45);
-        bfse.addEdge(0,1);
-        bfse.addEdge(0,2);
-        bfse.addEdge(1,2);
-        bfse.addEdge(2,0);
-        bfse.addEdge(2,3);
-        bfse.addEdge(3,3);
         System.out.println("breadth first traversal: ");
-        bfse.bfs(2);
+        s1.getSimple().bfs(2);
+
+
+        System.out.println("\n");
+        System.out.println("\n");
+
 
 
         DirectedGraph d1 = new DirectedGraph(5);
