@@ -38,7 +38,7 @@ public class DisconnectedGraph implements IGraph
         node = num_of_new_nodes;
         GraphRepresentationList = newGraphRepresentList;
 
-
+        System.out.println("Added "+ node_num+ " number of nodes in the Disconnected Graph.");
     }
     @Override
     public void removeNode(int node_num)
@@ -50,8 +50,7 @@ public class DisconnectedGraph implements IGraph
         {
             GraphRepresentationList[i].removeValue(node_num);
         }
-        System.out.println("After removing vertex "+ node_num + " the disconnected graph becomes:");
-        GraphRepresentation();
+        System.out.println("Removed the node "+ node_num + " from the disconnected graph.");
 
     }
     @Override
@@ -64,24 +63,54 @@ public class DisconnectedGraph implements IGraph
         else {
             GraphRepresentationList[source].add(dest);
             GraphRepresentationList[dest].add(source);
+            System.out.println("Added an edge between " + source + " & " + dest);
         }
     }
     @Override
-    public void removeEdge(int source,int destination)
+    public void removeEdge(int source,int dest)
     {
-        GraphRepresentationList[source].removeValue(destination);
-        GraphRepresentationList[destination].removeValue(source);
+        GraphRepresentationList[source].removeValue(dest);
+        GraphRepresentationList[dest].removeValue(source);
+        System.out.println("Removed the edge between " + source + " & " + dest);
 
     }
 
     @Override
     public void GraphRepresentation()
     {
+        System.out.println("List Representation for Disconnected graph:");
         for (int i = 0; i < GraphRepresentationList.length; i++)
         {
             System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
         }
 
+    }
+
+
+    void bfs(int start_node)
+    {
+        boolean[] visited = new boolean[node];
+
+        Glist<Integer> queue = new Glist<>();
+
+        visited[start_node] = true;
+        queue.addQueue(start_node);
+
+        while (!queue.isEmpty())
+        {
+            start_node = queue.pollQueue();
+            System.out.print(start_node + " ");
+
+            Glist<Integer> neighbors = GraphRepresentationList[start_node];
+            neighbors.forEach(n -> {
+                if (!visited[n])
+                {
+                    visited[n] = true;
+                    queue.add(n);
+                }
+            });
+
+        }
     }
 }
 
