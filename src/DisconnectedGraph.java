@@ -111,6 +111,7 @@ public class DisconnectedGraph implements IGraph
             });
 
         }
+        System.out.print("\n");
     }
 }
 

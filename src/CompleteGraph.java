@@ -140,5 +140,6 @@ public class CompleteGraph implements IGraph
             });
 
         }
+        System.out.print("\n");
     }
 }

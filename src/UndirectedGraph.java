@@ -122,6 +122,7 @@ public class UndirectedGraph implements IGraph
             });
 
         }
+        System.out.print("\n");
     }
 
 

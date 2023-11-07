@@ -163,6 +163,7 @@ public class AcyclicGraph implements IGraph
             });
 
         }
+        System.out.print("\n");
     }
 
 

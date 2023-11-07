@@ -125,6 +125,7 @@ public class DirectedGraph implements IGraph
             });
 
         }
+        System.out.print("\n");
     }
 
 }

@@ -137,6 +137,7 @@ public class CyclicGraph implements IGraph
             });
 
         }
+        System.out.print("\n");
     }
 
 

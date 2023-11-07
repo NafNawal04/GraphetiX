@@ -129,5 +129,6 @@ public class ConnectedGraph implements IGraph
             });
 
         }
+        System.out.print("\n");
     }
 }
