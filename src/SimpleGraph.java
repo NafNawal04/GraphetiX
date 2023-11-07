@@ -133,6 +133,8 @@ public class SimpleGraph implements IGraph
             });
 
         }
+
+        System.out.print("\n");
     }
 
 
