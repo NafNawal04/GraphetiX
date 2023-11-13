@@ -1,9 +1,11 @@
 import Utility.*;
+import Graph.*;
+
 
 public class DisconnectedGraph implements IGraph
 {
     int node;
-    int num_of_new_nodes;
+
     CustomLInkedList<Integer> deletedIndex = new CustomLInkedList<>();
     CustomLInkedList<Integer> GraphRepresentationList[];
     public DisconnectedGraph(int node)
@@ -24,11 +26,8 @@ public class DisconnectedGraph implements IGraph
 
         int num_of_new_nodes = node + node_num;
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-
-
         GraphRepresentationList = g.addNode(node_num,node);
         node = num_of_new_nodes;
-
         System.out.println("Added "+ node_num+ " number of nodes in the Disconnected Graph.");
     }
     @Override

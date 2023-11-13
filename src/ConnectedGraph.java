@@ -1,12 +1,11 @@
 
 import Utility.CustomLInkedList;
-import Utility.GraphMethod;
-import Utility.GraphTraversal;
+import Graph.*;
 
 public class ConnectedGraph implements IGraph
 {
     int node;
-    int num_of_new_nodes;
+
     CustomLInkedList<Integer> deletedIndex = new CustomLInkedList<>();
 
     public CustomLInkedList<Integer> GraphRepresentationList[];

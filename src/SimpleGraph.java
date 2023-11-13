@@ -1,5 +1,7 @@
 
 import Utility.*;
+import Graph.*;
+
 
 public class SimpleGraph implements IGraph
 {

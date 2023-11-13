@@ -1,4 +1,5 @@
 import Utility.*;
+import Graph.*;
 
 
 public class CyclicGraph implements IGraph

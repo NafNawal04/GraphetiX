@@ -1,9 +1,11 @@
 import Utility.*;
+import Graph.*;
+
 public class CompleteGraph implements IGraph
 {
 
     int node;
-    int num_of_new_nodes;
+
     public CustomLInkedList<Integer> GraphRepresentationList[];
 
 

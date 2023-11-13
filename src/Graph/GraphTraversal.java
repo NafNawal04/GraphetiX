@@ -1,4 +1,6 @@
-package Utility;
+package Graph;
+
+import Utility.CustomLInkedList;
 
 public class GraphTraversal {
     int start_node;

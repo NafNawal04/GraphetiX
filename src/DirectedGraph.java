@@ -1,6 +1,5 @@
 import Utility.CustomLInkedList;
-import Utility.GraphMethod;
-import Utility.GraphTraversal;
+import Graph.*;
 
 public class DirectedGraph implements IGraph
 {

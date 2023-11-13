@@ -1,5 +1,6 @@
 
 import Utility.*;
+import Graph.*;
 
 public class AcyclicGraph implements IGraph
 {
