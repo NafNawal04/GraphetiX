@@ -125,10 +125,16 @@ public class AcyclicGraph implements IGraph
         g.GraphRepresentation(node);
     }
 
-    void bfs(int start_node)
+    public void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(start_node,GraphRepresentationList,node);
-        graphTraversal.bfs();
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.bfs(start_node);
+
+    }
+    public void dfs(int start_node)
+    {
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.DFS(start_node);
 
     }
 

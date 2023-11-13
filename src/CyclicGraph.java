@@ -101,8 +101,14 @@ public class CyclicGraph implements IGraph
 
     void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(start_node,GraphRepresentationList,node);
-        graphTraversal.bfs();
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.bfs(start_node);
+
+    }
+    public void dfs(int start_node)
+    {
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.DFS(start_node);
 
     }
 
