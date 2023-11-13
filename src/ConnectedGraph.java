@@ -1,5 +1,6 @@
 
 import Utility.CustomLInkedList;
+import Utility.GraphMethod;
 import Utility.GraphTraversal;
 
 public class ConnectedGraph implements IGraph
@@ -29,15 +30,14 @@ public class ConnectedGraph implements IGraph
     @Override
     public void addEdge(int source, int dest)
     {
+        GraphMethod g =new GraphMethod(GraphRepresentationList);
         if(deletedIndex.contains(source))
         {
             System.out.println("vertex "+ source+ " doesn't exist. So no edge can be added");
         }
         else
         {
-            GraphRepresentationList[source].addFIrst(dest);
-            GraphRepresentationList[dest].addFIrst(source);
-            System.out.println("Added an edge between " + source + " & " + dest);
+            g.addEdge(source,dest);
         }
     }
     @Override

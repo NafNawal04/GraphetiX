@@ -20,9 +20,8 @@ public class AcyclicGraph implements IGraph
     @Override
     public void addEdge(int source, int dest)
     {
-        GraphRepresentationList[source].addFIrst(dest);
-        GraphRepresentationList[dest].addFIrst(source);
-        System.out.println("Added an edge between " + source + " & " + dest);
+        GraphMethod g =new GraphMethod(GraphRepresentationList);
+        g.addEdge(source, dest);
     }
 
 

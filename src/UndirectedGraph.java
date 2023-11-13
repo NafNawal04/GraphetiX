@@ -1,4 +1,5 @@
 import Utility.CustomLInkedList;
+import Utility.GraphMethod;
 import Utility.GraphTraversal;
 
 public class UndirectedGraph implements IGraph
@@ -25,13 +26,14 @@ public class UndirectedGraph implements IGraph
         if(source == dest)
         {
             GraphRepresentationList[source].addFIrst(dest);
+            System.out.println("Added an edge between " + source + " & " + dest);
         }
         else
         {
-            GraphRepresentationList[source].addFIrst(dest);
-            GraphRepresentationList[dest].addFIrst(source);
+            GraphMethod g =new GraphMethod(GraphRepresentationList);
+            g.addEdge(source,dest);
         }
-        System.out.println("Added an edge between " + source + " & " + dest);
+
     }
     @Override
     public void addNode(int node_num)

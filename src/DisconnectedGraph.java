@@ -61,9 +61,8 @@ public class DisconnectedGraph implements IGraph
             System.out.println("vertex "+ source+ " doesn't exist. So no edge can be added");
         }
         else {
-            GraphRepresentationList[source].addFIrst(dest);
-            GraphRepresentationList[dest].addFIrst(source);
-            System.out.println("Added an edge between " + source + " & " + dest);
+            GraphMethod g =new GraphMethod(GraphRepresentationList);
+            g.addEdge(source,dest);
         }
     }
     @Override
