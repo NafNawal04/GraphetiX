@@ -1,10 +1,10 @@
 package Graph;
 
-import Utility.CustomLInkedList;
+import Utility.CustomLinkedList;
 
 public class GraphMethod {
-    public CustomLInkedList<Integer>[] GraphRepresentationList ;
-    public GraphMethod( CustomLInkedList<Integer>[] GraphRepresentationList)
+    public CustomLinkedList<Integer>[] GraphRepresentationList ;
+    public GraphMethod( CustomLinkedList<Integer>[] GraphRepresentationList)
     {
         this.GraphRepresentationList=GraphRepresentationList;
     }
@@ -25,10 +25,10 @@ public class GraphMethod {
         System.out.println("Removed the edge between " + source + " & " + dest);
 
     }
-    public CustomLInkedList<Integer>[] addNode(int node_num,int node)
+    public CustomLinkedList<Integer>[] addNode(int node_num, int node)
     {
         int num_of_new_nodes = node + node_num;
-        CustomLInkedList<Integer>[] newGraphRepresentationList = new CustomLInkedList[num_of_new_nodes];
+        CustomLinkedList<Integer>[] newGraphRepresentationList = new CustomLinkedList[num_of_new_nodes];
         for (int i = 0; i < node; i++)
         {
             newGraphRepresentationList[i] = GraphRepresentationList[i];
@@ -36,7 +36,7 @@ public class GraphMethod {
 
         for (int i = node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentationList[i] = new CustomLInkedList<>();
+            newGraphRepresentationList[i] = new CustomLinkedList<>();
         }
 
         return newGraphRepresentationList;

@@ -1,16 +1,16 @@
-import Utility.CustomLInkedList;
+import Utility.CustomLinkedList;
 import java.util.Scanner;
 public class BellmanFordShortestPath {
     public  int node;
     public int num_of_new_nodes;
-    public CustomLInkedList<int[]>[] GraphRepresentationList;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public BellmanFordShortestPath(int node)
     {
         this.node = node;
-        GraphRepresentationList = new CustomLInkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
         for (int i = 0; i < node; i++) {
-            GraphRepresentationList[i] = new CustomLInkedList<>();
+            GraphRepresentationList[i] = new CustomLinkedList<>();
         }
     }
     public void bellmanFord(int src) {

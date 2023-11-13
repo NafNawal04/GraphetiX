@@ -1,16 +1,16 @@
-import Utility.CustomLInkedList;
+import Utility.CustomLinkedList;
 public class WeightedGraph implements IGraph
 {
     public  int node;
     public int num_of_new_nodes;
-    public CustomLInkedList<int[]>[] GraphRepresentationList;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public WeightedGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new CustomLInkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
         for (int i = 0; i < node; i++) {
-            GraphRepresentationList[i] = new CustomLInkedList<>();
+            GraphRepresentationList[i] = new CustomLinkedList<>();
         }
     }
 
@@ -64,7 +64,7 @@ public class WeightedGraph implements IGraph
     public void addNode(int node_num)
     {
         num_of_new_nodes = node + node_num;
-        CustomLInkedList<int[]>[] newGraphRepresentList = new CustomLInkedList[num_of_new_nodes];
+        CustomLinkedList<int[]>[] newGraphRepresentList = new CustomLinkedList[num_of_new_nodes];
         for(int i = 0; i < node; i++)
         {
             newGraphRepresentList[i] = GraphRepresentationList[i];
@@ -72,7 +72,7 @@ public class WeightedGraph implements IGraph
 
         for (int i = node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentList[i] = new CustomLInkedList<>();
+            newGraphRepresentList[i] = new CustomLinkedList<>();
         }
 
         node = num_of_new_nodes;

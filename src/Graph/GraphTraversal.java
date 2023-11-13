@@ -1,12 +1,12 @@
 package Graph;
 
-import Utility.CustomLInkedList;
+import Utility.CustomLinkedList;
 
 public class GraphTraversal {
     int start_node;
     int node;
-    CustomLInkedList<Integer> GraphRepresentationList[];
-    public GraphTraversal( CustomLInkedList<Integer> GraphRepresentationList[], int n)
+    CustomLinkedList<Integer> GraphRepresentationList[];
+    public GraphTraversal(CustomLinkedList<Integer> GraphRepresentationList[], int n)
     {
         this.node=n;
 
@@ -16,7 +16,7 @@ public class GraphTraversal {
     {
         boolean[] visited = new boolean[node];
 
-        CustomLInkedList<Integer> queue = new CustomLInkedList<>();
+        CustomLinkedList<Integer> queue = new CustomLinkedList<>();
 
         visited[start_node] = true;
         queue.addQueue(start_node);
@@ -26,7 +26,7 @@ public class GraphTraversal {
             start_node = queue.pollQueue();
             System.out.print(start_node + " ");
 
-            CustomLInkedList<Integer> neighbors = GraphRepresentationList[start_node];
+            CustomLinkedList<Integer> neighbors = GraphRepresentationList[start_node];
             neighbors.forEach(n -> {
                 if (!visited[n])
                 {

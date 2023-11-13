@@ -6,14 +6,14 @@ public class CyclicGraph implements IGraph
 {
     public  int node;
     public int num_of_new_nodes;
-    public CustomLInkedList<Integer>[] GraphRepresentationList;
+    public CustomLinkedList<Integer>[] GraphRepresentationList;
 
     public CyclicGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new CustomLInkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
         for (int i = 0; i < node; i++) {
-            GraphRepresentationList[i] = new CustomLInkedList<>();
+            GraphRepresentationList[i] = new CustomLinkedList<>();
         }
     }
 

@@ -1,21 +1,21 @@
-import Utility.CustomLInkedList;
+import Utility.CustomLinkedList;
 import Graph.*;
 
 public class UndirectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
-    public CustomLInkedList<Integer>[] GraphRepresentationList;
+    public CustomLinkedList<Integer>[] GraphRepresentationList;
 
     public UndirectedGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new CustomLInkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
 
         int i=0;
         while(i<node)
         {
-            GraphRepresentationList[i] = new CustomLInkedList<>();
+            GraphRepresentationList[i] = new CustomLinkedList<>();
             i++;
         }
     }

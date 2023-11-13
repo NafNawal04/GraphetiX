@@ -1,6 +1,6 @@
 package Utility;
 
-public class CustomLInkedList<E>
+public class CustomLinkedList<E>
 {
     Node<E> head;
     Node<E> tail;

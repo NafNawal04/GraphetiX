@@ -1,22 +1,22 @@
 
-import Utility.CustomLInkedList;
+import Utility.CustomLinkedList;
 import Graph.*;
 
 public class ConnectedGraph implements IGraph
 {
     int node;
 
-    CustomLInkedList<Integer> deletedIndex = new CustomLInkedList<>();
+    CustomLinkedList<Integer> deletedIndex = new CustomLinkedList<>();
 
-    public CustomLInkedList<Integer> GraphRepresentationList[];
+    public CustomLinkedList<Integer> GraphRepresentationList[];
     public ConnectedGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new CustomLInkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
 
         for (int i = 0; i < node; i++)
         {
-            GraphRepresentationList[i] = new CustomLInkedList<>();
+            GraphRepresentationList[i] = new CustomLinkedList<>();
         }
         for (int i = 0; i < node-1 ; i++)
         {

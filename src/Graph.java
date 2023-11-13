@@ -1,6 +1,5 @@
 
-public class Graph
-{
+public class Graph {
     public SimpleGraph s1;
     public DirectedGraph d1;
     public UndirectedGraph u1;

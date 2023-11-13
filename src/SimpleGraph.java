@@ -7,19 +7,19 @@ public class SimpleGraph implements IGraph
 {
     public int node;
 
-    public CustomLInkedList<Integer>[] GraphRepresentationList ;
+    public CustomLinkedList<Integer>[] GraphRepresentationList ;
 
 
     public SimpleGraph(int node)
     {
 
         this.node=node;
-        GraphRepresentationList = new CustomLInkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
 
         int i=0;
         while(i<node)
         {
-            GraphRepresentationList[i] = new CustomLInkedList<>();
+            GraphRepresentationList[i] = new CustomLinkedList<>();
             i++;
         }
     }

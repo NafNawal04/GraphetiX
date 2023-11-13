@@ -6,17 +6,17 @@ public class CompleteGraph implements IGraph
 
     int node;
 
-    public CustomLInkedList<Integer> GraphRepresentationList[];
+    public CustomLinkedList<Integer> GraphRepresentationList[];
 
 
     public CompleteGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new CustomLInkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
 
         for (int i = 0; i < node; i++)
         {
-            GraphRepresentationList [i] = new CustomLInkedList<>();
+            GraphRepresentationList [i] = new CustomLinkedList<>();
         }
         for (int i = 0; i < node; i++)
         {

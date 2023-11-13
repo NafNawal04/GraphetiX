@@ -125,7 +125,7 @@ public class Main {
             System.out.println("5. Find the Breadth-First Traversal of a node");
             System.out.println("6. Find the Depth-First Traversal of a node");
             System.out.println("7. Show the Graph in Adjacency List");
-            System.out.println("6. Exit");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 

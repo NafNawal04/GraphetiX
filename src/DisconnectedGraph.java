@@ -6,16 +6,16 @@ public class DisconnectedGraph implements IGraph
 {
     int node;
 
-    CustomLInkedList<Integer> deletedIndex = new CustomLInkedList<>();
-    CustomLInkedList<Integer> GraphRepresentationList[];
+    CustomLinkedList<Integer> deletedIndex = new CustomLinkedList<>();
+    CustomLinkedList<Integer> GraphRepresentationList[];
     public DisconnectedGraph(int node)
     {
         this.node= node;
-        GraphRepresentationList = new CustomLInkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
 
         for (int i = 0; i < node; i++)
         {
-            GraphRepresentationList [i] = new CustomLInkedList<>();
+            GraphRepresentationList [i] = new CustomLinkedList<>();
         }
     }
 

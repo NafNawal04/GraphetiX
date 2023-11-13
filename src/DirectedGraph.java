@@ -1,21 +1,21 @@
-import Utility.CustomLInkedList;
+import Utility.CustomLinkedList;
 import Graph.*;
 
 public class DirectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
-    public CustomLInkedList<Integer>[] GraphRepresentationList;
+    public CustomLinkedList<Integer>[] GraphRepresentationList;
 
     public DirectedGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new CustomLInkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
 
         int i=0;
         while(i<node)
         {
-            GraphRepresentationList[i] = new CustomLInkedList<>();
+            GraphRepresentationList[i] = new CustomLinkedList<>();
             i++;
         }
     }
@@ -39,7 +39,7 @@ public class DirectedGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-        int num_of_new_nodes = node + node_num;
+        num_of_new_nodes = node + node_num;
         GraphMethod g=new GraphMethod(GraphRepresentationList);
 
 
@@ -62,7 +62,7 @@ public class DirectedGraph implements IGraph
     public void inDegree(int dest)
     {
         int count =0;
-        for (CustomLInkedList<Integer> source :GraphRepresentationList)
+        for (CustomLinkedList<Integer> source :GraphRepresentationList)
         {
             if(source.contains(dest))
             {
