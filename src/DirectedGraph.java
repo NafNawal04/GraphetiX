@@ -24,7 +24,7 @@ public class DirectedGraph implements IGraph
     public void addEdge(int source, int dest)
     {
 
-        GraphRepresentationList[source].addFIrst(dest);
+        GraphRepresentationList[source].addLast(dest);
         System.out.println("Added an edge between " + source + " & " + dest);
 
     }

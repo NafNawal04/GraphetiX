@@ -20,8 +20,8 @@ public class CompleteGraph implements IGraph
         {
             for (int j = i + 1; j < node; j++)
             {
-                GraphRepresentationList[i].addFIrst(j);
-                GraphRepresentationList[j].addFIrst(i);
+                GraphRepresentationList[i].addLast(j);
+                GraphRepresentationList[j].addLast(i);
             }
         }
 
@@ -55,7 +55,7 @@ public class CompleteGraph implements IGraph
                 {
                     for(int j=dummy;j<node;j++)
                     {
-                        GraphRepresentationList[i].addFIrst(j);
+                        GraphRepresentationList[i].addLast(j);
                     }
 
                 }
@@ -66,14 +66,14 @@ public class CompleteGraph implements IGraph
                 {
                     if (!GraphRepresentationList[k].isEmpty())
                     {
-                            GraphRepresentationList[i].addFIrst(k);
+                            GraphRepresentationList[i].addLast(k);
                     }
                 }
                 for(int l=dummy;l<node;l++)
                 {
                     if(i!=l)
                     {
-                        GraphRepresentationList[i].addFIrst(l);
+                        GraphRepresentationList[i].addLast(l);
                     }
                 }
             }

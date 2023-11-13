@@ -33,7 +33,7 @@ public class CustomLInkedList<E>
 
     }
 
-    public boolean addFIrst(E value) {
+    public boolean addLast(E value) {
         Node<E> newNode = new Node<>(value);
 
         if (head == null) {

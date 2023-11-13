@@ -10,8 +10,8 @@ public class GraphMethod {
     {
 
 
-         GraphRepresentationList[source].addFIrst(dest);
-         GraphRepresentationList[dest].addFIrst(source);
+         GraphRepresentationList[source].addLast(dest);
+         GraphRepresentationList[dest].addLast(source);
          System.out.println("Added an edge between " + source + " & " + dest);
 
 

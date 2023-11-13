@@ -29,7 +29,7 @@ public class GraphTraversal {
                 if (!visited[n])
                 {
                     visited[n] = true;
-                    queue.addFIrst(n);
+                    queue.addLast(n);
                 }
             });
 
@@ -49,7 +49,6 @@ public class GraphTraversal {
                 DFSUtil(n, visited);
             }
         });
-        System.out.print("\n");
     }
 
     public void DFS(int start_node)

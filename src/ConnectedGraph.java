@@ -21,8 +21,8 @@ public class ConnectedGraph implements IGraph
         }
         for (int i = 0; i < node-1 ; i++)
         {
-            GraphRepresentationList[i].addFIrst(i+1);
-            GraphRepresentationList[i+1].addFIrst(i);
+            GraphRepresentationList[i].addLast(i+1);
+            GraphRepresentationList[i+1].addLast(i);
         }
 
     }
@@ -61,8 +61,8 @@ public class ConnectedGraph implements IGraph
 
             for(int i= dummy-1;i<node-1;i++)
             {
-                GraphRepresentationList[i].addFIrst(i+1);
-                GraphRepresentationList[i+1].addFIrst(i);
+                GraphRepresentationList[i].addLast(i+1);
+                GraphRepresentationList[i+1].addLast(i);
             }
 
 
@@ -71,11 +71,11 @@ public class ConnectedGraph implements IGraph
     @Override
     public void removeNode(int node_num)
     {
-        deletedIndex.addFIrst(node_num);
+        deletedIndex.addLast(node_num);
         GraphMethod g=new GraphMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
-        GraphRepresentationList[node_num-1].addFIrst(node_num+1);
-        GraphRepresentationList[node_num+1].addFIrst(node_num-1);
+        GraphRepresentationList[node_num-1].addLast(node_num+1);
+        GraphRepresentationList[node_num+1].addLast(node_num-1);
         System.out.println("Removed the node "+ node_num + " from the connected graph.");
 
 

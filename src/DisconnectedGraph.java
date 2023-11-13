@@ -34,7 +34,7 @@ public class DisconnectedGraph implements IGraph
     @Override
     public void removeNode(int node_num)
     {
-        deletedIndex.addFIrst(node_num);
+        deletedIndex.addLast(node_num);
         GraphMethod g=new GraphMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the disconnected graph.");
