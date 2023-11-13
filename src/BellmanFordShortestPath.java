@@ -1,11 +1,11 @@
 import Utility.CustomLInkedList;
 import java.util.Scanner;
-public class bellmanfordshortestpath {
+public class BellmanFordShortestPath {
     public  int node;
     public int num_of_new_nodes;
     public CustomLInkedList<int[]>[] GraphRepresentationList;
 
-    public bellmanfordshortestpath(int node)
+    public BellmanFordShortestPath(int node)
     {
         this.node = node;
         GraphRepresentationList = new CustomLInkedList[node];
@@ -55,7 +55,7 @@ public class bellmanfordshortestpath {
         System.out.print("Enter the number of vertices: ");
         int V = scanner.nextInt();
 
-        bellmanfordshortestpath graph = new bellmanfordshortestpath(V);
+        BellmanFordShortestPath graph = new BellmanFordShortestPath(V);
 
         // ... add edges ...
 
