@@ -1,24 +1,24 @@
 import java.util.*;
 
 
-public class Shortestpath {
+public class DijkstraShortestPath {
     
-    private int node;
-    private LinkedList<int[]>[] adjacencyList;
+    public int node;
+    public LinkedList<int[]>[] GraphRepresentationList;
 
-    public Shortestpath(int node) {
+    public DijkstraShortestPath(int node) {
         this.node = node;
-        adjacencyList = new LinkedList[node];
+        GraphRepresentationList = new LinkedList[node];
         for (int i = 0; i < node; i++) {
-            adjacencyList[i] = new LinkedList<>();
+            GraphRepresentationList[i] = new LinkedList<>();
         }
     }
 
     public void addWeightedEdge(int source, int destination, int weight) {
         int[] edge = { destination, weight };
         int[] edge2 = { source, weight };
-        adjacencyList[source].add(edge);
-        adjacencyList[destination].add(edge2);
+        GraphRepresentationList[source].add(edge);
+        GraphRepresentationList[destination].add(edge2);
     }
 
     public List<Integer> findShortestPath(int source, int destination) {
@@ -28,8 +28,6 @@ public class Shortestpath {
         for (int i = 0; i < dist.length; i++) {
             dist[i] = Integer.MAX_VALUE;
         }
-//        Arrays.fill(dist, Integer.MAX_VALUE);
-//        dist[source] = 0;
 
         PriorityQueue<int[]> minHeap = new PriorityQueue<>(Comparator.comparingInt(e -> e[1]));
         minHeap.add(new int[]{source, 0});
@@ -42,7 +40,7 @@ public class Shortestpath {
                 continue;
             }
 
-            for (int[] neighbor : adjacencyList[u]) {
+            for (int[] neighbor : GraphRepresentationList[u]) {
                 int v = neighbor[0];
                 int alt = dist[u] + neighbor[1];
                 if (alt < dist[v]) {
@@ -68,7 +66,7 @@ public class Shortestpath {
     public static void main(String[] args) {
         int V = 6; // Number of vertices
         Scanner scanner = new Scanner(System.in);
-        Shortestpath graph = new Shortestpath(V);
+        DijkstraShortestPath graph = new DijkstraShortestPath(V);
 
 
         graph.addWeightedEdge(0, 1, 1);
