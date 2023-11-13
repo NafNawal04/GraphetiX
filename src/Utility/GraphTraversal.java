@@ -36,4 +36,25 @@ public class GraphTraversal {
         }
         System.out.print("\n");
     }
+
+    void DFSUtil(int start_node, boolean[] visited)
+    {
+
+        visited[start_node] = true;
+        System.out.print(start_node + " ");
+
+
+        GraphRepresentationList[start_node].forEach(n -> {
+            if (!visited[n]) {
+                DFSUtil(n, visited);
+            }
+        });
+    }
+
+    void DFS(int start_node)
+    {
+        boolean[] visited = new boolean[node];
+        DFSUtil(start_node, visited);
+    }
+
 }
