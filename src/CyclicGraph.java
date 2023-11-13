@@ -47,11 +47,8 @@ public class CyclicGraph implements IGraph
     @Override
     public void removeNode(int node_num)
     {
-        GraphRepresentationList[node_num].clear();
-        for (int i=0;i<node;i++)
-        {
-            GraphRepresentationList[i].removeValue(node_num);
-        }
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the cyclic graph.");
 
     }

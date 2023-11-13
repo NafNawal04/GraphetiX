@@ -41,4 +41,10 @@ public class GraphMethod {
 
 
     }
+    public void removeNode(int node_num,int node) {
+        GraphRepresentationList[node_num].clear();
+        for (int i = 0; i < node; i++) {
+            GraphRepresentationList[i].removeValue(node_num);
+        }
+    }
 }
