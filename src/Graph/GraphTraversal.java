@@ -1,16 +1,18 @@
-package Utility;
+package Graph;
+
+import Utility.CustomLInkedList;
 
 public class GraphTraversal {
     int start_node;
     int node;
     CustomLInkedList<Integer> GraphRepresentationList[];
-    public GraphTraversal(int i, CustomLInkedList<Integer> GraphRepresentationList[], int n)
+    public GraphTraversal( CustomLInkedList<Integer> GraphRepresentationList[], int n)
     {
         this.node=n;
-        this.start_node=i;
+
         this.GraphRepresentationList= GraphRepresentationList;
     }
-   public void bfs()
+   public void bfs(int start_node)
     {
         boolean[] visited = new boolean[node];
 
@@ -29,7 +31,7 @@ public class GraphTraversal {
                 if (!visited[n])
                 {
                     visited[n] = true;
-                    queue.addFIrst(n);
+                    queue.addLast(n);
                 }
             });
 
@@ -51,7 +53,7 @@ public class GraphTraversal {
         });
     }
 
-    void DFS(int start_node)
+    public void DFS(int start_node)
     {
         boolean[] visited = new boolean[node];
         DFSUtil(start_node, visited);

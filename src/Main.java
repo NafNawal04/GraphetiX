@@ -123,8 +123,9 @@ public class Main {
             System.out.println("3. Remove edge between two nodes");
             System.out.println("4. Remove a specific node from the graph");
             System.out.println("5. Find the Breadth-First Traversal of a node");
-            System.out.println("6. Show the Graph in Adjacency List");
-            System.out.println("7. Exit");
+            System.out.println("6. Find the Depth-First Traversal of a node");
+            System.out.println("7. Show the Graph in Adjacency List");
+            System.out.println("6. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -164,10 +165,16 @@ public class Main {
                     System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
                     s1.getSimple().bfs(start_node);
                     break;
-                case 6:
+                case 7:
                     s1.getSimple().GraphRepresentation();
                     break;
-                case 7:
+                case 6:
+                    System.out.print("Enter the start node of the Depth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                    s1.getSimple().dfs(start_node);
+                    break;
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -188,10 +195,11 @@ public class Main {
             System.out.println("3. Remove edge between two nodes");
             System.out.println("4. Remove a specific node from the graph");
             System.out.println("5. Find the Breadth-First Traversal of a node");
-            System.out.println("6. Show the Graph in Adjacency List");
-            System.out.println("7. Find the in degree of a node");
-            System.out.println("8. Find the out degree of a node");
-            System.out.println("9. Exit");
+            System.out.println("6. Find the depth-First Traversal of a node");
+            System.out.println("7. Show the Graph in Adjacency List");
+            System.out.println("8. Find the in degree of a node");
+            System.out.println("9. Find the out degree of a node");
+            System.out.println("10. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -232,19 +240,25 @@ public class Main {
                     s1.getDirected().bfs(start_node);
                     break;
                 case 6:
-                    s1.getDirected().GraphRepresentation();
+                    System.out.print("Enter the start node of the Depth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                    s1.getDirected().dfs(start_node);
                     break;
                 case 7:
+                    s1.getDirected().GraphRepresentation();
+                    break;
+                case 8:
                     System.out.print("Enter the node for finding in degree: ");
                     dest = scanner.nextInt();
                     s1.getDirected().inDegree(dest);
                     break;
-                case 8:
+                case 9:
                     System.out.print("Enter the node for finding out degree: ");
                     source = scanner.nextInt();
                     s1.getDirected().outDegree(source);
                     break;
-                case 9:
+                case 10:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -265,9 +279,10 @@ public class Main {
             System.out.println("3. Remove edge between two nodes");
             System.out.println("4. Remove a specific node from the graph");
             System.out.println("5. Find the Breadth-First Traversal of a node");
-            System.out.println("6. Show the Graph in Adjacency List");
-            System.out.println("7. Convert an edge from undirected to directed");
-            System.out.println("8. Exit");
+            System.out.println("6. Find the Depth-First Traversal of a node");
+            System.out.println("7. Show the Graph in Adjacency List");
+            System.out.println("8. Convert an edge from undirected to directed");
+            System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -308,16 +323,22 @@ public class Main {
                     s1.getUndirected().bfs(start_node);
                     break;
                 case 6:
-                    s1.getUndirected().GraphRepresentation();
+                    System.out.print("Enter the start node of the Depth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                    s1.getUndirected().dfs(start_node);
                     break;
                 case 7:
+                    s1.getUndirected().GraphRepresentation();
+                    break;
+                case 8:
                     System.out.print("Enter the source node: ");
                     source = scanner.nextInt();
                     System.out.print("Enter the destination node: ");
                     dest = scanner.nextInt();
                     s1.getUndirected().convertToDirected(source,dest);
                     break;
-                case 8:
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -338,8 +359,9 @@ public class Main {
             System.out.println("3. Remove edge between two nodes");
             System.out.println("4. Remove a specific node from the graph");
             System.out.println("5. Find the Breadth-First Traversal of a node");
-            System.out.println("6. Show the Graph in Adjacency List");
-            System.out.println("7. Exit");
+            System.out.println("6. Find the Depth-First Traversal of a node");
+            System.out.println("7. Show the Graph in Adjacency List");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -380,9 +402,15 @@ public class Main {
                     s1.getConnectedG().bfs(start_node);
                     break;
                 case 6:
-                    s1.getConnectedG().GraphRepresentation();
+                    System.out.print("Enter the start node of the Depth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                    s1.getConnectedG().dfs(start_node);
                     break;
                 case 7:
+                    s1.getConnectedG().GraphRepresentation();
+                    break;
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -403,8 +431,9 @@ public class Main {
             System.out.println("3. Remove edge between two nodes");
             System.out.println("4. Remove a specific node from the graph");
             System.out.println("5. Find the Breadth-First Traversal of a node");
-            System.out.println("6. Show the Graph in Adjacency List");
-            System.out.println("7. Exit");
+            System.out.println("6. Find the Depth-First Traversal of a node");
+            System.out.println("7. Show the Graph in Adjacency List");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -445,9 +474,15 @@ public class Main {
                     s1.getDisconnected().bfs(start_node);
                     break;
                 case 6:
-                    s1.getDisconnected().GraphRepresentation();
+                    System.out.print("Enter the start node of the Depth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                    s1.getDisconnected().dfs(start_node);
                     break;
                 case 7:
+                    s1.getDisconnected().GraphRepresentation();
+                    break;
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -467,8 +502,9 @@ public class Main {
             System.out.println("1. Add any number of nodes to the graph");
             System.out.println("2. Remove a specific node from the graph");
             System.out.println("3. Find the Breadth-First Traversal of a node");
-            System.out.println("4. Show the Graph in Adjacency List");
-            System.out.println("5. Exit");
+            System.out.println("4. Find the depth-First Traversal of a node");
+            System.out.println("5. Show the Graph in Adjacency List");
+            System.out.println("6. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -491,6 +527,12 @@ public class Main {
                     start_node = scanner.nextInt();
                     System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
                     s1.getComplete().bfs(start_node);
+                    break;
+                case 6:
+                    System.out.print("Enter the start node of the Depth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                    s1.getComplete().dfs(start_node);
                     break;
                 case 4:
                     s1.getComplete().GraphRepresentation();
@@ -580,7 +622,8 @@ public class Main {
             System.out.println("5. Convert the Acyclic graph into Cyclic");
             System.out.println("6. Show the Graph in Adjacency List");
             System.out.println("7. Find the Breadth-First Traversal of a node");
-            System.out.println("8. Exit");
+            System.out.println("8. Find the depth-First Traversal of a node");
+            System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -627,6 +670,12 @@ public class Main {
                     s1.getAcyclic().bfs(start_node);
                     break;
                 case 8:
+                    System.out.print("Enter the start node of the Depth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                    s1.getAcyclic().dfs(start_node);
+                    break;
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -647,7 +696,8 @@ public class Main {
             System.out.println("4. Remove a specific node from the graph");
             System.out.println("5. Show the Graph in Adjacency List");
             System.out.println("6. Find the Breadth-First Traversal of a node");
-            System.out.println("7. Exit");
+            System.out.println("7. Find the depth-First Traversal of a node");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -691,6 +741,12 @@ public class Main {
                     s1.getCyclic().bfs(start_node);
                     break;
                 case 7:
+                    System.out.print("Enter the start node of the Depth First Traversal: ");
+                    start_node = scanner.nextInt();
+                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                    s1.getCyclic().dfs(start_node);
+                    break;
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");

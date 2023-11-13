@@ -1,5 +1,6 @@
 
 import Utility.*;
+import Graph.*;
 
 public class AcyclicGraph implements IGraph
 {
@@ -39,20 +40,12 @@ public class AcyclicGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-        num_of_new_nodes = node + node_num;
-        CustomLInkedList<Integer>[] newGraphRepresentList = new CustomLInkedList[num_of_new_nodes];
-        for (int i = 0; i < node; i++)
-        {
-            newGraphRepresentList[i] = GraphRepresentationList[i];
-        }
+        int num_of_new_nodes = node + node_num;
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
 
-        for (int i = node; i < num_of_new_nodes; i++)
-        {
-            newGraphRepresentList[i] = new CustomLInkedList<>();
-        }
 
+        GraphRepresentationList = g.addNode(node_num,node);
         node = num_of_new_nodes;
-        GraphRepresentationList = newGraphRepresentList;
         System.out.println("Added "+ node_num+ " number of nodes in the Acyclic Graph.");
     }
 
@@ -60,11 +53,8 @@ public class AcyclicGraph implements IGraph
     @Override
     public void removeNode(int node_num)
     {
-        GraphRepresentationList[node_num].clear();
-        for (int i=0;i<node;i++)
-        {
-            GraphRepresentationList[i].removeValue(node_num);
-        }
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the acyclic graph.");
 
     }
@@ -131,17 +121,21 @@ public class AcyclicGraph implements IGraph
     @Override
     public void GraphRepresentation()
     {
-        System.out.println("List Representation for Simple graph:");
-        for (int i = 0; i < node; i++)
-        {
-            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
-        }
+        System.out.println("List Representation for Acyclic graph:");
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.GraphRepresentation(node);
     }
 
-    void bfs(int start_node)
+    public void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(start_node,GraphRepresentationList,node);
-        graphTraversal.bfs();
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.bfs(start_node);
+
+    }
+    public void dfs(int start_node)
+    {
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.DFS(start_node);
 
     }
 

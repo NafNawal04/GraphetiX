@@ -1,5 +1,5 @@
 import Utility.CustomLInkedList;
-import Utility.GraphTraversal;
+import Graph.*;
 
 public class DirectedGraph implements IGraph
 {
@@ -23,7 +23,7 @@ public class DirectedGraph implements IGraph
     public void addEdge(int source, int dest)
     {
 
-        GraphRepresentationList[source].addFIrst(dest);
+        GraphRepresentationList[source].addLast(dest);
         System.out.println("Added an edge between " + source + " & " + dest);
 
     }
@@ -39,32 +39,20 @@ public class DirectedGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-        num_of_new_nodes = node + node_num;
-        CustomLInkedList<Integer>[] newGraphRepresentationList = new CustomLInkedList[num_of_new_nodes];
+        int num_of_new_nodes = node + node_num;
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
 
-        for (int i = 0; i < node; i++)
-        {
-            newGraphRepresentationList[i] = GraphRepresentationList[i];
-        }
 
-        for (int i = node; i < num_of_new_nodes; i++)
-        {
-            newGraphRepresentationList[i] = new CustomLInkedList<>();
-        }
-
+        GraphRepresentationList = g.addNode(node_num,node);
         node = num_of_new_nodes;
-        GraphRepresentationList = newGraphRepresentationList;
 
         System.out.println("Added "+ node_num+ " number of nodes in the Directed Graph.");
     }
     @Override
     public void removeNode(int node_num)
     {
-        GraphRepresentationList[node_num].clear();
-        for (int i=0;i<node;i++)
-        {
-            GraphRepresentationList[i].removeValue((node_num));
-        }
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the simple graph.");
 
     }
@@ -96,17 +84,21 @@ public class DirectedGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for directed graph:");
-        for (int i = 0; i < GraphRepresentationList.length; i++)
-        {
-            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
-        }
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.GraphRepresentation(node);
     }
 
 
     void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(start_node,GraphRepresentationList,node);
-        graphTraversal.bfs();
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.bfs(start_node);
+
+    }
+    public void dfs(int start_node)
+    {
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.DFS(start_node);
 
     }
 }

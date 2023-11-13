@@ -1,12 +1,11 @@
 
 import Utility.CustomLInkedList;
-import Utility.GraphMethod;
-import Utility.GraphTraversal;
+import Graph.*;
 
 public class ConnectedGraph implements IGraph
 {
     int node;
-    int num_of_new_nodes;
+
     CustomLInkedList<Integer> deletedIndex = new CustomLInkedList<>();
 
     public CustomLInkedList<Integer> GraphRepresentationList[];
@@ -21,8 +20,8 @@ public class ConnectedGraph implements IGraph
         }
         for (int i = 0; i < node-1 ; i++)
         {
-            GraphRepresentationList[i].addFIrst(i+1);
-            GraphRepresentationList[i+1].addFIrst(i);
+            GraphRepresentationList[i].addLast(i+1);
+            GraphRepresentationList[i+1].addLast(i);
         }
 
     }
@@ -51,27 +50,18 @@ public class ConnectedGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-            int dummy = node;
-            num_of_new_nodes =  node + node_num;
-            CustomLInkedList<Integer>[] newGraphRepresentList = new CustomLInkedList[num_of_new_nodes];
+        int dummy = node;
+        int num_of_new_nodes = node + node_num;
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
 
-            for(int i = 0; i < node; i++)
-            {
-                newGraphRepresentList[i] = GraphRepresentationList[i];
-            }
 
-            for (int i = node; i < num_of_new_nodes; i++)
-            {
-                newGraphRepresentList[i] = new CustomLInkedList<>();
-            }
-
-            node = num_of_new_nodes;
-            GraphRepresentationList = newGraphRepresentList;
+        GraphRepresentationList = g.addNode(node_num,node);
+        node = num_of_new_nodes;
 
             for(int i= dummy-1;i<node-1;i++)
             {
-                GraphRepresentationList[i].addFIrst(i+1);
-                GraphRepresentationList[i+1].addFIrst(i);
+                GraphRepresentationList[i].addLast(i+1);
+                GraphRepresentationList[i+1].addLast(i);
             }
 
 
@@ -80,16 +70,11 @@ public class ConnectedGraph implements IGraph
     @Override
     public void removeNode(int node_num)
     {
-        deletedIndex.addFIrst(node_num);
-
-        GraphRepresentationList[node_num].clear();
-
-        for (int i=0;i<node;i++)
-        {
-            GraphRepresentationList[i].removeValue(node_num);
-        }
-        GraphRepresentationList[node_num-1].addFIrst(node_num+1);
-        GraphRepresentationList[node_num+1].addFIrst(node_num-1);
+        deletedIndex.addLast(node_num);
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.removeNode(node_num,node);
+        GraphRepresentationList[node_num-1].addLast(node_num+1);
+        GraphRepresentationList[node_num+1].addLast(node_num-1);
         System.out.println("Removed the node "+ node_num + " from the connected graph.");
 
 
@@ -98,18 +83,21 @@ public class ConnectedGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for Connected graph:");
-        for (int i = 0; i < GraphRepresentationList.length; i++)
-        {
-
-            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
-        }
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.GraphRepresentation(node);
 
     }
 
     void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(start_node,GraphRepresentationList,node);
-        graphTraversal.bfs();
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.bfs(start_node);
+
+    }
+    public void dfs(int start_node)
+    {
+        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        graphTraversal.DFS(start_node);
 
     }
 
