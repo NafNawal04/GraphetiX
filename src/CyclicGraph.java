@@ -26,9 +26,9 @@ public class CyclicGraph implements IGraph
     @Override
     public void removeEdge(int source,int dest)
     {
-        GraphRepresentationList[source].removeValue(dest);
-        GraphRepresentationList[dest].removeValue(source);
-        System.out.println("Removed the edge between " + source + " & " + dest);
+        GraphMethod g =new GraphMethod(GraphRepresentationList);
+        g.removeEdge(source, dest);
+
     }
 
     @Override

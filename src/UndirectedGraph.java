@@ -61,13 +61,15 @@ public class UndirectedGraph implements IGraph
         if(source == dest)
         {
             GraphRepresentationList[source].removeValue(dest);
+            System.out.println("Removed the edge between " + source + " & " + dest);
         }
         else
         {
-            GraphRepresentationList[dest].removeValue(source);
-            GraphRepresentationList[source].removeValue(dest);
+            GraphMethod g =new GraphMethod(GraphRepresentationList);
+            g.removeEdge(source, dest);
+
         }
-        System.out.println("Removed the edge between " + source + " & " + dest);
+
     }
     @Override
     public void removeNode(int node_num)
