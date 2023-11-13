@@ -1,10 +1,10 @@
-package libraryFunctions;
+package Utility;
 
 public class GraphTraversal {
     int start_node;
     int node;
-    Glist<Integer> GraphRepresentationList[];
-    public GraphTraversal(int i,Glist<Integer> GraphRepresentationList[],int n)
+    CustomLInkedList<Integer> GraphRepresentationList[];
+    public GraphTraversal(int i, CustomLInkedList<Integer> GraphRepresentationList[], int n)
     {
         this.node=n;
         this.start_node=i;
@@ -14,7 +14,7 @@ public class GraphTraversal {
     {
         boolean[] visited = new boolean[node];
 
-        Glist<Integer> queue = new Glist<>();
+        CustomLInkedList<Integer> queue = new CustomLInkedList<>();
 
         visited[start_node] = true;
         queue.addQueue(start_node);
@@ -24,12 +24,12 @@ public class GraphTraversal {
             start_node = queue.pollQueue();
             System.out.print(start_node + " ");
 
-            Glist<Integer> neighbors = GraphRepresentationList[start_node];
+            CustomLInkedList<Integer> neighbors = GraphRepresentationList[start_node];
             neighbors.forEach(n -> {
                 if (!visited[n])
                 {
                     visited[n] = true;
-                    queue.add(n);
+                    queue.addFIrst(n);
                 }
             });
 

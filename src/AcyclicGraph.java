@@ -1,27 +1,27 @@
 
-import libraryFunctions.*;
+import Utility.*;
 
 public class AcyclicGraph implements IGraph
 {
     public  int node;
     public int num_of_new_nodes;
-    public Glist<Integer>[] GraphRepresentationList ;
+    public CustomLInkedList<Integer>[] GraphRepresentationList ;
 
     public AcyclicGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new Glist[node];
+        GraphRepresentationList = new CustomLInkedList[node];
         for (int i = 0; i < node; i++)
         {
-            GraphRepresentationList[i] = new Glist<>();
+            GraphRepresentationList[i] = new CustomLInkedList<>();
         }
     }
 
     @Override
     public void addEdge(int source, int dest)
     {
-        GraphRepresentationList[source].add(dest);
-        GraphRepresentationList[dest].add(source);
+        GraphRepresentationList[source].addFIrst(dest);
+        GraphRepresentationList[dest].addFIrst(source);
         System.out.println("Added an edge between " + source + " & " + dest);
     }
 
@@ -41,7 +41,7 @@ public class AcyclicGraph implements IGraph
     public void addNode(int node_num)
     {
         num_of_new_nodes = node + node_num;
-        Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
+        CustomLInkedList<Integer>[] newGraphRepresentList = new CustomLInkedList[num_of_new_nodes];
         for (int i = 0; i < node; i++)
         {
             newGraphRepresentList[i] = GraphRepresentationList[i];
@@ -49,7 +49,7 @@ public class AcyclicGraph implements IGraph
 
         for (int i = node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentList[i] = new Glist<>();
+            newGraphRepresentList[i] = new CustomLInkedList<>();
         }
 
         node = num_of_new_nodes;

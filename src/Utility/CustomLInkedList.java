@@ -1,6 +1,6 @@
-package libraryFunctions;
+package Utility;
 
-public class Glist <E>
+public class CustomLInkedList<E>
 {
     Node<E> head;
     Node<E> tail;
@@ -33,7 +33,7 @@ public class Glist <E>
 
     }
 
-    public boolean add(E value) {
+    public boolean addFIrst(E value) {
         Node<E> newNode = new Node<>(value);
 
         if (head == null) {

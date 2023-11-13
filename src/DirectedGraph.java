@@ -1,21 +1,21 @@
-import libraryFunctions.Glist;
-import libraryFunctions.GraphTraversal;
+import Utility.CustomLInkedList;
+import Utility.GraphTraversal;
 
 public class DirectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
-    public Glist<Integer>[] GraphRepresentationList;
+    public CustomLInkedList<Integer>[] GraphRepresentationList;
 
     public DirectedGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new Glist[node];
+        GraphRepresentationList = new CustomLInkedList[node];
 
         int i=0;
         while(i<node)
         {
-            GraphRepresentationList[i] = new Glist<>();
+            GraphRepresentationList[i] = new CustomLInkedList<>();
             i++;
         }
     }
@@ -23,7 +23,7 @@ public class DirectedGraph implements IGraph
     public void addEdge(int source, int dest)
     {
 
-        GraphRepresentationList[source].add(dest);
+        GraphRepresentationList[source].addFIrst(dest);
         System.out.println("Added an edge between " + source + " & " + dest);
 
     }
@@ -40,7 +40,7 @@ public class DirectedGraph implements IGraph
     public void addNode(int node_num)
     {
         num_of_new_nodes = node + node_num;
-        Glist<Integer>[] newGraphRepresentationList = new Glist[num_of_new_nodes];
+        CustomLInkedList<Integer>[] newGraphRepresentationList = new CustomLInkedList[num_of_new_nodes];
 
         for (int i = 0; i < node; i++)
         {
@@ -49,7 +49,7 @@ public class DirectedGraph implements IGraph
 
         for (int i = node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentationList[i] = new Glist<>();
+            newGraphRepresentationList[i] = new CustomLInkedList<>();
         }
 
         node = num_of_new_nodes;
@@ -74,7 +74,7 @@ public class DirectedGraph implements IGraph
     public void inDegree(int dest)
     {
         int count =0;
-        for (Glist<Integer> source :GraphRepresentationList)
+        for (CustomLInkedList<Integer> source :GraphRepresentationList)
         {
             if(source.contains(dest))
             {

@@ -1,4 +1,4 @@
-package libraryFunctions;
+package Utility;
 
 class Node <E> {
     public E data;

@@ -1,19 +1,19 @@
-import libraryFunctions.*;
+import Utility.*;
 
 public class DisconnectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
-    Glist<Integer> deletedIndex = new Glist<>();
-    Glist<Integer> GraphRepresentationList[];
+    CustomLInkedList<Integer> deletedIndex = new CustomLInkedList<>();
+    CustomLInkedList<Integer> GraphRepresentationList[];
     public DisconnectedGraph(int node)
     {
         this.node= node;
-        GraphRepresentationList = new Glist[node];
+        GraphRepresentationList = new CustomLInkedList[node];
 
         for (int i = 0; i < node; i++)
         {
-            GraphRepresentationList [i] = new Glist<>();
+            GraphRepresentationList [i] = new CustomLInkedList<>();
         }
     }
 
@@ -23,7 +23,7 @@ public class DisconnectedGraph implements IGraph
     {
 
         num_of_new_nodes =  node+ node_num;
-        Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
+        CustomLInkedList<Integer>[] newGraphRepresentList = new CustomLInkedList[num_of_new_nodes];
 
         for (int i = 0; i < node; i++)
         {
@@ -32,7 +32,7 @@ public class DisconnectedGraph implements IGraph
 
         for (int i =node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentList[i] = new Glist<>();
+            newGraphRepresentList[i] = new CustomLInkedList<>();
         }
 
         node = num_of_new_nodes;
@@ -43,7 +43,7 @@ public class DisconnectedGraph implements IGraph
     @Override
     public void removeNode(int node_num)
     {
-        deletedIndex.add(node_num);
+        deletedIndex.addFIrst(node_num);
         GraphRepresentationList[node_num].clear();
 
         for (int i=0;i<node;i++)
@@ -61,8 +61,8 @@ public class DisconnectedGraph implements IGraph
             System.out.println("vertex "+ source+ " doesn't exist. So no edge can be added");
         }
         else {
-            GraphRepresentationList[source].add(dest);
-            GraphRepresentationList[dest].add(source);
+            GraphRepresentationList[source].addFIrst(dest);
+            GraphRepresentationList[dest].addFIrst(source);
             System.out.println("Added an edge between " + source + " & " + dest);
         }
     }

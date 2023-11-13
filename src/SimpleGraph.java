@@ -1,22 +1,22 @@
 
-import libraryFunctions.*;
+import Utility.*;
 
 public class SimpleGraph implements IGraph
 {
     public int node;
     public int num_of_new_nodes;
-    public Glist<Integer>[] GraphRepresentationList ;
+    public CustomLInkedList<Integer>[] GraphRepresentationList ;
 
     public SimpleGraph(int node)
     {
 
         this.node=node;
-        GraphRepresentationList = new Glist[node];
+        GraphRepresentationList = new CustomLInkedList[node];
 
         int i=0;
         while(i<node)
         {
-            GraphRepresentationList[i] = new Glist<>();
+            GraphRepresentationList[i] = new CustomLInkedList<>();
             i++;
         }
     }
@@ -39,8 +39,8 @@ public class SimpleGraph implements IGraph
 
             else
             {
-                GraphRepresentationList[source].add(dest);
-                GraphRepresentationList[dest].add(source);
+                GraphRepresentationList[source].addFIrst(dest);
+                GraphRepresentationList[dest].addFIrst(source);
                 System.out.println("Added an edge between " + source + " & " + dest);
             }
         }
@@ -60,7 +60,7 @@ public class SimpleGraph implements IGraph
     public void addNode(int node_num)
     {
         num_of_new_nodes = node + node_num;
-        Glist<Integer>[] newGraphRepresentationList = new Glist[num_of_new_nodes];
+        CustomLInkedList<Integer>[] newGraphRepresentationList = new CustomLInkedList[num_of_new_nodes];
         for (int i = 0; i < node; i++)
         {
             newGraphRepresentationList[i] = GraphRepresentationList[i];
@@ -68,7 +68,7 @@ public class SimpleGraph implements IGraph
 
         for (int i = node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentationList[i] = new Glist<>();
+            newGraphRepresentationList[i] = new CustomLInkedList<>();
         }
 
         node = num_of_new_nodes;

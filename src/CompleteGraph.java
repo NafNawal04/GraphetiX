@@ -1,27 +1,27 @@
-import libraryFunctions.*;
+import Utility.*;
 public class CompleteGraph implements IGraph
 {
 
     int node;
     int num_of_new_nodes;
-    public Glist<Integer> GraphRepresentationList[];
+    public CustomLInkedList<Integer> GraphRepresentationList[];
 
 
     public CompleteGraph(int node)
     {
         this.node = node;
-        GraphRepresentationList = new Glist[node];
+        GraphRepresentationList = new CustomLInkedList[node];
 
         for (int i = 0; i < node; i++)
         {
-            GraphRepresentationList [i] = new Glist<>();
+            GraphRepresentationList [i] = new CustomLInkedList<>();
         }
         for (int i = 0; i < node; i++)
         {
             for (int j = i + 1; j < node; j++)
             {
-                GraphRepresentationList[i].add(j);
-                GraphRepresentationList[j].add(i);
+                GraphRepresentationList[i].addFIrst(j);
+                GraphRepresentationList[j].addFIrst(i);
             }
         }
 
@@ -41,14 +41,14 @@ public class CompleteGraph implements IGraph
     {
         int dummy = node;
         num_of_new_nodes =  node + node_num;
-        Glist<Integer>[] newGraphRepresentList = new Glist[num_of_new_nodes];
+        CustomLInkedList<Integer>[] newGraphRepresentList = new CustomLInkedList[num_of_new_nodes];
         for(int i = 0; i < node; i++)
         {
             newGraphRepresentList[i] = GraphRepresentationList[i];
         }
         for (int i = node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentList[i] = new Glist<>();
+            newGraphRepresentList[i] = new CustomLInkedList<>();
         }
 
         node = num_of_new_nodes;
@@ -62,7 +62,7 @@ public class CompleteGraph implements IGraph
                 {
                     for(int j=dummy;j<node;j++)
                     {
-                        GraphRepresentationList[i].add(j);
+                        GraphRepresentationList[i].addFIrst(j);
                     }
 
                 }
@@ -73,14 +73,14 @@ public class CompleteGraph implements IGraph
                 {
                     if (!GraphRepresentationList[k].isEmpty())
                     {
-                            GraphRepresentationList[i].add(k);
+                            GraphRepresentationList[i].addFIrst(k);
                     }
                 }
                 for(int l=dummy;l<node;l++)
                 {
                     if(i!=l)
                     {
-                        GraphRepresentationList[i].add(l);
+                        GraphRepresentationList[i].addFIrst(l);
                     }
                 }
             }
