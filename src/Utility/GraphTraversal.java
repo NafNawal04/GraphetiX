@@ -49,6 +49,7 @@ public class GraphTraversal {
                 DFSUtil(n, visited);
             }
         });
+        System.out.print("\n");
     }
 
     public void DFS(int start_node)
