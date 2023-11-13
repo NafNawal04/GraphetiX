@@ -51,22 +51,13 @@ public class ConnectedGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-            int dummy = node;
-            num_of_new_nodes =  node + node_num;
-            CustomLInkedList<Integer>[] newGraphRepresentList = new CustomLInkedList[num_of_new_nodes];
+        int dummy = node;
+        int num_of_new_nodes = node + node_num;
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
 
-            for(int i = 0; i < node; i++)
-            {
-                newGraphRepresentList[i] = GraphRepresentationList[i];
-            }
 
-            for (int i = node; i < num_of_new_nodes; i++)
-            {
-                newGraphRepresentList[i] = new CustomLInkedList<>();
-            }
-
-            node = num_of_new_nodes;
-            GraphRepresentationList = newGraphRepresentList;
+        GraphRepresentationList = g.addNode(node_num,node);
+        node = num_of_new_nodes;
 
             for(int i= dummy-1;i<node-1;i++)
             {

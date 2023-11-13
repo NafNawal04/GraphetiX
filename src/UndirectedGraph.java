@@ -38,21 +38,12 @@ public class UndirectedGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-        num_of_new_nodes = node + node_num;
-        CustomLInkedList<Integer>[] newGraphRepresentationList = new CustomLInkedList[num_of_new_nodes];
+        int num_of_new_nodes = node + node_num;
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
 
-        for (int i = 0; i < node; i++)
-        {
-            newGraphRepresentationList[i] = GraphRepresentationList[i];
-        }
 
-        for (int i = node; i < num_of_new_nodes; i++)
-        {
-            newGraphRepresentationList[i] = new CustomLInkedList<>();
-        }
-
+        GraphRepresentationList = g.addNode(node_num,node);
         node = num_of_new_nodes;
-        GraphRepresentationList = newGraphRepresentationList;
         System.out.println("Added "+ node_num+ " number of nodes in the Undirected Graph.");
     }
     @Override

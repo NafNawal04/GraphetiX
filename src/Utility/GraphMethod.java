@@ -23,4 +23,22 @@ public class GraphMethod {
         System.out.println("Removed the edge between " + source + " & " + dest);
 
     }
+    public CustomLInkedList<Integer>[] addNode(int node_num,int node)
+    {
+        int num_of_new_nodes = node + node_num;
+        CustomLInkedList<Integer>[] newGraphRepresentationList = new CustomLInkedList[num_of_new_nodes];
+        for (int i = 0; i < node; i++)
+        {
+            newGraphRepresentationList[i] = GraphRepresentationList[i];
+        }
+
+        for (int i = node; i < num_of_new_nodes; i++)
+        {
+            newGraphRepresentationList[i] = new CustomLInkedList<>();
+        }
+
+        return newGraphRepresentationList;
+
+
+    }
 }
