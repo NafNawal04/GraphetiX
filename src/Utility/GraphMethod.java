@@ -47,4 +47,21 @@ public class GraphMethod {
             GraphRepresentationList[i].removeValue(node_num);
         }
     }
+    public void GraphRepresentation(int node)
+    {
+
+
+        for (int i = 0; i < node; i++)
+        {
+            if(!GraphRepresentationList[i].isEmpty())
+            {
+                System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
+            }
+            else
+            {
+                System.out.println("Vertex " + i + " is connected to: Empty List");
+            }
+        }
+
+    }
 }

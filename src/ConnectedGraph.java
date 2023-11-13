@@ -84,11 +84,8 @@ public class ConnectedGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for Connected graph:");
-        for (int i = 0; i < GraphRepresentationList.length; i++)
-        {
-
-            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
-        }
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.GraphRepresentation(node);
 
     }
 

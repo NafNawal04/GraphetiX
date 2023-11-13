@@ -120,11 +120,9 @@ public class AcyclicGraph implements IGraph
     @Override
     public void GraphRepresentation()
     {
-        System.out.println("List Representation for Simple graph:");
-        for (int i = 0; i < node; i++)
-        {
-            System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
-        }
+        System.out.println("List Representation for Acyclic graph:");
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.GraphRepresentation(node);
     }
 
     void bfs(int start_node)

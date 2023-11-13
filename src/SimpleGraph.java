@@ -84,17 +84,8 @@ public class SimpleGraph implements IGraph
     {
 
         System.out.println("List Representation for Simple graph:");
-        for (int i = 0; i < GraphRepresentationList.length; i++)
-        {
-            if(!GraphRepresentationList[i].isEmpty())
-            {
-                System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
-            }
-            else
-            {
-                System.out.println("Vertex " + i + " is connected to: Empty List");
-            }
-        }
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.GraphRepresentation(node);
 
     }
 
