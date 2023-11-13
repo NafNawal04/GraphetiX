@@ -1,10 +1,11 @@
-import libraryFunctions.Glist;
+import libraryFunctions.*;
 public class CompleteGraph implements IGraph
 {
 
     int node;
     int num_of_new_nodes;
     public Glist<Integer> GraphRepresentationList[];
+
 
     public CompleteGraph(int node)
     {
@@ -118,28 +119,8 @@ public class CompleteGraph implements IGraph
 
     void bfs(int start_node)
     {
-        boolean[] visited = new boolean[node];
+        GraphTraversal graphTraversal=new GraphTraversal(start_node,GraphRepresentationList,node);
+        graphTraversal.bfs();
 
-        Glist<Integer> queue = new Glist<>();
-
-        visited[start_node] = true;
-        queue.addQueue(start_node);
-
-        while (!queue.isEmpty())
-        {
-            start_node = queue.pollQueue();
-            System.out.print(start_node + " ");
-
-            Glist<Integer> neighbors = GraphRepresentationList[start_node];
-            neighbors.forEach(n -> {
-                if (!visited[n])
-                {
-                    visited[n] = true;
-                    queue.add(n);
-                }
-            });
-
-        }
-        System.out.print("\n");
     }
 }
