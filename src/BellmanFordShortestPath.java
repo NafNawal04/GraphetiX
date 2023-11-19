@@ -61,7 +61,7 @@ class BellmanFordShortestPath {
     }
 
     public static void main(String[] args) {
-        int V = 5; // Change this to your desired number of vertices
+        int V = 5;
         BellmanFord graph = new BellmanFord(V);
         graph.addWeightedEdge(0, 1, -1);
         graph.addWeightedEdge(0, 2, 4);
@@ -72,7 +72,7 @@ class BellmanFordShortestPath {
         graph.addWeightedEdge(3, 1, 1);
         graph.addWeightedEdge(4, 3, -3);
 
-        int source = 0; // Change this to your desired source vertex
+        int source = 0;
         graph.BellmanFord(source);
     }
 }
