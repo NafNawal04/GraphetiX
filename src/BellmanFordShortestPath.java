@@ -62,7 +62,7 @@ class BellmanFordShortestPath {
 
     public static void main(String[] args) {
         int V = 5;
-        BellmanFord graph = new BellmanFord(V);
+        BellmanFordShortestPath  graph = new BellmanFordShortestPath(V);
         graph.addWeightedEdge(0, 1, -1);
         graph.addWeightedEdge(0, 2, 4);
         graph.addWeightedEdge(1, 3, 2);
