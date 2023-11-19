@@ -1,10 +1,10 @@
 import java.util.*;
 
-class BellmanFordShortestPath {
+class BellmanFord {
     int V;
     LinkedList<int[]>[] adjacencyList;
 
-    public BellmanFordShortestPath(int V) {
+    public BellmanFord(int V) {
         this.V = V;
         adjacencyList = new LinkedList[V];
         for (int i = 0; i < V; ++i) {
