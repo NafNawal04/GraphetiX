@@ -1,6 +1,7 @@
 package Graph;
 
 import Utility.CustomLinkedList;
+@SuppressWarnings("unchecked")
 
 public class GraphMethod {
     public CustomLinkedList<Integer>[] GraphRepresentationList ;

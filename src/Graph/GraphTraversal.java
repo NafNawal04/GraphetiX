@@ -2,11 +2,12 @@ package Graph;
 
 import Utility.CustomLinkedList;
 
+@SuppressWarnings("unused")
 public class GraphTraversal {
     int start_node;
     int node;
-    CustomLinkedList<Integer> GraphRepresentationList[];
-    public GraphTraversal(CustomLinkedList<Integer> GraphRepresentationList[], int n)
+    CustomLinkedList<Integer>[] GraphRepresentationList;
+    public GraphTraversal(CustomLinkedList<Integer>[] GraphRepresentationList, int n)
     {
         this.node=n;
 
