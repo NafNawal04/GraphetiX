@@ -1,5 +1,5 @@
 package Utility;
-
+@SuppressWarnings("unused")
 public class CustomLinkedList<E>
 {
     Node<E> head;
@@ -33,7 +33,7 @@ public class CustomLinkedList<E>
 
     }
 
-    public boolean addLast(E value) {
+    public void addLast(E value) {
         Node<E> newNode = new Node<>(value);
 
         if (head == null) {
@@ -48,35 +48,33 @@ public class CustomLinkedList<E>
             current.next = newNode;
         }
 
-        return true;
     }
     public boolean isEmpty()
     {
         return head == null;
     }
 
-    public boolean removeValue(E value) {
+    public void removeValue(E value) {
         if (head == null) {
-            return false;
+            return;
         }
 
         if (head.data==value) {
             head = head.next;
-            return true;
+            return;
         }
 
         Node<E> current = head;
         while (current.next != null) {
             if (current.next.data==value) {
                 current.next = current.next.next;
-                return true;
+                return;
             }
             current = current.next;
         }
 
-        return false;
     }
-    public boolean remove(int index) {
+    public boolean removeIndex(int index) {
         if (head == null || index < 0) {
             return false;
         }
@@ -136,20 +134,16 @@ public class CustomLinkedList<E>
         return size;
     }
 
-    public boolean addFirst(E value)
+    public void addFirst(E value)
     {
         Node<E> newNode = new Node<>(value);
 
-        if (head == null) {
+        if (head != null) {
 
-            head = newNode;
-        } else {
-
-            newNode.next=head;
-            head=newNode;
+            newNode.next = head;
         }
+        head = newNode;
 
-        return true;
     }
     public E get(int index) {
         if (index < 0 || index >= length()) {
@@ -169,22 +163,20 @@ public class CustomLinkedList<E>
 
 
 
-    public boolean addQueue(E value)
+    public void addQueue(E value)
     {
         Node<E> newNode = new Node<>(value);
 
         if (head == null)
         {
             head = newNode;
-            tail = newNode;
         }
         else
         {
             tail.next = newNode;
-            tail = newNode;
         }
+        tail = newNode;
 
-        return true;
     }
 
     public E pollQueue()
