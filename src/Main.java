@@ -1328,14 +1328,14 @@ public class Main {
 
         while (true)
         {
-            System.out.println("Which operation do you want to perform?");
-            System.out.println("1. Add edge between two nodes");
-            System.out.println("2. Add any number of nodes to the graph");
-            System.out.println("3. Remove edge between two nodes");
-            System.out.println("4. Remove a specific node from the graph");
-            System.out.println("5. Show the Graph in Adjacency List");
-            System.out.println("6. Find the Breadth-First Traversal of a node");
-            System.out.println("7. Find the depth-First Traversal of a node");
+            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
+            System.out.println("3. Finding Shortest Path");
+            System.out.println("4. Graph Representation");
+            System.out.println("5. Minimum Spanning");
+            System.out.println("6. Max flow");
+            System.out.println("7. Graph Details");
             System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -1347,50 +1347,118 @@ public class Main {
             switch (task)
             {
                 case 1:
-                    System.out.print("Enter the source node: ");
-                    source = scanner.nextInt();
-                    System.out.print("Enter the destination node: ");
-                    dest = scanner.nextInt();
-                    s1.getCyclic().addEdge(source,dest);
-                    break;
+                    System.out.println("Which operation do you want to perform?");
+                    System.out.println("1. Add edge");
+                    System.out.println("2. Add node");
+                    System.out.println("3. Remove edge");
+                    System.out.println("4. Remove node");
+                    System.out.println("5. Exit");
+                    int taskCC1 = scanner.nextInt();
+                    switch(taskCC1)
+                    {
+                        case 1:
+                            System.out.print("Enter the source & destination node: ");
+                            int s = scanner.nextInt();
+                            int d = scanner.nextInt();
+                            s1.getCyclic().addEdge(s,d);
+                            break;
+                        case 2:
+                            System.out.print("Enter the no. of node to be added: ");
+                            node_num = scanner.nextInt();
+                            s1.getCyclic().addNode(node_num);
+                            break;
+                        case 3:
+                            System.out.print("Enter the source & destination node: ");
+                            source = scanner.nextInt();
+                            dest = scanner.nextInt();
+                            s1.getCyclic().removeEdge(source,dest);
+                            break;
+                        case 4:
+                            System.out.print("Enter the node number: ");
+                            node_num = scanner.nextInt();
+                            s1.getCyclic().removeNode(node_num);
+                            break;
+
+                        case 5:
+                            return;
+                        default:
+                            System.out.println("Invalid operation choice. Please try again.");
+
+                    }
                 case 2:
-                    System.out.print("Enter the number of nodes to be added: ");
-                    node_num = scanner.nextInt();
-                    s1.getCyclic().addNode(node_num);
-                    break;
+                    System.out.println("Which operation do you want to perform?");
+                    System.out.println("1. Breadth-First Traversal");
+                    System.out.println("2. Depth-First Traversal");
+                    System.out.println("3. Exit");
+                    int taskCC2 = scanner.nextInt();
+                    switch(taskCC2)
+                    {
+                        case 1:
+                            System.out.print("Enter the start node of the Breadth First Traversal: ");
+                            start_node = scanner.nextInt();
+                            System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
+                            s1.getCyclic().bfs(start_node);
+                            break;
+                        case 2:
+                            System.out.print("Enter the start node of the Depth First Traversal: ");
+                            start_node = scanner.nextInt();
+                            System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                            s1.getCyclic().dfs(start_node);
+                            break;
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid operation choice. Please try again.");
+                    }
                 case 3:
-                    System.out.print("Enter the source node: ");
-                    source = scanner.nextInt();
-                    System.out.print("Enter the destination node: ");
-                    dest = scanner.nextInt();
-                    s1.getCyclic().removeEdge(source,dest);
-                    break;
+                    System.out.println("Which algorithm do you want to follow?");
+                    System.out.println("1. Dijkstra Algorithm");
+                    System.out.println("2. Bellman Ford Algorithm");
+                    System.out.println("3. Exit");
+                    int taskCC3 = scanner.nextInt();
+                    switch(taskCC3)
+                    {
+                        case 1:
+
+                        case 2:
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
                 case 4:
-                    System.out.print("Enter the node number to be removed: ");
-                    node_num = scanner.nextInt();
-                    s1.getCyclic().removeNode(node_num);
-                    break;
+                    System.out.println("How do you want to view the graph?");
+                    System.out.println("1. In Adjacency List");
+                    System.out.println("2. Visual Representation");
+                    System.out.println("3. Exit");
+                    int taskCC4 = scanner.nextInt();
+                    switch(taskCC4)
+                    {
+                        case 1:
+                            s1.getCyclic().GraphRepresentation();
+                            break;
+                        case 2:
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
+
                 case 5:
-                    s1.getCyclic().GraphRepresentation();
-                    break;
+
                 case 6:
-                    System.out.print("Enter the start node of the Breadth First Traversal: ");
-                    start_node = scanner.nextInt();
-                    System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
-                    s1.getCyclic().bfs(start_node);
-                    break;
+
                 case 7:
-                    System.out.print("Enter the start node of the Depth First Traversal: ");
-                    start_node = scanner.nextInt();
-                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
-                    s1.getCyclic().dfs(start_node);
-                    break;
+
                 case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
             }
         }
+
     }
 
 }
