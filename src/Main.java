@@ -553,6 +553,7 @@ public class Main {
                     source = scanner.nextInt();
                     dest = scanner.nextInt();
                     s1.getUndirected().convertToDirected(source,dest);
+                    break;
                 case 9:
                     return;
                 default:
@@ -1047,6 +1048,7 @@ public class Main {
             int dest;
             int start_node;
             int node_num;
+            int weight;
             switch (task)
             {
                 case 1:
@@ -1056,30 +1058,32 @@ public class Main {
                     System.out.println("3. Remove edge");
                     System.out.println("4. Remove node");
                     System.out.println("5. Exit");
-                    int taskS1 = scanner.nextInt();
-                    switch(taskS1)
+                    int taskW1 = scanner.nextInt();
+                    switch(taskW1)
                     {
                         case 1:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination & weight: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getSimple().addEdge(s,d);
+                            int w = scanner.nextInt();
+                            s1.getWeighted().addWeightedEdge(s,d,w);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
                             node_num = scanner.nextInt();
-                            s1.getSimple().addNode(node_num);
+                            s1.getWeighted().addNode(node_num);
                             break;
                         case 3:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination & weight: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getSimple().removeEdge(source,dest);
+                            weight =scanner.nextInt();
+                            s1.getWeighted().removeWeightedEdge(source,dest,weight);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
                             node_num = scanner.nextInt();
-                            s1.getSimple().removeNode(node_num);
+                            s1.getWeighted().removeNode(node_num);
                             break;
 
                         case 5:
@@ -1093,21 +1097,13 @@ public class Main {
                     System.out.println("1. Breadth-First Traversal");
                     System.out.println("2. Depth-First Traversal");
                     System.out.println("3. Exit");
-                    int taskS2 = scanner.nextInt();
-                    switch(taskS2)
+                    int taskW2 = scanner.nextInt();
+                    switch(taskW2)
                     {
                         case 1:
-                            System.out.print("Enter the start node of the Breadth First Traversal: ");
-                            start_node = scanner.nextInt();
-                            System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
-                            s1.getSimple().bfs(start_node);
-                            break;
+
                         case 2:
-                            System.out.print("Enter the start node of the Depth First Traversal: ");
-                            start_node = scanner.nextInt();
-                            System.out.println("The Depth First Traversal for the "+start_node+" is: ");
-                            s1.getSimple().dfs(start_node);
-                            break;
+
                         case 3:
                             return;
                         default:
@@ -1118,8 +1114,8 @@ public class Main {
                     System.out.println("1. Dijkstra Algorithm");
                     System.out.println("2. Bellman Ford Algorithm");
                     System.out.println("3. Exit");
-                    int taskS3 = scanner.nextInt();
-                    switch(taskS3)
+                    int taskW3 = scanner.nextInt();
+                    switch(taskW3)
                     {
                         case 1:
 
@@ -1135,11 +1131,11 @@ public class Main {
                     System.out.println("1. In Adjacency List");
                     System.out.println("2. Visual Representation");
                     System.out.println("3. Exit");
-                    int taskS4 = scanner.nextInt();
-                    switch(taskS4)
+                    int taskW4 = scanner.nextInt();
+                    switch(taskW4)
                     {
                         case 1:
-                            s1.getSimple().GraphRepresentation();
+                            s1.getWeighted().GraphRepresentation();
                             break;
                         case 2:
 
@@ -1180,15 +1176,15 @@ public class Main {
 
         while (true)
         {
-            System.out.println("Which operation do you want to perform?");
-            System.out.println("1. Add edge between two nodes");
-            System.out.println("2. Add any number of nodes to the graph");
-            System.out.println("3. Remove edge between two nodes");
-            System.out.println("4. Remove a specific node from the graph");
-            System.out.println("5. Convert the Acyclic graph into Cyclic");
-            System.out.println("6. Show the Graph in Adjacency List");
-            System.out.println("7. Find the Breadth-First Traversal of a node");
-            System.out.println("8. Find the depth-First Traversal of a node");
+            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
+            System.out.println("3. Finding Shortest Path");
+            System.out.println("4. Graph Representation");
+            System.out.println("5. Minimum Spanning");
+            System.out.println("6. Max flow");
+            System.out.println("7. Graph Details");
+            System.out.println("8. Graph Conversion");
             System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -1200,46 +1196,114 @@ public class Main {
             switch (task)
             {
                 case 1:
-                    System.out.print("Enter the source node: ");
-                    source = scanner.nextInt();
-                    System.out.print("Enter the destination node: ");
-                    dest = scanner.nextInt();
-                    s1.getAcyclic().addEdge(source,dest);
-                    break;
+                    System.out.println("Which operation do you want to perform?");
+                    System.out.println("1. Add edge");
+                    System.out.println("2. Add node");
+                    System.out.println("3. Remove edge");
+                    System.out.println("4. Remove node");
+                    System.out.println("5. Exit");
+                    int taskA1 = scanner.nextInt();
+                    switch(taskA1)
+                    {
+                        case 1:
+                            System.out.print("Enter the source & destination node: ");
+                            int s = scanner.nextInt();
+                            int d = scanner.nextInt();
+                            s1.getAcyclic().addEdge(s,d);
+                            break;
+                        case 2:
+                            System.out.print("Enter the no. of node to be added: ");
+                            node_num = scanner.nextInt();
+                            s1.getAcyclic().addNode(node_num);
+                            break;
+                        case 3:
+                            System.out.print("Enter the source & destination node: ");
+                            source = scanner.nextInt();
+                            dest = scanner.nextInt();
+                            s1.getAcyclic().removeEdge(source,dest);
+                            break;
+                        case 4:
+                            System.out.print("Enter the node number: ");
+                            node_num = scanner.nextInt();
+                            s1.getAcyclic().removeNode(node_num);
+                            break;
+
+                        case 5:
+                            return;
+                        default:
+                            System.out.println("Invalid operation choice. Please try again.");
+
+                    }
                 case 2:
-                    System.out.print("Enter the number of nodes to be added: ");
-                    node_num = scanner.nextInt();
-                    s1.getAcyclic().addNode(node_num);
-                    break;
+                    System.out.println("Which operation do you want to perform?");
+                    System.out.println("1. Breadth-First Traversal");
+                    System.out.println("2. Depth-First Traversal");
+                    System.out.println("3. Exit");
+                    int taskA2 = scanner.nextInt();
+                    switch(taskA2)
+                    {
+                        case 1:
+                            System.out.print("Enter the start node of the Breadth First Traversal: ");
+                            start_node = scanner.nextInt();
+                            System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
+                            s1.getAcyclic().bfs(start_node);
+                            break;
+                        case 2:
+                            System.out.print("Enter the start node of the Depth First Traversal: ");
+                            start_node = scanner.nextInt();
+                            System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                            s1.getAcyclic().dfs(start_node);
+                            break;
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid operation choice. Please try again.");
+                    }
                 case 3:
-                    System.out.print("Enter the source node: ");
-                    source = scanner.nextInt();
-                    System.out.print("Enter the destination node: ");
-                    dest = scanner.nextInt();
-                    s1.getAcyclic().removeEdge(source,dest);
-                    break;
+                    System.out.println("Which algorithm do you want to follow?");
+                    System.out.println("1. Dijkstra Algorithm");
+                    System.out.println("2. Bellman Ford Algorithm");
+                    System.out.println("3. Exit");
+                    int taskA3 = scanner.nextInt();
+                    switch(taskA3)
+                    {
+                        case 1:
+
+                        case 2:
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
                 case 4:
-                    System.out.print("Enter the node number to be removed: ");
-                    node_num = scanner.nextInt();
-                    s1.getAcyclic().removeNode(node_num);
-                    break;
+                    System.out.println("How do you want to view the graph?");
+                    System.out.println("1. In Adjacency List");
+                    System.out.println("2. Visual Representation");
+                    System.out.println("3. Exit");
+                    int taskA4 = scanner.nextInt();
+                    switch(taskA4)
+                    {
+                        case 1:
+                            s1.getAcyclic().GraphRepresentation();
+                            break;
+                        case 2:
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
+
+
                 case 5:
-                    s1.getAcyclic().convertToCyclic();
-                    break;
+
                 case 6:
-                    s1.getAcyclic().GraphRepresentation();
-                    break;
+
                 case 7:
-                    System.out.print("Enter the start node of the Breadth First Traversal: ");
-                    start_node = scanner.nextInt();
-                    System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
-                    s1.getAcyclic().bfs(start_node);
-                    break;
+
                 case 8:
-                    System.out.print("Enter the start node of the Depth First Traversal: ");
-                    start_node = scanner.nextInt();
-                    System.out.println("The Depth First Traversal for the "+start_node+" is: ");
-                    s1.getAcyclic().dfs(start_node);
+                    s1.getAcyclic().convertToCyclic();
                     break;
                 case 9:
                     return;
