@@ -1,4 +1,5 @@
 import java.util.*;
+@SuppressWarnings("unchecked")
 
 class BellmanFordShortestPath {
     int V;

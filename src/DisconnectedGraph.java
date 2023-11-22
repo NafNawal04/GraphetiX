@@ -1,13 +1,13 @@
 import Utility.*;
 import Graph.*;
-
+@SuppressWarnings("unchecked")
 
 public class DisconnectedGraph implements IGraph
 {
     int node;
 
     CustomLinkedList<Integer> deletedIndex = new CustomLinkedList<>();
-    CustomLinkedList<Integer> GraphRepresentationList[];
+    CustomLinkedList<Integer>[] GraphRepresentationList;
     public DisconnectedGraph(int node)
     {
         this.node= node;

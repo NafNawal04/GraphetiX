@@ -1,14 +1,14 @@
 
 import Utility.CustomLinkedList;
 import Graph.*;
-
+@SuppressWarnings("unchecked")
 public class ConnectedGraph implements IGraph
 {
     int node;
 
     CustomLinkedList<Integer> deletedIndex = new CustomLinkedList<>();
 
-    public CustomLinkedList<Integer> GraphRepresentationList[];
+    public CustomLinkedList<Integer>[] GraphRepresentationList;
     public ConnectedGraph(int node)
     {
         this.node = node;

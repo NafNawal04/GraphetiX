@@ -1,7 +1,7 @@
 import Utility.*;
 import Graph.*;
 
-
+@SuppressWarnings({"unchecked","unused"})
 public class CyclicGraph implements IGraph
 {
     public  int node;

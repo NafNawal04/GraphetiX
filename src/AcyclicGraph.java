@@ -2,10 +2,12 @@
 import Utility.*;
 import Graph.*;
 
+@SuppressWarnings("unchecked")
+
 public class AcyclicGraph implements IGraph
 {
     public  int node;
-    public int num_of_new_nodes;
+
     public CustomLinkedList<Integer>[] GraphRepresentationList ;
 
     public AcyclicGraph(int node)

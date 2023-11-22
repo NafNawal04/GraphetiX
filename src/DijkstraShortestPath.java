@@ -1,5 +1,5 @@
 import java.util.*;
-
+@SuppressWarnings("unchecked")
 
 public class DijkstraShortestPath {
     

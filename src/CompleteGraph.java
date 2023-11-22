@@ -1,12 +1,12 @@
 import Utility.*;
 import Graph.*;
-
+@SuppressWarnings("unchecked")
 public class CompleteGraph implements IGraph
 {
 
     int node;
 
-    public CustomLinkedList<Integer> GraphRepresentationList[];
+    public CustomLinkedList<Integer>[] GraphRepresentationList;
 
 
     public CompleteGraph(int node)
