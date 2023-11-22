@@ -1,4 +1,6 @@
 import Utility.CustomLinkedList;
+
+@SuppressWarnings("unchecked")
 public class WeightedGraph implements IGraph
 {
     public  int node;

@@ -1,6 +1,6 @@
 import Utility.CustomLinkedList;
 import Graph.*;
-
+@SuppressWarnings({"unchecked","unused"})
 public class UndirectedGraph implements IGraph
 {
     int node;

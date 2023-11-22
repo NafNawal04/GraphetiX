@@ -1,11 +1,11 @@
 import java.util.*;
-
-public class KruskalsMST  {
+@SuppressWarnings("unchecked")
+public class KruskalMST {
     public int node;
     public LinkedList<int[]>[] GraphRepresentationList;
     int[] parent;
 
-    public KruskalsMST(int node) {
+    public KruskalMST(int node) {
         this.node = node;
         GraphRepresentationList = new LinkedList[node];
         for (int i = 0; i < node; i++) {
@@ -74,7 +74,7 @@ public class KruskalsMST  {
     }
     public static void main(String[] args) {
         // Create a weighted graph with 4 nodes
-        KruskalsMST weightedGraph = new KruskalsMST(6);
+        KruskalMST weightedGraph = new KruskalMST(6);
 
         // Add weighted edges
         weightedGraph.addWeightedEdge(0, 2, 8);
@@ -97,7 +97,7 @@ public class KruskalsMST  {
             System.out.println("Edge: " + edge[0] + " - " + edge[1] + " | Weight: " + edge[2]);
             min_cost+=edge[2];
         }
-        System.out.println("Tota Cost of MST:" + min_cost);
+        System.out.println("Total Cost of MST:" + min_cost);
     }
 }
 

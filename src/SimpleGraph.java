@@ -2,7 +2,7 @@
 import Utility.*;
 import Graph.*;
 
-
+@SuppressWarnings("unchecked")
 public class SimpleGraph implements IGraph
 {
     public int node;
