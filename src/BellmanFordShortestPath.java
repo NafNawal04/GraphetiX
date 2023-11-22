@@ -1,40 +1,46 @@
-import Utility.CustomLinkedList;
-import java.util.Scanner;
-public class BellmanFordShortestPath {
-    public  int node;
-    public int num_of_new_nodes;
-    public CustomLinkedList<int[]>[] GraphRepresentationList;
+import java.util.*;
 
-    public BellmanFordShortestPath(int node)
-    {
-        this.node = node;
-        GraphRepresentationList = new CustomLinkedList[node];
-        for (int i = 0; i < node; i++) {
-            GraphRepresentationList[i] = new CustomLinkedList<>();
+class BellmanFordShortestPath {
+    int V;
+    LinkedList<int[]>[] adjacencyList;
+
+    public BellmanFordShortestPath(int V) {
+        this.V = V;
+        adjacencyList = new LinkedList[V];
+        for (int i = 0; i < V; ++i) {
+            adjacencyList[i] = new LinkedList<>();
         }
     }
-    public void bellmanFord(int src) {
-        int[] dist = new int[node];
 
-        for (int i = 0; i < node; ++i)
+    public void addWeightedEdge(int source, int dest, int weight) {
+        int[] edge = { dest, weight };
+        adjacencyList[source].add(edge);
+        System.out.println("Added a weighted edge between " + source + " & " + dest + " having weight: " + weight);
+    }
+
+    void BellmanFord(int src) {
+        int[] dist = new int[V];
+        for (int i = 0; i < dist.length; i++) {
             dist[i] = Integer.MAX_VALUE;
+        }
         dist[src] = 0;
 
-        for (int i = 1; i < node; ++i) {
-            for (int j = 0; j < GraphRepresentationList.length; ++j) {
-                for (int k = 0; k < GraphRepresentationList[j].length(); k++) {
-                    int[] edge = GraphRepresentationList[j].get(k);
+        // Relax all edges V-1 times
+        for (int i = 0; i < V - 1; ++i) {
+            for (int j = 0; j < V; ++j) {
+                for (int[] edge : adjacencyList[j]) {
                     int v = edge[0];
                     int weight = edge[1];
-                    if (dist[j] != Integer.MAX_VALUE && dist[j] + weight < dist[v])
+                    if (dist[j] != Integer.MAX_VALUE && dist[j] + weight < dist[v]) {
                         dist[v] = dist[j] + weight;
+                    }
                 }
             }
         }
 
-        for (int j = 0; j < GraphRepresentationList.length; ++j) {
-            for (int k = 0; k < GraphRepresentationList[j].length(); k++) {
-                int[] edge = GraphRepresentationList[j].get(k);
+        // Check for negative weight cycles
+        for (int j = 0; j < V; ++j) {
+            for (int[] edge : adjacencyList[j]) {
                 int v = edge[0];
                 int weight = edge[1];
                 if (dist[j] != Integer.MAX_VALUE && dist[j] + weight < dist[v]) {
@@ -44,26 +50,29 @@ public class BellmanFordShortestPath {
             }
         }
 
+        printArr(dist);
+    }
+
+    void printArr(int[] dist) {
         System.out.println("Vertex Distance from Source");
-        for (int i = 0; i < node; ++i)
+        for (int i = 0; i < V; ++i) {
             System.out.println(i + "\t\t" + dist[i]);
+        }
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        int V = 5;
+        BellmanFordShortestPath  graph = new BellmanFordShortestPath(V);
+        graph.addWeightedEdge(0, 1, -1);
+        graph.addWeightedEdge(0, 2, 4);
+        graph.addWeightedEdge(1, 3, 2);
+        graph.addWeightedEdge(1, 2, 3);
+        graph.addWeightedEdge(1, 4, 2);
+        graph.addWeightedEdge(3, 2, 5);
+        graph.addWeightedEdge(3, 1, 1);
+        graph.addWeightedEdge(4, 3, -3);
 
-        System.out.print("Enter the number of vertices: ");
-        int V = scanner.nextInt();
-
-        BellmanFordShortestPath graph = new BellmanFordShortestPath(V);
-
-        // ... add edges ...
-
-        System.out.print("Enter the source vertex: ");
-        int sourceVertex = scanner.nextInt();
-
-        graph.bellmanFord(sourceVertex);
-
-        scanner.close();
+        int source = 0;
+        graph.BellmanFord(source);
     }
 }
