@@ -126,7 +126,7 @@ public class Main {
 
         while (true)
         {
-            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
@@ -274,7 +274,7 @@ public class Main {
 
         while (true)
         {
-            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
@@ -282,7 +282,9 @@ public class Main {
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
             System.out.println("7. Graph Details");
-            System.out.println("8. Exit");
+            System.out.println("8. In Degree");
+            System.out.println("9. Out Degree");
+            System.out.println("10. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -397,8 +399,18 @@ public class Main {
                 case 6:
 
                 case 7:
-
                 case 8:
+                    System.out.println("Which node you want to find the in degree of?");
+                    int d = scanner.nextInt();
+                    s1.getDirected().inDegree(d);
+                    break;
+
+                case 9:
+                    System.out.println("Which node you want to find the out degree of?");
+                    int s = scanner.nextInt();
+                    s1.getDirected().outDegree(s);
+                    break;
+                case 10:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -422,7 +434,7 @@ public class Main {
 
         while (true)
         {
-            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
@@ -581,7 +593,7 @@ public class Main {
 
         while (true)
         {
-            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
@@ -730,7 +742,7 @@ public class Main {
 
         while (true)
         {
-            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
@@ -883,7 +895,7 @@ public class Main {
 
         while (true)
         {
-            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
@@ -1032,7 +1044,7 @@ public class Main {
 
         while (true)
         {
-            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
@@ -1177,7 +1189,7 @@ public class Main {
 
         while (true)
         {
-            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
@@ -1329,7 +1341,7 @@ public class Main {
 
         while (true)
         {
-            System.out.println("\n 1Which operation do you want to perform?");
+            System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
