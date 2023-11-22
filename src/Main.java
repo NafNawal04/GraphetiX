@@ -1046,6 +1046,7 @@ public class Main {
 
             int source;
             int dest;
+            @SuppressWarnings("unused")
             int start_node;
             int node_num;
             int weight;
