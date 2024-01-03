@@ -97,9 +97,9 @@ public class KruskalsMST  {
             System.out.println("Edge: " + edge[0] + " - " + edge[1] + " | Weight: " + edge[2]);
             min_cost+=edge[2];
         }
-        System.out.println("Tota Cost of MST:" + min_cost);
+        System.out.println("Total Cost of MST:" + min_cost);
     }
 }
 
-// Other methods...
+
 
