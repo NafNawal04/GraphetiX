@@ -38,5 +38,40 @@ public class GraphTypeChecker {
             totalEdges++;
         }
     }
+    public boolean isCyclic() {
+        Arrays.fill(visited, false);
+        Arrays.fill(recStack, false);
+
+        for (int i = 0; i < vertices; i++) {
+            if (!visited[i]) {
+                if (isCyclicUtil(i)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean isCyclicUtil(int node) {
+        if (recStack[node]) {
+            return true;
+        }
+        if (visited[node]) {
+            return false;
+        }
+        visited[node] = true;
+        recStack[node] = true;
+
+        for (int neighbor : adjacencyList.get(node)) {
+            if (!visited[neighbor] && isCyclicUtil(neighbor)) {
+                return true;
+            } else if (recStack[neighbor]) {
+                return true;
+            }
+        }
+
+        recStack[node] = false;
+        return false;
+    }
 }
 
