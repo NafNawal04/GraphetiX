@@ -8,7 +8,8 @@ public class Main {
         do {
             System.out.println("MAIN MENU");
             System.out.println("1. Create a graph");
-            System.out.println("2. Exit");
+            System.out.println("2. Check the type of a graph");
+            System.out.println("3. Exit");
             System.out.print("Press the number for the desired operation: ");
             choice = scanner.nextInt();
 
@@ -18,6 +19,9 @@ public class Main {
                     createGraph(scanner);
                     break;
                 case 2:
+                    CheckGraph();
+                    break;
+                case 3:
                     System.out.println("Thank you for using Graphetix");
                     break;
                 default:
@@ -110,6 +114,67 @@ public class Main {
 
         }
 
+    }
+    public  static void CheckGraph()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of vertices: ");
+        int vertices = scanner.nextInt();
+        GraphTypeChecker graph = new GraphTypeChecker(vertices);
+
+        System.out.println("Enter the connections for each vertex:");
+        for (int i = 0; i < vertices; i++) {
+            System.out.print("Connections for vertex " + i + " (end with -1): ");
+            while (true) {
+                int connection = scanner.nextInt();
+                if (connection == -1) {
+                    break;
+                }
+                if (connection < 0 || connection >= vertices) {
+                    System.out.println("Invalid input: Vertex " + connection + " does not exist. Try again.");
+                    continue;
+                }
+                graph.addEdge(i, connection);
+            }
+        }
+
+
+        System.out.println("Based on the input:");
+        if (vertices == 1) {
+            System.out.println("The graph is Trivially Connected (only one vertex).");
+        } else if (graph.isConnected()) {
+            System.out.println("The graph is Connected.");
+        } else {
+            System.out.println("The graph is Disconnected.");
+        }
+
+        if (graph.isSimple) {
+            System.out.println("The graph is Simple.");
+        }
+
+        if (graph.isTree()) {
+            System.out.println("The graph is a Tree.");
+        } else {
+            System.out.println("The graph is not a Tree.");
+        }
+
+        if (graph.isCyclic()) {
+            System.out.println("The graph is Cyclic.");
+        } else {
+            System.out.println("The graph is Acyclic.");
+        }
+
+        if (graph.isComplete()) {
+            System.out.println("The graph is a Complete Graph.");
+        }
+
+
+        if (graph.isDirected) {
+            System.out.println("The graph is Directed.");
+        } else {
+            System.out.println("The graph is Undirected.");
+        }
     }
 
     public static void OperationSimple(Scanner scanner,Graph s1)

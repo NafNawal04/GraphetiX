@@ -1,4 +1,4 @@
-package Utility;
+
 
 import java.util.*;
 
@@ -8,8 +8,8 @@ public class GraphTypeChecker {
     private final boolean[] recStack;
     private final int vertices;
     private int totalEdges;
-    private boolean isSimple;
-    private boolean isDirected;
+    boolean isSimple;
+    boolean isDirected;
 
     public GraphTypeChecker(int vertices) {
         this.vertices = vertices;
@@ -117,66 +117,8 @@ public class GraphTypeChecker {
         else
             return false;
     }
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter the number of vertices: ");
-        int vertices = scanner.nextInt();
-        GraphTypeChecker graph = new GraphTypeChecker(vertices);
-
-        System.out.println("Enter the connections for each vertex:");
-        for (int i = 0; i < vertices; i++) {
-            System.out.print("Connections for vertex " + i + " (end with -1): ");
-            while (true) {
-                int connection = scanner.nextInt();
-                if (connection == -1) {
-                    break;
-                }
-                if (connection < 0 || connection >= vertices) {
-                    System.out.println("Invalid input: Vertex " + connection + " does not exist. Try again.");
-                    continue;
-                }
-                graph.addEdge(i, connection);
-            }
-        }
 
 
-        System.out.println("Based on the input:");
-        if (vertices == 1) {
-            System.out.println("The graph is Trivially Connected (only one vertex).");
-        } else if (graph.isConnected()) {
-            System.out.println("The graph is Connected.");
-        } else {
-            System.out.println("The graph is Disconnected.");
-        }
-
-        if (graph.isSimple) {
-            System.out.println("The graph is Simple.");
-        }
-
-        if (graph.isTree()) {
-            System.out.println("The graph is a Tree.");
-        } else {
-            System.out.println("The graph is not a Tree.");
-        }
-
-        if (graph.isCyclic()) {
-            System.out.println("The graph is Cyclic.");
-        } else {
-            System.out.println("The graph is Acyclic.");
-        }
-
-        if (graph.isComplete()) {
-            System.out.println("The graph is a Complete Graph.");
-        }
-
-
-        if (graph.isDirected) {
-            System.out.println("The graph is Directed.");
-        } else {
-            System.out.println("The graph is Undirected.");
-        }
-    }
 }
 
 
