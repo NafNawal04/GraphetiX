@@ -3,10 +3,10 @@ package Utility;
 import java.util.*;
 
 public class GraphTypeChecker {
-    private List<List<Integer>> adjacencyList;
-    private boolean[] visited;
-    private boolean[] recStack;
-    private int vertices;
+    private final List<List<Integer>> adjacencyList;
+    private final boolean[] visited;
+    private final boolean[] recStack;
+    private final int vertices;
     private int totalEdges;
     private boolean isSimple;
     private boolean isDirected;
@@ -26,7 +26,7 @@ public class GraphTypeChecker {
 
     public void addEdge(int from, int to) {
         if (from == to || adjacencyList.get(from).contains(to)) {
-            isSimple = false; // Self-loop or multiple edge detected
+            isSimple = false;
             return;
         }
 
@@ -38,6 +38,18 @@ public class GraphTypeChecker {
             totalEdges++;
         }
     }
+    public void checkDirected() {
+        for (int from = 0; from < vertices; from++) {
+            for (int to : adjacencyList.get(from)) {
+                if (from != to && !adjacencyList.get(to).contains(from)) {
+                    isDirected = true;
+                    return;
+                }
+            }
+        }
+        isDirected = false;
+    }
+
     public boolean isCyclic() {
         Arrays.fill(visited, false);
         Arrays.fill(recStack, false);
@@ -72,6 +84,26 @@ public class GraphTypeChecker {
 
         recStack[node] = false;
         return false;
+    }
+
+    public boolean isConnected() {
+        Arrays.fill(visited, false);
+        dfs(0);
+        for (boolean v : visited) {
+            if (!v) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void dfs(int v) {
+        visited[v] = true;
+        for (int neighbor : adjacencyList.get(v)) {
+            if (!visited[neighbor]) {
+                dfs(neighbor);
+            }
+        }
     }
 }
 
