@@ -15,6 +15,7 @@ public class GraphTypeChecker {
         this.vertices = vertices;
         this.adjacencyList = new LinkedList<>();
         for (int i = 0; i < vertices; i++) {
+
             this.adjacencyList.add(new LinkedList<>());
         }
         this.visited = new boolean[vertices];
