@@ -105,5 +105,16 @@ public class GraphTypeChecker {
             }
         }
     }
+    public boolean isTree() {
+        return !isCyclic() && isConnected() && totalEdges == vertices - 1;
+    }
+
+    public boolean isComplete() {
+        checkDirected();
+        if( !isDirected && isSimple )
+            return totalEdges == vertices * (vertices - 1) / 2;
+        else
+            return false;
+    }
 }
 
