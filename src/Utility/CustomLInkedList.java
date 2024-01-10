@@ -33,7 +33,7 @@ public class CustomLInkedList<E>
 
     }
 
-    public void addLast(E value) {
+    public boolean addLast(E value) {
         Node<E> newNode = new Node<>(value);
 
         if (head == null) {
@@ -48,7 +48,7 @@ public class CustomLInkedList<E>
             current.next = newNode;
         }
 
-
+        return true;
     }
     public boolean isEmpty()
     {
@@ -169,7 +169,7 @@ public class CustomLInkedList<E>
 
 
 
-    public void addQueue(E value)
+    public boolean addQueue(E value)
     {
         Node<E> newNode = new Node<>(value);
 
@@ -184,7 +184,7 @@ public class CustomLInkedList<E>
             tail = newNode;
         }
 
-
+        return true;
     }
 
     public E pollQueue()
@@ -224,6 +224,21 @@ public class CustomLInkedList<E>
         void accept(E element);
     }
 
+        @FunctionalInterface
+        public interface Predicate<E> {
+            boolean test(E element);
+        }
+
+        public boolean anyMatch(Predicate<E> predicate) {
+            Node<E> current = head;
+            while (current != null) {
+                if (predicate.test(current.data)) {
+                    return true;
+                }
+                current = current.next;
+            }
+            return false;
+        }
 
 
 }
