@@ -1,22 +1,23 @@
 
 
-import java.util.*;
+import Utility.*;
 
 public class GraphTypeChecker {
-    private final List<List<Integer>> adjacencyList;
+    private final CustomLInkedList<CustomLInkedList<Integer>> adjacencyList;
     private final boolean[] visited;
     private final boolean[] recStack;
     private final int vertices;
     private int totalEdges;
     boolean isSimple;
     boolean isDirected;
+    private boolean foundDirectedEdge = false;
 
     public GraphTypeChecker(int vertices) {
         this.vertices = vertices;
-        this.adjacencyList = new LinkedList<>();
+        this.adjacencyList = new CustomLInkedList<>();
         for (int i = 0; i < vertices; i++) {
 
-            this.adjacencyList.add(new LinkedList<>());
+            this.adjacencyList.addFirst(new CustomLInkedList<>());
         }
         this.visited = new boolean[vertices];
         this.recStack = new boolean[vertices];
@@ -34,26 +35,34 @@ public class GraphTypeChecker {
         if (!adjacencyList.get(to).contains(from)) {
             isDirected = true;
         }
-        adjacencyList.get(from).add(to);
+        adjacencyList.get(from).addFirst(to);
         if (from < to) {
             totalEdges++;
         }
     }
     public void checkDirected() {
+        foundDirectedEdge = false;
+
         for (int from = 0; from < vertices; from++) {
-            for (int to : adjacencyList.get(from)) {
-                if (from != to && !adjacencyList.get(to).contains(from)) {
-                    isDirected = true;
-                    return;
+            int finalFrom = from; // Required for use inside lambda
+            CustomLInkedList<Integer> fromList = adjacencyList.get(from);
+
+            fromList.forEach(to -> {
+                if (finalFrom != to && !adjacencyList.get(to).contains(finalFrom)) {
+                    foundDirectedEdge = true;
                 }
+            });
+
+            if (foundDirectedEdge) {
+                break;
             }
         }
-        isDirected = false;
-    }
 
+        isDirected = foundDirectedEdge;
+    }
     public boolean isCyclic() {
-        Arrays.fill(visited, false);
-        Arrays.fill(recStack, false);
+        fill(visited, false);
+        fill(recStack, false);
 
         for (int i = 0; i < vertices; i++) {
             if (!visited[i]) {
@@ -75,21 +84,17 @@ public class GraphTypeChecker {
         visited[node] = true;
         recStack[node] = true;
 
-        for (int neighbor : adjacencyList.get(node)) {
-            if (!visited[neighbor] && isCyclicUtil(neighbor)) {
-                return true;
-            } else if (recStack[neighbor]) {
-                return true;
-            }
-        }
+        CustomLInkedList<Integer> neighbors = adjacencyList.get(node);
+        boolean hasCycle = neighbors.anyMatch(neighbor -> (!visited[neighbor] && isCyclicUtil(neighbor)) || recStack[neighbor]);
 
         recStack[node] = false;
-        return false;
+        return hasCycle;
     }
 
     public boolean isConnected() {
-        Arrays.fill(visited, false);
+        fill(visited, false);
         dfs(0);
+
         for (boolean v : visited) {
             if (!v) {
                 return false;
@@ -98,12 +103,23 @@ public class GraphTypeChecker {
         return true;
     }
 
+
     private void dfs(int v) {
         visited[v] = true;
-        for (int neighbor : adjacencyList.get(v)) {
+
+
+        CustomLInkedList<Integer> neighbors = adjacencyList.get(v);
+
+
+        neighbors.forEach(neighbor -> {
             if (!visited[neighbor]) {
                 dfs(neighbor);
             }
+        });
+    }
+    private void fill(boolean[] array, boolean value) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = value;
         }
     }
     public boolean isTree() {
