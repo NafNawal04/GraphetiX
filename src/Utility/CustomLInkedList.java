@@ -217,10 +217,26 @@ public class CustomLInkedList<E>
         }
     }
 
+
     @FunctionalInterface
     public interface ElementConsumer<E>
     {
         void accept(E element);
+    }
+    @FunctionalInterface
+    public interface Predicate<E> {
+        boolean test(E element);
+    }
+
+    public boolean anyMatch(Predicate<E> predicate) {
+        Node<E> current = head;
+        while (current != null) {
+            if (predicate.test(current.data)) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
     }
 
 
