@@ -7,7 +7,7 @@ public class SimpleGraph implements IGraph
 {
     public int node;
 
-    public CustomLinkedList<Integer>[] GraphRepresentationList ;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
 
 
     public SimpleGraph(int node)
@@ -24,7 +24,7 @@ public class SimpleGraph implements IGraph
         }
     }
     @Override
-    public void addEdge(int source, int dest)
+    public void addWeightedEdge(int source, int dest,int weight)
     {
         GraphMethod g =new GraphMethod(GraphRepresentationList);
 
@@ -34,25 +34,38 @@ public class SimpleGraph implements IGraph
         }
         else
         {
-
-            if(GraphRepresentationList[source].contains(dest)||GraphRepresentationList[dest].contains(source) )
+            for(int x=0;x< GraphRepresentationList[source].length();x++)
             {
-                System.out.println("Cannot add multi edges between two same nodes in simple graph");
+                int[] neededEdge1 = GraphRepresentationList[source].get(x);
+
+                    if (neededEdge1[0] == dest)
+                    {
+                        System.out.println("Cannot add multi edges between two same nodes in simple graph");
+                        return;
+                    }
+
+            }
+            for(int x=0;x< GraphRepresentationList[dest].length();x++)
+            {
+                int[] neededEdge2 = GraphRepresentationList[source].get(x);
+
+                if (neededEdge2[0] == source)
+                {
+                    System.out.println("Cannot add multi edges between two same nodes in simple graph");
+                    return;
+                }
             }
 
-            else
-            {
-               g.addEdge(source,dest);
-            }
+            g.addWeightedEdge(source, dest, weight);
         }
 
 
     }
     @Override
-    public void removeEdge(int source,int dest)
+    public void removeWeightedEdge(int source,int dest,int weight)
     {
         GraphMethod g =new GraphMethod(GraphRepresentationList);
-        g.removeEdge(source, dest);
+        g.removeWeightedEdge(source, dest,weight);
 
 
     }
@@ -61,13 +74,8 @@ public class SimpleGraph implements IGraph
     public void addNode(int node_num)
     {
 
-        int num_of_new_nodes = node + node_num;
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-
-
-        GraphRepresentationList = g.addNode(node_num,node);
-        node = num_of_new_nodes;
-
+        g.addNode(node_num,node);
         System.out.println("Added "+ node_num+ " number of nodes in the Simple Graph.");
     }
 

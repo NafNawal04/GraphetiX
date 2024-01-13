@@ -186,7 +186,7 @@ public class Main {
             System.out.print("Enter the source & destination node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getSimple().addEdge(s,d);
+            s1.getSimple().addWeightedEdge(s,d,0);
         }
 
         while (true)
@@ -223,7 +223,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getSimple().addEdge(s,d);
+                            s1.getSimple().addWeightedEdge(s,d,0);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -234,7 +234,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getSimple().removeEdge(source,dest);
+                            s1.getSimple().removeWeightedEdge(source,dest,0);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -334,7 +334,7 @@ public class Main {
             System.out.print("Enter the source & destination node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getDirected().addEdge(s,d);
+            s1.getDirected().addWeightedEdge(s,d,0);
         }
 
         while (true)
@@ -373,7 +373,7 @@ public class Main {
                         System.out.print("Enter the source & destination node: ");
                         int s = scanner.nextInt();
                         int d = scanner.nextInt();
-                        s1.getDirected().addEdge(s,d);
+                        s1.getDirected().addWeightedEdge(s,d,0);
                         break;
                     case 2:
                         System.out.print("Enter the no. of node to be added: ");
@@ -384,7 +384,7 @@ public class Main {
                         System.out.print("Enter the source & destination node: ");
                         source = scanner.nextInt();
                         dest = scanner.nextInt();
-                        s1.getDirected().removeEdge(source,dest);
+                        s1.getDirected().removeWeightedEdge(source,dest,0);
                         break;
                     case 4:
                         System.out.print("Enter the node number: ");
@@ -494,7 +494,7 @@ public class Main {
             System.out.print("Enter the source & destination node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getUndirected().addEdge(s,d);
+            s1.getUndirected().addWeightedEdge(s,d,0);
         }
 
         while (true)
@@ -532,7 +532,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getUndirected().addEdge(s,d);
+                            s1.getUndirected().addWeightedEdge(s,d,0);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -543,7 +543,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getUndirected().removeEdge(source,dest);
+                            s1.getUndirected().removeWeightedEdge(source,dest,0);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -653,7 +653,7 @@ public class Main {
             System.out.print("Enter the source & destination node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getConnectedG().addEdge(s,d);
+            s1.getConnectedG().addWeightedEdge(s,d,0);
         }
 
         while (true)
@@ -690,7 +690,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getConnectedG().addEdge(s,d);
+                            s1.getConnectedG().addWeightedEdge(s,d,0);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -701,7 +701,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getConnectedG().removeEdge(source,dest);
+                            s1.getConnectedG().removeWeightedEdge(source,dest,0);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -802,7 +802,7 @@ public class Main {
             System.out.print("Enter the source & destination node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getDisconnected().addEdge(s,d);
+            s1.getDisconnected().addWeightedEdge(s,d,0);
         }
 
         while (true)
@@ -840,7 +840,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getDisconnected().addEdge(s,d);
+                            s1.getDisconnected().addWeightedEdge(s,d,0);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -851,7 +851,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getDisconnected().removeEdge(source,dest);
+                            s1.getDisconnected().removeWeightedEdge(source,dest,0);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -955,7 +955,7 @@ public class Main {
             System.out.print("Enter the source & destination node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getComplete().addEdge(s,d);
+            s1.getComplete().addWeightedEdge(s,d,0);
         }
 
         while (true)
@@ -992,7 +992,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getComplete().addEdge(s,d);
+                            s1.getComplete().addWeightedEdge(s,d,0);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -1003,7 +1003,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getComplete().removeEdge(source,dest);
+                            s1.getComplete().removeWeightedEdge(source,dest,0);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -1249,7 +1249,7 @@ public class Main {
             System.out.print("Enter the source & destination node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getAcyclic().addEdge(s,d);
+            s1.getAcyclic().addWeightedEdge(s,d,0);
         }
 
         while (true)
@@ -1287,7 +1287,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getAcyclic().addEdge(s,d);
+                            s1.getAcyclic().addWeightedEdge(s,d,0);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -1298,7 +1298,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getAcyclic().removeEdge(source,dest);
+                            s1.getAcyclic().removeWeightedEdge(source,dest,0);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -1401,7 +1401,7 @@ public class Main {
             System.out.print("Enter the source & destination node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getCyclic().addEdge(s,d);
+            s1.getCyclic().addWeightedEdge(s,d,0);
         }
 
         while (true)
@@ -1438,7 +1438,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getCyclic().addEdge(s,d);
+                            s1.getCyclic().addWeightedEdge(s,d,0);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -1449,7 +1449,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getCyclic().removeEdge(source,dest);
+                            s1.getCyclic().removeWeightedEdge(source,dest,0);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
