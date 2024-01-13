@@ -1,9 +1,8 @@
 
-
 import Utility.*;
 
 public class GraphTypeChecker {
-    private final CustomLInkedList<CustomLInkedList<Integer>> adjacencyList;
+    private final CustomLinkedList<CustomLinkedList<Integer>> adjacencyList;
     private final boolean[] visited;
     private final boolean[] recStack;
     private final int vertices;
@@ -14,10 +13,10 @@ public class GraphTypeChecker {
 
     public GraphTypeChecker(int vertices) {
         this.vertices = vertices;
-        this.adjacencyList = new CustomLInkedList<>();
+        this.adjacencyList = new CustomLinkedList<>();
         for (int i = 0; i < vertices; i++) {
 
-            this.adjacencyList.addFirst(new CustomLInkedList<>());
+            this.adjacencyList.addFirst(new CustomLinkedList<>());
         }
         this.visited = new boolean[vertices];
         this.recStack = new boolean[vertices];
@@ -45,7 +44,7 @@ public class GraphTypeChecker {
 
         for (int from = 0; from < vertices; from++) {
             int finalFrom = from; // Required for use inside lambda
-            CustomLInkedList<Integer> fromList = adjacencyList.get(from);
+            CustomLinkedList<Integer> fromList = adjacencyList.get(from);
 
             fromList.forEach(to -> {
                 if (finalFrom != to && !adjacencyList.get(to).contains(finalFrom)) {
@@ -84,7 +83,7 @@ public class GraphTypeChecker {
         visited[node] = true;
         recStack[node] = true;
 
-        CustomLInkedList<Integer> neighbors = adjacencyList.get(node);
+        CustomLinkedList<Integer> neighbors = adjacencyList.get(node);
         boolean hasCycle = neighbors.anyMatch(neighbor -> (!visited[neighbor] && isCyclicUtil(neighbor)) || recStack[neighbor]);
 
         recStack[node] = false;
@@ -108,7 +107,7 @@ public class GraphTypeChecker {
         visited[v] = true;
 
 
-        CustomLInkedList<Integer> neighbors = adjacencyList.get(v);
+        CustomLinkedList<Integer> neighbors = adjacencyList.get(v);
 
 
         neighbors.forEach(neighbor -> {

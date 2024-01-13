@@ -115,7 +115,7 @@ public class Main {
         }
 
     }
-    public  static void CheckGraph()
+    public static void CheckGraph()
     {
         Scanner scanner = new Scanner(System.in);
 
