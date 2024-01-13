@@ -5,7 +5,7 @@ public class DirectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
-    public CustomLinkedList<Integer>[] GraphRepresentationList;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public DirectedGraph(int node)
     {
@@ -20,18 +20,19 @@ public class DirectedGraph implements IGraph
         }
     }
     @Override
-    public void addEdge(int source, int dest)
+    public void addWeightedEdge(int source, int dest, int weight)
     {
-
-        GraphRepresentationList[source].addLast(dest);
+        int[] edge = {dest,0};
+        GraphRepresentationList[source].addLast(edge);
         System.out.println("Added an edge between " + source + " & " + dest);
 
     }
 
     @Override
-    public void removeEdge(int source, int dest)
+    public void removeWeightedEdge(int source,int dest,int weight)
     {
-        GraphRepresentationList[source].removeValue(dest);
+        int[] edge = {dest,0};
+        GraphRepresentationList[source].removeValue(edge);
         System.out.println("Removed the edge between " + source + " & " + dest);
     }
 
@@ -39,12 +40,8 @@ public class DirectedGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-        num_of_new_nodes = node + node_num;
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-
-
-        GraphRepresentationList = g.addNode(node_num,node);
-        node = num_of_new_nodes;
+        g.addNode(node_num,node);
 
         System.out.println("Added "+ node_num+ " number of nodes in the Directed Graph.");
     }
@@ -53,7 +50,7 @@ public class DirectedGraph implements IGraph
     {
         GraphMethod g=new GraphMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
-        System.out.println("Removed the node "+ node_num + " from the simple graph.");
+        System.out.println("Removed the node "+ node_num + " from the directed graph.");
 
     }
 
@@ -62,12 +59,17 @@ public class DirectedGraph implements IGraph
     public void inDegree(int dest)
     {
         int count =0;
-        for (CustomLinkedList<Integer> source :GraphRepresentationList)
+        for (CustomLinkedList<int[]> source :GraphRepresentationList)
         {
-            if(source.contains(dest))
+            for(int i=0;i< source.length();i++)
             {
-                count++;
+                int[] edge = source.get(i);
+                if(edge[0] == dest)
+                {
+                    count++;
+                }
             }
+
         }
         System.out.println("The number of in degree of " +dest+ " is: " + count);
 
