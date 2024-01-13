@@ -4,66 +4,102 @@ import Utility.CustomLinkedList;
 @SuppressWarnings("unchecked")
 
 public class GraphMethod {
-    public CustomLinkedList<Integer>[] GraphRepresentationList ;
-    public GraphMethod( CustomLinkedList<Integer>[] GraphRepresentationList)
+    public CustomLinkedList<int[]>[] GraphRepresentationList ;
+    public GraphMethod( CustomLinkedList<int[]>[] GraphRepresentationList)
     {
         this.GraphRepresentationList=GraphRepresentationList;
     }
-    public void addEdge(int source, int dest)
+    public void addWeightedEdge(int source, int dest,int weight)
     {
-
-
-         GraphRepresentationList[source].addLast(dest);
-         GraphRepresentationList[dest].addLast(source);
-         System.out.println("Added an edge between " + source + " & " + dest);
+        int[] edge = {dest, weight};
+        int[] edge2 ={source,weight};
+        GraphRepresentationList[source].addFirst(edge);
+        GraphRepresentationList[dest].addFirst(edge2);
+        System.out.println("Added an edge between " + source + " & " + dest+" having weight: "+weight);
 
 
     }
-    public void removeEdge(int source,int dest)
+    public void removeWeightedEdge(int source,int dest,int weight)
     {
-        GraphRepresentationList[source].removeValue(dest);
-        GraphRepresentationList[dest].removeValue(source);
-        System.out.println("Removed the edge between " + source + " & " + dest);
+
+        for(int j=0;j<GraphRepresentationList[source].length();j++)
+        {
+            int[] edge = GraphRepresentationList[source].get(j);
+            if(dest == edge[0] && weight == edge[1])
+            {
+                GraphRepresentationList[source].removeValue(edge);
+            }
+        }
+        for(int j=0;j<GraphRepresentationList[dest].length();j++)
+        {
+            int[] edge = GraphRepresentationList[dest].get(j);
+            if(source == edge[0] && weight == edge[1])
+            {
+                GraphRepresentationList[dest].removeValue(edge);
+            }
+        }
+
+        System.out.println("Removed an edge between " + source + " & " + dest+" having weight: "+weight);
+
 
     }
-    public CustomLinkedList<Integer>[] addNode(int node_num, int node)
+    public void addNode(int node_num, int node)
     {
         int num_of_new_nodes = node + node_num;
-        CustomLinkedList<Integer>[] newGraphRepresentationList = new CustomLinkedList[num_of_new_nodes];
-        for (int i = 0; i < node; i++)
+        CustomLinkedList<int[]>[] newGraphRepresentList = new CustomLinkedList[num_of_new_nodes];
+        for(int i = 0; i < node; i++)
         {
-            newGraphRepresentationList[i] = GraphRepresentationList[i];
+            newGraphRepresentList[i] = GraphRepresentationList[i];
         }
 
         for (int i = node; i < num_of_new_nodes; i++)
         {
-            newGraphRepresentationList[i] = new CustomLinkedList<>();
+            newGraphRepresentList[i] = new CustomLinkedList<>();
         }
 
-        return newGraphRepresentationList;
+        node = num_of_new_nodes;
+        GraphRepresentationList = newGraphRepresentList;
+
 
 
     }
     public void removeNode(int node_num,int node) {
         GraphRepresentationList[node_num].clear();
-        for (int i = 0; i < node; i++) {
-            GraphRepresentationList[i].removeValue(node_num);
+
+        for (int i=0;i<node;i++)
+        {
+            for(int j=0;j<GraphRepresentationList[i].length();j++)
+            {
+                int[] edge = GraphRepresentationList[i].get(j);
+                if(node_num == edge[0])
+                {
+                    GraphRepresentationList[i].removeValue(edge);
+                }
+
+            }
         }
+
     }
     public void GraphRepresentation(int node)
     {
 
-
         for (int i = 0; i < node; i++)
         {
-            if(!GraphRepresentationList[i].isEmpty())
+            System.out.print("Vertex " + i + " is connected to: ");
+            int f = GraphRepresentationList[i].length();
+            if(f==0)
             {
-                System.out.println("Vertex " + i + " is connected to: " + GraphRepresentationList[i]);
+                System.out.println("Empty List");
+                continue;
             }
-            else
+            for (int j = 0; j < f; j++)
             {
-                System.out.println("Vertex " + i + " is connected to: Empty List");
+
+                int[] edge = GraphRepresentationList[i].get(j);
+                System.out.print("(" + edge[0] + ", Weight: " + edge[1] + ") ");
             }
+
+            System.out.println();
         }
 
     }

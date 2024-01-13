@@ -6,8 +6,8 @@ import Utility.CustomLinkedList;
 public class GraphTraversal {
     int start_node;
     int node;
-    CustomLinkedList<Integer>[] GraphRepresentationList;
-    public GraphTraversal(CustomLinkedList<Integer>[] GraphRepresentationList, int n)
+    CustomLinkedList<int[]>[] GraphRepresentationList;
+    public GraphTraversal(CustomLinkedList<int[]>[] GraphRepresentationList, int n)
     {
         this.node=n;
 
@@ -27,12 +27,12 @@ public class GraphTraversal {
             start_node = queue.pollQueue();
             System.out.print(start_node + " ");
 
-            CustomLinkedList<Integer> neighbors = GraphRepresentationList[start_node];
+            CustomLinkedList<int[]> neighbors = GraphRepresentationList[start_node];
             neighbors.forEach(n -> {
-                if (!visited[n])
+                if (!visited[n[0]])
                 {
-                    visited[n] = true;
-                    queue.addLast(n);
+                    visited[n[0]] = true;
+                    queue.addLast(n[0]);
                 }
             });
 
@@ -48,8 +48,8 @@ public class GraphTraversal {
 
 
         GraphRepresentationList[start_node].forEach(n -> {
-            if (!visited[n]) {
-                DFSUtil(n, visited);
+            if (!visited[n[0]]) {
+                DFSUtil(n[0], visited);
             }
         });
     }
