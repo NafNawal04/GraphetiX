@@ -8,7 +8,7 @@ public class ConnectedGraph implements IGraph
 
     CustomLinkedList<Integer> deletedIndex = new CustomLinkedList<>();
 
-    public CustomLinkedList<Integer>[] GraphRepresentationList;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
     public ConnectedGraph(int node)
     {
         this.node = node;
@@ -20,14 +20,16 @@ public class ConnectedGraph implements IGraph
         }
         for (int i = 0; i < node-1 ; i++)
         {
-            GraphRepresentationList[i].addLast(i+1);
-            GraphRepresentationList[i+1].addLast(i);
+            int[] edge1 = {i+1,0};
+            int[] edge2 = {i,0};
+            GraphRepresentationList[i].addLast(edge1);
+            GraphRepresentationList[i+1].addLast(edge2);
         }
 
     }
 
     @Override
-    public void addEdge(int source, int dest)
+    public void addWeightedEdge(int source, int dest, int weight)
     {
         GraphMethod g =new GraphMethod(GraphRepresentationList);
         if(deletedIndex.contains(source))
@@ -36,14 +38,15 @@ public class ConnectedGraph implements IGraph
         }
         else
         {
-            g.addEdge(source,dest);
+            g.addWeightedEdge(source,dest,weight);
         }
     }
     @Override
-    public void removeEdge(int source,int dest)
+    public void removeWeightedEdge(int source,int dest,int weight)
     {
-        GraphMethod g =new GraphMethod(GraphRepresentationList);
-        g.removeEdge(source, dest);
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.removeWeightedEdge(source, dest,weight);
+
 
     }
 
@@ -53,15 +56,15 @@ public class ConnectedGraph implements IGraph
         int dummy = node;
         int num_of_new_nodes = node + node_num;
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-
-
-        GraphRepresentationList = g.addNode(node_num,node);
+        g.addNode(node_num,node);
         node = num_of_new_nodes;
 
             for(int i= dummy-1;i<node-1;i++)
             {
-                GraphRepresentationList[i].addLast(i+1);
-                GraphRepresentationList[i+1].addLast(i);
+                int[] edge3 = {i+1,0};
+                int[] edge4 = {i,0};
+                GraphRepresentationList[i].addLast(edge3);
+                GraphRepresentationList[i+1].addLast(edge4);
             }
 
 
@@ -73,8 +76,10 @@ public class ConnectedGraph implements IGraph
         deletedIndex.addLast(node_num);
         GraphMethod g=new GraphMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
-        GraphRepresentationList[node_num-1].addLast(node_num+1);
-        GraphRepresentationList[node_num+1].addLast(node_num-1);
+        int[] edge5 = {node_num+1,0};
+        int[] edge6 = {node_num-1,0};
+        GraphRepresentationList[node_num-1].addLast(edge5);
+        GraphRepresentationList[node_num+1].addLast(edge6);
         System.out.println("Removed the node "+ node_num + " from the connected graph.");
 
 
