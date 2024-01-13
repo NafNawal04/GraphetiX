@@ -8,7 +8,7 @@ public class AcyclicGraph implements IGraph
 {
     public  int node;
 
-    public CustomLinkedList<Integer>[] GraphRepresentationList ;
+    public CustomLinkedList<int[]>[] GraphRepresentationList ;
 
     public AcyclicGraph(int node)
     {
@@ -21,19 +21,19 @@ public class AcyclicGraph implements IGraph
     }
 
     @Override
-    public void addEdge(int source, int dest)
+    public void addWeightedEdge(int source, int dest,int weight)
     {
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-        g.addEdge(source, dest);
+        g.addWeightedEdge(source, dest, weight);
     }
 
 
 
     @Override
-    public void removeEdge(int source,int dest)
+    public void removeWeightedEdge(int source,int dest,int weight)
     {
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-        g.removeEdge(source, dest);
+        g.removeWeightedEdge(source, dest,weight);
 
 
     }
@@ -42,12 +42,9 @@ public class AcyclicGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-        int num_of_new_nodes = node + node_num;
+
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-
-
-        GraphRepresentationList = g.addNode(node_num,node);
-        node = num_of_new_nodes;
+        g.addNode(node_num,node);
         System.out.println("Added "+ node_num+ " number of nodes in the Acyclic Graph.");
     }
 
@@ -57,7 +54,7 @@ public class AcyclicGraph implements IGraph
     {
         GraphMethod g=new GraphMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
-        System.out.println("Removed the node "+ node_num + " from the acyclic graph.");
+        System.out.println("Removed the node "+ node_num + " from the Acyclic graph.");
 
     }
     public boolean isCyclic()
@@ -80,15 +77,15 @@ public class AcyclicGraph implements IGraph
         stack[node] = true;
 
         for (int j = 0; j < GraphRepresentationList[node].length(); j++) {
-            int neighbor = GraphRepresentationList[node].get(j);
-            if (!visited[neighbor])
+            int[] neighbor = GraphRepresentationList[node].get(j);
+            if (!visited[neighbor[0]])
             {
-                if (isCyclicUtil(neighbor, visited, stack))
+                if (isCyclicUtil(neighbor[0], visited, stack))
                 {
                     return true;
                 }
             }
-            else if (stack[neighbor])
+            else if (stack[neighbor[0]])
             {
                 return true;
             }
@@ -110,12 +107,25 @@ public class AcyclicGraph implements IGraph
         {
             for (int j = i + 1; j < node; j++)
             {
-                if (!GraphRepresentationList[i].contains(j) && !GraphRepresentationList[j].contains(i))
+
+                int length1 = GraphRepresentationList[i].length();
+                int length2 = GraphRepresentationList[j].length();
+
+                for(int x=0;x<length1;x++)
                 {
-                    System.out.println("Adding edge between " + i + " and " + j + " to make the graph cyclic.");
-                    addEdge(i, j);
-                    return;
+                    int[] neededEdge1 = GraphRepresentationList[i].get(x);
+                    for(int y=0;y<length2;y++)
+                    {
+                        int[] neededEdge2 = GraphRepresentationList[j].get(y);
+                        if(neededEdge1[0] != j && neededEdge2[0] != i )
+                        {
+                            System.out.println("Adding edge between " + i + " and " + j + " to make the graph cyclic.");
+                            addWeightedEdge(i, j,0);
+                            return;
+                        }
+                    }
                 }
+
             }
         }
     }
