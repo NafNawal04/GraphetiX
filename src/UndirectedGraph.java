@@ -5,7 +5,7 @@ public class UndirectedGraph implements IGraph
 {
     int node;
     int num_of_new_nodes;
-    public CustomLinkedList<Integer>[] GraphRepresentationList;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public UndirectedGraph(int node)
     {
@@ -20,43 +20,41 @@ public class UndirectedGraph implements IGraph
         }
     }
     @Override
-    public void addEdge(int source, int dest)
+    public void addWeightedEdge(int source, int dest,int weight)
     {
         if(source == dest)
         {
-            GraphRepresentationList[source].addLast(dest);
+            int[] edge = {dest,0};
+            GraphRepresentationList[source].addLast(edge);
             System.out.println("Added an edge between " + source + " & " + dest);
         }
         else
         {
             GraphMethod g =new GraphMethod(GraphRepresentationList);
-            g.addEdge(source,dest);
+            g.addWeightedEdge(source,dest,weight);
         }
 
     }
     @Override
     public void addNode(int node_num)
     {
-        int num_of_new_nodes = node + node_num;
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-
-
-        GraphRepresentationList = g.addNode(node_num,node);
-        node = num_of_new_nodes;
+        g.addNode(node_num,node);
         System.out.println("Added "+ node_num+ " number of nodes in the Undirected Graph.");
     }
     @Override
-    public void removeEdge(int source,int dest)
+    public void removeWeightedEdge(int source,int dest,int weight)
     {
         if(source == dest)
         {
-            GraphRepresentationList[source].removeValue(dest);
+            int[] edge = {dest,0};
+            GraphRepresentationList[source].removeValue(edge);
             System.out.println("Removed the edge between " + source + " & " + dest);
         }
         else
         {
             GraphMethod g =new GraphMethod(GraphRepresentationList);
-            g.removeEdge(source, dest);
+            g.removeWeightedEdge(source, dest,weight);
 
         }
 
@@ -71,7 +69,8 @@ public class UndirectedGraph implements IGraph
     }
     public void convertToDirected(int source, int dest)
     {
-         GraphRepresentationList[dest].removeValue(source);
+        int[] edge = {source,0};
+        GraphRepresentationList[dest].removeValue(edge);
         System.out.println("Made the edge between " + source + " & " + dest +" as directed. ");
 
 
