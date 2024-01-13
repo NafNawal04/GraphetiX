@@ -5,8 +5,8 @@ import Graph.*;
 public class CyclicGraph implements IGraph
 {
     public  int node;
-    public int num_of_new_nodes;
-    public CustomLinkedList<Integer>[] GraphRepresentationList;
+
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public CyclicGraph(int node)
     {
@@ -18,29 +18,28 @@ public class CyclicGraph implements IGraph
     }
 
     @Override
-    public void addEdge(int source, int dest)
+    public void addWeightedEdge(int source, int dest,int weight)
     {
-        GraphMethod g =new GraphMethod(GraphRepresentationList);
-        g.addEdge(source,dest);
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.addWeightedEdge(source, dest, weight);
     }
+
+
 
     @Override
-    public void removeEdge(int source,int dest)
+    public void removeWeightedEdge(int source,int dest,int weight)
     {
-        GraphMethod g =new GraphMethod(GraphRepresentationList);
-        g.removeEdge(source, dest);
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.removeWeightedEdge(source, dest,weight);
+
 
     }
-
     @Override
     public void addNode(int node_num)
     {
-        int num_of_new_nodes = node + node_num;
+
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-
-
-        GraphRepresentationList = g.addNode(node_num,node);
-        node = num_of_new_nodes;
+        g.addNode(node_num,node);
         System.out.println("Added "+ node_num+ " number of nodes in the Cyclic Graph.");
     }
 
@@ -50,7 +49,7 @@ public class CyclicGraph implements IGraph
     {
         GraphMethod g=new GraphMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
-        System.out.println("Removed the node "+ node_num + " from the cyclic graph.");
+        System.out.println("Removed the node "+ node_num + " from the Cyclic graph.");
 
     }
     public boolean isCyclic()
@@ -75,15 +74,15 @@ public class CyclicGraph implements IGraph
 
         for (int j = 0; j < GraphRepresentationList[node].length(); j++)
         {
-            int neighbor = GraphRepresentationList[node].get(j);
-            if (!visited[neighbor])
+            int[] neighbor = GraphRepresentationList[node].get(j);
+            if (!visited[neighbor[0]])
             {
-                if (isCyclicUtil(neighbor, visited, stack))
+                if (isCyclicUtil(neighbor[0], visited, stack))
                 {
                     return true;
                 }
             }
-            else if (stack[neighbor])
+            else if (stack[neighbor[0]])
             {
                 return true;
             }
