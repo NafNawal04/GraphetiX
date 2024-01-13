@@ -6,7 +6,7 @@ public class CompleteGraph implements IGraph
 
     int node;
 
-    public CustomLinkedList<Integer>[] GraphRepresentationList;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
 
 
     public CompleteGraph(int node)
@@ -22,20 +22,29 @@ public class CompleteGraph implements IGraph
         {
             for (int j = i + 1; j < node; j++)
             {
-                GraphRepresentationList[i].addLast(j);
-                GraphRepresentationList[j].addLast(i);
+                int[] edge1 = {j,0};
+                int[] edge2 = {i,0};
+                GraphRepresentationList[i].addLast(edge1);
+                GraphRepresentationList[j].addLast(edge2);
             }
         }
 
     }
 
     @Override
-    public void addEdge(int source,int dest)
+    public void addWeightedEdge(int source, int dest, int weight)
     {
-
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.addWeightedEdge(source, dest, weight);
     }
-    public void removeEdge(int source,int dest)
+
+
+
+    @Override
+    public void removeWeightedEdge(int source, int dest, int weight)
     {
+        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        g.removeWeightedEdge(source, dest,weight);
 
     }
     @Override
@@ -44,9 +53,7 @@ public class CompleteGraph implements IGraph
         int dummy = node;
         int num_of_new_nodes = node + node_num;
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-
-
-        GraphRepresentationList = g.addNode(node_num,node);
+        g.addNode(node_num,node);
         node = num_of_new_nodes;
 
         for (int i = 0; i < node; i++)
@@ -57,7 +64,8 @@ public class CompleteGraph implements IGraph
                 {
                     for(int j=dummy;j<node;j++)
                     {
-                        GraphRepresentationList[i].addLast(j);
+                        int[] edge3 = {j,0};
+                        GraphRepresentationList[i].addLast(edge3);
                     }
 
                 }
@@ -68,14 +76,16 @@ public class CompleteGraph implements IGraph
                 {
                     if (!GraphRepresentationList[k].isEmpty())
                     {
-                            GraphRepresentationList[i].addLast(k);
+                        int[] edge4 = {k,0};
+                        GraphRepresentationList[i].addLast(edge4);
                     }
                 }
                 for(int l=dummy;l<node;l++)
                 {
                     if(i!=l)
                     {
-                        GraphRepresentationList[i].addLast(l);
+                        int[] edge5 = {l,0};
+                        GraphRepresentationList[i].addLast(edge5);
                     }
                 }
             }
