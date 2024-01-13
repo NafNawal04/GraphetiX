@@ -7,7 +7,7 @@ public class DisconnectedGraph implements IGraph
     int node;
 
     CustomLinkedList<Integer> deletedIndex = new CustomLinkedList<>();
-    CustomLinkedList<Integer>[] GraphRepresentationList;
+    CustomLinkedList<int[]>[] GraphRepresentationList;
     public DisconnectedGraph(int node)
     {
         this.node= node;
@@ -24,10 +24,9 @@ public class DisconnectedGraph implements IGraph
     public void addNode(int node_num)
     {
 
-        int num_of_new_nodes = node + node_num;
         GraphMethod g=new GraphMethod(GraphRepresentationList);
-        GraphRepresentationList = g.addNode(node_num,node);
-        node = num_of_new_nodes;
+        g.addNode(node_num,node);
+
         System.out.println("Added "+ node_num+ " number of nodes in the Disconnected Graph.");
     }
     @Override
@@ -40,7 +39,7 @@ public class DisconnectedGraph implements IGraph
 
     }
     @Override
-    public void addEdge(int source, int dest)
+    public void addWeightedEdge(int source, int dest,int weight)
     {
         if(deletedIndex.contains(source))
         {
@@ -48,14 +47,14 @@ public class DisconnectedGraph implements IGraph
         }
         else {
             GraphMethod g =new GraphMethod(GraphRepresentationList);
-            g.addEdge(source,dest);
+            g.addWeightedEdge(source,dest,weight);
         }
     }
     @Override
-    public void removeEdge(int source,int dest)
+    public void removeWeightedEdge(int source,int dest,int weight)
     {
         GraphMethod g =new GraphMethod(GraphRepresentationList);
-        g.removeEdge(source, dest);
+        g.removeWeightedEdge(source, dest,weight);
 
 
     }
