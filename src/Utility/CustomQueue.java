@@ -55,5 +55,16 @@ public class CustomQueue<E> {
 
         return true;
     }
+    public E pollQueue() {
+        if (head == null) {
+            return null;
+        }
+        E data = head.data;
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
+        return data;
+    }
 
 }
