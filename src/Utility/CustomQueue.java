@@ -38,5 +38,22 @@ public class CustomQueue<E> {
             tail = newNode;
         }
     }
+    public boolean addLast(E value) {
+        Node<E> newNode = new Node<>(value);
+
+        if (head == null) {
+
+            head = newNode;
+        } else {
+            Node<E> current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+
+            current.next = newNode;
+        }
+
+        return true;
+    }
 
 }
