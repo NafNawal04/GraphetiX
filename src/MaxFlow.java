@@ -1,43 +1,46 @@
 import java.util.*;
+import Utility.*;
 
 public class MaxFlow {
     private int node;
-    private LinkedList<int[]>[] graph;
+    private CustomLinkedList<int[]>[] graph;
 
     public MaxFlow(int node) {
         this.node = node;
-        graph = new LinkedList[node];
+        graph = new CustomLinkedList[node];
         for (int i = 0; i < node; i++) {
-            graph[i] = new LinkedList<>();
+            graph[i] = new CustomLinkedList<>();
         }
     }
 
     public void addWeightedEdge(int source, int destination, int weight) {
         int[] edge = { destination, weight };
-        int[] reverseEdge = { source, 0 }; // Weight of the reverse edge is set to 0
-        graph[source].add(edge);
-        graph[destination].add(reverseEdge);
+        int[] reverseEdge = { source, 0 };
+        graph[source].addLast(edge);
+        graph[destination].addLast(reverseEdge);
     }
+
+
 
     private boolean bfs(int source, int sink, int[] parent) {
         boolean[] visited = new boolean[node];
-        Queue<Integer> queue = new LinkedList<>();
+        CustomQueue<Integer> queue = new CustomQueue<>();
         queue.offer(source);
         visited[source] = true;
         parent[source] = -1;
 
         while (!queue.isEmpty()) {
-            int u = queue.poll();
+            int u = queue.pollQueue();
 
-            for (int[] edge : graph[u]) {
+            graph[u].forEach(edge -> {
                 int v = edge[0];
                 int capacity = edge[1];
-                if (!visited[v] && capacity > 0) {
+                if (!visited[v] &&capacity > 0) {
                     queue.offer(v);
                     parent[v] = u;
                     visited[v] = true;
                 }
-            }
+            });
         }
         return visited[sink];
     }
@@ -48,41 +51,51 @@ public class MaxFlow {
 
         while (bfs(source, sink, parent)) {
             int pathMaxFlow = Integer.MAX_VALUE;
+
+
             for (int v = sink; v != source; v = parent[v]) {
                 int u = parent[v];
-                for (int[] edge : graph[u]) {
-                    if (edge[0] == v) {
-                        pathMaxFlow = Math.min(pathMaxFlow, edge[1]);
-                        break;
+                final int[] minFlow = {pathMaxFlow};
+                int finalV = v;
+                graph[u].forEach(edge -> {
+                    if (edge[0] == finalV) {
+                        minFlow[0] = Math.min(minFlow[0], edge[1]);
                     }
-                }
+                });
+
+                pathMaxFlow = minFlow[0];
             }
 
             for (int v = sink; v != source; v = parent[v]) {
                 int u = parent[v];
-                for (int[] edge : graph[u]) {
-                    if (edge[0] == v) {
-                        edge[1] -= pathMaxFlow;
-                        for (int[] revEdge : graph[v]) {
-                            if (revEdge[0] == u) {
-                                revEdge[1] += pathMaxFlow;
-                                break;
-                            }
-                        }
-                        break;
+
+                int finalPathMaxFlow = pathMaxFlow;
+                int finalV = v;
+                graph[u].forEach(edge -> {
+                    if (edge[0] == finalV) {
+                        edge[1] -= finalPathMaxFlow;
                     }
-                }
+                });
+
+                int finalPathMaxFlow1 = pathMaxFlow;
+                graph[v].forEach(revEdge -> {
+                    if (revEdge[0] == u) {
+                        revEdge[1] += finalPathMaxFlow1;
+                    }
+                });
             }
+
             MaxFlow += pathMaxFlow;
         }
+
         return MaxFlow;
     }
 
     public static void main(String[] args) {
-        int V = 6; // Number of vertices
+        int V = 6;
         MaxFlow graph = new MaxFlow(V);
 
-        // Adding edges to the graph (sample edges)
+
         graph.addWeightedEdge(0, 1, 12);
         graph.addWeightedEdge(0, 2, 14);
         graph.addWeightedEdge(1, 2, 1);
@@ -97,7 +110,7 @@ public class MaxFlow {
         int source = 0;
         int destination = 5;
 
-        // Calculate max MaxFlow
+
         int MaxFlow = graph.findMaxFlow(source, destination);
         System.out.println("The maximum possible MaxFlow is " + MaxFlow);
     }
