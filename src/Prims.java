@@ -1,29 +1,30 @@
-import java.io.*;
-import java.lang.*;
-import java.util.*;
+
+import Utility.*;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 class PrimsMST {
     public int node;
-    public LinkedList<int[]>[] GraphRepresentationList;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public PrimsMST(int node) {
         this.node = node;
-        GraphRepresentationList = new LinkedList[node];
+        GraphRepresentationList = new CustomLinkedList[node];
         for (int i = 0; i < node; i++) {
-            GraphRepresentationList[i] = new LinkedList<>();
+            GraphRepresentationList[i] = new CustomLinkedList<>();
         }
     }
 
     public void addWeightedEdge(int source, int dest, int weight) {
         int[] edge = { dest, weight };
         int[] edge2 = { source, weight };
-        GraphRepresentationList[source].add(edge);
-        GraphRepresentationList[dest].add(edge2);
+        GraphRepresentationList[source].addLast(edge);
+        GraphRepresentationList[dest].addLast(edge2);
         System.out.println("Added a weighted edge between " + source + " & " + dest + " having weight: " + weight);
     }
 
-    public List<int[]> primMST() {
-        List<int[]> resultMST = new ArrayList<>();
+    public CustomLinkedList<int[]> primMST() {
+        CustomLinkedList<int[]> resultMST = new CustomLinkedList<>();
         int[] parent = new int[node];
         int[] key = new int[node];
         Boolean[] mstSet = new Boolean[node];
@@ -40,7 +41,7 @@ class PrimsMST {
             int u = minKey(key, mstSet);
             mstSet[u] = true;
 
-            for (int j = 0; j < GraphRepresentationList[u].size(); j++) {
+            for (int j = 0; j < GraphRepresentationList[u].length(); j++) {
                 int[] edge = GraphRepresentationList[u].get(j);
                 int v = edge[0];
                 int weight = edge[1];
@@ -53,7 +54,7 @@ class PrimsMST {
 
         for (int i = 1; i < node; i++) {
             int[] edge = { parent[i], i, key[i] };
-            resultMST.add(edge);
+            resultMST.addLast(edge);
         }
 
         return resultMST;
@@ -84,14 +85,15 @@ class PrimsMST {
         weightedGraph.addWeightedEdge(5, 3, 2);
         weightedGraph.addWeightedEdge(4, 5, 2);
 
-        List<int[]> minimumSpanningTree = weightedGraph.primMST();
-        int min_cost = 0;
+        CustomLinkedList<int[]> minimumSpanningTree = weightedGraph.primMST();
+
 
         System.out.println("Edges in the Minimum Spanning Tree (MST):");
-        for (int[] edge : minimumSpanningTree) {
+        AtomicInteger min_cost = new AtomicInteger();
+        minimumSpanningTree.forEach(edge -> {
             System.out.println("Edge: " + edge[0] + " - " + edge[1] + " | Weight: " + edge[2]);
-            min_cost += edge[2];
-        }
-        System.out.println("Total Cost of MST:" + min_cost);
-    }
-}
+            min_cost.addAndGet(edge[2]);
+        });
+                System.out.println("Total Cost of MST:" + min_cost);
+
+}}
