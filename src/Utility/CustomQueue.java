@@ -12,5 +12,22 @@ public class CustomQueue<E> {
         this.head = null;
         this.tail = null;
     }
+    public boolean addQueue(E value)
+    {
+        Node<E> newNode = new Node<>(value);
+
+        if (head == null)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            tail.next = newNode;
+            tail = newNode;
+        }
+
+        return true;
+    }
 
 }
