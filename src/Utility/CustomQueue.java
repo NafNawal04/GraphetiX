@@ -29,5 +29,14 @@ public class CustomQueue<E> {
 
         return true;
     }
+    public void offer(E item) {
+        Node<E> newNode = new Node<>(item);
+        if (tail == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
 
 }
