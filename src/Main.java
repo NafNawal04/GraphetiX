@@ -1,7 +1,12 @@
 import java.util.Scanner;
+import javax.swing.*;
+import Graph.VisualRepresentation;
+
+@SuppressWarnings("unused")
 public class Main {
     public static void main(String[] args)
     {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome To Graphetix");
         int choice;
@@ -302,6 +307,10 @@ public class Main {
                             s1.getSimple().GraphRepresentation();
                             break;
                         case 2:
+                            SwingUtilities.invokeLater(() -> {
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getSimple().GraphRepresentationList);
+                            });
+                            break;
 
                         case 3:
                             return;
@@ -452,6 +461,10 @@ public class Main {
                             s1.getDirected().GraphRepresentation();
                             break;
                         case 2:
+                            SwingUtilities.invokeLater(() -> {
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getDirected().GraphRepresentationList);
+                            });
+                            break;
 
                         case 3:
                             return;
@@ -611,6 +624,10 @@ public class Main {
                             s1.getUndirected().GraphRepresentation();
                             break;
                         case 2:
+                            SwingUtilities.invokeLater(() -> {
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getUndirected().GraphRepresentationList);
+                            });
+                            break;
 
                         case 3:
                             return;
@@ -769,6 +786,10 @@ public class Main {
                             s1.getConnectedG().GraphRepresentation();
                             break;
                         case 2:
+                            SwingUtilities.invokeLater(() -> {
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getConnectedG().GraphRepresentationList);
+                            });
+                            break;
 
                         case 3:
                             return;
@@ -919,6 +940,10 @@ public class Main {
                             s1.getDisconnected().GraphRepresentation();
                             break;
                         case 2:
+                            SwingUtilities.invokeLater(() -> {
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getDisconnected().GraphRepresentationList);
+                            });
+                            break;
 
                         case 3:
                             return;
@@ -1071,6 +1096,10 @@ public class Main {
                             s1.getComplete().GraphRepresentation();
                             break;
                         case 2:
+                            SwingUtilities.invokeLater(() -> {
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getComplete().GraphRepresentationList);
+                            });
+                            break;
 
                         case 3:
                             return;
@@ -1216,6 +1245,10 @@ public class Main {
                             s1.getWeighted().GraphRepresentation();
                             break;
                         case 2:
+                            SwingUtilities.invokeLater(() -> {
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getWeighted().GraphRepresentationList);
+                            });
+                            break;
 
                         case 3:
                             return;
@@ -1366,6 +1399,10 @@ public class Main {
                             s1.getAcyclic().GraphRepresentation();
                             break;
                         case 2:
+                            SwingUtilities.invokeLater(() -> {
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getAcyclic().GraphRepresentationList);
+                            });
+                            break;
 
                         case 3:
                             return;
@@ -1392,20 +1429,17 @@ public class Main {
     }
 
 
-    public static void OperationCyclic(Scanner scanner,Graph s1)
-    {
+    public static void OperationCyclic(Scanner scanner,Graph s1) {
         System.out.println("How many edges do you want to add?");
         int edge_num = scanner.nextInt();
-        for(int i=0; i<edge_num;i++)
-        {
+        for (int i = 0; i < edge_num; i++) {
             System.out.print("Enter the source & destination node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getCyclic().addWeightedEdge(s,d,0);
+            s1.getCyclic().addWeightedEdge(s, d, 0);
         }
 
-        while (true)
-        {
+        while (true) {
             System.out.println("\n Which operation do you want to perform?");
             System.out.println("1. Graph Modifications");
             System.out.println("2. Graph Traversal");
@@ -1422,8 +1456,7 @@ public class Main {
             int dest;
             int start_node;
             int node_num;
-            switch (task)
-            {
+            switch (task) {
                 case 1:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Add edge");
@@ -1432,13 +1465,12 @@ public class Main {
                     System.out.println("4. Remove node");
                     System.out.println("5. Exit");
                     int taskCC1 = scanner.nextInt();
-                    switch(taskCC1)
-                    {
+                    switch (taskCC1) {
                         case 1:
                             System.out.print("Enter the source & destination node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getCyclic().addWeightedEdge(s,d,0);
+                            s1.getCyclic().addWeightedEdge(s, d, 0);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -1449,7 +1481,7 @@ public class Main {
                             System.out.print("Enter the source & destination node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getCyclic().removeWeightedEdge(source,dest,0);
+                            s1.getCyclic().removeWeightedEdge(source, dest, 0);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -1469,18 +1501,17 @@ public class Main {
                     System.out.println("2. Depth-First Traversal");
                     System.out.println("3. Exit");
                     int taskCC2 = scanner.nextInt();
-                    switch(taskCC2)
-                    {
+                    switch (taskCC2) {
                         case 1:
                             System.out.print("Enter the start node of the Breadth First Traversal: ");
                             start_node = scanner.nextInt();
-                            System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
+                            System.out.println("The Breadth First Traversal for the " + start_node + " is: ");
                             s1.getCyclic().bfs(start_node);
                             break;
                         case 2:
                             System.out.print("Enter the start node of the Depth First Traversal: ");
                             start_node = scanner.nextInt();
-                            System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                            System.out.println("The Depth First Traversal for the " + start_node + " is: ");
                             s1.getCyclic().dfs(start_node);
                             break;
                         case 3:
@@ -1494,8 +1525,7 @@ public class Main {
                     System.out.println("2. Bellman Ford Algorithm");
                     System.out.println("3. Exit");
                     int taskCC3 = scanner.nextInt();
-                    switch(taskCC3)
-                    {
+                    switch (taskCC3) {
                         case 1:
 
                         case 2:
@@ -1511,12 +1541,15 @@ public class Main {
                     System.out.println("2. Visual Representation");
                     System.out.println("3. Exit");
                     int taskCC4 = scanner.nextInt();
-                    switch(taskCC4)
-                    {
+                    switch (taskCC4) {
                         case 1:
                             s1.getCyclic().GraphRepresentation();
                             break;
                         case 2:
+                            SwingUtilities.invokeLater(() -> {
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getCyclic().GraphRepresentationList);
+                            });
+                            break;
 
                         case 3:
                             return;
