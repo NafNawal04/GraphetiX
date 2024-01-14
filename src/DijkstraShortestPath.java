@@ -16,6 +16,9 @@ public class DijkstraShortestPath {
             GraphRepresentationList[i] = new CustomLinkedList<>();
         }
     }
+    public DijkstraShortestPath() {
+
+    }
 
     public void addWeightedEdge(int source, int destination, int weight) {
         int[] edge = { destination, weight };

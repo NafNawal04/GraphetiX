@@ -2,10 +2,9 @@ import Utility.CustomLinkedList;
 import Graph.*;
 
 @SuppressWarnings("unchecked")
-public class WeightedGraph implements IGraph
+public class WeightedGraph extends DijkstraShortestPath implements IGraph
 {
-    public  int node;
-    public CustomLinkedList<int[]>[] GraphRepresentationList;
+
 
     public WeightedGraph(int node)
     {
@@ -64,4 +63,9 @@ public class WeightedGraph implements IGraph
 
     }
 
+    public void Dijkstra(int source,int destination){
+        DijkstraShortestPath graph = new DijkstraShortestPath(node);
+        graph.findShortestPath(source, destination);
+
+    }
 }

@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import javax.swing.*;
 import Graph.VisualRepresentation;
+import Utility.CustomLinkedList;
 
 @SuppressWarnings("unused")
 public class Main {
@@ -1225,6 +1226,18 @@ public class Main {
                     switch(taskW3)
                     {
                         case 1:
+                            System.out.print("Enter the source node: ");
+                            source = scanner.nextInt();
+
+                            System.out.print("Enter the destination node: ");
+                            dest= scanner.nextInt();
+                            s1.getWeighted().Dijkstra(source,dest);
+                            CustomLinkedList<Integer> shortestPath = s1.getWeighted().findShortestPath(source, dest);
+                            System.out.println("Shortest Path from node " + source + " to node " + dest + ": " + shortestPath);
+
+                            int shortestDistance = shortestPath.length() > 1 ? shortestPath.get(shortestPath.length() - 2) : 0;
+                            System.out.println("Shortest Distance from node " + source + " to node " + dest + " is " + shortestDistance);
+                            break;
 
                         case 2:
 
