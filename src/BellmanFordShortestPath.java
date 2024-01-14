@@ -1,69 +1,82 @@
 import java.util.*;
+import Utility.CustomLinkedList;
 @SuppressWarnings("unchecked")
 
 class BellmanFordShortestPath {
-    int V;
-    LinkedList<int[]>[] adjacencyList;
+    int vertex;
+    int[] parent;
+    CustomLinkedList<int[]>[] adjacencyList;
 
-    public BellmanFordShortestPath(int V) {
-        this.V = V;
-        adjacencyList = new LinkedList[V];
-        for (int i = 0; i < V; ++i) {
-            adjacencyList[i] = new LinkedList<>();
+    public BellmanFordShortestPath(int vertex) {
+        this.vertex = vertex;
+        adjacencyList = new CustomLinkedList[vertex];
+        for (int i = 0; i < vertex; ++i) {
+            adjacencyList[i] = new CustomLinkedList<>();
         }
     }
 
     public void addWeightedEdge(int source, int dest, int weight) {
         int[] edge = { dest, weight };
-        adjacencyList[source].add(edge);
+        adjacencyList[source].addLast(edge);  // Use addLast to add the edge to the list
         System.out.println("Added a weighted edge between " + source + " & " + dest + " having weight: " + weight);
     }
 
     void BellmanFord(int src) {
-        int[] dist = new int[V];
-        for (int i = 0; i < dist.length; i++) {
-            dist[i] = Integer.MAX_VALUE;
-        }
+        int[] dist = new int[vertex];
+        Arrays.fill(dist, Integer.MAX_VALUE);
         dist[src] = 0;
 
-        // Relax all edges V-1 times
-        for (int i = 0; i < V - 1; ++i) {
-            for (int j = 0; j < V; ++j) {
-                for (int[] edge : adjacencyList[j]) {
-                    int v = edge[0];
+
+        for (int i = 0; i < vertex - 1; ++i) {
+            for (int j = 0; j < vertex; ++j) {
+                int finalJ = j;
+                adjacencyList[j].forEach(edge -> {
+                    int vertex = edge[0];
                     int weight = edge[1];
-                    if (dist[j] != Integer.MAX_VALUE && dist[j] + weight < dist[v]) {
-                        dist[v] = dist[j] + weight;
+                    if (dist[finalJ] != Integer.MAX_VALUE && dist[finalJ] + weight < dist[vertex]) {
+                        dist[vertex] = dist[finalJ] + weight;
                     }
-                }
+                });
             }
         }
 
-        // Check for negative weight cycles
-        for (int j = 0; j < V; ++j) {
-            for (int[] edge : adjacencyList[j]) {
-                int v = edge[0];
+        for (int j = 0; j < vertex; ++j) {
+            int finalJ = j;
+            adjacencyList[j].forEach(edge -> {
+                int vertex = edge[0];
                 int weight = edge[1];
-                if (dist[j] != Integer.MAX_VALUE && dist[j] + weight < dist[v]) {
+                if (dist[finalJ] != Integer.MAX_VALUE && dist[finalJ] + weight < dist[vertex]) {
                     System.out.println("Graph contains negative weight cycle");
                     return;
                 }
-            }
+            });
         }
 
         printArr(dist);
     }
 
-    void printArr(int[] dist) {
+    void printArr(int[] dist)
+
+    {
         System.out.println("Vertex Distance from Source");
-        for (int i = 0; i < V; ++i) {
+        for (int i = 0; i < vertex; ++i) {
             System.out.println(i + "\t\t" + dist[i]);
         }
     }
 
+
+    private int find(int vertex) {
+        if (parent[vertex] != vertex) {
+            parent[vertex] = find(parent[vertex]); // Path compression
+        }
+        return parent[vertex];
+    }
+
+
+
     public static void main(String[] args) {
         int V = 5;
-        BellmanFordShortestPath  graph = new BellmanFordShortestPath(V);
+        BellmanFordShortestPath graph = new BellmanFordShortestPath(V);
         graph.addWeightedEdge(0, 1, -1);
         graph.addWeightedEdge(0, 2, 4);
         graph.addWeightedEdge(1, 3, 2);
@@ -75,5 +88,7 @@ class BellmanFordShortestPath {
 
         int source = 0;
         graph.BellmanFord(source);
+
+
     }
 }
