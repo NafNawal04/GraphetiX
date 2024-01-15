@@ -662,6 +662,7 @@ public class Main {
 
                             break;
                         case 2:
+                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
 
                             break;
 
@@ -842,6 +843,7 @@ public class Main {
 
                             break;
                         case 2:
+                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
 
                             break;
 
@@ -1170,7 +1172,7 @@ public class Main {
 
                             break;
                         case 2:
-
+                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
                             break;
 
                         case 3:
@@ -1515,6 +1517,28 @@ public class Main {
 
 
                 case 5:
+                    System.out.println("Which algorithm do you want to follow?");
+                    System.out.println("1.Kruskals Algorithm");
+                    System.out.println("2.Prims Algorithm");
+                    System.out.println("3. Exit");
+                    int taskW5 = scanner.nextInt();
+                    switch(taskW5)
+                    {
+                        case 1:
+                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+                        case 2:
+                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
+
 
                 case 6:
 
@@ -1659,6 +1683,28 @@ public class Main {
                     }
 
                 case 5:
+                    System.out.println("Which algorithm do you want to follow?");
+                    System.out.println("1.Kruskals Algorithm");
+                    System.out.println("2.Prims Algorithm");
+                    System.out.println("3. Exit");
+                    int taskW5 = scanner.nextInt();
+                    switch(taskW5)
+                    {
+                        case 1:
+                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+                        case 2:
+                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
+
 
                 case 6:
 
