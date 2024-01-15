@@ -1,8 +1,10 @@
-import java.util.*;
+package NewPackage;
 import Utility.*;
+import java.util.Scanner;
 
 public class MaxFlow {
-    private int node;
+    private final int node;
+
     private CustomLinkedList<int[]>[] graph;
 
     public MaxFlow(int node) {
@@ -106,12 +108,17 @@ public class MaxFlow {
         graph.addWeightedEdge(3, 5, 20);
         graph.addWeightedEdge(4, 3, 7);
         graph.addWeightedEdge(4, 5, 4);
+        System.out.print("Enter the source node: ");
+        Scanner scanner = new Scanner(System.in);
+        int source = scanner.nextInt();
 
-        int source = 0;
-        int destination = 5;
+
+        System.out.print("Enter the destination node: ");
+        int destination = scanner.nextInt();
 
 
-        int MaxFlow = graph.findMaxFlow(source, destination);
+
+        int MaxFlow = graph.findMaxFlow( source, destination);
         System.out.println("The maximum possible MaxFlow is " + MaxFlow);
     }
 }

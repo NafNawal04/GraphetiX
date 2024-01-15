@@ -5,6 +5,7 @@ import Utility.CustomLinkedList;
 
 public class GraphMethod {
     public CustomLinkedList<int[]>[] GraphRepresentationList ;
+
     public GraphMethod( CustomLinkedList<int[]>[] GraphRepresentationList)
     {
         this.GraphRepresentationList=GraphRepresentationList;

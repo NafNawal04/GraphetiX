@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import javax.swing.*;
 import Graph.VisualRepresentation;
+import NewPackage.MaxFlow;
 import Utility.CustomLinkedList;
 
 @SuppressWarnings("unused")
@@ -282,16 +283,13 @@ public class Main {
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2. Bellman Ford Algorithm");
-                    System.out.println("3. Exit");
+                    System.out.println("2. Exit");
                     int taskS3 = scanner.nextInt();
                     switch(taskS3)
                     {
                         case 1:
 
                         case 2:
-
-                        case 3:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
@@ -320,6 +318,27 @@ public class Main {
                     }
 
                 case 5:
+                    System.out.println("Which algorithm do you want to follow?");
+                    System.out.println("1.Kruskals Algorithm");
+                    System.out.println("2.Prims Algorithm");
+                    System.out.println("3. Exit");
+                    int taskW5 = scanner.nextInt();
+                    switch(taskW5)
+                    {
+                        case 1:
+                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+                        case 2:
+                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
 
                 case 6:
 
@@ -354,12 +373,11 @@ public class Main {
             System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
             System.out.println("4. Graph Representation");
-            System.out.println("5. Minimum Spanning");
-            System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
-            System.out.println("8. In Degree");
-            System.out.println("9. Out Degree");
-            System.out.println("10. Exit");
+            System.out.println("5.  Max flow");
+            System.out.println("6. Graph Details");
+            System.out.println("7. In Degree");
+            System.out.println("8. Out Degree");
+            System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -435,9 +453,8 @@ public class Main {
                     }
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
-                    System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2. Bellman Ford Algorithm");
-                    System.out.println("3. Exit");
+                    System.out.println("1. Bellman Ford Algorithm");
+                    System.out.println("2. Exit");
                     int taskD3 = scanner.nextInt();
                     switch(taskD3)
                     {
@@ -445,7 +462,6 @@ public class Main {
 
                         case 2:
 
-                        case 3:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
@@ -478,18 +494,17 @@ public class Main {
                 case 6:
 
                 case 7:
-                case 8:
                     System.out.println("Which node you want to find the in degree of?");
                     int d = scanner.nextInt();
                     s1.getDirected().inDegree(d);
                     break;
 
-                case 9:
+                case 8:
                     System.out.println("Which node you want to find the out degree of?");
                     int s = scanner.nextInt();
                     s1.getDirected().outDegree(s);
                     break;
-                case 10:
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -599,8 +614,7 @@ public class Main {
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2. Bellman Ford Algorithm");
-                    System.out.println("3. Exit");
+                    System.out.println("2. Exit");
                     int taskU3 = scanner.nextInt();
                     switch(taskU3)
                     {
@@ -608,7 +622,6 @@ public class Main {
 
                         case 2:
 
-                        case 3:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
@@ -636,8 +649,27 @@ public class Main {
                             System.out.println("Invalid choice. Please try again.");
                     }
 
-
                 case 5:
+                    System.out.println("Which algorithm do you want to follow?");
+                    System.out.println("1.Kruskals Algorithm");
+                    System.out.println("2.Prims Algorithm");
+                    System.out.println("3. Exit");
+                    int taskW5 = scanner.nextInt();
+                    switch(taskW5)
+                    {
+                        case 1:
+                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+                        case 2:
+
+                            break;
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
 
                 case 6:
 
@@ -761,8 +793,7 @@ public class Main {
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2. Bellman Ford Algorithm");
-                    System.out.println("3. Exit");
+                    System.out.println("2. Exit");
                     int taskC3 = scanner.nextInt();
                     switch(taskC3)
                     {
@@ -770,7 +801,6 @@ public class Main {
 
                         case 2:
 
-                        case 3:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
@@ -800,6 +830,26 @@ public class Main {
 
 
                 case 5:
+                    System.out.println("Which algorithm do you want to follow?");
+                    System.out.println("1.Kruskals Algorithm");
+                    System.out.println("2.Prims Algorithm");
+                    System.out.println("3. Exit");
+                    int taskW5 = scanner.nextInt();
+                    switch(taskW5)
+                    {
+                        case 1:
+                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+                        case 2:
+
+                            break;
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
 
                 case 6:
 
@@ -976,6 +1026,8 @@ public class Main {
     {
         System.out.println("How many edges do you want to add?");
         int edge_num = scanner.nextInt();
+        System.out.println("Do you want to add weighted nodes?Y/N");
+        char Char = scanner.nextLine().charAt(0);
         for(int i=0; i<edge_num;i++)
         {
             System.out.print("Enter the source & destination node: ");
@@ -1071,16 +1123,13 @@ public class Main {
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2. Bellman Ford Algorithm");
-                    System.out.println("3. Exit");
+                    System.out.println("2.  Exit");
                     int taskCC3 = scanner.nextInt();
                     switch(taskCC3)
                     {
                         case 1:
 
                         case 2:
-
-                        case 3:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
@@ -1109,6 +1158,26 @@ public class Main {
                     }
 
                 case 5:
+                    System.out.println("Which algorithm do you want to follow?");
+                    System.out.println("1.Kruskals Algorithm");
+                    System.out.println("2.Prims Algorithm");
+                    System.out.println("3. Exit");
+                    int taskW5 = scanner.nextInt();
+                    switch(taskW5)
+                    {
+                        case 1:
+                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+                        case 2:
+
+                            break;
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
 
                 case 6:
 
@@ -1220,8 +1289,7 @@ public class Main {
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2. Bellman Ford Algorithm");
-                    System.out.println("3. Exit");
+                    System.out.println("2. Exit");
                     int taskW3 = scanner.nextInt();
                     switch(taskW3)
                     {
@@ -1240,8 +1308,6 @@ public class Main {
                             break;
 
                         case 2:
-
-                        case 3:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
@@ -1270,8 +1336,35 @@ public class Main {
                     }
 
                 case 5:
+                    System.out.println("Which algorithm do you want to follow?");
+                    System.out.println("1.Kruskals Algorithm");
+                    System.out.println("2.Prims Algorithm");
+                    System.out.println("3. Exit");
+                    int taskW5 = scanner.nextInt();
+                    switch(taskW5)
+                    {
+                        case 1:
+                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+                        case 2:
+                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+
+                            break;
+
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
 
                 case 6:
+                    System.out.print("Enter the source node: ");
+                    source = scanner.nextInt();
+
+                    System.out.print("Enter the destination node: ");
+                    dest= scanner.nextInt();
+
 
                 case 7:
 
@@ -1386,16 +1479,13 @@ public class Main {
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2. Bellman Ford Algorithm");
-                    System.out.println("3. Exit");
+                    System.out.println("2. Exit");
                     int taskA3 = scanner.nextInt();
                     switch(taskA3)
                     {
                         case 1:
 
                         case 2:
-
-                        case 3:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
@@ -1535,15 +1625,13 @@ public class Main {
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2. Bellman Ford Algorithm");
-                    System.out.println("3. Exit");
+                    System.out.println("2. Exit");
                     int taskCC3 = scanner.nextInt();
                     switch (taskCC3) {
                         case 1:
 
                         case 2:
 
-                        case 3:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");

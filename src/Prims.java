@@ -7,21 +7,13 @@ class PrimsMST {
     public int node;
     public CustomLinkedList<int[]>[] GraphRepresentationList;
 
-    public PrimsMST(int node) {
-        this.node = node;
-        GraphRepresentationList = new CustomLinkedList[node];
-        for (int i = 0; i < node; i++) {
-            GraphRepresentationList[i] = new CustomLinkedList<>();
-        }
+    public PrimsMST(CustomLinkedList<int[]>[] GraphRepresentationList) {
+        this.GraphRepresentationList = GraphRepresentationList;
+        this.node = GraphRepresentationList.length;
+        display();
     }
 
-    public void addWeightedEdge(int source, int dest, int weight) {
-        int[] edge = { dest, weight };
-        int[] edge2 = { source, weight };
-        GraphRepresentationList[source].addLast(edge);
-        GraphRepresentationList[dest].addLast(edge2);
-        System.out.println("Added a weighted edge between " + source + " & " + dest + " having weight: " + weight);
-    }
+
 
     public CustomLinkedList<int[]> primMST() {
         CustomLinkedList<int[]> resultMST = new CustomLinkedList<>();
@@ -72,20 +64,9 @@ class PrimsMST {
         return min_index;
     }
 
-    public static void main(String[] args) {
-        PrimsMST weightedGraph = new PrimsMST(6);
-
-        weightedGraph.addWeightedEdge(0, 2, 8);
-        weightedGraph.addWeightedEdge(0, 1, 7);
-        weightedGraph.addWeightedEdge(1, 3, 6);
-        weightedGraph.addWeightedEdge(1, 5, 5);
-        weightedGraph.addWeightedEdge(2, 3, 4);
-        weightedGraph.addWeightedEdge(2, 5, 3);
-        weightedGraph.addWeightedEdge(1, 2, 3);
-        weightedGraph.addWeightedEdge(5, 3, 2);
-        weightedGraph.addWeightedEdge(4, 5, 2);
-
-        CustomLinkedList<int[]> minimumSpanningTree = weightedGraph.primMST();
+   public void display()
+    {
+        CustomLinkedList<int[]> minimumSpanningTree = primMST();
 
 
         System.out.println("Edges in the Minimum Spanning Tree (MST):");
@@ -94,6 +75,6 @@ class PrimsMST {
             System.out.println("Edge: " + edge[0] + " - " + edge[1] + " | Weight: " + edge[2]);
             min_cost.addAndGet(edge[2]);
         });
-                System.out.println("Total Cost of MST:" + min_cost);
-
-}}
+        System.out.println("Total Cost of MST:" + min_cost);
+    }
+}
