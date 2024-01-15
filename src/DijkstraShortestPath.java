@@ -1,24 +1,22 @@
 import Utility.*;
 import java.util.Scanner;
 import java.util.Comparator;
+
 @SuppressWarnings("unchecked")
 
 public class DijkstraShortestPath {
+    Scanner scanner = new Scanner(System.in);
 
     public int node;
     public int source;
     public CustomLinkedList<int[]>[] GraphRepresentationList;
 
-    public DijkstraShortestPath(int node) {
-        this.node = node;
-        GraphRepresentationList = new CustomLinkedList[node];
-        for (int i = 0; i < node; i++) {
-            GraphRepresentationList[i] = new CustomLinkedList<>();
-        }
+    public DijkstraShortestPath(CustomLinkedList<int[]>[] GraphRepresentationList) {
+        this.GraphRepresentationList = GraphRepresentationList;
+        this.node = GraphRepresentationList.length;
+        display();
     }
-    public DijkstraShortestPath() {
 
-    }
 
     public void addWeightedEdge(int source, int destination, int weight) {
         int[] edge = { destination, weight };
@@ -78,27 +76,15 @@ public class DijkstraShortestPath {
         path.addLast(current);
     }
 
-    public static void main(String[] args) {
-        int V = 6; // Number of vertices
-        Scanner scanner = new Scanner(System.in);
-        DijkstraShortestPath graph = new DijkstraShortestPath(V);
 
+        public void display(){
 
-        graph.addWeightedEdge(0, 1, 1);
-        graph.addWeightedEdge( 0,2, 3);
-        graph.addWeightedEdge(0, 3, 6);
-        graph.addWeightedEdge(1, 4, 1);
-        graph.addWeightedEdge(1, 2, 2);
-        graph.addWeightedEdge(2, 3, 1);
-        graph.addWeightedEdge(3, 5, 3);
-        graph.addWeightedEdge(4, 0, 4);
+            System.out.print("Enter the source node: ");
+            int src = scanner.nextInt();
 
-        System.out.print("Enter the source node: ");
-        int source = scanner.nextInt();
-
-        System.out.print("Enter the destination node: ");
-        int destination = scanner.nextInt();
-        CustomLinkedList<Integer> shortestPath = graph.findShortestPath(source, destination);
+            System.out.print("Enter the destination node: ");
+            int destination = scanner.nextInt();
+        CustomLinkedList<Integer> shortestPath = findShortestPath(source, destination);
         System.out.println("Shortest Path from node " + source + " to node " + destination + ": " + shortestPath);
 
         int shortestDistance = shortestPath.length() > 1 ? shortestPath.get(shortestPath.length() - 2) : 0;

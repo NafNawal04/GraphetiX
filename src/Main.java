@@ -288,6 +288,7 @@ public class Main {
                     switch(taskS3)
                     {
                         case 1:
+                            DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getSimple().GraphRepresentationList);
 
                         case 2:
                             return;
@@ -619,7 +620,7 @@ public class Main {
                     int taskU3 = scanner.nextInt();
                     switch(taskU3)
                     {
-                        case 1:
+                        case 1:DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getUndirected().GraphRepresentationList);
 
                         case 2:
 
@@ -799,7 +800,7 @@ public class Main {
                     int taskC3 = scanner.nextInt();
                     switch(taskC3)
                     {
-                        case 1:
+                        case 1:DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getConnectedG().GraphRepresentationList);
 
                         case 2:
 
@@ -1130,7 +1131,7 @@ public class Main {
                     int taskCC3 = scanner.nextInt();
                     switch(taskCC3)
                     {
-                        case 1:
+                        case 1:DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getComplete().GraphRepresentationList);
 
                         case 2:
                             return;
@@ -1297,17 +1298,10 @@ public class Main {
                     switch(taskW3)
                     {
                         case 1:
-                            System.out.print("Enter the source node: ");
-                            source = scanner.nextInt();
 
-                            System.out.print("Enter the destination node: ");
-                            dest= scanner.nextInt();
-                            s1.getWeighted().Dijkstra(source,dest);
-                            CustomLinkedList<Integer> shortestPath = s1.getWeighted().findShortestPath(source, dest);
-                            System.out.println("Shortest Path from node " + source + " to node " + dest + ": " + shortestPath);
+                            DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getWeighted().GraphRepresentationList);
 
-                            int shortestDistance = shortestPath.length() > 1 ? shortestPath.get(shortestPath.length() - 2) : 0;
-                            System.out.println("Shortest Distance from node " + source + " to node " + dest + " is " + shortestDistance);
+
                             break;
 
                         case 2:
@@ -1487,6 +1481,7 @@ public class Main {
                     switch(taskA3)
                     {
                         case 1:
+                            DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getAcyclic().GraphRepresentationList);
 
                         case 2:
                             return;
@@ -1653,7 +1648,7 @@ public class Main {
                     System.out.println("2. Exit");
                     int taskCC3 = scanner.nextInt();
                     switch (taskCC3) {
-                        case 1:
+                        case 1:DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getCyclic().GraphRepresentationList);
 
                         case 2:
 

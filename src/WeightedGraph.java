@@ -1,12 +1,11 @@
 import Utility.CustomLinkedList;
 import Graph.*;
-import NewPackage.*;
 
 @SuppressWarnings("unchecked")
-public class WeightedGraph extends DijkstraShortestPath implements IGraph
+public class WeightedGraph implements IGraph
 {
-
-
+    public  int node;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public WeightedGraph(int node)
     {
@@ -26,7 +25,7 @@ public class WeightedGraph extends DijkstraShortestPath implements IGraph
 
 
 
-@Override
+    @Override
     public void removeWeightedEdge(int source, int dest, int weight)
     {
         GraphMethod g=new GraphMethod(GraphRepresentationList);
@@ -62,12 +61,6 @@ public class WeightedGraph extends DijkstraShortestPath implements IGraph
         GraphMethod g=new GraphMethod(GraphRepresentationList);
         g.GraphRepresentation(node);
 
-
-    }
-
-    public void Dijkstra(int source,int destination){
-        DijkstraShortestPath graph = new DijkstraShortestPath(node);
-        graph.findShortestPath(source, destination);
 
     }
 
