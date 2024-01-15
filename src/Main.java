@@ -308,7 +308,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getSimple().GraphRepresentationList);
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getSimple().GraphRepresentationList,false);
                             });
                             break;
 
@@ -481,7 +481,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getDirected().GraphRepresentationList);
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getDirected().GraphRepresentationList,true);
                             });
                             break;
 
@@ -641,7 +641,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getUndirected().GraphRepresentationList);
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getUndirected().GraphRepresentationList,false);
                             });
                             break;
 
@@ -821,7 +821,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getConnectedG().GraphRepresentationList);
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getConnectedG().GraphRepresentationList,false);
                             });
                             break;
 
@@ -996,7 +996,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getDisconnected().GraphRepresentationList);
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getDisconnected().GraphRepresentationList,false);
                             });
                             break;
 
@@ -1151,7 +1151,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getComplete().GraphRepresentationList);
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getComplete().GraphRepresentationList,false);
                             });
                             break;
 
@@ -1322,7 +1322,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getWeighted().GraphRepresentationList);
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getWeighted().GraphRepresentationList,false);
                             });
                             break;
 
@@ -1499,7 +1499,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getAcyclic().GraphRepresentationList);
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getAcyclic().GraphRepresentationList,false);
                             });
                             break;
 
@@ -1666,7 +1666,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getCyclic().GraphRepresentationList);
+                                VisualRepresentation visualRep = new VisualRepresentation(s1.getCyclic().GraphRepresentationList,false);
                             });
                             break;
 

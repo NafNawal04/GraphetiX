@@ -8,9 +8,12 @@ public class VisualRepresentation extends JFrame {
     private final int radius = 20;  // Radius of the vertex circle
     private final int vertexDiameter = 2 * radius;
     public CustomLinkedList<int[]>[] graph;
+    public boolean isDirected;
 
-    public VisualRepresentation(CustomLinkedList<int[]>[] GraphRepresentationList) {
+    public VisualRepresentation(CustomLinkedList<int[]>[] GraphRepresentationList,boolean isDirected) {
+
         this.graph = GraphRepresentationList;
+        this.isDirected = isDirected;
 
         // Set up JFrame
         setTitle("Graph Visual Representation");
@@ -87,17 +90,59 @@ public class VisualRepresentation extends JFrame {
                         g.setColor(Color.BLUE);
                         g.drawLine(x1, y1, x2, y2);
 
-                        // Draw weight, if applicable
-                        if (edge.length > 1) {
+                        // Draw weight
+                        if (edge.length > 1  && edge[1] !=0) {
                             g.setColor(Color.BLACK);
-                            int labelX = (x1 + x2) / 2;
-                            int labelY = (y1 + y2) / 2;
-                            g.drawString(Integer.toString(edge[1]), labelX, labelY);
+                            int labelX = (int) (x1 + 0.3 * (x2 - x1));
+                            int labelY = (int) (y1 + 0.3 * (y2 - y1));
+                            if (i < edge[0]) {
+                                g.drawString(Integer.toString(edge[1]), labelX, labelY);
+                            }
+                        }
+
+                        if (isDirected)
+                        {
+                            drawArrowHead(g, x1, y1, x2, y2);
                         }
                     }
                 }
             }
         }
+
+
+        private void drawArrowHead(Graphics g, int x1, int y1, int x2, int y2) {
+            g.setColor(Color.BLUE);
+            int arrowSize = 8;
+            int dx = x2 - x1, dy = y2 - y1;
+            double D = Math.sqrt(dx * dx + dy * dy);
+            double sin = dy / D, cos = dx / D;
+            double xd = x2 - cos * radius;
+            double yd = y2 - sin * radius;
+
+
+            drawArrow(g, xd, yd, x2, y2, arrowSize);
+        }
+
+        private void drawArrow(Graphics g, double x0, double y0, double x1, double y1, int size) {
+            double dx = x1 - x0, dy = y1 - y0;
+            double D = Math.sqrt(dx * dx + dy * dy);
+            double xm = D - size, xn = xm, ym = size, yn = -size, x;
+            double sin = dy / D, cos = dx / D;
+
+            x = xm * cos - ym * sin + x0;
+            ym = xm * sin + ym * cos + y0;
+            xm = x;
+
+            x = xn * cos - yn * sin + x0;
+            yn = xn * sin + yn * cos + y0;
+            xn = x;
+
+            int[] xPoints = {(int) x1, (int) xm, (int) xn};
+            int[] yPoints = {(int) y1, (int) ym, (int) yn};
+
+            g.drawPolygon(xPoints, yPoints, 3);
+        }
+
     }
 }
 

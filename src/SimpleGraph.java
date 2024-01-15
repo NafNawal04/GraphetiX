@@ -2,6 +2,8 @@
 import Utility.*;
 import Graph.*;
 
+import java.util.Scanner;
+
 @SuppressWarnings("unchecked")
 public class SimpleGraph implements IGraph
 {
@@ -31,6 +33,12 @@ public class SimpleGraph implements IGraph
         if(source == dest)
         {
             System.out.println("Cannot add any loop in simple graph.");
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter the source & destination node: ");
+            int s = scanner.nextInt();
+            int d = scanner.nextInt();
+            addWeightedEdge(s,d,0);
         }
         else
         {
@@ -38,11 +46,16 @@ public class SimpleGraph implements IGraph
             {
                 int[] neededEdge1 = GraphRepresentationList[source].get(x);
 
-                    if (neededEdge1[0] == dest)
-                    {
-                        System.out.println("Cannot add multi edges between two same nodes in simple graph");
-                        return;
-                    }
+                if (neededEdge1[0] == dest)
+                {
+                    System.out.println("Cannot add multi edges between two same nodes in simple graph");
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.print("Enter the source & destination node: ");
+                    int s = scanner.nextInt();
+                    int d = scanner.nextInt();
+                    addWeightedEdge(s,d,0);
+                    return;
+                }
 
             }
             for(int x=0;x< GraphRepresentationList[dest].length();x++)
