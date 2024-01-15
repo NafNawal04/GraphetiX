@@ -1356,12 +1356,10 @@ public class Main {
                     }
 
                 case 6:
-                    System.out.print("Enter the source node: ");
-                    source = scanner.nextInt();
 
-                    System.out.print("Enter the destination node: ");
-                    dest= scanner.nextInt();
 
+                    MaxFlow maxflow =new MaxFlow(s1.getWeighted().GraphRepresentationList);
+                    break;
 
                 case 7:
 

@@ -2,17 +2,24 @@ package NewPackage;
 import Utility.*;
 import java.util.Scanner;
 
+
 public class MaxFlow {
-    private final int node;
+    public  int node;
 
-    private CustomLinkedList<int[]>[] graph;
+    public CustomLinkedList<int[]>[] graph;
 
-    public MaxFlow(int node) {
-        this.node = node;
-        graph = new CustomLinkedList[node];
-        for (int i = 0; i < node; i++) {
-            graph[i] = new CustomLinkedList<>();
-        }
+    public MaxFlow(CustomLinkedList<int[]>[] GraphRepresentationList) {
+        Scanner scanner= new Scanner(System.in);
+        this.graph = GraphRepresentationList;
+        this.node = GraphRepresentationList.length;
+        System.out.print("Enter the source node: ");
+        int src2 = scanner.nextInt();
+
+
+        System.out.print("Enter the destination node: ");
+        int destination = scanner.nextInt();
+        int MaxFlow = findMaxFlow( src2, destination);
+        System.out.println("The maximum possible MaxFlow is " + MaxFlow);
     }
 
     public void addWeightedEdge(int source, int destination, int weight) {
@@ -93,32 +100,5 @@ public class MaxFlow {
         return MaxFlow;
     }
 
-    public static void main(String[] args) {
-        int V = 6;
-        MaxFlow graph = new MaxFlow(V);
 
-
-        graph.addWeightedEdge(0, 1, 12);
-        graph.addWeightedEdge(0, 2, 14);
-        graph.addWeightedEdge(1, 2, 1);
-        graph.addWeightedEdge(1, 3, 12);
-        graph.addWeightedEdge(2, 1, 4);
-        graph.addWeightedEdge(2, 4, 14);
-        graph.addWeightedEdge(3, 2, 9);
-        graph.addWeightedEdge(3, 5, 20);
-        graph.addWeightedEdge(4, 3, 7);
-        graph.addWeightedEdge(4, 5, 4);
-        System.out.print("Enter the source node: ");
-        Scanner scanner = new Scanner(System.in);
-        int source = scanner.nextInt();
-
-
-        System.out.print("Enter the destination node: ");
-        int destination = scanner.nextInt();
-
-
-
-        int MaxFlow = graph.findMaxFlow( source, destination);
-        System.out.println("The maximum possible MaxFlow is " + MaxFlow);
-    }
 }
