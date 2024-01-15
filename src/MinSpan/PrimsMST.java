@@ -1,9 +1,10 @@
+package MinSpan;
 
-import Utility.*;
+import CustomUtilityFunctions.*;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-class PrimsMST {
+public class PrimsMST {
     public int node;
     public CustomLinkedList<int[]>[] GraphRepresentationList;
 

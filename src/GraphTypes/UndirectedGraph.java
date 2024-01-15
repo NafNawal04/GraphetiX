@@ -1,5 +1,9 @@
-import Utility.CustomLinkedList;
-import Graph.*;
+package GraphTypes;
+
+import CustomUtilityFunctions.CustomLinkedList;
+import GraphFunctionalities.*;
+import GraphInterface.IGraph;
+
 @SuppressWarnings({"unchecked","unused"})
 public class UndirectedGraph implements IGraph
 {
@@ -30,7 +34,7 @@ public class UndirectedGraph implements IGraph
         }
         else
         {
-            GraphMethod g =new GraphMethod(GraphRepresentationList);
+            BasicMethod g =new BasicMethod(GraphRepresentationList);
             g.addWeightedEdge(source,dest,weight);
         }
 
@@ -38,9 +42,9 @@ public class UndirectedGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addNode(node_num,node);
-        System.out.println("Added "+ node_num+ " number of nodes in the Undirected Graph.");
+        System.out.println("Added "+ node_num+ " number of nodes in the Undirected GraphDelegator.Graph.");
     }
     @Override
     public void removeWeightedEdge(int source,int dest,int weight)
@@ -53,7 +57,7 @@ public class UndirectedGraph implements IGraph
         }
         else
         {
-            GraphMethod g =new GraphMethod(GraphRepresentationList);
+            BasicMethod g =new BasicMethod(GraphRepresentationList);
             g.removeWeightedEdge(source, dest,weight);
 
         }
@@ -62,7 +66,7 @@ public class UndirectedGraph implements IGraph
     @Override
     public void removeNode(int node_num)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the simple graph.");
 
@@ -79,20 +83,20 @@ public class UndirectedGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for Undirected graph:");
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphRepresentation(node);
 
     }
 
-    void bfs(int start_node)
+    public void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.bfs(start_node);
 
     }
     public void dfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.DFS(start_node);
 
     }

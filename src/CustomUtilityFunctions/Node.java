@@ -1,4 +1,4 @@
-package Utility;
+package CustomUtilityFunctions;
 
 class Node <E> {
     public E data;

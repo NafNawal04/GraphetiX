@@ -1,8 +1,10 @@
+package ShortestPathTraversal;
+
 import java.util.*;
-import Utility.CustomLinkedList;
+import CustomUtilityFunctions.CustomLinkedList;
 @SuppressWarnings("unchecked")
 
-class BellmanFordShortestPath {
+public class BellmanFordShortestPath {
     int vertex;
     int[] parent;
     CustomLinkedList<int[]>[] adjacencyList;
@@ -46,7 +48,7 @@ class BellmanFordShortestPath {
                 int vertex = edge[0];
                 int weight = edge[1];
                 if (dist[finalJ] != Integer.MAX_VALUE && dist[finalJ] + weight < dist[vertex]) {
-                    System.out.println("Graph contains negative weight cycle");
+                    System.out.println("GraphDelegator.Graph contains negative weight cycle");
                     return;
                 }
             });

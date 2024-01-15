@@ -1,5 +1,9 @@
-import Utility.*;
-import Graph.*;
+package GraphTypes;
+
+import CustomUtilityFunctions.*;
+import GraphFunctionalities.*;
+import GraphInterface.IGraph;
+
 @SuppressWarnings("unchecked")
 public class CompleteGraph implements IGraph
 {
@@ -34,7 +38,7 @@ public class CompleteGraph implements IGraph
     @Override
     public void addWeightedEdge(int source, int dest, int weight)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addWeightedEdge(source, dest, weight);
     }
 
@@ -43,7 +47,7 @@ public class CompleteGraph implements IGraph
     @Override
     public void removeWeightedEdge(int source, int dest, int weight)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
 
     }
@@ -52,7 +56,7 @@ public class CompleteGraph implements IGraph
     {
         int dummy = node;
         int num_of_new_nodes = node + node_num;
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addNode(node_num,node);
         node = num_of_new_nodes;
 
@@ -92,7 +96,7 @@ public class CompleteGraph implements IGraph
         }
 
 
-        System.out.println("Added "+ node_num+ " number of nodes in the Complete Graph.");
+        System.out.println("Added "+ node_num+ " number of nodes in the Complete GraphDelegator.Graph.");
     }
 
 
@@ -101,7 +105,7 @@ public class CompleteGraph implements IGraph
     public void removeNode(int node_num)
     {
 
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the complete graph.");
 
@@ -111,20 +115,20 @@ public class CompleteGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for Complete graph:");
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphRepresentation(node);
 
     }
 
-    void bfs(int start_node)
+    public void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.bfs(start_node);
 
     }
     public void dfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.DFS(start_node);
 
     }

@@ -1,4 +1,4 @@
-package Utility;
+package CustomUtilityFunctions;
 
 public class CustomQueue<E> {
     private Node<E> head;  // front of the queue

@@ -1,5 +1,6 @@
+package GraphTypeChecker;
 
-import Utility.*;
+import CustomUtilityFunctions.*;
 
 public class GraphTypeChecker {
     private final CustomLinkedList<CustomLinkedList<Integer>> adjacencyList;
@@ -7,8 +8,8 @@ public class GraphTypeChecker {
     private final boolean[] recStack;
     private final int vertices;
     private int totalEdges;
-    boolean isSimple;
-    boolean isDirected;
+    public boolean isSimple;
+    public boolean isDirected;
     private boolean foundDirectedEdge = false;
 
     public GraphTypeChecker(int vertices) {

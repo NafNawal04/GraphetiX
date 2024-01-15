@@ -1,6 +1,9 @@
+package GraphTypes;
 
-import Utility.CustomLinkedList;
-import Graph.*;
+import CustomUtilityFunctions.CustomLinkedList;
+import GraphFunctionalities.*;
+import GraphInterface.IGraph;
+
 @SuppressWarnings("unchecked")
 public class ConnectedGraph implements IGraph
 {
@@ -31,7 +34,7 @@ public class ConnectedGraph implements IGraph
     @Override
     public void addWeightedEdge(int source, int dest, int weight)
     {
-        GraphMethod g =new GraphMethod(GraphRepresentationList);
+        BasicMethod g =new BasicMethod(GraphRepresentationList);
         if(deletedIndex.contains(source))
         {
             System.out.println("vertex "+ source+ " doesn't exist. So no edge can be added");
@@ -44,7 +47,7 @@ public class ConnectedGraph implements IGraph
     @Override
     public void removeWeightedEdge(int source,int dest,int weight)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
 
 
@@ -55,7 +58,7 @@ public class ConnectedGraph implements IGraph
     {
         int dummy = node;
         int num_of_new_nodes = node + node_num;
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addNode(node_num,node);
         node = num_of_new_nodes;
 
@@ -68,13 +71,13 @@ public class ConnectedGraph implements IGraph
             }
 
 
-        System.out.println("Added "+ node_num+ " number of nodes in the Connected Graph.");
+        System.out.println("Added "+ node_num+ " number of nodes in the Connected GraphDelegator.Graph.");
     }
     @Override
     public void removeNode(int node_num)
     {
         deletedIndex.addLast(node_num);
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
         int[] edge5 = {node_num+1,0};
         int[] edge6 = {node_num-1,0};
@@ -88,20 +91,20 @@ public class ConnectedGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for Connected graph:");
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphRepresentation(node);
 
     }
 
-    void bfs(int start_node)
+    public void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.bfs(start_node);
 
     }
     public void dfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.DFS(start_node);
 
     }

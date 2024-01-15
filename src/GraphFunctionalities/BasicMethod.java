@@ -1,12 +1,12 @@
-package Graph;
+package GraphFunctionalities;
 
-import Utility.CustomLinkedList;
+import CustomUtilityFunctions.CustomLinkedList;
 @SuppressWarnings("unchecked")
 
-public class GraphMethod {
+public class BasicMethod {
     public CustomLinkedList<int[]>[] GraphRepresentationList ;
 
-    public GraphMethod( CustomLinkedList<int[]>[] GraphRepresentationList)
+    public BasicMethod(CustomLinkedList<int[]>[] GraphRepresentationList)
     {
         this.GraphRepresentationList=GraphRepresentationList;
     }

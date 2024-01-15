@@ -1,8 +1,13 @@
 import java.util.Scanner;
 import javax.swing.*;
-import Graph.VisualRepresentation;
-import NewPackage.MaxFlow;
-import Utility.CustomLinkedList;
+
+import GraphDelegator.Graph;
+import GraphFunctionalities.*;
+import GraphTypeChecker.GraphTypeChecker;
+import MaxFlow.MaxFlow;
+import MinSpan.KruskalMST;
+import MinSpan.PrimsMST;
+import ShortestPathTraversal.*;
 
 @SuppressWarnings("unused")
 public class Main {
@@ -40,15 +45,15 @@ public class Main {
     public static void createGraph(Scanner scanner)
     {
         System.out.println("Which type of graph do you want to create?");
-        System.out.println("1. Simple Graph");
-        System.out.println("2. Directed Graph");
-        System.out.println("3. Undirected Graph");
-        System.out.println("4. Connected Graph");
-        System.out.println("5. Disconnected Graph");
-        System.out.println("6. Complete Graph");
-        System.out.println("7. Weighted Graph");
-        System.out.println("8. Acyclic Graph");
-        System.out.println("9. Cyclic Graph");
+        System.out.println("1. Simple GraphDelegator.Graph");
+        System.out.println("2. Directed GraphDelegator.Graph");
+        System.out.println("3. Undirected GraphDelegator.Graph");
+        System.out.println("4. Connected GraphDelegator.Graph");
+        System.out.println("5. Disconnected GraphDelegator.Graph");
+        System.out.println("6. Complete GraphDelegator.Graph");
+        System.out.println("7. Weighted GraphDelegator.Graph");
+        System.out.println("8. Acyclic GraphDelegator.Graph");
+        System.out.println("9. Cyclic GraphDelegator.Graph");
         System.out.print("Press the number for the desired graph type: ");
         int graphType = scanner.nextInt();
 
@@ -58,61 +63,61 @@ public class Main {
         switch (graphType)
         {
             case 1:
-                System.out.print("How many nodes do you want to start your Simple Graph with? ");
+                System.out.print("How many nodes do you want to start your Simple GraphDelegator.Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Simple Graph",node);
+                s1 = new Graph("Simple GraphDelegator.Graph",node);
                 OperationSimple(scanner,s1);
                 break;
             case 2:
-                System.out.print("How many nodes do you want to start your Directed Graph with? ");
+                System.out.print("How many nodes do you want to start your Directed GraphDelegator.Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Directed Graph",node);
+                s1 = new Graph("Directed GraphDelegator.Graph",node);
                 OperationDirected(scanner,s1);
                 break;
             case 3:
-                System.out.print("How many nodes do you want to start your Undirected Graph with? ");
+                System.out.print("How many nodes do you want to start your Undirected GraphDelegator.Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Undirected Graph",node);
+                s1 = new Graph("Undirected GraphDelegator.Graph",node);
                 OperationUndirected(scanner,s1);
                 break;
             case 4:
-                System.out.print("How many nodes do you want to start your Connected Graph with? ");
+                System.out.print("How many nodes do you want to start your Connected GraphDelegator.Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Connected Graph",node);
+                s1 = new Graph("Connected GraphDelegator.Graph",node);
                 OperationConnected(scanner,s1);
                 break;
             case 5:
-                System.out.print("How many nodes do you want to start your Disconnected Graph with? ");
+                System.out.print("How many nodes do you want to start your Disconnected GraphDelegator.Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Disconnected Graph",node);
+                s1 = new Graph("Disconnected GraphDelegator.Graph",node);
                 OperationDisconnected(scanner,s1);
 
                 break;
             case 6:
-                System.out.print("How many nodes do you want to start your Complete Graph with? ");
+                System.out.print("How many nodes do you want to start your Complete GraphDelegator.Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Complete Graph",node);
+                s1 = new Graph("Complete GraphDelegator.Graph",node);
                 OperationComplete(scanner,s1);
 
                 break;
             case 7:
-                System.out.print("How many nodes do you want to start your Weighted Graph with? ");
+                System.out.print("How many nodes do you want to start your Weighted GraphDelegator.Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Weighted Graph",node);
+                s1 = new Graph("Weighted GraphDelegator.Graph",node);
                 OperationWeighted(scanner,s1);
 
                 break;
             case 8:
-                System.out.print("How many nodes do you want to start your Acyclic Graph with? ");
+                System.out.print("How many nodes do you want to start your Acyclic GraphDelegator.Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Acyclic Graph",node);
+                s1 = new Graph("Acyclic GraphDelegator.Graph",node);
                 OperationAcyclic(scanner,s1);
 
                 break;
             case 9:
-                System.out.print("How many nodes do you want to start your Cyclic Graph with? ");
+                System.out.print("How many nodes do you want to start your Cyclic GraphDelegator.Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Cyclic Graph",node);
+                s1 = new Graph("Cyclic GraphDelegator.Graph",node);
                 OperationCyclic(scanner,s1);
 
                 break;
@@ -173,7 +178,7 @@ public class Main {
         }
 
         if (graph.isComplete()) {
-            System.out.println("The graph is a Complete Graph.");
+            System.out.println("The graph is a Complete GraphDelegator.Graph.");
         }
 
 
@@ -199,13 +204,13 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. Graph Modifications");
-            System.out.println("2. Graph Traversal");
+            System.out.println("1. GraphDelegator.Graph Modifications");
+            System.out.println("2. GraphDelegator.Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. Graph Representation");
+            System.out.println("4. GraphDelegator.Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
+            System.out.println("7. GraphDelegator.Graph Details");
             System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -308,7 +313,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getSimple().GraphRepresentationList,false);
+                                GraphVisualization visualRep = new GraphVisualization(s1.getSimple().GraphRepresentationList,false);
                             });
                             break;
 
@@ -371,12 +376,12 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. Graph Modifications");
-            System.out.println("2. Graph Traversal");
+            System.out.println("1. GraphDelegator.Graph Modifications");
+            System.out.println("2. GraphDelegator.Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. Graph Representation");
+            System.out.println("4. GraphDelegator.Graph Representation");
             System.out.println("5.  Max flow");
-            System.out.println("6. Graph Details");
+            System.out.println("6. GraphDelegator.Graph Details");
             System.out.println("7. In Degree");
             System.out.println("8. Out Degree");
             System.out.println("9. Exit");
@@ -481,7 +486,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getDirected().GraphRepresentationList,true);
+                                GraphVisualization visualRep = new GraphVisualization(s1.getDirected().GraphRepresentationList,true);
                             });
                             break;
 
@@ -531,14 +536,14 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. Graph Modifications");
-            System.out.println("2. Graph Traversal");
+            System.out.println("1. GraphDelegator.Graph Modifications");
+            System.out.println("2. GraphDelegator.Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. Graph Representation");
+            System.out.println("4. GraphDelegator.Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
-            System.out.println("8. Graph Conversion");
+            System.out.println("7. GraphDelegator.Graph Details");
+            System.out.println("8. GraphDelegator.Graph Conversion");
             System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -641,7 +646,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getUndirected().GraphRepresentationList,false);
+                                GraphVisualization visualRep = new GraphVisualization(s1.getUndirected().GraphRepresentationList,false);
                             });
                             break;
 
@@ -712,13 +717,13 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. Graph Modifications");
-            System.out.println("2. Graph Traversal");
+            System.out.println("1. GraphDelegator.Graph Modifications");
+            System.out.println("2. GraphDelegator.Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. Graph Representation");
+            System.out.println("4. GraphDelegator.Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
+            System.out.println("7. GraphDelegator.Graph Details");
             System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -821,7 +826,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getConnectedG().GraphRepresentationList,false);
+                                GraphVisualization visualRep = new GraphVisualization(s1.getConnectedG().GraphRepresentationList,false);
                             });
                             break;
 
@@ -884,14 +889,14 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. Graph Modifications");
-            System.out.println("2. Graph Traversal");
+            System.out.println("1. GraphDelegator.Graph Modifications");
+            System.out.println("2. GraphDelegator.Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. Graph Representation");
+            System.out.println("4. GraphDelegator.Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
-            System.out.println("8. Graph Conversion");
+            System.out.println("7. GraphDelegator.Graph Details");
+            System.out.println("8. GraphDelegator.Graph Conversion");
             System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -996,7 +1001,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getDisconnected().GraphRepresentationList,false);
+                                GraphVisualization visualRep = new GraphVisualization(s1.getDisconnected().GraphRepresentationList,false);
                             });
                             break;
 
@@ -1043,13 +1048,13 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. Graph Modifications");
-            System.out.println("2. Graph Traversal");
+            System.out.println("1. GraphDelegator.Graph Modifications");
+            System.out.println("2. GraphDelegator.Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. Graph Representation");
+            System.out.println("4. GraphDelegator.Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
+            System.out.println("7. GraphDelegator.Graph Details");
             System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -1151,7 +1156,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getComplete().GraphRepresentationList,false);
+                                GraphVisualization visualRep = new GraphVisualization(s1.getComplete().GraphRepresentationList,false);
                             });
                             break;
 
@@ -1213,13 +1218,13 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. Graph Modifications");
-            System.out.println("2. Graph Traversal");
+            System.out.println("1. GraphDelegator.Graph Modifications");
+            System.out.println("2. GraphDelegator.Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. Graph Representation");
+            System.out.println("4. GraphDelegator.Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
+            System.out.println("7. GraphDelegator.Graph Details");
             System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -1322,7 +1327,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getWeighted().GraphRepresentationList,false);
+                                GraphVisualization visualRep = new GraphVisualization(s1.getWeighted().GraphRepresentationList,false);
                             });
                             break;
 
@@ -1374,7 +1379,7 @@ public class Main {
 
 
 
-    public static void OperationAcyclic(Scanner scanner,Graph s1)
+    public static void OperationAcyclic(Scanner scanner, Graph s1)
     {
         System.out.println("How many edges do you want to add?");
         int edge_num = scanner.nextInt();
@@ -1389,14 +1394,14 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. Graph Modifications");
-            System.out.println("2. Graph Traversal");
+            System.out.println("1. GraphDelegator.Graph Modifications");
+            System.out.println("2. GraphDelegator.Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. Graph Representation");
+            System.out.println("4. GraphDelegator.Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
-            System.out.println("8. Graph Conversion");
+            System.out.println("7. GraphDelegator.Graph Details");
+            System.out.println("8. GraphDelegator.Graph Conversion");
             System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -1499,7 +1504,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getAcyclic().GraphRepresentationList,false);
+                                GraphVisualization visualRep = new GraphVisualization(s1.getAcyclic().GraphRepresentationList,false);
                             });
                             break;
 
@@ -1562,13 +1567,13 @@ public class Main {
 
         while (true) {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. Graph Modifications");
-            System.out.println("2. Graph Traversal");
+            System.out.println("1. GraphDelegator.Graph Modifications");
+            System.out.println("2. GraphDelegator.Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. Graph Representation");
+            System.out.println("4. GraphDelegator.Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
+            System.out.println("7. GraphDelegator.Graph Details");
             System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
@@ -1666,7 +1671,7 @@ public class Main {
                             break;
                         case 2:
                             SwingUtilities.invokeLater(() -> {
-                                VisualRepresentation visualRep = new VisualRepresentation(s1.getCyclic().GraphRepresentationList,false);
+                                GraphVisualization visualRep = new GraphVisualization(s1.getCyclic().GraphRepresentationList,false);
                             });
                             break;
 

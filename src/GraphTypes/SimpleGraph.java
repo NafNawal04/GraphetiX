@@ -1,6 +1,8 @@
+package GraphTypes;
 
-import Utility.*;
-import Graph.*;
+import CustomUtilityFunctions.*;
+import GraphFunctionalities.*;
+import GraphInterface.IGraph;
 
 import java.util.Scanner;
 
@@ -28,7 +30,7 @@ public class SimpleGraph implements IGraph
     @Override
     public void addWeightedEdge(int source, int dest,int weight)
     {
-        GraphMethod g =new GraphMethod(GraphRepresentationList);
+        BasicMethod g =new BasicMethod(GraphRepresentationList);
 
         if(source == dest)
         {
@@ -77,7 +79,7 @@ public class SimpleGraph implements IGraph
     @Override
     public void removeWeightedEdge(int source,int dest,int weight)
     {
-        GraphMethod g =new GraphMethod(GraphRepresentationList);
+        BasicMethod g =new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
 
 
@@ -87,15 +89,15 @@ public class SimpleGraph implements IGraph
     public void addNode(int node_num)
     {
 
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addNode(node_num,node);
-        System.out.println("Added "+ node_num+ " number of nodes in the Simple Graph.");
+        System.out.println("Added "+ node_num+ " number of nodes in the Simple GraphDelegator.Graph.");
     }
 
     @Override
     public void removeNode(int node_num)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the simple graph.");
 
@@ -107,20 +109,20 @@ public class SimpleGraph implements IGraph
     {
 
         System.out.println("List Representation for Simple graph:");
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphRepresentation(node);
 
     }
 
-    void bfs(int start_node)
+    public void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.bfs(start_node);
 
     }
     public void dfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.DFS(start_node);
 
     }

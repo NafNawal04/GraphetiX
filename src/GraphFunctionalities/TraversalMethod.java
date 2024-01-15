@@ -1,13 +1,13 @@
-package Graph;
+package GraphFunctionalities;
 
-import Utility.CustomLinkedList;
+import CustomUtilityFunctions.CustomLinkedList;
 
 @SuppressWarnings("unused")
-public class GraphTraversal {
+public class TraversalMethod {
     int start_node;
     int node;
     CustomLinkedList<int[]>[] GraphRepresentationList;
-    public GraphTraversal(CustomLinkedList<int[]>[] GraphRepresentationList, int n)
+    public TraversalMethod(CustomLinkedList<int[]>[] GraphRepresentationList, int n)
     {
         this.node=n;
 

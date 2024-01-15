@@ -1,22 +1,22 @@
-package Graph;
+package GraphFunctionalities;
 
 import javax.swing.*;
 import java.awt.*;
-import Utility.CustomLinkedList;
+import CustomUtilityFunctions.CustomLinkedList;
 
-public class VisualRepresentation extends JFrame {
+public class GraphVisualization extends JFrame {
     private final int radius = 20;  // Radius of the vertex circle
     private final int vertexDiameter = 2 * radius;
     public CustomLinkedList<int[]>[] graph;
     public boolean isDirected;
 
-    public VisualRepresentation(CustomLinkedList<int[]>[] GraphRepresentationList,boolean isDirected) {
+    public GraphVisualization(CustomLinkedList<int[]>[] GraphRepresentationList, boolean isDirected) {
 
         this.graph = GraphRepresentationList;
         this.isDirected = isDirected;
 
         // Set up JFrame
-        setTitle("Graph Visual Representation");
+        setTitle("GraphDelegator.Graph Visual Representation");
         setSize(800, 800);  // Increased size for better visibility
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

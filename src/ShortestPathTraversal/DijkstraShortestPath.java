@@ -1,4 +1,6 @@
-import Utility.*;
+package ShortestPathTraversal;
+
+import CustomUtilityFunctions.*;
 import java.util.Scanner;
 import java.util.Comparator;
 

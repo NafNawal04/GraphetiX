@@ -1,6 +1,8 @@
+package GraphTypes;
 
-import Utility.*;
-import Graph.*;
+import CustomUtilityFunctions.*;
+import GraphFunctionalities.*;
+import GraphInterface.IGraph;
 
 @SuppressWarnings("unchecked")
 
@@ -23,7 +25,7 @@ public class AcyclicGraph implements IGraph
     @Override
     public void addWeightedEdge(int source, int dest,int weight)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addWeightedEdge(source, dest, weight);
     }
 
@@ -32,7 +34,7 @@ public class AcyclicGraph implements IGraph
     @Override
     public void removeWeightedEdge(int source,int dest,int weight)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
 
 
@@ -43,16 +45,16 @@ public class AcyclicGraph implements IGraph
     public void addNode(int node_num)
     {
 
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addNode(node_num,node);
-        System.out.println("Added "+ node_num+ " number of nodes in the Acyclic Graph.");
+        System.out.println("Added "+ node_num+ " number of nodes in the Acyclic GraphDelegator.Graph.");
     }
 
 
     @Override
     public void removeNode(int node_num)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the Acyclic graph.");
 
@@ -134,19 +136,19 @@ public class AcyclicGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for Acyclic graph:");
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphRepresentation(node);
     }
 
     public void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.bfs(start_node);
 
     }
     public void dfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.DFS(start_node);
 
     }

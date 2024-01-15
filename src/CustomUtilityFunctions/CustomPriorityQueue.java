@@ -1,4 +1,4 @@
-package Utility;
+package CustomUtilityFunctions;
 import java.util.Comparator;
 
 public class CustomPriorityQueue<E> {

@@ -1,3 +1,5 @@
+package GraphInterface;
+
 public interface IGraph
 {
     void addWeightedEdge(int source,int dest,int weight);

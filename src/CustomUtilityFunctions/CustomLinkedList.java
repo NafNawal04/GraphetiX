@@ -1,4 +1,4 @@
-package Utility;
+package CustomUtilityFunctions;
 @SuppressWarnings("unused")
 public class CustomLinkedList<E>
 {

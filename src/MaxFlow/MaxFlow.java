@@ -1,5 +1,5 @@
-package NewPackage;
-import Utility.*;
+package MaxFlow;
+import CustomUtilityFunctions.*;
 import java.util.Scanner;
 
 

@@ -1,5 +1,9 @@
-import Utility.*;
-import Graph.*;
+package GraphTypes;
+
+import CustomUtilityFunctions.*;
+import GraphFunctionalities.*;
+import GraphInterface.IGraph;
+
 @SuppressWarnings("unchecked")
 
 public class DisconnectedGraph implements IGraph
@@ -7,7 +11,7 @@ public class DisconnectedGraph implements IGraph
     int node;
 
     CustomLinkedList<Integer> deletedIndex = new CustomLinkedList<>();
-    CustomLinkedList<int[]>[] GraphRepresentationList;
+    public CustomLinkedList<int[]>[] GraphRepresentationList;
     public DisconnectedGraph(int node)
     {
         this.node= node;
@@ -24,16 +28,16 @@ public class DisconnectedGraph implements IGraph
     public void addNode(int node_num)
     {
 
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addNode(node_num,node);
 
-        System.out.println("Added "+ node_num+ " number of nodes in the Disconnected Graph.");
+        System.out.println("Added "+ node_num+ " number of nodes in the Disconnected GraphDelegator.Graph.");
     }
     @Override
     public void removeNode(int node_num)
     {
         deletedIndex.addLast(node_num);
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the disconnected graph.");
 
@@ -46,14 +50,14 @@ public class DisconnectedGraph implements IGraph
             System.out.println("vertex "+ source+ " doesn't exist. So no edge can be added");
         }
         else {
-            GraphMethod g =new GraphMethod(GraphRepresentationList);
+            BasicMethod g =new BasicMethod(GraphRepresentationList);
             g.addWeightedEdge(source,dest,weight);
         }
     }
     @Override
     public void removeWeightedEdge(int source,int dest,int weight)
     {
-        GraphMethod g =new GraphMethod(GraphRepresentationList);
+        BasicMethod g =new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
 
 
@@ -63,21 +67,21 @@ public class DisconnectedGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for Disconnected graph:");
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphRepresentation(node);
 
     }
 
 
-    void bfs(int start_node)
+    public void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.bfs(start_node);
 
     }
     public void dfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.DFS(start_node);
 
     }

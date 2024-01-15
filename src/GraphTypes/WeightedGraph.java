@@ -1,5 +1,8 @@
-import Utility.CustomLinkedList;
-import Graph.*;
+package GraphTypes;
+
+import CustomUtilityFunctions.CustomLinkedList;
+import GraphFunctionalities.*;
+import GraphInterface.IGraph;
 
 @SuppressWarnings("unchecked")
 public class WeightedGraph implements IGraph
@@ -19,7 +22,7 @@ public class WeightedGraph implements IGraph
     @Override
     public void addWeightedEdge(int source, int dest, int weight)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addWeightedEdge(source, dest, weight);
     }
 
@@ -28,7 +31,7 @@ public class WeightedGraph implements IGraph
     @Override
     public void removeWeightedEdge(int source, int dest, int weight)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
 
     }
@@ -39,16 +42,16 @@ public class WeightedGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addNode(node_num,node);
 
-        System.out.println("Added "+ node_num+ " number of nodes in the Weighted Graph.");
+        System.out.println("Added "+ node_num+ " number of nodes in the Weighted GraphDelegator.Graph.");
     }
 
     @Override
     public void removeNode(int node_num)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the weighted graph.");
 
@@ -58,7 +61,7 @@ public class WeightedGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for Weighted graph:");
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphRepresentation(node);
 
 

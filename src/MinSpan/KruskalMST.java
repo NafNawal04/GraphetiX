@@ -1,4 +1,6 @@
-import Utility.*;
+package MinSpan;
+
+import CustomUtilityFunctions.*;
 @SuppressWarnings("unchecked")
 public class KruskalMST {
 

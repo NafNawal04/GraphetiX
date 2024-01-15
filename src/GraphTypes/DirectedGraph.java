@@ -1,5 +1,9 @@
-import Utility.CustomLinkedList;
-import Graph.*;
+package GraphTypes;
+
+import CustomUtilityFunctions.CustomLinkedList;
+import GraphFunctionalities.*;
+import GraphInterface.IGraph;
+
 @SuppressWarnings({"unchecked","unused"})
 public class DirectedGraph implements IGraph
 {
@@ -40,15 +44,15 @@ public class DirectedGraph implements IGraph
     @Override
     public void addNode(int node_num)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addNode(node_num,node);
 
-        System.out.println("Added "+ node_num+ " number of nodes in the Directed Graph.");
+        System.out.println("Added "+ node_num+ " number of nodes in the Directed GraphDelegator.Graph.");
     }
     @Override
     public void removeNode(int node_num)
     {
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeNode(node_num,node);
         System.out.println("Removed the node "+ node_num + " from the directed graph.");
 
@@ -86,20 +90,20 @@ public class DirectedGraph implements IGraph
     public void GraphRepresentation()
     {
         System.out.println("List Representation for directed graph:");
-        GraphMethod g=new GraphMethod(GraphRepresentationList);
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphRepresentation(node);
     }
 
 
-    void bfs(int start_node)
+    public void bfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.bfs(start_node);
 
     }
     public void dfs(int start_node)
     {
-        GraphTraversal graphTraversal=new GraphTraversal(GraphRepresentationList,node);
+        TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.DFS(start_node);
 
     }
