@@ -24,9 +24,9 @@ public class UndirectedGraph implements IGraph
     {
         if(source == dest)
         {
-            int[] edge = {dest,0};
+            int[] edge = {dest,weight};
             GraphRepresentationList[source].addLast(edge);
-            System.out.println("Added an edge between " + source + " & " + dest);
+            System.out.println("Added an edge between " + source + " & " + dest+"with weight:"+weight);
         }
         else
         {

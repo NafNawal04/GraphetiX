@@ -326,11 +326,11 @@ public class Main {
                     switch(taskW5)
                     {
                         case 1:
-                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+                            KruskalMST kruskalmst =new KruskalMST(s1.getSimple().GraphRepresentationList);
 
                             break;
                         case 2:
-                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+                            PrimsMST prims =new PrimsMST(s1.getSimple().GraphRepresentationList);
 
                             break;
 
@@ -360,10 +360,11 @@ public class Main {
         int edge_num = scanner.nextInt();
         for(int i=0; i<edge_num;i++)
         {
-            System.out.print("Enter the source & destination node: ");
+            System.out.print("Enter the source,destination node & weight: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getDirected().addWeightedEdge(s,d,0);
+            int w = scanner.nextInt();
+            s1.getDirected().addWeightedEdge(s,d,w);
         }
 
         while (true)
@@ -459,7 +460,7 @@ public class Main {
                     switch(taskD3)
                     {
                         case 1:
-
+                            BellmanFordShortestPath bellman =new BellmanFordShortestPath(s1.getDirected().GraphRepresentationList);
                         case 2:
 
                             return;
@@ -658,11 +659,11 @@ public class Main {
                     switch(taskW5)
                     {
                         case 1:
-                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+                            KruskalMST kruskalmst =new KruskalMST(s1.getUndirected().GraphRepresentationList);
 
                             break;
                         case 2:
-                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+                            PrimsMST prims =new PrimsMST(s1.getUndirected().GraphRepresentationList);
 
                             break;
 
@@ -839,11 +840,11 @@ public class Main {
                     switch(taskW5)
                     {
                         case 1:
-                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+                            KruskalMST kruskalmst =new KruskalMST(s1.getConnectedG().GraphRepresentationList);
 
                             break;
                         case 2:
-                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+                            PrimsMST prims =new PrimsMST(s1.getConnectedG().GraphRepresentationList);
 
                             break;
 
@@ -1168,11 +1169,11 @@ public class Main {
                     switch(taskW5)
                     {
                         case 1:
-                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+                            KruskalMST kruskalmst =new KruskalMST(s1.getComplete().GraphRepresentationList);
 
                             break;
                         case 2:
-                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+                            PrimsMST prims =new PrimsMST(s1.getComplete().GraphRepresentationList);
                             break;
 
                         case 3:
@@ -1525,11 +1526,11 @@ public class Main {
                     switch(taskW5)
                     {
                         case 1:
-                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+                            KruskalMST kruskalmst =new KruskalMST(s1.getAcyclic().GraphRepresentationList);
 
                             break;
                         case 2:
-                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+                            PrimsMST prims =new PrimsMST(s1.getAcyclic().GraphRepresentationList);
 
                             break;
 
@@ -1691,11 +1692,11 @@ public class Main {
                     switch(taskW5)
                     {
                         case 1:
-                            KruskalMST kruskalmst =new KruskalMST(s1.getWeighted().GraphRepresentationList);
+                            KruskalMST kruskalmst =new KruskalMST(s1.getCyclic().GraphRepresentationList);
 
                             break;
                         case 2:
-                            PrimsMST prims =new PrimsMST(s1.getWeighted().GraphRepresentationList);
+                            PrimsMST prims =new PrimsMST(s1.getCyclic().GraphRepresentationList);
 
                             break;
 
