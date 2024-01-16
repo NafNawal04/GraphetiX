@@ -1,5 +1,4 @@
 package GraphFunctionalities;
-
 import CustomUtilityFunctions.CustomLinkedList;
 @SuppressWarnings("unchecked")
 

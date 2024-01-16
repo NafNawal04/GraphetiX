@@ -15,47 +15,47 @@ public class Graph {
     public Graph(String type,Integer node)
     {
 
-      if(type.equalsIgnoreCase("Simple GraphDelegator.Graph"))
+      if(type.equalsIgnoreCase("Simple Graph"))
       {
           s1 = new SimpleGraph(node);
 
       }
-      else if(type.equalsIgnoreCase("Directed GraphDelegator.Graph"))
+      else if(type.equalsIgnoreCase("Directed Graph"))
       {
           d1 = new DirectedGraph(node);
 
       }
-      else if(type.equalsIgnoreCase("Undirected GraphDelegator.Graph"))
+      else if(type.equalsIgnoreCase("Undirected Graph"))
       {
            u1 = new UndirectedGraph(node);
 
       }
-      else if(type.equalsIgnoreCase("Connected GraphDelegator.Graph"))
+      else if(type.equalsIgnoreCase("Connected Graph"))
       {
            c1 = new ConnectedGraph(node);
 
       }
-      else if(type.equalsIgnoreCase("Disconnected GraphDelegator.Graph"))
+      else if(type.equalsIgnoreCase("Disconnected Graph"))
       {
            dc1 = new DisconnectedGraph(node);
 
       }
-      else if(type.equalsIgnoreCase("Complete GraphDelegator.Graph"))
+      else if(type.equalsIgnoreCase("Complete Graph"))
       {
            cp1 = new CompleteGraph(node);
 
       }
-      else if(type.equalsIgnoreCase("Weighted GraphDelegator.Graph"))
+      else if(type.equalsIgnoreCase("Weighted Graph"))
       {
            w1 = new WeightedGraph(node);
 
       }
-      else if(type.equalsIgnoreCase("Acyclic GraphDelegator.Graph"))
+      else if(type.equalsIgnoreCase("Acyclic Graph"))
       {
            a1 = new AcyclicGraph(node);
 
       }
-      else if(type.equalsIgnoreCase("Cyclic GraphDelegator.Graph"))
+      else if(type.equalsIgnoreCase("Cyclic Graph"))
       {
            cc1 = new CyclicGraph(node);
 

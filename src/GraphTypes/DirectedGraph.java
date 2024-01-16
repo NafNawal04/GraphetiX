@@ -98,7 +98,7 @@ public class DirectedGraph implements IGraph
     public void bfs(int start_node)
     {
         TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
-        graphTraversal.bfs(start_node);
+        graphTraversal.BFS(start_node);
 
     }
     public void dfs(int start_node)

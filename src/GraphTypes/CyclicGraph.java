@@ -4,7 +4,7 @@ import CustomUtilityFunctions.*;
 import GraphFunctionalities.*;
 import GraphInterface.IGraph;
 
-@SuppressWarnings({"unchecked","unused"})
+@SuppressWarnings("unchecked")
 public class CyclicGraph implements IGraph
 {
     public  int node;
@@ -55,44 +55,7 @@ public class CyclicGraph implements IGraph
         System.out.println("Removed the node "+ node_num + " from the Cyclic graph.");
 
     }
-    public boolean isCyclic()
-    {
-        boolean[] visited = new boolean[node];
-        boolean[] stack = new boolean[node];
 
-        for (int i = 0; i < node; i++)
-        {
-            if (!visited[i] && isCyclicUtil(i, visited, stack))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public boolean isCyclicUtil(int node, boolean[] visited, boolean[] stack) {
-        visited[node] = true;
-        stack[node] = true;
-
-        for (int j = 0; j < GraphRepresentationList[node].length(); j++)
-        {
-            int[] neighbor = GraphRepresentationList[node].get(j);
-            if (!visited[neighbor[0]])
-            {
-                if (isCyclicUtil(neighbor[0], visited, stack))
-                {
-                    return true;
-                }
-            }
-            else if (stack[neighbor[0]])
-            {
-                return true;
-            }
-        }
-        stack[node] = false;
-        return false;
-    }
 
     @Override
     public void GraphRepresentation()
@@ -105,7 +68,7 @@ public class CyclicGraph implements IGraph
     public void bfs(int start_node)
     {
         TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
-        graphTraversal.bfs(start_node);
+        graphTraversal.BFS(start_node);
 
     }
     public void dfs(int start_node)

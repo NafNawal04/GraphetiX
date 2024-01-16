@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import javax.swing.*;
-
 import GraphDelegator.Graph;
 import GraphFunctionalities.*;
 import GraphTypeChecker.GraphTypeChecker;
@@ -8,6 +7,7 @@ import MaxFlow.MaxFlow;
 import MinSpan.KruskalMST;
 import MinSpan.PrimsMST;
 import ShortestPathTraversal.*;
+
 
 @SuppressWarnings("unused")
 public class Main {
@@ -45,15 +45,15 @@ public class Main {
     public static void createGraph(Scanner scanner)
     {
         System.out.println("Which type of graph do you want to create?");
-        System.out.println("1. Simple GraphDelegator.Graph");
-        System.out.println("2. Directed GraphDelegator.Graph");
-        System.out.println("3. Undirected GraphDelegator.Graph");
-        System.out.println("4. Connected GraphDelegator.Graph");
-        System.out.println("5. Disconnected GraphDelegator.Graph");
-        System.out.println("6. Complete GraphDelegator.Graph");
-        System.out.println("7. Weighted GraphDelegator.Graph");
-        System.out.println("8. Acyclic GraphDelegator.Graph");
-        System.out.println("9. Cyclic GraphDelegator.Graph");
+        System.out.println("1. Simple Graph");
+        System.out.println("2. Directed Graph");
+        System.out.println("3. Undirected Graph");
+        System.out.println("4. Connected Graph");
+        System.out.println("5. Disconnected Graph");
+        System.out.println("6. Complete Graph");
+        System.out.println("7. Weighted Graph");
+        System.out.println("8. Acyclic Graph");
+        System.out.println("9. Cyclic Graph");
         System.out.print("Press the number for the desired graph type: ");
         int graphType = scanner.nextInt();
 
@@ -63,61 +63,61 @@ public class Main {
         switch (graphType)
         {
             case 1:
-                System.out.print("How many nodes do you want to start your Simple GraphDelegator.Graph with? ");
+                System.out.print("How many nodes do you want to start your Simple Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Simple GraphDelegator.Graph",node);
+                s1 = new Graph("Simple Graph",node);
                 OperationSimple(scanner,s1);
                 break;
             case 2:
-                System.out.print("How many nodes do you want to start your Directed GraphDelegator.Graph with? ");
+                System.out.print("How many nodes do you want to start your Directed Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Directed GraphDelegator.Graph",node);
+                s1 = new Graph("Directed Graph",node);
                 OperationDirected(scanner,s1);
                 break;
             case 3:
-                System.out.print("How many nodes do you want to start your Undirected GraphDelegator.Graph with? ");
+                System.out.print("How many nodes do you want to start your Undirected Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Undirected GraphDelegator.Graph",node);
+                s1 = new Graph("Undirected Graph",node);
                 OperationUndirected(scanner,s1);
                 break;
             case 4:
-                System.out.print("How many nodes do you want to start your Connected GraphDelegator.Graph with? ");
+                System.out.print("How many nodes do you want to start your Connected Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Connected GraphDelegator.Graph",node);
+                s1 = new Graph("Connected Graph",node);
                 OperationConnected(scanner,s1);
                 break;
             case 5:
-                System.out.print("How many nodes do you want to start your Disconnected GraphDelegator.Graph with? ");
+                System.out.print("How many nodes do you want to start your Disconnected Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Disconnected GraphDelegator.Graph",node);
+                s1 = new Graph("Disconnected Graph",node);
                 OperationDisconnected(scanner,s1);
 
                 break;
             case 6:
-                System.out.print("How many nodes do you want to start your Complete GraphDelegator.Graph with? ");
+                System.out.print("How many nodes do you want to start your Complete Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Complete GraphDelegator.Graph",node);
+                s1 = new Graph("Complete Graph",node);
                 OperationComplete(scanner,s1);
 
                 break;
             case 7:
-                System.out.print("How many nodes do you want to start your Weighted GraphDelegator.Graph with? ");
+                System.out.print("How many nodes do you want to start your Weighted Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Weighted GraphDelegator.Graph",node);
+                s1 = new Graph("Weighted Graph",node);
                 OperationWeighted(scanner,s1);
 
                 break;
             case 8:
-                System.out.print("How many nodes do you want to start your Acyclic GraphDelegator.Graph with? ");
+                System.out.print("How many nodes do you want to start your Acyclic Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Acyclic GraphDelegator.Graph",node);
+                s1 = new Graph("Acyclic Graph",node);
                 OperationAcyclic(scanner,s1);
 
                 break;
             case 9:
-                System.out.print("How many nodes do you want to start your Cyclic GraphDelegator.Graph with? ");
+                System.out.print("How many nodes do you want to start your Cyclic Graph with? ");
                 node = scanner.nextInt();
-                s1 = new Graph("Cyclic GraphDelegator.Graph",node);
+                s1 = new Graph("Cyclic Graph",node);
                 OperationCyclic(scanner,s1);
 
                 break;
@@ -178,7 +178,7 @@ public class Main {
         }
 
         if (graph.isComplete()) {
-            System.out.println("The graph is a Complete GraphDelegator.Graph.");
+            System.out.println("The graph is a Complete Graph.");
         }
 
 
@@ -204,14 +204,13 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. GraphDelegator.Graph Modifications");
-            System.out.println("2. GraphDelegator.Graph Traversal");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. GraphDelegator.Graph Representation");
+            System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. GraphDelegator.Graph Details");
-            System.out.println("8. Exit");
+            System.out.println("7. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -260,7 +259,8 @@ public class Main {
                             System.out.println("Invalid operation choice. Please try again.");
 
                     }
-                case 2:
+                    break; 
+                    case 2:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Breadth-First Traversal");
                     System.out.println("2. Depth-First Traversal");
@@ -285,6 +285,7 @@ public class Main {
                         default:
                             System.out.println("Invalid operation choice. Please try again.");
                     }
+                    break;
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
@@ -294,12 +295,13 @@ public class Main {
                     {
                         case 1:
                             DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getSimple().GraphRepresentationList);
-
+                            break;
                         case 2:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 4:
                     System.out.println("How do you want to view the graph?");
                     System.out.println("1. In Adjacency List");
@@ -322,6 +324,7 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
 
                 case 5:
                     System.out.println("Which algorithm do you want to follow?");
@@ -333,11 +336,9 @@ public class Main {
                     {
                         case 1:
                             KruskalMST kruskalmst =new KruskalMST(s1.getSimple().GraphRepresentationList);
-
                             break;
                         case 2:
                             PrimsMST prims =new PrimsMST(s1.getSimple().GraphRepresentationList);
-
                             break;
 
                         case 3:
@@ -345,12 +346,13 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
 
                 case 6:
+                    MaxFlow maxFLow = new MaxFlow(s1.getSimple().GraphRepresentationList);
+                    break;
 
                 case 7:
-
-                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -376,15 +378,14 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. GraphDelegator.Graph Modifications");
-            System.out.println("2. GraphDelegator.Graph Traversal");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. GraphDelegator.Graph Representation");
-            System.out.println("5.  Max flow");
-            System.out.println("6. GraphDelegator.Graph Details");
-            System.out.println("7. In Degree");
-            System.out.println("8. Out Degree");
-            System.out.println("9. Exit");
+            System.out.println("4. Graph Representation");
+            System.out.println("5. Max flow");
+            System.out.println("6. In Degree");
+            System.out.println("7. Out Degree");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -433,6 +434,7 @@ public class Main {
                         System.out.println("Invalid operation choice. Please try again.");
 
                 }
+                break;
                 case 2:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Breadth-First Traversal");
@@ -458,6 +460,7 @@ public class Main {
                         default:
                             System.out.println("Invalid operation choice. Please try again.");
                     }
+                    break;
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Bellman Ford Algorithm");
@@ -467,12 +470,13 @@ public class Main {
                     {
                         case 1:
                             BellmanFordShortestPath bellman =new BellmanFordShortestPath(s1.getDirected().GraphRepresentationList);
+                            break;
                         case 2:
-
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 4:
                     System.out.println("How do you want to view the graph?");
                     System.out.println("1. In Adjacency List");
@@ -495,23 +499,23 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
 
                 case 5:
-
+                    MaxFlow maxFlow = new MaxFlow(s1.getDirected().GraphRepresentationList);
+                    break;
                 case 6:
-
-                case 7:
                     System.out.println("Which node you want to find the in degree of?");
                     int d = scanner.nextInt();
                     s1.getDirected().inDegree(d);
                     break;
 
-                case 8:
+                case 7:
                     System.out.println("Which node you want to find the out degree of?");
                     int s = scanner.nextInt();
                     s1.getDirected().outDegree(s);
                     break;
-                case 9:
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -536,15 +540,14 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. GraphDelegator.Graph Modifications");
-            System.out.println("2. GraphDelegator.Graph Traversal");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. GraphDelegator.Graph Representation");
+            System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. GraphDelegator.Graph Details");
-            System.out.println("8. GraphDelegator.Graph Conversion");
-            System.out.println("9. Exit");
+            System.out.println("7. Graph Conversion");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -593,6 +596,7 @@ public class Main {
                             System.out.println("Invalid operation choice. Please try again.");
 
                     }
+                    break;
                 case 2:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Breadth-First Traversal");
@@ -618,6 +622,7 @@ public class Main {
                         default:
                             System.out.println("Invalid operation choice. Please try again.");
                     }
+                    break;
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
@@ -625,14 +630,16 @@ public class Main {
                     int taskU3 = scanner.nextInt();
                     switch(taskU3)
                     {
-                        case 1:DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getUndirected().GraphRepresentationList);
-
+                        case 1:
+                            DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getUndirected().GraphRepresentationList);
+                            break;
                         case 2:
 
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 4:
                     System.out.println("How do you want to view the graph?");
                     System.out.println("1. In Adjacency List");
@@ -655,6 +662,7 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
 
                 case 5:
                     System.out.println("Which algorithm do you want to follow?");
@@ -678,18 +686,19 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
 
                 case 6:
+                    MaxFlow maxFlow = new MaxFlow(s1.getUndirected().GraphRepresentationList);
+                    break;
 
                 case 7:
-
-                case 8:
                     System.out.print("Enter the source & destination node: ");
                     source = scanner.nextInt();
                     dest = scanner.nextInt();
                     s1.getUndirected().convertToDirected(source,dest);
                     break;
-                case 9:
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -717,14 +726,13 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. GraphDelegator.Graph Modifications");
-            System.out.println("2. GraphDelegator.Graph Traversal");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. GraphDelegator.Graph Representation");
+            System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. GraphDelegator.Graph Details");
-            System.out.println("8. Exit");
+            System.out.println("7. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -773,6 +781,7 @@ public class Main {
                             System.out.println("Invalid operation choice. Please try again.");
 
                     }
+                    break;
                 case 2:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Breadth-First Traversal");
@@ -798,6 +807,7 @@ public class Main {
                         default:
                             System.out.println("Invalid operation choice. Please try again.");
                     }
+                    break;
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
@@ -806,13 +816,13 @@ public class Main {
                     switch(taskC3)
                     {
                         case 1:DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getConnectedG().GraphRepresentationList);
-
+                        break;
                         case 2:
-
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 4:
                     System.out.println("How do you want to view the graph?");
                     System.out.println("1. In Adjacency List");
@@ -836,7 +846,7 @@ public class Main {
                             System.out.println("Invalid choice. Please try again.");
                     }
 
-
+                    break;
                 case 5:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1.Kruskals Algorithm");
@@ -860,9 +870,10 @@ public class Main {
                             System.out.println("Invalid choice. Please try again.");
                     }
 
+                    break;
                 case 6:
-
-                case 7:
+                    MaxFlow maxFlow = new MaxFlow(s1.getConnectedG().GraphRepresentationList);
+                    break;
 
                 case 8:
                     return;
@@ -889,15 +900,12 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. GraphDelegator.Graph Modifications");
-            System.out.println("2. GraphDelegator.Graph Traversal");
-            System.out.println("3. Finding Shortest Path");
-            System.out.println("4. GraphDelegator.Graph Representation");
-            System.out.println("5. Minimum Spanning");
-            System.out.println("6. Max flow");
-            System.out.println("7. GraphDelegator.Graph Details");
-            System.out.println("8. GraphDelegator.Graph Conversion");
-            System.out.println("9. Exit");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
+            System.out.println("3. Graph Representation");
+            System.out.println("4. Max flow");
+            System.out.println("5. Graph Conversion");
+            System.out.println("6. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -946,6 +954,7 @@ public class Main {
                             System.out.println("Invalid operation choice. Please try again.");
 
                     }
+                    break;
                 case 2:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Breadth-First Traversal");
@@ -971,24 +980,9 @@ public class Main {
                         default:
                             System.out.println("Invalid operation choice. Please try again.");
                     }
+                    break;
+
                 case 3:
-                    System.out.println("Which algorithm do you want to follow?");
-                    System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2. Bellman Ford Algorithm");
-                    System.out.println("3. Exit");
-                    int taskU3 = scanner.nextInt();
-                    switch(taskU3)
-                    {
-                        case 1:
-
-                        case 2:
-
-                        case 3:
-                            return;
-                        default:
-                            System.out.println("Invalid choice. Please try again.");
-                    }
-                case 4:
                     System.out.println("How do you want to view the graph?");
                     System.out.println("1. In Adjacency List");
                     System.out.println("2. Visual Representation");
@@ -1012,15 +1006,15 @@ public class Main {
                     }
 
 
+                case 4:
+                    MaxFlow maxFlow = new MaxFlow(s1.getDisconnected().GraphRepresentationList);
+                    break;
+
                 case 5:
+                    s1.getDisconnected().convertToConnected();
+                    break;
 
                 case 6:
-
-                case 7:
-
-                case 8:
-
-                case 9:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -1035,8 +1029,6 @@ public class Main {
     {
         System.out.println("How many edges do you want to add?");
         int edge_num = scanner.nextInt();
-        System.out.println("Do you want to add weighted nodes?Y/N");
-        char Char = scanner.nextLine().charAt(0);
         for(int i=0; i<edge_num;i++)
         {
             System.out.print("Enter the source & destination node: ");
@@ -1048,14 +1040,13 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. GraphDelegator.Graph Modifications");
-            System.out.println("2. GraphDelegator.Graph Traversal");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. GraphDelegator.Graph Representation");
+            System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. GraphDelegator.Graph Details");
-            System.out.println("8. Exit");
+            System.out.println("7. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -1104,6 +1095,7 @@ public class Main {
                             System.out.println("Invalid operation choice. Please try again.");
 
                     }
+                    break;
                 case 2:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Breadth-First Traversal");
@@ -1129,6 +1121,7 @@ public class Main {
                         default:
                             System.out.println("Invalid operation choice. Please try again.");
                     }
+                    break;
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
@@ -1137,12 +1130,13 @@ public class Main {
                     switch(taskCC3)
                     {
                         case 1:DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getComplete().GraphRepresentationList);
-
+                        break;
                         case 2:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 4:
                     System.out.println("How do you want to view the graph?");
                     System.out.println("1. In Adjacency List");
@@ -1165,6 +1159,7 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
 
                 case 5:
                     System.out.println("Which algorithm do you want to follow?");
@@ -1187,12 +1182,12 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
 
                 case 6:
+                    MaxFlow maxFlow = new MaxFlow(s1.getComplete().GraphRepresentationList);
 
                 case 7:
-
-                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -1218,21 +1213,18 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. GraphDelegator.Graph Modifications");
-            System.out.println("2. GraphDelegator.Graph Traversal");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. GraphDelegator.Graph Representation");
+            System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. GraphDelegator.Graph Details");
-            System.out.println("8. Exit");
+            System.out.println("7. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
             int source;
             int dest;
-            @SuppressWarnings("unused")
-            int start_node;
             int node_num;
             int weight;
             switch (task)
@@ -1278,6 +1270,7 @@ public class Main {
                             System.out.println("Invalid operation choice. Please try again.");
 
                     }
+                    break;
                 case 2:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Breadth-First Traversal");
@@ -1295,6 +1288,7 @@ public class Main {
                         default:
                             System.out.println("Invalid operation choice. Please try again.");
                     }
+                    break;
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
@@ -1305,8 +1299,6 @@ public class Main {
                         case 1:
 
                             DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getWeighted().GraphRepresentationList);
-
-
                             break;
 
                         case 2:
@@ -1314,6 +1306,7 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 4:
                     System.out.println("How do you want to view the graph?");
                     System.out.println("1. In Adjacency List");
@@ -1361,14 +1354,10 @@ public class Main {
                     }
 
                 case 6:
-
-
                     MaxFlow maxflow =new MaxFlow(s1.getWeighted().GraphRepresentationList);
                     break;
 
                 case 7:
-
-                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -1394,15 +1383,14 @@ public class Main {
         while (true)
         {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. GraphDelegator.Graph Modifications");
-            System.out.println("2. GraphDelegator.Graph Traversal");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. GraphDelegator.Graph Representation");
+            System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. GraphDelegator.Graph Details");
-            System.out.println("8. GraphDelegator.Graph Conversion");
-            System.out.println("9. Exit");
+            System.out.println("7. Graph Conversion");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -1451,6 +1439,7 @@ public class Main {
                             System.out.println("Invalid operation choice. Please try again.");
 
                     }
+                    break;
                 case 2:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Breadth-First Traversal");
@@ -1476,6 +1465,7 @@ public class Main {
                         default:
                             System.out.println("Invalid operation choice. Please try again.");
                     }
+                    break;
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
@@ -1485,12 +1475,13 @@ public class Main {
                     {
                         case 1:
                             DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getAcyclic().GraphRepresentationList);
-
+                            break;
                         case 2:
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 4:
                     System.out.println("How do you want to view the graph?");
                     System.out.println("1. In Adjacency List");
@@ -1514,6 +1505,7 @@ public class Main {
                             System.out.println("Invalid choice. Please try again.");
                     }
 
+                    break;
 
                 case 5:
                     System.out.println("Which algorithm do you want to follow?");
@@ -1539,14 +1531,15 @@ public class Main {
                     }
 
 
+                    break;
                 case 6:
+                    MaxFlow maxFlow = new MaxFlow(s1.getAcyclic().GraphRepresentationList);
+                    break;
 
                 case 7:
-
-                case 8:
                     s1.getAcyclic().convertToCyclic();
                     break;
-                case 9:
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -1567,14 +1560,13 @@ public class Main {
 
         while (true) {
             System.out.println("\n Which operation do you want to perform?");
-            System.out.println("1. GraphDelegator.Graph Modifications");
-            System.out.println("2. GraphDelegator.Graph Traversal");
+            System.out.println("1. Graph Modifications");
+            System.out.println("2. Graph Traversal");
             System.out.println("3. Finding Shortest Path");
-            System.out.println("4. GraphDelegator.Graph Representation");
+            System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. GraphDelegator.Graph Details");
-            System.out.println("8. Exit");
+            System.out.println("7. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -1621,6 +1613,7 @@ public class Main {
                             System.out.println("Invalid operation choice. Please try again.");
 
                     }
+                    break;
                 case 2:
                     System.out.println("Which operation do you want to perform?");
                     System.out.println("1. Breadth-First Traversal");
@@ -1645,6 +1638,7 @@ public class Main {
                         default:
                             System.out.println("Invalid operation choice. Please try again.");
                     }
+                    break;
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
@@ -1652,13 +1646,14 @@ public class Main {
                     int taskCC3 = scanner.nextInt();
                     switch (taskCC3) {
                         case 1:DijkstraShortestPath dijkstra =new DijkstraShortestPath(s1.getCyclic().GraphRepresentationList);
-
+                        break;
                         case 2:
 
                             return;
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 4:
                     System.out.println("How do you want to view the graph?");
                     System.out.println("1. In Adjacency List");
@@ -1680,6 +1675,7 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
 
                 case 5:
                     System.out.println("Which algorithm do you want to follow?");
@@ -1703,11 +1699,12 @@ public class Main {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
 
 
                 case 6:
-
-                case 7:
+                    MaxFlow maxFlow = new MaxFlow(s1.getCyclic().GraphRepresentationList);
+                    break;
 
                 case 8:
                     return;

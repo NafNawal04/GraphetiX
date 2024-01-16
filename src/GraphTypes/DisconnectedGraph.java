@@ -76,13 +76,39 @@ public class DisconnectedGraph implements IGraph
     public void bfs(int start_node)
     {
         TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
-        graphTraversal.bfs(start_node);
+        graphTraversal.BFS(start_node);
 
     }
     public void dfs(int start_node)
     {
         TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.DFS(start_node);
+
+    }
+
+    public void convertToConnected()
+    {
+        for (int i = 0; i < node; i++) {
+
+            if (GraphRepresentationList[i].isEmpty()) {
+
+                if(i == 0)
+                {
+                    int[] edge = {i+1, 0};
+                    int[] edge2 ={i,0};
+                    GraphRepresentationList[i].addFirst(edge);
+                    GraphRepresentationList[i+1].addFirst(edge2);
+                }
+                else {
+                    int[] edge = {i-1, 0};
+                    int[] edge2 ={i,0};
+                    GraphRepresentationList[i].addFirst(edge);
+                    GraphRepresentationList[i-1].addFirst(edge2);
+                }
+            }
+        }
+
+        System.out.println("The graph has been made connected.");
 
     }
 }
