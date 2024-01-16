@@ -7,4 +7,6 @@ public interface IGraph
     void removeNode(int node_num);
     void removeWeightedEdge(int source,int dest,int weight);
     void GraphRepresentation();
+    void bfs(int start_node);
+    void dfs(int start_node);
 }

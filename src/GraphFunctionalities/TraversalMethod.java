@@ -13,7 +13,7 @@ public class TraversalMethod {
 
         this.GraphRepresentationList= GraphRepresentationList;
     }
-    public void bfs(int start_node)
+    public void BFS(int start_node)
     {
         boolean[] visited = new boolean[node];
 
