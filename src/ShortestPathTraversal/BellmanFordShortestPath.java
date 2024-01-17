@@ -2,28 +2,21 @@ package ShortestPathTraversal;
 
 import java.util.*;
 import CustomUtilityFunctions.CustomLinkedList;
-@SuppressWarnings("unchecked")
 
 public class BellmanFordShortestPath {
     int vertex;
-    int[] parent;
-    CustomLinkedList<int[]>[] adjacencyList;
+    CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public BellmanFordShortestPath(CustomLinkedList<int[]>[] GraphRepresentationList) {
-        this.adjacencyList = GraphRepresentationList;
+        this.GraphRepresentationList = GraphRepresentationList;
         vertex = GraphRepresentationList.length;
         int source = 0;
         BellmanFord(source);
 
     }
 
-//    public void addWeightedEdge(int source, int dest, int weight) {
-//        int[] edge = { dest, weight };
-//        adjacencyList[source].addLast(edge);  // Use addLast to add the edge to the list
-//        System.out.println("Added a weighted edge between " + source + " & " + dest + " having weight: " + weight);
-//    }
 
-    void BellmanFord(int src) {
+    public void BellmanFord(int src) {
         int[] dist = new int[vertex];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[src] = 0;
@@ -32,7 +25,7 @@ public class BellmanFordShortestPath {
         for (int i = 0; i < vertex - 1; ++i) {
             for (int j = 0; j < vertex; ++j) {
                 int finalJ = j;
-                adjacencyList[j].forEach(edge -> {
+                GraphRepresentationList[j].forEach(edge -> {
                     int vertex = edge[0];
                     int weight = edge[1];
                     if (dist[finalJ] != Integer.MAX_VALUE && dist[finalJ] + weight < dist[vertex]) {
@@ -44,12 +37,12 @@ public class BellmanFordShortestPath {
 
         for (int j = 0; j < vertex; ++j) {
             int finalJ = j;
-            adjacencyList[j].forEach(edge -> {
+            GraphRepresentationList[j].forEach(edge -> {
                 int vertex = edge[0];
                 int weight = edge[1];
                 if (dist[finalJ] != Integer.MAX_VALUE && dist[finalJ] + weight < dist[vertex]) {
-                    System.out.println("GraphDelegator.Graph contains negative weight cycle");
-                    return;
+                    System.out.println("Graph contains negative weight cycle");
+
                 }
             });
         }
@@ -57,7 +50,7 @@ public class BellmanFordShortestPath {
         printArr(dist);
     }
 
-    void printArr(int[] dist)
+    public void printArr(int[] dist)
 
     {
         System.out.println("Vertex Distance from Source");
@@ -67,12 +60,6 @@ public class BellmanFordShortestPath {
     }
 
 
-    private int find(int vertex) {
-        if (parent[vertex] != vertex) {
-            parent[vertex] = find(parent[vertex]); // Path compression
-        }
-        return parent[vertex];
-    }
 
 
 

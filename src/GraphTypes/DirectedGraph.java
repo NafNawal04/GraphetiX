@@ -8,7 +8,7 @@ import GraphInterface.IGraph;
 public class DirectedGraph implements IGraph
 {
     int node;
-    int edgeno;
+    int edgeNo;
     public CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public DirectedGraph(int node)
@@ -29,14 +29,14 @@ public class DirectedGraph implements IGraph
         int[] edge = {dest,weight};
         GraphRepresentationList[source].addLast(edge);
         System.out.println("Added an edge between " + source + " & " + dest+"with weight:"+weight);
-        edgeno++;
+        edgeNo++;
 
     }
     public void GraphDetails()
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphDetailDirected();
-        System.out.print("No of Edges : "+ edgeno +"\n");
+        System.out.print("No of Edges : "+ edgeNo +"\n");
         System.out.print("Directed Graph");
 
     }
@@ -49,7 +49,7 @@ public class DirectedGraph implements IGraph
         int[] edge = {dest,0};
         GraphRepresentationList[source].removeValue(edge);
         System.out.println("Removed the edge between " + source + " & " + dest);
-        edgeno--;
+        edgeNo--;
     }
 
 

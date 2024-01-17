@@ -8,7 +8,7 @@ import GraphInterface.IGraph;
 public class ConnectedGraph implements IGraph
 {
     int node;
-    int edgeno;
+    int edgeNo;
 
     CustomLinkedList<Integer> deletedIndex = new CustomLinkedList<>();
 
@@ -44,21 +44,21 @@ public class ConnectedGraph implements IGraph
         {
             g.addWeightedEdge(source,dest,weight);
         }
-        edgeno++;
+        edgeNo++;
     }
     @Override
     public void removeWeightedEdge(int source,int dest,int weight)
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
-        edgeno--;
+        edgeNo--;
 
     }
     public void GraphDetails()
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphDetail();
-        System.out.print("No of Edges : "+ edgeno +"\n");
+        System.out.print("No of Edges : "+ edgeNo +"\n");
         System.out.print("Connected Graph");
 
 

@@ -1,10 +1,8 @@
 package ShortestPathTraversal;
-
 import CustomUtilityFunctions.*;
 import java.util.Scanner;
 import java.util.Comparator;
 
-@SuppressWarnings("unchecked")
 
 public class DijkstraShortestPath {
     Scanner scanner = new Scanner(System.in);
@@ -63,34 +61,36 @@ public class DijkstraShortestPath {
     }
 
     private void buildPath(CustomLinkedList<Integer> path, int[] parent, int current) {
-        // Base case to stop recursion when the source node is reached
+
         if (current == source) {
             path.addLast(current);
             return;
         }
 
-        // Recursive call with the parent of the current node
+
         if (current >= 0 && parent[current] != -1) {
             buildPath(path, parent, parent[current]);
         }
 
-        // Add the current node to the path after unwinding the recursion
         path.addLast(current);
     }
 
 
-        public void display(){
+    public void display(){
 
-            System.out.print("Enter the source node: ");
-            int src = scanner.nextInt();
 
-            System.out.print("Enter the destination node: ");
-            int destination = scanner.nextInt();
-        CustomLinkedList<Integer> shortestPath = findShortestPath(source, destination);
-        System.out.println("Shortest Path from node " + source + " to node " + destination + ": " + shortestPath);
+        System.out.print("Enter the source node: ");
+        int src = scanner.nextInt();
 
-        int shortestDistance = shortestPath.length() > 1 ? shortestPath.get(shortestPath.length() - 2) : 0;
-        System.out.println("Shortest Distance from node " + source + " to node " + destination + " is " + shortestDistance);
+        System.out.print("Enter the destination node: ");
+        int destination = scanner.nextInt();
+        CustomLinkedList<Integer> shortestPath = findShortestPath(src, destination);
+        System.out.println("Shortest Path from node " + src + " to node " + destination + ": " + shortestPath);
+
+
+
+
+
 
 
     }

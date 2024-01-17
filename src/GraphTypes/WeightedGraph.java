@@ -8,7 +8,7 @@ import GraphInterface.IGraph;
 public class WeightedGraph implements IGraph
 {
     public  int node;
-    int edgeno;
+    int edgeNo;
     public CustomLinkedList<int[]>[] GraphRepresentationList;
 
     public WeightedGraph(int node)
@@ -25,7 +25,7 @@ public class WeightedGraph implements IGraph
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addWeightedEdge(source, dest, weight);
-        edgeno++;
+        edgeNo++;
     }
 
 
@@ -35,14 +35,14 @@ public class WeightedGraph implements IGraph
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
-        edgeno--;
+        edgeNo--;
 
     }
     public void GraphDetails()
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphDetail();
-        System.out.print("No of Edges : "+ edgeno +"\n");
+        System.out.print("No of Edges : "+ edgeNo +"\n");
         System.out.print("Weighted Graph");
 
     }

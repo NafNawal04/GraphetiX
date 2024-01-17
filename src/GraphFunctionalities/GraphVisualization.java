@@ -17,7 +17,7 @@ public class GraphVisualization extends JFrame {
 
         // Set up JFrame
         setTitle("GraphDelegator.Graph Visual Representation");
-        setSize(800, 800);  // Increased size for better visibility
+        setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Add GraphPanel to JFrame
@@ -27,6 +27,8 @@ public class GraphVisualization extends JFrame {
         // Set the JFrame to be visible
         setVisible(true);
     }
+
+
 
     private class GraphPanel extends JPanel {
         @Override

@@ -9,4 +9,5 @@ public interface IGraph
     void GraphRepresentation();
     void bfs(int start_node);
     void dfs(int start_node);
+    void GraphDetails();
 }
