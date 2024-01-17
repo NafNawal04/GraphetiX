@@ -1,5 +1,7 @@
 package GraphFunctionalities;
 import CustomUtilityFunctions.CustomLinkedList;
+
+
 @SuppressWarnings("unchecked")
 
 public class BasicMethod {
@@ -40,7 +42,6 @@ public class BasicMethod {
         }
 
         System.out.println("Removed an edge between " + source + " & " + dest+" having weight: "+weight);
-
 
     }
     public void addNode(int node_num, int node)
@@ -101,6 +102,18 @@ public class BasicMethod {
 
             System.out.println();
         }
+
+    }
+    public void GraphDetail()
+    {
+        System.out.print("Number of nodes : " + GraphRepresentationList.length+"\n");
+
+
+    }
+    public void GraphDetailDirected()
+    {
+        System.out.print("Number of nodes : " + GraphRepresentationList.length+"\n");
+
 
     }
 }

@@ -8,6 +8,7 @@ import GraphInterface.IGraph;
 public class CyclicGraph implements IGraph
 {
     public  int node;
+    int edgeno;
 
     public CustomLinkedList<int[]>[] GraphRepresentationList;
 
@@ -25,15 +26,24 @@ public class CyclicGraph implements IGraph
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addWeightedEdge(source, dest, weight);
+        edgeno++;
     }
 
+    public void GraphDetails()
+    {
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
+        g.GraphDetail();
+        System.out.print("No of Edges : "+ edgeno +"\n");
+        System.out.print("Cyclic Graph");
 
+    }
 
     @Override
     public void removeWeightedEdge(int source,int dest,int weight)
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
+        edgeno--;
 
 
     }

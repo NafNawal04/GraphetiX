@@ -11,6 +11,7 @@ public class AcyclicGraph implements IGraph
     public  int node;
 
     public CustomLinkedList<int[]>[] GraphRepresentationList ;
+    int edgeno=0;
 
     public AcyclicGraph(int node)
     {
@@ -27,6 +28,7 @@ public class AcyclicGraph implements IGraph
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addWeightedEdge(source, dest, weight);
+        edgeno++;
     }
 
 
@@ -36,6 +38,7 @@ public class AcyclicGraph implements IGraph
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
+        edgeno--;
 
 
     }
@@ -145,6 +148,14 @@ public class AcyclicGraph implements IGraph
     {
         TraversalMethod graphTraversal=new TraversalMethod(GraphRepresentationList,node);
         graphTraversal.DFS(start_node);
+
+    }
+    public void GraphDetails()
+    {
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
+        g.GraphDetail();
+        System.out.print("No of Edges : "+ edgeno +"\n");
+        System.out.print("Acyclic Graph" +"\n");
 
     }
 

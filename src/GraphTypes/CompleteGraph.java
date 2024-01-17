@@ -9,6 +9,7 @@ public class CompleteGraph implements IGraph
 {
 
     int node;
+    int edgeno;
 
     public CustomLinkedList<int[]>[] GraphRepresentationList;
 
@@ -30,8 +31,18 @@ public class CompleteGraph implements IGraph
                 int[] edge2 = {i,0};
                 GraphRepresentationList[i].addLast(edge1);
                 GraphRepresentationList[j].addLast(edge2);
+                edgeno++;
             }
         }
+
+    }
+    public void GraphDetails()
+    {
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
+        g.GraphDetail();
+        System.out.print("No of Edges : "+ edgeno +"\n");
+        System.out.print("Complete Graph");
+
 
     }
 
@@ -40,6 +51,7 @@ public class CompleteGraph implements IGraph
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.addWeightedEdge(source, dest, weight);
+        edgeno++;
     }
 
 
@@ -49,7 +61,7 @@ public class CompleteGraph implements IGraph
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
-
+         edgeno--;
     }
     @Override
     public void addNode(int node_num)

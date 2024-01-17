@@ -297,7 +297,8 @@ public class Main {
                     MaxFlow maxFLow = new MaxFlow(s1.getSimple().GraphRepresentationList);
                     break;
 
-                case 7:
+                case 7:s1.getSimple().GraphDetails();
+                    break;
 
                 case 8:
                     return;
@@ -461,7 +462,8 @@ public class Main {
                     s1.getDirected().outDegree(d);
                     break;
 
-                case 7:
+                case 7:s1.getDirected().GraphDetails();
+                    break;
 
                 case 8:
                     return;
@@ -651,7 +653,8 @@ public class Main {
                     dest = scanner.nextInt();
                     s1.getUndirected().convertToDirected(source,dest);
                     break;
-                case 8:
+                case 8:s1.getUndirected().GraphDetails();
+                    break;
 
                 case 9:
                     return;
@@ -688,8 +691,9 @@ public class Main {
             System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
-            System.out.println("8. Exit");
+            System.out.println("7. ConvertToDisconnected");
+            System.out.println("8. Graph Details");
+            System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -835,9 +839,12 @@ public class Main {
                     MaxFlow maxFlow = new MaxFlow(s1.getConnectedG().GraphRepresentationList);
                     break;
 
-                case 7:
+                case 7:s1.getConnectedG().ConvertToDisconnected();
+                    break;
 
-                case 8:
+                case 8:s1.getConnectedG().GraphDetails();
+                    break;
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -886,6 +893,7 @@ public class Main {
                     System.out.println("2. Add node");
                     System.out.println("3. Remove edge");
                     System.out.println("4. Remove node");
+
                     System.out.println("5. Exit");
                     int taskU1 = scanner.nextInt();
                     switch(taskU1)
@@ -982,7 +990,8 @@ public class Main {
                     s1.getDisconnected().convertToConnected();
                     break;
 
-                case 6:
+                case 6:s1.getDisconnected().GraphDetails();
+                    break;
 
                 case 7:
                     return;
@@ -1162,7 +1171,8 @@ public class Main {
                 case 6:
                     MaxFlow maxFlow = new MaxFlow(s1.getComplete().GraphRepresentationList);
 
-                case 7:
+                case 7:s1.getComplete().GraphDetails();
+                    break;
 
                 case 8:
                     return;
@@ -1345,7 +1355,8 @@ public class Main {
                     MaxFlow maxflow =new MaxFlow(s1.getWeighted().GraphRepresentationList);
                     break;
 
-                case 7:
+                case 7: s1.getWeighted().GraphDetails();
+                    break;
 
                 case 8:
                     return;
@@ -1534,7 +1545,8 @@ public class Main {
                 case 7:
                     s1.getAcyclic().convertToCyclic();
                     break;
-                case 8:
+                case 8: s1.getAcyclic().GraphDetails();
+                    break;
 
                 case 9:
                     return;
@@ -1712,8 +1724,10 @@ public class Main {
                 case 7:
                     s1.getCyclic().convertToAcyclic();
                     break;
-
                 case 8:
+                    s1.getCyclic().GraphDetails();
+                    break;
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");

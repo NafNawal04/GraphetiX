@@ -9,6 +9,7 @@ import GraphInterface.IGraph;
 public class DisconnectedGraph implements IGraph
 {
     int node;
+    int edgeno;
 
     CustomLinkedList<Integer> deletedIndex = new CustomLinkedList<>();
     public CustomLinkedList<int[]>[] GraphRepresentationList;
@@ -53,12 +54,14 @@ public class DisconnectedGraph implements IGraph
             BasicMethod g =new BasicMethod(GraphRepresentationList);
             g.addWeightedEdge(source,dest,weight);
         }
+        edgeno++;
     }
     @Override
     public void removeWeightedEdge(int source,int dest,int weight)
     {
         BasicMethod g =new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
+        edgeno--;
 
 
     }
@@ -88,27 +91,21 @@ public class DisconnectedGraph implements IGraph
 
     public void convertToConnected()
     {
-        for (int i = 0; i < node; i++) {
-
-            if (GraphRepresentationList[i].isEmpty()) {
-
-                if(i == 0)
-                {
-                    int[] edge = {i+1, 0};
-                    int[] edge2 ={i,0};
-                    GraphRepresentationList[i].addFirst(edge);
-                    GraphRepresentationList[i+1].addFirst(edge2);
-                }
-                else {
-                    int[] edge = {i-1, 0};
-                    int[] edge2 ={i,0};
-                    GraphRepresentationList[i].addFirst(edge);
-                    GraphRepresentationList[i-1].addFirst(edge2);
-                }
-            }
+        for (int i = 0; i < node-1 ; i++)
+        {
+            int[] edge1 = {i+1,0};
+            int[] edge2 = {i,0};
+            GraphRepresentationList[i].addLast(edge1);
+            GraphRepresentationList[i+1].addLast(edge2);
         }
-
-        System.out.println("The graph has been made connected.");
+        System.out.println("The graph has been converted to Connected");
+    }
+    public void GraphDetails()
+    {
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
+        g.GraphDetail();
+        System.out.print("Disconnected Graph");
+        System.out.print("No of Edges : "+ edgeno +"\n");
 
     }
 }

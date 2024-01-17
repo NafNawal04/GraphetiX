@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class SimpleGraph implements IGraph
 {
     public int node;
+    int edgeno=0;
 
     public CustomLinkedList<int[]>[] GraphRepresentationList;
 
@@ -40,7 +41,9 @@ public class SimpleGraph implements IGraph
                 System.out.println("Cannot add multi edges between two same nodes in a simple graph");
             } else {
                 g.addWeightedEdge(source, dest, weight);
+                edgeno++;
                 return;
+
             }
 
 
@@ -48,6 +51,14 @@ public class SimpleGraph implements IGraph
             source = scanner.nextInt();
             dest = scanner.nextInt();
         }
+    }
+    public void GraphDetails()
+    {
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
+        g.GraphDetail();
+        System.out.print("No of Edges : "+ edgeno +"\n");
+        System.out.print("Simple Graph ");
+
     }
 
 
@@ -66,7 +77,7 @@ public class SimpleGraph implements IGraph
     {
         BasicMethod g =new BasicMethod(GraphRepresentationList);
         g.removeWeightedEdge(source, dest,weight);
-
+        edgeno--;
 
     }
 

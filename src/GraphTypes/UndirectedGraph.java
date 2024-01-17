@@ -8,6 +8,7 @@ import GraphInterface.IGraph;
 public class UndirectedGraph implements IGraph
 {
     int node;
+    int edgeno;
     int num_of_new_nodes;
     public CustomLinkedList<int[]>[] GraphRepresentationList;
 
@@ -37,8 +38,18 @@ public class UndirectedGraph implements IGraph
             BasicMethod g =new BasicMethod(GraphRepresentationList);
             g.addWeightedEdge(source,dest,weight);
         }
+        edgeno++;
 
     }
+    public void GraphDetails()
+    {
+        BasicMethod g=new BasicMethod(GraphRepresentationList);
+        g.GraphDetail();
+        System.out.print("No of Edges : "+ edgeno +"\n");
+        System.out.print("Undirected Graph \n");
+
+    }
+
     @Override
     public void addNode(int node_num)
     {
@@ -61,6 +72,7 @@ public class UndirectedGraph implements IGraph
             g.removeWeightedEdge(source, dest,weight);
 
         }
+        edgeno--;
 
     }
     @Override
