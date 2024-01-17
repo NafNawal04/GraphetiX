@@ -2,6 +2,8 @@ package GraphTypeChecker;
 
 import CustomUtilityFunctions.*;
 
+import java.util.Scanner;
+
 public class GraphTypeChecker {
     private final CustomLinkedList<CustomLinkedList<Integer>> adjacencyList;
     private final boolean[] visited;
@@ -132,6 +134,67 @@ public class GraphTypeChecker {
             return totalEdges == vertices * (vertices - 1) / 2;
         else
             return false;
+    }
+
+
+
+    public void checkGraph()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("Enter the connections for each node:");
+        for (int i = 0; i < vertices; i++) {
+            System.out.print("Connections for node " + i + " (end with -1): ");
+            while (true) {
+                int connection = scanner.nextInt();
+                if (connection == -1) {
+                    break;
+                }
+                if (connection < 0 || connection >= vertices) {
+                    System.out.println("Invalid input: Node " + connection + " does not exist. Try again.");
+                    continue;
+                }
+                addEdge(i, connection);
+            }
+        }
+
+
+        System.out.println("Based on the input:");
+        if (vertices == 1) {
+            System.out.println("The graph is Trivially Connected (only one node).");
+        } else if (isConnected()) {
+            System.out.println("The graph is Connected.");
+        } else {
+            System.out.println("The graph is Disconnected.");
+        }
+
+        if (isSimple) {
+            System.out.println("The graph is Simple.");
+        }
+
+        if (isTree()) {
+            System.out.println("The graph is a Tree.");
+        } else {
+            System.out.println("The graph is not a Tree.");
+        }
+
+        if (isCyclic()) {
+            System.out.println("The graph is Cyclic.");
+        } else {
+            System.out.println("The graph is Acyclic.");
+        }
+
+        if (isComplete()) {
+            System.out.println("The graph is a Complete Graph.");
+        }
+
+
+        if (isDirected) {
+            System.out.println("The graph is Directed.");
+        } else {
+            System.out.println("The graph is Undirected.");
+        }
     }
 
 
