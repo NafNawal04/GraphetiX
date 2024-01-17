@@ -28,54 +28,39 @@ public class SimpleGraph implements IGraph
         }
     }
     @Override
-    public void addWeightedEdge(int source, int dest,int weight)
-    {
-        BasicMethod g =new BasicMethod(GraphRepresentationList);
+    public void addWeightedEdge(int source, int dest, int weight) {
+        BasicMethod g = new BasicMethod(GraphRepresentationList);
+        Scanner scanner = new Scanner(System.in);
 
-        if(source == dest)
-        {
-            System.out.println("Cannot add any loop in simple graph.");
 
-            Scanner scanner = new Scanner(System.in);
+        while (true) {
+            if (source == dest) {
+                System.out.println("Cannot add any loop in a simple graph.");
+            } else if (edgeExists(source, dest)) {
+                System.out.println("Cannot add multi edges between two same nodes in a simple graph");
+            } else {
+                g.addWeightedEdge(source, dest, weight);
+                return;
+            }
+
+
             System.out.print("Enter the source & destination node: ");
-            int s = scanner.nextInt();
-            int d = scanner.nextInt();
-            addWeightedEdge(s,d,0);
+            source = scanner.nextInt();
+            dest = scanner.nextInt();
         }
-        else
-        {
-            for(int x=0;x< GraphRepresentationList[source].length();x++)
-            {
-                int[] neededEdge1 = GraphRepresentationList[source].get(x);
-
-                if (neededEdge1[0] == dest)
-                {
-                    System.out.println("Cannot add multi edges between two same nodes in simple graph");
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.print("Enter the source & destination node: ");
-                    int s = scanner.nextInt();
-                    int d = scanner.nextInt();
-                    addWeightedEdge(s,d,0);
-                    return;
-                }
-
-            }
-            for(int x=0;x< GraphRepresentationList[dest].length();x++)
-            {
-                int[] neededEdge2 = GraphRepresentationList[source].get(x);
-
-                if (neededEdge2[0] == source)
-                {
-                    System.out.println("Cannot add multi edges between two same nodes in simple graph");
-                    return;
-                }
-            }
-
-            g.addWeightedEdge(source, dest, weight);
-        }
-
-
     }
+
+
+    private boolean edgeExists(int source, int dest) {
+        for (int i = 0; i < GraphRepresentationList[source].length(); i++) {
+            int[] edge = GraphRepresentationList[source].get(i);
+            if (edge[0] == dest) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public void removeWeightedEdge(int source,int dest,int weight)
     {
