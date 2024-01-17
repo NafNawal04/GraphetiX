@@ -107,12 +107,24 @@ public class BasicMethod {
     public void GraphDetail()
     {
         System.out.print("Number of nodes : " + GraphRepresentationList.length+"\n");
+        System.out.print("Time complexity of DFS : O(V+E)"+"\n");
+        System.out.print("Time complexity of BFS : O(V+E)"+"\n");
+        System.out.print("Time complexity of Dijkstra : O(V logV + E logV)"+"\n");
+        System.out.print("Time complexity of kruskals : O(E logE )"+"\n");
+        System.out.print("Time complexity of PRIMS: O(V^2)"+"\n");
+
+
+
+
+
 
 
     }
     public void GraphDetailDirected()
     {
         System.out.print("Number of nodes : " + GraphRepresentationList.length+"\n");
+        System.out.print("Time complexity of BellmanFord : O(V*E)\n");
+
 
 
     }

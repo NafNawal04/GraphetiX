@@ -37,7 +37,14 @@ public class DirectedGraph implements IGraph
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphDetailDirected();
         System.out.print("No of Edges : "+ edgeNo +"\n");
-        System.out.print("Directed Graph");
+        System.out.print("Directed Graph\n");
+        for(int i=0;i< GraphRepresentationList.length;i++)
+        {
+            inDegree(i);
+
+            outDegree(i);
+        }
+
 
     }
 

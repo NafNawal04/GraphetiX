@@ -56,6 +56,7 @@ public class SimpleGraph implements IGraph
     {
         BasicMethod g=new BasicMethod(GraphRepresentationList);
         g.GraphDetail();
+        System.out.print("Time complexity of MaxFlow : O(V*E^2 )"+"\n");
         System.out.print("No of Edges : "+ edgeNo +"\n");
         System.out.print("Simple Graph ");
 
