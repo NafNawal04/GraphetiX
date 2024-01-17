@@ -137,10 +137,11 @@ public class Main {
         int edge_num = scanner.nextInt();
         for(int i=0; i<edge_num;i++)
         {
-            System.out.print("Enter the source & destination node: ");
+            System.out.print("Enter the source, destination and weight of node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getSimple().addWeightedEdge(s,d,0);
+            int w = scanner.nextInt();
+            s1.getSimple().addWeightedEdge(s,d,w);
         }
 
         while (true)
@@ -152,7 +153,8 @@ public class Main {
             System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Exit");
+            System.out.println("7. Graph Details");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -173,10 +175,11 @@ public class Main {
                     switch(taskS1)
                     {
                         case 1:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getSimple().addWeightedEdge(s,d,0);
+                            int w = scanner.nextInt();
+                            s1.getSimple().addWeightedEdge(s,d,w);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -295,6 +298,8 @@ public class Main {
                     break;
 
                 case 7:
+
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -310,7 +315,7 @@ public class Main {
         int edge_num = scanner.nextInt();
         for(int i=0; i<edge_num;i++)
         {
-            System.out.print("Enter the source,destination node & weight: ");
+            System.out.print("Enter the source, destination and weight of node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
             int w = scanner.nextInt();
@@ -325,13 +330,14 @@ public class Main {
             System.out.println("3. Finding Shortest Path");
             System.out.println("4. Graph Representation");
             System.out.println("5. Max flow");
-            System.out.println("6. In Degree");
-            System.out.println("7. Out Degree");
+            System.out.println("6. Degree of a node");
+            System.out.println("7. Graph Details");
             System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
             int source;
+            int weight;
             int dest;
             int start_node;
             int node_num;
@@ -348,10 +354,11 @@ public class Main {
                 switch(taskD1)
                 {
                     case 1:
-                        System.out.print("Enter the source & destination node: ");
+                        System.out.print("Enter the source, destination and weight of node: ");
                         int s = scanner.nextInt();
                         int d = scanner.nextInt();
-                        s1.getDirected().addWeightedEdge(s,d,0);
+                        int w = scanner.nextInt();
+                        s1.getDirected().addWeightedEdge(s,d,w);
                         break;
                     case 2:
                         System.out.print("Enter the no. of node to be added: ");
@@ -359,10 +366,11 @@ public class Main {
                         s1.getDirected().addNode(node_num);
                         break;
                     case 3:
-                        System.out.print("Enter the source & destination node: ");
+                        System.out.print("Enter the source, destination and weight of node: ");
                         source = scanner.nextInt();
                         dest = scanner.nextInt();
-                        s1.getDirected().removeWeightedEdge(source,dest,0);
+                        weight = scanner.nextInt();
+                        s1.getDirected().removeWeightedEdge(source,dest,weight);
                         break;
                     case 4:
                         System.out.print("Enter the node number: ");
@@ -447,16 +455,14 @@ public class Main {
                     MaxFlow maxFlow = new MaxFlow(s1.getDirected().GraphRepresentationList);
                     break;
                 case 6:
-                    System.out.println("Which node you want to find the in degree of?");
+                    System.out.println("Which node you want to find the degree of?");
                     int d = scanner.nextInt();
                     s1.getDirected().inDegree(d);
+                    s1.getDirected().outDegree(d);
                     break;
 
                 case 7:
-                    System.out.println("Which node you want to find the out degree of?");
-                    int s = scanner.nextInt();
-                    s1.getDirected().outDegree(s);
-                    break;
+
                 case 8:
                     return;
                 default:
@@ -473,10 +479,11 @@ public class Main {
         int edge_num = scanner.nextInt();
         for(int i=0; i<edge_num;i++)
         {
-            System.out.print("Enter the source & destination node: ");
+            System.out.print("Enter the source, destination and weight of node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getUndirected().addWeightedEdge(s,d,0);
+            int w = scanner.nextInt();
+            s1.getUndirected().addWeightedEdge(s,d,w);
         }
 
         while (true)
@@ -489,11 +496,13 @@ public class Main {
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
             System.out.println("7. Graph Conversion");
-            System.out.println("8. Exit");
+            System.out.println("8. Graph Details");
+            System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
             int source;
+            int weight;
             int dest;
             int start_node;
             int node_num;
@@ -510,10 +519,11 @@ public class Main {
                     switch(taskU1)
                     {
                         case 1:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getUndirected().addWeightedEdge(s,d,0);
+                            int w = scanner.nextInt();
+                            s1.getUndirected().addWeightedEdge(s,d,w);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -521,10 +531,11 @@ public class Main {
                             s1.getUndirected().addNode(node_num);
                             break;
                         case 3:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getUndirected().removeWeightedEdge(source,dest,0);
+                            weight = scanner.nextInt();
+                            s1.getUndirected().removeWeightedEdge(source,dest,weight);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -641,6 +652,8 @@ public class Main {
                     s1.getUndirected().convertToDirected(source,dest);
                     break;
                 case 8:
+
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -659,10 +672,11 @@ public class Main {
         int edge_num = scanner.nextInt();
         for(int i=0; i<edge_num;i++)
         {
-            System.out.print("Enter the source & destination node: ");
+            System.out.print("Enter the source, destination and weight of node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getConnectedG().addWeightedEdge(s,d,0);
+            int w = scanner.nextInt();
+            s1.getConnectedG().addWeightedEdge(s,d,w);
         }
 
         while (true)
@@ -674,12 +688,14 @@ public class Main {
             System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Exit");
+            System.out.println("7. Graph Details");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
             int source;
             int dest;
+            int weight;
             int start_node;
             int node_num;
             switch (task)
@@ -695,10 +711,11 @@ public class Main {
                     switch(taskC1)
                     {
                         case 1:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getConnectedG().addWeightedEdge(s,d,0);
+                            int w = scanner.nextInt();
+                            s1.getConnectedG().addWeightedEdge(s,d,w);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -706,10 +723,11 @@ public class Main {
                             s1.getConnectedG().addNode(node_num);
                             break;
                         case 3:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getConnectedG().removeWeightedEdge(source,dest,0);
+                            weight = scanner.nextInt();
+                            s1.getConnectedG().removeWeightedEdge(source,dest,weight);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -817,6 +835,8 @@ public class Main {
                     MaxFlow maxFlow = new MaxFlow(s1.getConnectedG().GraphRepresentationList);
                     break;
 
+                case 7:
+
                 case 8:
                     return;
                 default:
@@ -833,10 +853,11 @@ public class Main {
         int edge_num = scanner.nextInt();
         for(int i=0; i<edge_num;i++)
         {
-            System.out.print("Enter the source & destination node: ");
+            System.out.print("Enter the source, destination and weight of node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getDisconnected().addWeightedEdge(s,d,0);
+            int w = scanner.nextInt();
+            s1.getDisconnected().addWeightedEdge(s,d,w);
         }
 
         while (true)
@@ -847,12 +868,14 @@ public class Main {
             System.out.println("3. Graph Representation");
             System.out.println("4. Max flow");
             System.out.println("5. Graph Conversion");
-            System.out.println("6. Exit");
+            System.out.println("6. Graph Details");
+            System.out.println("7. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
             int source;
             int dest;
+            int weight;
             int start_node;
             int node_num;
             switch (task)
@@ -868,10 +891,11 @@ public class Main {
                     switch(taskU1)
                     {
                         case 1:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getDisconnected().addWeightedEdge(s,d,0);
+                            int w = scanner.nextInt();
+                            s1.getDisconnected().addWeightedEdge(s,d,w);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -879,10 +903,11 @@ public class Main {
                             s1.getDisconnected().addNode(node_num);
                             break;
                         case 3:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getDisconnected().removeWeightedEdge(source,dest,0);
+                            weight = scanner.nextInt();
+                            s1.getDisconnected().removeWeightedEdge(source,dest,weight);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -958,6 +983,8 @@ public class Main {
                     break;
 
                 case 6:
+
+                case 7:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -974,10 +1001,11 @@ public class Main {
         int edge_num = scanner.nextInt();
         for(int i=0; i<edge_num;i++)
         {
-            System.out.print("Enter the source & destination node: ");
+            System.out.print("Enter the source, destination and weight of node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getComplete().addWeightedEdge(s,d,0);
+            int w = scanner.nextInt();
+            s1.getComplete().addWeightedEdge(s,d,w);
         }
 
         while (true)
@@ -989,12 +1017,14 @@ public class Main {
             System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Exit");
+            System.out.println("7. Graph Details");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
             int source;
             int dest;
+            int weight;
             int start_node;
             int node_num;
             switch (task)
@@ -1010,10 +1040,11 @@ public class Main {
                     switch(taskCC1)
                     {
                         case 1:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getComplete().addWeightedEdge(s,d,0);
+                            int w = scanner.nextInt();
+                            s1.getComplete().addWeightedEdge(s,d,w);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -1021,10 +1052,11 @@ public class Main {
                             s1.getComplete().addNode(node_num);
                             break;
                         case 3:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getComplete().removeWeightedEdge(source,dest,0);
+                            weight = scanner.nextInt();
+                            s1.getComplete().removeWeightedEdge(source,dest,weight);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -1068,7 +1100,7 @@ public class Main {
                 case 3:
                     System.out.println("Which algorithm do you want to follow?");
                     System.out.println("1. Dijkstra Algorithm");
-                    System.out.println("2.  Exit");
+                    System.out.println("2. Exit");
                     int taskCC3 = scanner.nextInt();
                     switch(taskCC3)
                     {
@@ -1131,6 +1163,8 @@ public class Main {
                     MaxFlow maxFlow = new MaxFlow(s1.getComplete().GraphRepresentationList);
 
                 case 7:
+
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -1146,7 +1180,7 @@ public class Main {
         int edge_num = scanner.nextInt();
         for(int i=0; i<edge_num;i++)
         {
-            System.out.print("Enter the source, destination and weight: ");
+            System.out.print("Enter the source, destination and weight of node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
             int w = scanner.nextInt();
@@ -1162,7 +1196,8 @@ public class Main {
             System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Exit");
+            System.out.println("7.Graph Details");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -1170,6 +1205,7 @@ public class Main {
             int dest;
             int node_num;
             int weight;
+            int start_node;
             switch (task)
             {
                 case 1:
@@ -1223,8 +1259,17 @@ public class Main {
                     switch(taskW2)
                     {
                         case 1:
-
+                            System.out.print("Enter the start node of the Breadth First Traversal: ");
+                            start_node = scanner.nextInt();
+                            System.out.println("The Breadth First Traversal for the "+start_node+" is: ");
+                            s1.getWeighted().bfs(start_node);
+                            break;
                         case 2:
+                            System.out.print("Enter the start node of the Depth First Traversal: ");
+                            start_node = scanner.nextInt();
+                            System.out.println("The Depth First Traversal for the "+start_node+" is: ");
+                            s1.getWeighted().dfs(start_node);
+                            break;
 
                         case 3:
                             return;
@@ -1301,6 +1346,8 @@ public class Main {
                     break;
 
                 case 7:
+
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -1317,10 +1364,11 @@ public class Main {
         int edge_num = scanner.nextInt();
         for(int i=0; i<edge_num;i++)
         {
-            System.out.print("Enter the source & destination node: ");
+            System.out.print("Enter the source, destination and weight of node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getAcyclic().addWeightedEdge(s,d,0);
+            int w = scanner.nextInt();
+            s1.getAcyclic().addWeightedEdge(s,d,w);
         }
 
         while (true)
@@ -1333,12 +1381,14 @@ public class Main {
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
             System.out.println("7. Graph Conversion");
-            System.out.println("8. Exit");
+            System.out.println("8. Graph Details");
+            System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
             int source;
             int dest;
+            int weight;
             int start_node;
             int node_num;
             switch (task)
@@ -1354,10 +1404,11 @@ public class Main {
                     switch(taskA1)
                     {
                         case 1:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getAcyclic().addWeightedEdge(s,d,0);
+                            int w = scanner.nextInt();
+                            s1.getAcyclic().addWeightedEdge(s,d,w);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -1365,10 +1416,11 @@ public class Main {
                             s1.getAcyclic().addNode(node_num);
                             break;
                         case 3:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getAcyclic().removeWeightedEdge(source,dest,0);
+                            weight = scanner.nextInt();
+                            s1.getAcyclic().removeWeightedEdge(source,dest,weight);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -1483,6 +1535,8 @@ public class Main {
                     s1.getAcyclic().convertToCyclic();
                     break;
                 case 8:
+
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
@@ -1495,10 +1549,11 @@ public class Main {
         System.out.println("How many edges do you want to add?");
         int edge_num = scanner.nextInt();
         for (int i = 0; i < edge_num; i++) {
-            System.out.print("Enter the source & destination node: ");
+            System.out.print("Enter the source, destination and weight of node: ");
             int s = scanner.nextInt();
             int d = scanner.nextInt();
-            s1.getCyclic().addWeightedEdge(s, d, 0);
+            int w = scanner.nextInt();
+            s1.getCyclic().addWeightedEdge(s, d, w);
         }
 
         while (true) {
@@ -1509,12 +1564,14 @@ public class Main {
             System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Exit");
+            System.out.println("7. Graph Details");
+            System.out.println("8. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
             int source;
             int dest;
+            int weight;
             int start_node;
             int node_num;
             switch (task) {
@@ -1528,10 +1585,11 @@ public class Main {
                     int taskCC1 = scanner.nextInt();
                     switch (taskCC1) {
                         case 1:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             int s = scanner.nextInt();
                             int d = scanner.nextInt();
-                            s1.getCyclic().addWeightedEdge(s, d, 0);
+                            int w = scanner.nextInt();
+                            s1.getCyclic().addWeightedEdge(s, d, w);
                             break;
                         case 2:
                             System.out.print("Enter the no. of node to be added: ");
@@ -1539,10 +1597,11 @@ public class Main {
                             s1.getCyclic().addNode(node_num);
                             break;
                         case 3:
-                            System.out.print("Enter the source & destination node: ");
+                            System.out.print("Enter the source, destination and weight of node: ");
                             source = scanner.nextInt();
                             dest = scanner.nextInt();
-                            s1.getCyclic().removeWeightedEdge(source, dest, 0);
+                            weight = scanner.nextInt();
+                            s1.getCyclic().removeWeightedEdge(source, dest, weight);
                             break;
                         case 4:
                             System.out.print("Enter the node number: ");
@@ -1650,6 +1709,8 @@ public class Main {
                     break;
 
                 case 8:
+
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
