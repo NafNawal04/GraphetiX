@@ -4,8 +4,7 @@ import GraphDelegator.Graph;
 import GraphFunctionalities.*;
 import GraphTypeChecker.GraphTypeChecker;
 import MaxFlow.MaxFlow;
-import MinSpan.KruskalMST;
-import MinSpan.PrimsMST;
+import MinSpan.*;
 import ShortestPathTraversal.*;
 
 

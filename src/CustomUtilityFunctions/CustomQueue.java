@@ -1,9 +1,8 @@
 package CustomUtilityFunctions;
 
 public class CustomQueue<E> {
-    private Node<E> head;  // front of the queue
-    private Node<E> tail;  // rear of the queue
-
+    private Node<E> head;
+    private Node<E> tail;
     public boolean isEmpty() {
         return head == null;
     }
@@ -12,22 +11,21 @@ public class CustomQueue<E> {
         this.head = null;
         this.tail = null;
     }
-    public boolean addQueue(E value)
+    public void addQueue(E value)
     {
         Node<E> newNode = new Node<>(value);
 
         if (head == null)
         {
             head = newNode;
-            tail = newNode;
         }
         else
         {
             tail.next = newNode;
-            tail = newNode;
-        }
 
-        return true;
+        }
+        tail = newNode;
+
     }
     public void offer(E item) {
         Node<E> newNode = new Node<>(item);

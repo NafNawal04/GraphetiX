@@ -1,6 +1,6 @@
 package GraphFunctionalities;
 
-import CustomUtilityFunctions.CustomLinkedList;
+import CustomUtilityFunctions.*;
 
 @SuppressWarnings("unused")
 public class TraversalMethod {
@@ -17,7 +17,7 @@ public class TraversalMethod {
     {
         boolean[] visited = new boolean[node];
 
-        CustomLinkedList<Integer> queue = new CustomLinkedList<>();
+        CustomQueue<Integer> queue = new CustomQueue<>();
 
         visited[start_node] = true;
         queue.addQueue(start_node);

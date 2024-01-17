@@ -163,42 +163,6 @@ public class CustomLinkedList<E>
 
 
 
-    public void addQueue(E value)
-    {
-        Node<E> newNode = new Node<>(value);
-
-        if (head == null)
-        {
-            head = newNode;
-        }
-        else
-        {
-            tail.next = newNode;
-        }
-        tail = newNode;
-
-    }
-
-    public E pollQueue()
-    {
-        if (head == null)
-        {
-            return null;
-        }
-
-        E frontValue = head.data;
-        head = head.next;
-
-        if (head == null)
-        {
-            tail = null;
-        }
-
-        return frontValue;
-    }
-
-
-
 
     public void forEach(ElementConsumer<E> consumer)
     {
