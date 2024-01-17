@@ -59,78 +59,73 @@ public class AcyclicGraph implements IGraph
         System.out.println("Removed the node "+ node_num + " from the Acyclic graph.");
 
     }
-    public boolean isCyclic()
-    {
+    public boolean isCyclic() {
         boolean[] visited = new boolean[node];
-        boolean[] stack = new boolean[node];
-
         for (int i = 0; i < node; i++) {
-            if (!visited[i] && isCyclicUtil(i, visited, stack)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public boolean isCyclicUtil(int node, boolean[] visited, boolean[] stack)
-    {
-        visited[node] = true;
-        stack[node] = true;
-
-        for (int j = 0; j < GraphRepresentationList[node].length(); j++) {
-            int[] neighbor = GraphRepresentationList[node].get(j);
-            if (!visited[neighbor[0]])
-            {
-                if (isCyclicUtil(neighbor[0], visited, stack))
-                {
+            if (!visited[i]) {
+                if (isCyclicUtil(i, visited, -1)) {
                     return true;
                 }
             }
-            else if (stack[neighbor[0]])
-            {
+        }
+        return false;
+    }
+
+    public boolean isCyclicUtil(int currentNode, boolean[] visited, int parent) {
+        visited[currentNode] = true;
+
+        for (int j = 0; j < GraphRepresentationList[currentNode].length(); j++) {
+            int[] neighbor = GraphRepresentationList[currentNode].get(j);
+
+            if (neighbor[0] == currentNode) {
+                continue;
+            }
+
+            if (!visited[neighbor[0]]) {
+                if (isCyclicUtil(neighbor[0], visited, currentNode)) {
+                    return true;
+                }
+            } else if (neighbor[0] != parent) {
                 return true;
             }
         }
 
-        stack[node] = false;
         return false;
     }
 
-    public void convertToCyclic()
-    {
-        if (!isCyclic())
-        {
+    public void convertToCyclic() {
+        if (isCyclic()) {
             System.out.println("The graph is already cyclic.");
             return;
         }
 
-        for (int i = 0; i < node; i++)
-        {
-            for (int j = i + 1; j < node; j++)
-            {
-
-                int length1 = GraphRepresentationList[i].length();
-                int length2 = GraphRepresentationList[j].length();
-
-                for(int x=0;x<length1;x++)
-                {
-                    int[] neededEdge1 = GraphRepresentationList[i].get(x);
-                    for(int y=0;y<length2;y++)
-                    {
-                        int[] neededEdge2 = GraphRepresentationList[j].get(y);
-                        if(neededEdge1[0] != j && neededEdge2[0] != i )
-                        {
-                            System.out.println("Adding edge between " + i + " and " + j + " to make the graph cyclic.");
-                            addWeightedEdge(i, j,0);
-                            return;
-                        }
+        for (int i = 0; i < node; i++) {
+            for (int j = i + 1; j < node; j++) {
+                if (!hasEdge(i, j)) {
+                    addWeightedEdge(i, j, 0);
+                    if (isCyclic()) {
+                        System.out.println("Successfully converted the graph to cyclic by adding an edge between " + i + " and " + j);
+                        return;
+                    } else {
+                        removeWeightedEdge(i, j, 0);
                     }
                 }
-
             }
         }
+
+        System.out.println("Could not convert the graph to cyclic.");
     }
+
+    private boolean hasEdge(int source, int dest) {
+        for (int i = 0; i < GraphRepresentationList[source].length(); i++) {
+            int[] neighbor = GraphRepresentationList[source].get(i);
+            if (neighbor[0] == dest) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     @Override
     public void GraphRepresentation()

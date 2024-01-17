@@ -55,6 +55,29 @@ public class CyclicGraph implements IGraph
         System.out.println("Removed the node "+ node_num + " from the Cyclic graph.");
 
     }
+    public void convertToAcyclic() {
+        boolean[] visited = new boolean[node];
+        for (int i = 0; i < node; i++) {
+            if (!visited[i]) {
+                DFSRemoveCycles(i, visited, -1);
+            }
+        }
+    }
+
+    private void DFSRemoveCycles(int currentNode, boolean[] visited, int parent) {
+        visited[currentNode] = true;
+
+        for (int j = 0; j < GraphRepresentationList[currentNode].length(); j++) {
+            int[] neighbor = GraphRepresentationList[currentNode].get(j);
+
+            if (!visited[neighbor[0]]) {
+                DFSRemoveCycles(neighbor[0], visited, currentNode);
+            } else if (neighbor[0] != parent) {
+                // This edge forms a cycle, so remove it
+                removeWeightedEdge(currentNode, neighbor[0], neighbor[1]);
+            }
+        }
+    }
 
 
     @Override

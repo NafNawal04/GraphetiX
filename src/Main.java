@@ -1564,8 +1564,9 @@ public class Main {
             System.out.println("4. Graph Representation");
             System.out.println("5. Minimum Spanning");
             System.out.println("6. Max flow");
-            System.out.println("7. Graph Details");
-            System.out.println("8. Exit");
+            System.out.println("7. Graph Conversion");
+            System.out.println("8. Graph Details");
+            System.out.println("9. Exit");
             System.out.print("Press the number for the desired operation: ");
             int task = scanner.nextInt();
 
@@ -1708,9 +1709,11 @@ public class Main {
                     MaxFlow maxFlow = new MaxFlow(s1.getCyclic().GraphRepresentationList);
                     break;
 
-                case 8:
+                case 7:
+                    s1.getCyclic().convertToAcyclic();
+                    break;
 
-                case 9:
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid operation choice. Please try again.");
