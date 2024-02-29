@@ -1,14 +1,14 @@
 package MinSpan;
 
 import CustomUtilityFunctions.*;
-@SuppressWarnings("unchecked")
 public class KruskalMST {
 
     public int node;
     public CustomLinkedList<int[]>[] GraphRepresentationList;
     int[] parent;
 
-    public KruskalMST(CustomLinkedList<int[]>[] GraphRepresentationList) {
+    public KruskalMST(CustomLinkedList<int[]>[] GraphRepresentationList)
+    {
         this.GraphRepresentationList = GraphRepresentationList;
         node = GraphRepresentationList.length;
 
@@ -19,8 +19,8 @@ public class KruskalMST {
         display();
     }
 
-    // Kruskal's Algorithm
-    public CustomLinkedList<int[]> kruskalMST() {
+    public CustomLinkedList<int[]> kruskalMST()
+    {
         CustomLinkedList<int[]> resultMST = new CustomLinkedList<>();
         CustomLinkedList<int[]> allEdges = new CustomLinkedList<>();
 
@@ -28,7 +28,7 @@ public class KruskalMST {
         for (int i = 0; i < node; i++) {
             for (int j = 0; j < GraphRepresentationList[i].length(); j++) {
                 int[] edge = GraphRepresentationList[i].get(j);
-                if (i < edge[0]) { // To avoid adding edges twice (undirected graph)
+                if (i < edge[0]) {
                     allEdges.addLast(new int[]{i, edge[0], edge[1]});
                 }
             }
@@ -55,14 +55,16 @@ public class KruskalMST {
         return resultMST;
     }
 
-    private int find(int vertex) {
+    private int find(int vertex)
+    {
         if (parent[vertex] != vertex) {
             parent[vertex] = find(parent[vertex]); // Path compression
         }
         return parent[vertex];
     }
 
-    private void union(int x, int y) {
+    private void union(int x, int y)
+    {
         parent[y] = x;
     }
 
@@ -72,6 +74,7 @@ public class KruskalMST {
         for (int i = 0; i < edgesArray.length; i++) {
             edgesArray[i] = edgesList.get(i);
         }
+
 
         // Sorting edges based on weights using Arrays.sort
         for (int i = 0; i < edgesArray.length - 1; i++) {
@@ -95,6 +98,7 @@ public class KruskalMST {
 
     public void display()
     {
+
         CustomLinkedList<int[]> minimumSpanningTree= kruskalMST();
         final int[] min_cost = {0};
 
